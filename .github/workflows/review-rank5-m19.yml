@@ -1,0 +1,74 @@
+name: Verify rank 5 multiplicity 19 for reviewed integration
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: census-candidate-review
+  cancel-in-progress: false
+jobs:
+  verify:
+    if: github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Download the reviewed complete candidate only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p review
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/35440299307" > review/source-run.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('review/source-run.json'))
+          assert d['status']=='completed' and d['conclusion']=='success'
+          assert d['head_sha']=='931addc686e8d93e86e480c6a8cc56d0301dfabf'
+          PY
+          gh run download 35440299307 --repo "$GITHUB_REPOSITORY" \
+            --name long-whole-rank-5-35440299307 --dir review/source
+      - name: Independently verify every tensor and the old count prefix
+        run: |
+          set -o pipefail
+          python3 - <<'PY'
+          import json
+          d=json.load(open('review/source/rank5/best/run.json'))
+          assert d['rank']==5 and d['bound']==19 and d['classes']==34133
+          assert d['github_sha']=='931addc686e8d93e86e480c6a8cc56d0301dfabf'
+          assert d['github_run_id']=='35440299307'
+          PY
+          python3 scripts/promote_result.py review/source/rank5/best 2>&1 | tee review/verification.log
+          python3 - <<'PY'
+          import json,os,platform,subprocess
+          from pathlib import Path
+          d={'source_run_id':35440299307,'source_commit':'931addc686e8d93e86e480c6a8cc56d0301dfabf',
+             'verification_run_id':os.environ['GITHUB_RUN_ID'],'verification_commit':os.environ['GITHUB_SHA'],
+             'python':platform.python_version(),'system':platform.platform(),
+             'compiler':subprocess.check_output(['g++','--version'],text=True),
+             'command':'python3 scripts/promote_result.py review/source/rank5/best',
+             'rank':5,'bound':19,'complete':True,'verified':True}
+          Path('verification/imports/rank5_through19/review.json').write_text(json.dumps(d,indent=2)+'\n')
+          PY
+          echo 'Rank 5 through multiplicity 19: 34,133 classes, independently reverified; candidate for reviewed integration.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve diagnostics even on failure
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: rank5-m19-review-diagnostics-${{ github.run_id }}
+          path: |
+            review/source-run.json
+            review/verification.log
+          retention-days: 14
+      - name: Preserve verified integration files only after success
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: rank5-m19-verified-integration-${{ github.run_id }}
+          path: |
+            results/census.json
+            results/rank5_through19_*.txt.gz
+            verification/imports/rank5_through19/
+          if-no-files-found: error
+          retention-days: 14

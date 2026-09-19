@@ -7,6 +7,7 @@ and all tensor axioms and relabellings are rechecked before touching the manifes
 from __future__ import annotations
 import argparse,csv,gzip,hashlib,json,os,shutil,subprocess,tempfile
 from pathlib import Path
+from extend_census import validate_candidate
 ROOT=Path(__file__).resolve().parents[1]
 
 def digest(path: Path) -> str:
@@ -31,6 +32,7 @@ def main() -> None:
     data=json.loads((ROOT/'results/census.json').read_text());previous=data['ranks'][str(r)]
     if m<=previous['bound']:ap.error('artifact does not extend the checked-in bound')
     if any(counts.get(k)!=v for k,v in previous['counts'].items()):ap.error('existing-prefix count mismatch')
+    validate_candidate(source,state,previous,r,m)
     provenance=ROOT/f'verification/imports/rank{r}_through{m}'
     if provenance.exists():ap.error('provenance destination exists; review it explicitly')
     with tempfile.TemporaryDirectory(prefix='fusion-import-') as temp:
@@ -43,7 +45,11 @@ def main() -> None:
         subprocess.run([os.environ.get('CXX','g++'),'-O3','-std=c++17',str(ROOT/'code/verify_tables.cpp'),'-o',str(exe)],check=True)
         subprocess.run([str(exe),str(temp/'FusionRingMultiplicationTables.txt'),str(temp/'check'),'--exhaustive'],check=True)
         check=json.loads((temp/'check/summary.json').read_text())
-        if check['duplicates'] or check['distinct_rings']!=state['classes']:ap.error('independent audit failed')
+        if (check['duplicates'] or check['distinct_rings']!=state['classes']
+                or check.get('input_records')!=state['classes']
+                or check.get('associativity_checked') is not True
+                or check.get('canonical_mode')!='all unit-fixing permutations'):
+            ap.error('independent audit failed')
         found={}
         with (temp/'check/counts.csv').open() as f:
             for row in csv.DictReader(f):
@@ -61,8 +67,12 @@ def main() -> None:
             record[kind+'_uncompressed_sha256']=state[key]
         provenance.mkdir(parents=True,exist_ok=False)
         shutil.copy2(source/'run.json',provenance/'run.json')
-        shutil.copytree(source/'independent_check',provenance/'artifact_independent_check')
-        shutil.copytree(temp/'check',provenance/'fresh_independent_check')
+        for origin,name in [(source/'independent_check','artifact_independent_check'),
+                            (temp/'check','fresh_independent_check')]:
+            destination=provenance/name;destination.mkdir()
+            for report in origin.iterdir():
+                if report.is_file() and report.suffix in ('.json','.csv'):
+                    shutil.copy2(report,destination/report.name)
     data['ranks'][str(r)]=record;data['total_classes']=sum(x['classes'] for x in data['ranks'].values())
     staged=ROOT/'results/census.json.next';staged.write_text(json.dumps(data,indent=2)+'\n')
     staged.replace(ROOT/'results/census.json')
