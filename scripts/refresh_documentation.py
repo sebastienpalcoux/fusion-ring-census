@@ -105,6 +105,12 @@ The distinction is made explicitly in [the methods](methods/completeness.md).
 
 ## GitHub computation
 
+The separately authorized [rank-6 multiplicity-7 campaign](docs/RANK6_M7_MAX.md)
+uses one standard Ubuntu job with GitHub's **six-hour maximum job ceiling** and
+one 21,300-second shared driver deadline. It searches only bound 7, preserves
+verified artifacts, and does not automatically change the release. Its explicit
+`--rank6-m7-max` option does not enlarge the budgets of the other workflows.
+
 Published privately at [sebastienpalcoux/fusion-ring-census](https://github.com/sebastienpalcoux/fusion-ring-census).
 The [long campaign](.github/workflows/long-frontier.yml) is manually triggered and
 runs **ranks 5, 6, 7 and 8 only**, with at most four concurrent standard Ubuntu jobs.

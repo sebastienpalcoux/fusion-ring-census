@@ -112,6 +112,26 @@ class CampaignTests(unittest.TestCase):
         self.assertFalse(list(self.out.rglob('*.deduplicated')))
         self.assertFalse(list(self.out.rglob('partial.parameters.txt')))
 
+    def test_max_rank6_campaign_uses_nearly_six_hours_and_stops_at_seven(self):
+        rc, report = self.run_mocked(['complete'], '--rank6-m7-max', '--seconds', '21300')
+        self.assertEqual(rc, 0)
+        self.assertEqual(report['campaign'], 'rank6-m7-max')
+        self.assertEqual(report['best_verified_bound'], 7)
+        self.assertEqual(report['max_bound'], 7)
+        self.assertEqual(len(self.commands), 1)  # No multiplicity-eight search.
+        cmd = self.commands[0]
+        self.assertIn('--rank6-m7-max', cmd)
+        self.assertEqual(float(cmd[cmd.index('--seconds') + 1]), 21177)
+        self.assertEqual(float(cmd[cmd.index('--deadline') + 1]), 21397)
+
+    def test_max_rank6_campaign_rejects_wrong_scope_and_unbounded_allowance(self):
+        with patch.object(frontier.subprocess, 'Popen') as process:
+            for args in (['--rank', '5'], ['--start-bound', '8'], ['--max-bound', '8'],
+                         ['--seconds', '21301'], ['--seconds', 'nan'], ['--seconds', 'inf']):
+                with self.subTest(args=args), self.assertRaises(SystemExit):
+                    self.invoke('--rank6-m7-max', '--seconds', '21300', *args)
+            process.assert_not_called()
+
     def test_next_attempt_uses_only_remaining_budget_and_retains_best(self):
         rc, report = self.run_mocked(['complete', 'timeout'])
         self.assertEqual(rc, 0)
@@ -190,7 +210,7 @@ class CampaignTests(unittest.TestCase):
                 self.invoke(*args)
 
 class RunnerFailureTests(unittest.TestCase):
-    def invoke(self, behavior):
+    def invoke(self, behavior, extra=()):
         with tempfile.TemporaryDirectory() as td:
             out = Path(td) / 'attempt'
             commands = []
@@ -204,7 +224,7 @@ class RunnerFailureTests(unittest.TestCase):
                 if behavior == 'timeout':
                     raise subprocess.TimeoutExpired(cmd, kwargs.get('timeout'))
                 return subprocess.CompletedProcess(cmd, -9)
-            argv = ['run_census.py', '--rank', '6', '--bound', '7', '--seconds', '3700', '--verify', '--out', str(out)]
+            argv = ['run_census.py', '--rank', '6', '--bound', '7', '--seconds', '3700', '--verify', '--out', str(out), *extra]
             with patch.object(sys, 'argv', argv), patch.object(runner.subprocess, 'run', side_effect=fake_run), \
                  contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
                 rc = runner.main()
@@ -229,6 +249,22 @@ class RunnerFailureTests(unittest.TestCase):
         self.assertEqual(rc, 1)
         self.assertEqual(state['failure_kind'], 'error')
         self.assertEqual(state['runs'][0]['returncode'], -9)
+
+    def test_low_level_max_allowance_is_not_capped_at_4200(self):
+        rc, state = self.invoke('timeout', ['--rank6-m7-max', '--seconds', '21177',
+                                          '--deadline', str(runner.time.monotonic() + 21297)])
+        self.assertEqual(rc, 3)
+        self.assertEqual(state['failure_kind'], 'budget_exhausted')
+        self.assertGreater(state['runs'][0]['allowance_seconds'], 21100)
+
+    def test_low_level_max_requires_exact_scope_and_deadline(self):
+        for extra in (['--rank6-m7-max'],
+                      ['--rank6-m7-max', '--rank', '5', '--deadline', str(runner.time.monotonic()+100)],
+                      ['--rank6-m7-max', '--bound', '8', '--deadline', str(runner.time.monotonic()+100)],
+                      ['--rank6-m7-max', '--seconds', '21301', '--deadline', str(runner.time.monotonic()+100)],
+                      ['--rank6-m7-max', '--deadline', str(runner.time.monotonic()+21400)]):
+            with self.subTest(extra=extra), self.assertRaises(SystemExit):
+                self.invoke('compiler_error', extra)
 
 if __name__ == '__main__':
     unittest.main()

@@ -32,6 +32,8 @@ def main() -> int:
     ap.add_argument('--rank', type=int, choices=(3,4,5,6,7,8), required=True)
     ap.add_argument('--bound', type=int, required=True)
     ap.add_argument('--seconds', type=float, default=None)
+    ap.add_argument('--rank6-m7-max', action='store_true',
+                    help='Allow the explicitly bounded rank-6 multiplicity-7 campaign only')
     ap.add_argument('--deadline', type=float, help='Parent monotonic wall-clock deadline; never reset between phases')
     ap.add_argument('--threads', type=int, default=4)
     ap.add_argument('--out', type=Path, required=True)
@@ -43,10 +45,15 @@ def main() -> int:
     if not 1 <= a.bound <= cap or not 1 <= a.threads <= 64:
         ap.error(f'bound must be in [1,{cap}]; threads in [1,64]')
     budget = a.seconds if a.seconds is not None else {3:60,4:1200,5:1200,6:1200,7:1200,8:1200}[a.rank]
-    if not math.isfinite(budget) or not 0 < budget <= 4200:
-        ap.error('--seconds must be finite, positive and at most 4200')
-    if a.deadline is not None and (not math.isfinite(a.deadline) or not 0 < a.deadline-time.monotonic() <= 4200):
-        ap.error('--deadline must be finite and within the next 4200 seconds')
+    limit = 4200
+    if a.rank6_m7_max:
+        if (a.rank,a.bound)!=(6,7) or a.deadline is None or not a.verify:
+            ap.error('--rank6-m7-max requires rank 6, bound 7, --verify and a shared --deadline')
+        limit = 21300
+    if not math.isfinite(budget) or not 0 < budget <= limit:
+        ap.error(f'--seconds must be finite, positive and at most {limit}')
+    if a.deadline is not None and (not math.isfinite(a.deadline) or not 0 < a.deadline-time.monotonic() <= limit):
+        ap.error(f'--deadline must be finite and within the next {limit} seconds')
     if a.out.exists() and any(a.out.iterdir()):
         ap.error('--out must be absent or empty')
     a.out=a.out.resolve()

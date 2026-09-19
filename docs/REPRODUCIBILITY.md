@@ -47,7 +47,7 @@ python3 scripts/extend_census.py --rank 7 --seconds 4200 \
   --threads "$(nproc)" --out runs/rank7-frontier
 ```
 
-The wrapper accepts a finite maximum of 4,200 seconds for ranks 5–8 (ranks 3–4
+The standard wrapper mode accepts a finite maximum of 4,200 seconds for ranks 5–8 (ranks 3–4
 retain their 1,200-second validation ceiling). The long workflow passes 4,200,
 sets 75 minutes per job and uses four jobs: at most 300 runner-minutes, including
 setup and always-run artifact upload. The legacy workflow still passes 1,100 and
@@ -87,6 +87,14 @@ In the Work environment, use only lightweight tests and checks: enumeration and
 full tensor verification belong on GitHub Actions. Manuscript builds do not run
 numerical searches. The targeted `review-rank5-m19.yml` audit ran only the accepted
 rank-five tensors, with a 10-minute job ceiling and no enumeration.
+
+## Single-bound maximum-duration exception
+
+The separately authorized [rank-6 bound-7 campaign](RANK6_M7_MAX.md) opts in with
+`--rank6-m7-max` on both drivers: at most 21,300 shared seconds, a fixed bound of
+7, and a six-hour hosted-job ceiling. It reserves 120 seconds instead of 10% for
+other phases and does not attempt bound 8. Every standard mode retains its
+existing validation limits. Results remain artifacts pending the user's return.
 
 ## Input format
 

@@ -13,6 +13,11 @@ total). The legacy `frontier.yml` remains manual with its original 1,100-second
 and 20-minute limits. Both share the same concurrency lock. Reruns are rejected;
 a further campaign requires a separately authorized dispatch and budget check.
 
+The separate [rank-6 bound-7 maximum-duration campaign](RANK6_M7_MAX.md) has one
+six-hour job and a 21,300-second shared driver deadline, explicitly restricted to
+that rank and bound. It shares the concurrency lock and only uploads verified
+candidates/diagnostics. Its launch-then-stop authorization does not promote data.
+
 Before dispatch, inspect active runs and the account-wide included Actions
 minutes/storage and enforced spending controls. Use standard Ubuntu runners
 and existing included capacity only. If paid usage cannot be excluded, prepare
