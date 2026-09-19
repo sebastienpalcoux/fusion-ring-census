@@ -1,13 +1,6 @@
 name: Build explanatory manuscripts
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'manuscripts/**'
-      - 'methods/**'
-      - 'scripts/build_manuscripts.py'
-      - 'results/census.json'
 permissions:
   contents: read
 jobs:
