@@ -1,0 +1,18 @@
+{
+  "rank": 6,
+  "budget_seconds": 1100.0,
+  "timing": "shared wall clock including compilation, export and verification",
+  "github_run_id": "35433992685",
+  "github_sha": "5173786bd7c60d9bc7713db559c38ef9f9731527",
+  "attempts": [
+    {
+      "bound": 7,
+      "elapsed_seconds": 1005.0651436929999,
+      "returncode": 3,
+      "complete": false
+    }
+  ],
+  "best_verified_bound": null,
+  "partial_counts_published": false,
+  "elapsed_seconds": 1005.066589373
+}

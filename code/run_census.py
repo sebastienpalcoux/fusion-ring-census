@@ -13,11 +13,13 @@ import collections
 import gzip
 import hashlib
 import json
+import math
 import os
 import shutil
 import subprocess
 import sys
 import time
+import traceback
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,15 +27,12 @@ CODE = ROOT/'code'
 SYSTEMS = ROOT/'systems'
 
 
-def run_checked(cmd: list[str], **kwargs):
-    return subprocess.run(cmd, check=True, **kwargs)
-
-
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--rank', type=int, choices=(3,4,5,6,7,8), required=True)
     ap.add_argument('--bound', type=int, required=True)
     ap.add_argument('--seconds', type=float, default=None)
+    ap.add_argument('--deadline', type=float, help='Parent monotonic wall-clock deadline; never reset between phases')
     ap.add_argument('--threads', type=int, default=4)
     ap.add_argument('--out', type=Path, required=True)
     ap.add_argument('--compiler', default=os.environ.get('CXX','g++'))
@@ -44,8 +43,10 @@ def main() -> int:
     if not 1 <= a.bound <= cap or not 1 <= a.threads <= 64:
         ap.error(f'bound must be in [1,{cap}]; threads in [1,64]')
     budget = a.seconds if a.seconds is not None else {3:60,4:1200,5:1200,6:1200,7:1200,8:1200}[a.rank]
-    if budget <= 0:
-        ap.error('--seconds must be positive')
+    if not math.isfinite(budget) or not 0 < budget <= 4200:
+        ap.error('--seconds must be finite, positive and at most 4200')
+    if a.deadline is not None and (not math.isfinite(a.deadline) or not 0 < a.deadline-time.monotonic() <= 4200):
+        ap.error('--deadline must be finite and within the next 4200 seconds')
     if a.out.exists() and any(a.out.iterdir()):
         ap.error('--out must be absent or empty')
     a.out=a.out.resolve()
@@ -55,7 +56,9 @@ def main() -> int:
     logs=a.out/'logs';logs.mkdir()
     raw=a.out/'diagnostics';raw.mkdir()
     report={'rank':a.rank,'bound':a.bound,'threads':a.threads,
-            'enumeration_budget_seconds':budget,'complete':False,'runs':[]}
+            'enumeration_budget_seconds':budget,'complete':False,'verified':False,'runs':[],
+            'github_sha':os.environ.get('GITHUB_SHA'),'github_run_id':os.environ.get('GITHUB_RUN_ID'),
+            'deadline_monotonic':a.deadline,'phase':'initialization','commands':[]}
     env=dict(os.environ,OMP_NUM_THREADS=str(a.threads))
     started=time.monotonic()
     source_hash=hashlib.sha256()
@@ -64,12 +67,44 @@ def main() -> int:
             source_hash.update(str(path.relative_to(CODE)).encode());source_hash.update(path.read_bytes())
     report['code_sha256']=source_hash.hexdigest()
 
+    def persist():
+        report['elapsed_seconds']=time.monotonic()-started
+        temp=a.out/'run.json.next'
+        temp.write_text(json.dumps(report,indent=2)+'\n')
+        temp.replace(a.out/'run.json')
+
+    def phase(name):
+        report['phase']=name
+        persist()
+
+    def run_checked(cmd, **kwargs):
+        item={'phase':report['phase'],'command':cmd,'started_elapsed_seconds':time.monotonic()-started}
+        report['commands'].append(item);persist()
+        if a.deadline is not None:
+            remaining=a.deadline-time.monotonic()
+            if remaining<=0:raise TimeoutError('shared wall-clock deadline exhausted')
+            kwargs['timeout']=remaining
+        st=time.monotonic()
+        try:
+            result=subprocess.run(cmd,check=True,**kwargs)
+            item['returncode']=result.returncode
+            return result
+        except subprocess.TimeoutExpired as exc:
+            item['timeout']=True
+            raise TimeoutError('shared wall-clock deadline exhausted during '+report['phase']) from exc
+        except subprocess.CalledProcessError as exc:
+            item['returncode']=exc.returncode
+            raise
+        finally:
+            item['elapsed_seconds']=time.monotonic()-st;persist()
+
     def compile_one(source: str, name: str, openmp: bool=True) -> Path:
         dest=build/name
         stamp=build/(name+'.build.json')
         signature={'code_sha256':source_hash.hexdigest(),'compiler':a.compiler,'source':source,'openmp':openmp}
         if dest.exists() and stamp.exists() and json.loads(stamp.read_text())==signature:
             return dest
+        phase('compilation:'+name)
         cmd=[a.compiler,'-O3','-std=c++17']+(['-fopenmp'] if openmp else [])+[str(CODE/source),'-o',str(dest)]
         with (logs/(name+'_compile.log')).open('w') as log:
             run_checked(cmd,stdout=log,stderr=subprocess.STDOUT)
@@ -102,6 +137,7 @@ def main() -> int:
                     jobs.append((f'pairs{p}',[str(general),str(path),str(a.bound),'TIME'],3))
             jobs.append(('selfdual',[str(fast),str(SYSTEMS/f'system{a.rank}sd.txt'),str(a.rank),str(a.bound),'TIME',str(a.threads)],4))
         report['compilation_seconds']=time.monotonic()-started
+        report['expected_strata']=[job[0] for job in jobs]
         search_start=time.monotonic()
         files=[]
         for name,base,index in jobs:
@@ -109,25 +145,31 @@ def main() -> int:
             if remaining <= 0:
                 raise TimeoutError('shared enumeration budget exhausted')
             cmd=list(base)
+            if a.deadline is not None:
+                remaining=min(remaining,a.deadline-time.monotonic())
+                if remaining<=0:raise TimeoutError('shared wall-clock deadline exhausted')
             if index is not None:
                 cmd[index]=str(max(0.001,remaining-0.05))
             output=raw/(name+'.parameters.txt');logpath=logs/(name+'.log')
             st=time.monotonic()
+            phase('enumeration:'+name)
+            entry={'name':name,'command':cmd,'allowance_seconds':remaining}
+            report['runs'].append(entry);persist()
             try:
                 with output.open('w') as out,logpath.open('w') as log:
                     run=subprocess.run(cmd,stdout=out,stderr=log,env=env,timeout=remaining)
                 elapsed=time.monotonic()-st
-                report['runs'].append({'name':name,'elapsed_seconds':elapsed,'returncode':run.returncode})
+                entry.update(elapsed_seconds=elapsed,returncode=run.returncode);persist()
                 if run.returncode==3:
                     raise TimeoutError(f'{name} did not finish')
                 if run.returncode:
                     raise RuntimeError(f'{name} failed: see {logpath}')
             except subprocess.TimeoutExpired as exc:
-                report['runs'].append({'name':name,'elapsed_seconds':time.monotonic()-st,'timeout':True})
+                entry.update(elapsed_seconds=time.monotonic()-st,timeout=True);persist()
                 raise TimeoutError(f'{name} exceeded the shared enumeration budget') from exc
             files.append(output)
         report['enumeration_seconds']=time.monotonic()-search_start
-        report['complete']=True
+        phase('sort_and_export')
         st=time.monotonic()
         rows=[];counts=collections.Counter()
         for path in files:
@@ -146,8 +188,9 @@ def main() -> int:
             for tag,v in rows:
                 out.write(tag+' '+' '.join(map(str,v))+'\n')
         table=a.out/'FusionRingMultiplicationTables.txt'
-        run_checked([sys.executable,str(CODE/'export_tables.py'),'--rank',str(a.rank),
-                     '--input',str(params),'--systems',str(SYSTEMS),'--output',str(table)])
+        with (logs/'export.log').open('w') as log:
+            run_checked([sys.executable,str(CODE/'export_tables.py'),'--rank',str(a.rank),
+                         '--input',str(params),'--systems',str(SYSTEMS),'--output',str(table)],stdout=log,stderr=subprocess.STDOUT)
         report['counts']={str(m):counts[m] for m in range(1,a.bound+1)}
         report['classes']=sum(counts.values())
         with (a.out/'counts.csv').open('w') as f:
@@ -158,7 +201,9 @@ def main() -> int:
             st=time.monotonic();verifier=compile_one('verify_tables.cpp','verify_tables',False)
             report['verifier_compilation_seconds']=time.monotonic()-st
             st=time.monotonic()
-            run_checked([str(verifier),str(table),str(a.out/'independent_check'),'--exhaustive'])
+            phase('independent_verification')
+            with (logs/'verification.log').open('w') as log:
+                run_checked([str(verifier),str(table),str(a.out/'independent_check'),'--exhaustive'],stdout=log,stderr=subprocess.STDOUT)
             check=json.loads((a.out/'independent_check/summary.json').read_text())
             if check['duplicates']!=0 or check['distinct_rings']!=len(rows):
                 raise ValueError('independent verification found duplicate or missing records')
@@ -174,6 +219,7 @@ def main() -> int:
             report['independent_verification']=check
             report['verified']=True
         st=time.monotonic()
+        phase('compression')
         for path in [params,table]:
             report[path.name+'_sha256']=hashlib.sha256(path.read_bytes()).hexdigest()
             with path.open('rb') as src,gzip.GzipFile(filename=str(path)+'.gz',mode='wb',mtime=0) as dst:
@@ -181,17 +227,24 @@ def main() -> int:
             path.unlink()
         report['compression_seconds']=time.monotonic()-st
         shutil.rmtree(raw)
-        (a.out/'run.json').write_text(json.dumps(report,indent=2)+'\n')
+        if a.deadline is not None and time.monotonic()>=a.deadline:
+            raise TimeoutError('shared deadline reached before final completion')
+        report['complete']=True
+        report['outcome']='verified_complete' if a.verify else 'complete_unverified'
+        phase('complete')
         print(json.dumps(report,indent=2))
         return 0
-    except (OSError,ValueError,RuntimeError,TimeoutError,subprocess.CalledProcessError) as exc:
+    except Exception as exc:
         report['complete']=False;report['verified']=False;report['error']=str(exc)
+        report['failure_kind']='budget_exhausted' if isinstance(exc,TimeoutError) else 'error'
+        report['error_type']=type(exc).__name__
         for filename in ('counts.csv','parameters.txt.gz','FusionRingMultiplicationTables.txt.gz'):
             (a.out/filename).unlink(missing_ok=True)
         report.pop('counts',None);report.pop('classes',None)
-        (a.out/'run.json').write_text(json.dumps(report,indent=2)+'\n')
+        persist()
         print(f'NOT A COMPLETE CENSUS: {exc}\nNo partial counts are certified.',file=sys.stderr)
-        return 3
+        if not isinstance(exc,TimeoutError):traceback.print_exc()
+        return 3 if isinstance(exc,TimeoutError) else 1
 
 if __name__=='__main__':
     raise SystemExit(main())

@@ -44,8 +44,8 @@ Reproduce a complete bounded census, or request a larger whole-rank search:
 ```bash
 python3 code/run_census.py --rank 6 --bound 6 --seconds 1200 \
   --threads 4 --verify --out runs/rank6-reproduction
-python3 scripts/extend_census.py --rank 6 --seconds 1100 \
-  --threads 4 --out runs/rank6-frontier
+python3 scripts/extend_census.py --rank 6 --seconds 4200 \
+  --threads "$(nproc)" --out runs/rank6-frontier
 ```
 
 Requirements: Python 3.9+, GNU g++ with C++17/OpenMP. The mathematical code uses
@@ -65,30 +65,41 @@ The distinction is made explicitly in [the methods](methods/completeness.md).
 
 ## GitHub computation
 
-[The frontier workflow](.github/workflows/frontier.yml) runs a manually requested
-matrix for ranks 3–8. Each rank has a **20-minute job ceiling**, and all attempts
-within that job share a 1,100-second driver deadline including compilation,
-export and verification. Rank three regenerates through 1000 and stops. The other
-ranks try increasing complete bounds. Starting points are heuristics, not promises
-of a particular improvement on a GitHub runner.
+Published privately at [sebastienpalcoux/fusion-ring-census](https://github.com/sebastienpalcoux/fusion-ring-census).
+The [long campaign](.github/workflows/long-frontier.yml) is manually triggered and
+runs **ranks 5, 6, 7 and 8 only**, with at most four concurrent standard Ubuntu jobs.
+Each rank receives one **4,200-second (70-minute) shared driver budget** and a
+**75-minute job ceiling**: at most **300 runner-minutes** for the four jobs.
+Compilation, all attempted bounds and duality types, export, compression and
+independent verification share that budget. The thread count comes from `nproc`.
+The enumeration allowance is 90% of the remaining driver time, reserving the rest
+for verification and export; no shorter 1,100/1,200-second cap remains in this campaign.
 
-Only verified whole-rank `best/` results become candidate artifacts. To review and
-import one, use [the release procedure](docs/RELEASES.md). The workflow never pushes
-unreviewed numerical results to `main` and never edits OEIS automatically.
+The first bounds are read from the released manifest plus one (currently 19, 7,
+4 and 2). An interrupted search is restarted, not resumed. A completed candidate
+must pass exhaustive independent tensor/isomorphism verification and agree with
+the entire old exact-multiplicity count prefix before entering `best/`.
 
-**Publication state of this package:** prepared and tested locally. The session
-that assembled it had read-only GitHub access; no remote repository or Actions
-run is claimed. The authenticated publisher is:
+Outcomes are `verified_extension`, `no_extension_within_budget`, or `error`.
+Expected timeouts make no new claim; genuine failures make the job fail. Logs,
+timing ledgers, commands, environment and verifier reports are retained for
+14 days, together with the last verified candidate, if any. Incomplete tensor
+collections are excluded. Candidates are never automatically promoted or copied
+into manuscripts or OEIS tables. See [campaign details](docs/LONG_CAMPAIGN.md).
 
-```bash
-python3 scripts/publish_github.py --run-census
-```
+The original [frontier workflow](.github/workflows/frontier.yml) remains a
+separate manual tool with its 1,100-second driver and 20-minute job limits; it is
+not dispatched by the long campaign. Both workflows share a concurrency lock,
+and job reruns are disabled to prevent resetting the campaign allowance.
+Verification and manuscript workflows also remain manual. Check account-wide
+included usage and enforced spending controls before each authorized dispatch.
+Do not change visibility or billing to obtain more capacity.
 
-This creates `sebastienpalcoux/fusion-ring-census` as **private** by default,
-pushes the committed material and requests the workflow once. Add `--public`
-only when deliberately publishing the manuscripts and data publicly. The script
-uses the user's existing `gh auth login` session and refuses another account or
-an existing repository. It never asks for a token in an argument or prints credentials.
+The first published run finished without a complete extension for ranks 5–8;
+its green workflow conclusion did not certify larger bounds. The released counts
+above are unchanged. Review [the release procedure](docs/RELEASES.md) before any
+future promotion. `scripts/publish_github.py` is an initial-publication helper;
+do not use it to recreate this existing repository.
 
 ## Source audit and attribution
 

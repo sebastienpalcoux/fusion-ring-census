@@ -1,0 +1,28 @@
+{
+  "rank": 6,
+  "bound": 7,
+  "threads": 4,
+  "enumeration_budget_seconds": 989.9999951390998,
+  "complete": false,
+  "runs": [
+    {
+      "name": "pairs1",
+      "elapsed_seconds": 18.29501834199999,
+      "returncode": 0
+    },
+    {
+      "name": "pairs2",
+      "elapsed_seconds": 6.274596418000002,
+      "returncode": 0
+    },
+    {
+      "name": "selfdual",
+      "elapsed_seconds": 965.41173867,
+      "returncode": 3
+    }
+  ],
+  "code_sha256": "69c7757e62389992c170e8af4ab8a10931a60ade08ce502e1c03352c457ed97e",
+  "compilation_seconds": 14.998846055000001,
+  "verified": false,
+  "error": "selfdual did not finish"
+}

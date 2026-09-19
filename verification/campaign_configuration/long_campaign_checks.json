@@ -1,0 +1,42 @@
+{
+  "base_commit": "5173786bd7c60d9bc7713db559c38ef9f9731527",
+  "unit_tests": 24,
+  "unit_test_result": "passed",
+  "heavy_local_enumeration": false,
+  "full_local_tensor_verification": false,
+  "workflow_syntax": "passed",
+  "shell_syntax": "passed",
+  "all_workflows_manual": true,
+  "ranks": [
+    5,
+    6,
+    7,
+    8
+  ],
+  "starting_bounds": {
+    "5": 19,
+    "6": 7,
+    "7": 4,
+    "8": 2
+  },
+  "driver_seconds_per_rank": 4200,
+  "job_minutes_per_rank": 75,
+  "maximum_runner_minutes": 300,
+  "artifact_retention_days": 14,
+  "unchanged_scientific_paths": [
+    "results",
+    "manuscripts",
+    "oeis",
+    "methods",
+    "systems",
+    "code/*.cpp",
+    "code/*.hpp",
+    "code/rank5"
+  ],
+  "source_sha256": {
+    "code/run_census.py": "7f334a0f28d216b80e5ea22ad70968293b71db75bea75c69daab4500844d6cae",
+    "scripts/extend_census.py": "bdbd5ec29c8dd643d60bf3c7e91f4d62ec311731e6c73138af2b4d6837ced117",
+    "tests/test_campaign.py": "7f58e743f08b8bed702b893fbac8a89205e4509617b20de65def8617a1916481",
+    ".github/workflows/long-frontier.yml": "9e7cfb7a92367317789f07af57c774201aeaafa9f9cf3e1cf0fb194e325571f8"
+  }
+}

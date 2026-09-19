@@ -1,0 +1,18 @@
+{
+  "rank": 7,
+  "bound": 4,
+  "threads": 4,
+  "enumeration_budget_seconds": 989.9999930484,
+  "complete": false,
+  "runs": [
+    {
+      "name": "pairs1",
+      "elapsed_seconds": 989.9812666470001,
+      "returncode": 3
+    }
+  ],
+  "code_sha256": "69c7757e62389992c170e8af4ab8a10931a60ade08ce502e1c03352c457ed97e",
+  "compilation_seconds": 14.671619801999995,
+  "verified": false,
+  "error": "pairs1 did not finish"
+}

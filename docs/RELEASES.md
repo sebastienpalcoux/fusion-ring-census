@@ -1,34 +1,28 @@
 # Publication and promotion of computed data
 
-## Initial GitHub publication
+## Existing private repository and bounded campaigns
 
-The assembled package is local. No remote creation or Actions execution is
-implied by the presence of workflow files. Install GitHub CLI, authenticate as
-`sebastienpalcoux`, and run:
+The project is published privately at
+[sebastienpalcoux/fusion-ring-census](https://github.com/sebastienpalcoux/fusion-ring-census).
+Preserve its Git history; do not rerun the initial repository-creation helper,
+force-push, change visibility, or alter billing settings.
 
-```bash
-gh auth login
-python3 scripts/publish_github.py --run-census
-```
+The manual `long-frontier.yml` campaign runs ranks 5–8 only, with four jobs at
+most, 4,200 driver seconds per rank and 75 job minutes per rank (300 runner-minutes
+total). The legacy `frontier.yml` remains manual with its original 1,100-second
+and 20-minute limits. Both share the same concurrency lock. Reruns are rejected;
+a further campaign requires a separately authorized dispatch and budget check.
 
-The helper verifies account identity and release hashes, refuses to overwrite an
-existing repository, makes a local initial commit if needed, creates a **private**
-repository, pushes it, and requests the frontier workflow exactly once. Use
-`--public` only as an explicit decision to publish. Credentials remain in the
-GitHub CLI authentication store; they are neither arguments nor repository files.
-The ZIP has no pre-existing remote. A clone from the optional Git bundle has a
-local `origin`; review it and use `git remote remove origin` before running the
-publisher. The helper refuses an existing remote rather than silently replacing it.
+Before dispatch, inspect active runs and the account-wide included Actions
+minutes/storage and enforced spending controls. Use standard Ubuntu runners
+and existing included capacity only. If paid usage cannot be excluded, prepare
+and push safe changes but stop before dispatch. Do not infer quota from elapsed
+run time or an Actions timing API returning zero. Do not enable overages or buy
+capacity. Check the exact pushed revision and dispatch once. No results are
+implied by launch acceptance, a green check, or an artifact name.
 
-Creating the repository or dispatching a run can fail because of permissions,
-Actions policy, billing restrictions or an existing name. Such failures must be
-resolved explicitly; the script does not pretend they succeeded.
-
-Private-repository Actions usage may consume the account's included allowance or
-be billed according to its configuration. Five rank jobs can run concurrently;
-rank three has a short additional job. The job ceiling is 20 minutes **per rank**,
-not 20 minutes for the entire matrix. The user must retain control of account
-visibility, spending and any later publication.
+See [the long campaign contract](LONG_CAMPAIGN.md). Candidates and diagnostics
+expire after 14 days. There is no automated promotion or manuscript/OEIS update.
 
 ## Review a frontier result
 
