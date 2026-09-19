@@ -1,0 +1,10 @@
+{
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "machine": "Linux localhost 6.18.44 #1 SMP Sat Sep 12 15:35:21 UTC 2026 x86_64 GNU/Linux",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "cpu_quota": "400000 100000",
+  "rank4_threads": 3,
+  "rank5_main_threads": 4,
+  "rank6_main_threads": 4,
+  "rank7_main_threads": 4
+}

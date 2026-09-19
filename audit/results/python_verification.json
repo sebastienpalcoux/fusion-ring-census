@@ -1,0 +1,9 @@
+{
+  "verified": true,
+  "records": 28451,
+  "retained": 25138,
+  "duplicate_witnesses": 3313,
+  "elapsed_seconds": 3.104696742000044,
+  "input_sha256": "b587c3f683157369da7cc090f762bbff0e18dcf11acc3f5031d6bc0c643843f8",
+  "scope": "coverage, isomorphism witnesses, retained lines and all count columns; not retained pairwise nonisomorphism"
+}

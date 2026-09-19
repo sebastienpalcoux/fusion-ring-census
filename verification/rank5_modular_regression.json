@@ -1,0 +1,17 @@
+{
+  "bound": 10,
+  "counts": {
+    "7": 448,
+    "8": 696,
+    "6": 310,
+    "4": 115,
+    "3": 67,
+    "5": 192,
+    "10": 1039,
+    "9": 832,
+    "1": 10,
+    "2": 28
+  },
+  "agrees_with_previous": true,
+  "log": "cells 280741175 cyclic 276069997 singular 4671178 completions 181249 seconds 15.7393\n{\"wall_seconds\": 15.74, \"user_seconds\": 15.65, \"system_seconds\": 0.00}\n"
+}

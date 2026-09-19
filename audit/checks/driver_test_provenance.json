@@ -1,0 +1,21 @@
+{
+  "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+  "build_command": [
+    "/usr/bin/c++",
+    "-O3",
+    "-std=c++17",
+    "/mnt/data/fusion_ring_audit/dedup_fusion.cpp",
+    "-o",
+    "/mnt/data/fusion_ring_audit/end_to_end_test_dedup_binary"
+  ],
+  "compile_seconds": 4.333953015999953,
+  "input_origin": "User-supplied local file; hash-pinned comparison to the archived arXiv-v4 ancillary copy.",
+  "input_sha256": "b587c3f683157369da7cc090f762bbff0e18dcf11acc3f5031d6bc0c643843f8",
+  "expected_v4_sha256": "b587c3f683157369da7cc090f762bbff0e18dcf11acc3f5031d6bc0c643843f8",
+  "known_v4_input": true,
+  "source_url": "https://arxiv.org/src/2205.15637v4/anc/FusionRingMultiplicationTables",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "script_sha256": "a89fd248db4152e216052a691c2a2fa45ae5501702d11ae507e05ac1cb5a7f20",
+  "cpp_sha256": "fbf920a4ee8a9db8bf3a80be6e3703df734b56e1db7fe8430a9f4a5e16c65e52"
+}

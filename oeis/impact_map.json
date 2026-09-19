@@ -1,0 +1,66 @@
+[
+  {
+    "rank": 3,
+    "bound": 1000,
+    "assigned_entry_in_this_package": "A354471",
+    "b_file": "oeis/b354471.txt"
+  },
+  {
+    "rank": 4,
+    "bound": 128,
+    "assigned_entry_in_this_package": "A354472",
+    "b_file": "oeis/b354472.txt"
+  },
+  {
+    "rank": 5,
+    "bound": 18,
+    "assigned_entry_in_this_package": "A354473",
+    "b_file": "oeis/b354473.txt"
+  },
+  {
+    "rank": 6,
+    "bound": 6,
+    "assigned_entry_in_this_package": null,
+    "b_file": "oeis/fixed_rank_6.txt"
+  },
+  {
+    "rank": 7,
+    "bound": 3,
+    "assigned_entry_in_this_package": null,
+    "b_file": "oeis/fixed_rank_7.txt"
+  },
+  {
+    "rank": 8,
+    "bound": 1,
+    "assigned_entry_in_this_package": null,
+    "b_file": "oeis/fixed_rank_8.txt"
+  },
+  {
+    "fixed_multiplicity": 1,
+    "entry": "A348305",
+    "through_rank": 9,
+    "rank9_source_only": true,
+    "submission_status": "not submitted"
+  },
+  {
+    "fixed_multiplicity": 2,
+    "entry": "A354475",
+    "through_rank": 7,
+    "rank9_source_only": false,
+    "submission_status": "not submitted"
+  },
+  {
+    "fixed_multiplicity": 3,
+    "entry": "A354476",
+    "through_rank": 7,
+    "rank9_source_only": false,
+    "submission_status": "not submitted"
+  },
+  {
+    "fixed_multiplicity": 4,
+    "entry": "A354477",
+    "through_rank": 6,
+    "rank9_source_only": false,
+    "submission_status": "not submitted"
+  }
+]

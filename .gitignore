@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.o
+*.out
+*.exe
+.DS_Store
+.env
+.env.*
+runs/
+_ci/
+_site/
+build/
+build-cache/
+*.aux
+*.log
+*.fdb_latexmk
+*.fls
+*.toc
+*.synctex.gz
+manuscripts/*.build.txt
+
+# Execution provenance is intentionally versioned.
+!verification/**/*.log

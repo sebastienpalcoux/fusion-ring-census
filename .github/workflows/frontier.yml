@@ -1,0 +1,59 @@
+name: Complete census frontier
+run-name: Complete whole-rank frontier (${{ inputs.ranks }})
+on:
+  workflow_dispatch:
+    inputs:
+      ranks:
+        description: Rank to recompute/extend; all runs ranks 3 through 8
+        required: true
+        default: all
+        type: choice
+        options: [all, '3', '4', '5', '6', '7', '8']
+permissions:
+  contents: read
+concurrency:
+  group: census-frontier-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  census:
+    name: Rank ${{ matrix.rank }} — complete results only
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        rank: ${{ fromJSON(inputs.ranks == 'all' && '[3,4,5,6,7,8]' || format('[{0}]', inputs.ranks)) }}
+    steps:
+      - name: Check out the exact revision
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Record runner environment
+        run: |
+          mkdir -p frontier
+          python3 --version > frontier/environment.txt
+          g++ --version >> frontier/environment.txt
+          uname -a >> frontier/environment.txt
+          nproc >> frontier/environment.txt
+      - name: Search complete bounds within one shared deadline
+        env:
+          RANK: ${{ matrix.rank }}
+        run: |
+          python3 scripts/extend_census.py --rank "$RANK" --seconds 1100 \
+            --threads 4 --out "frontier/rank$RANK"
+      - name: Preserve verified candidate and diagnostic status
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: whole-rank-${{ matrix.rank }}-${{ github.run_id }}
+          path: |
+            frontier/environment.txt
+            frontier/rank${{ matrix.rank }}/best/
+            frontier/rank${{ matrix.rank }}/frontier.json
+            frontier/rank${{ matrix.rank }}/SUMMARY.md
+            frontier/rank${{ matrix.rank }}/attempt_*.json
+            frontier/rank${{ matrix.rank }}/attempt_*.log
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0

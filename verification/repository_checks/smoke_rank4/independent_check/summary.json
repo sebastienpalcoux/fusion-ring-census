@@ -1,0 +1,12 @@
+{
+  "input_records": 27,
+  "input_physical_lines": 27,
+  "distinct_rings": 27,
+  "duplicates": 0,
+  "literal_repeats": 0,
+  "new_labellings": 0,
+  "associativity_checked": true,
+  "canonical_mode": "all unit-fixing permutations",
+  "permutations_examined": 162,
+  "elapsed_seconds": 0.00055878
+}

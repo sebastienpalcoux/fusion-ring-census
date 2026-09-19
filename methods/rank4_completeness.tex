@@ -1,0 +1,156 @@
+\section{An independent rank-four census}\label{sec:census}
+We give a complete integer enumeration, with no input from an external
+catalogue. In this appendix all parameters lie in $\{0,\ldots,M\}$.
+The unit coefficients ensure that the multiplicity is the maximum of one
+and the parameters. Commutativity follows from Section 3 of the accompanying completeness.md; duality has just two possible types.
+
+\subsection{Self-dual parameters and elimination}
+Frobenius reciprocity gives the following general matrices:
+\[
+N_x=\begin{pmatrix}0&1&0&0\\1&a&b&c\\0&b&d&e\\0&c&e&f\end{pmatrix},\quad
+N_y=\begin{pmatrix}0&0&1&0\\0&b&d&e\\1&d&g&h\\0&e&h&i\end{pmatrix},\quad
+N_z=\begin{pmatrix}0&0&0&1\\0&c&e&f\\0&e&h&i\\1&f&i&j\end{pmatrix}.
+\]
+Their pairwise commutativity is equivalent to the six equations
+\begin{align}
+ ad-b^2+bg+ch-d^2-e^2+1&=0,\label{eq:census1}\\
+ ae-bc+bh+ci-de-ef&=0,\label{eq:census2}\\
+ be-cd+dh-eg+ei-fh&=0,\label{eq:census3}\\
+ af+bi-c^2+cj-e^2-f^2+1&=0,\label{eq:census4}\\
+ bf-ce+di-eh+ej-fi&=0,\label{eq:census5}\\
+ df-e^2+gi-h^2+hj-i^2+1&=0.\label{eq:census6}
+\end{align}
+These are necessary and sufficient for associativity. Indeed the first
+row of $N_uN_v$ records $uv$. Commutativity implies that every other row
+of $N_uN_v-\sum_wN_{uv}^wN_w$ is obtained by multiplying its zero first
+row by a regular matrix, so the difference vanishes.
+
+The six mixed coordinates $b,c,d,f,h,i$ form one orbit under
+permutations of $x,y,z$. Every based-ring orbit therefore has a
+representative with
+\[
+ b=\min\{b,c,d,f,h,i\}.
+\]
+For $b>0$, enumerate $b,c,d,e,f$, with $c,d,f\geq b$, and put
+\begin{align*}
+ H_0&=e(d+f)+bc,&G_0&=b^2+d^2+e^2-1,\\
+ J_0&=c^2+e^2+f^2-1,&
+ A&=e(b^2-c^2)+bc(f-d),\\
+ C&=e(bf-ce),&
+ B_0&=b^3e-b^2cd+b(d-f)H_0-ebG_0+ecH_0.
+\end{align*}
+The first, second and fourth equations give
+\[
+ h=\frac{H_0-ae-ci}{b},\qquad
+ g=\frac{G_0-ad-ch}{b},\qquad
+ j=\frac{J_0-af-bi}{c}.
+\]
+After substitution, the third equation multiplied by $b^2$ is
+\begin{equation}\label{eq:census-linear}
+ Ca+Ai+B_0=0.
+\end{equation}
+If $A\ne0$, let $q=\gcd(A,C)$. There is no solution unless $q\mid B_0$.
+Otherwise $a$ runs through the unique residue class solving
+$(C/q)a\equiv-B_0/q\pmod{|A/q|}$, and $i$ is determined.
+A modulus of one means every bounded $a$. If $A=0\ne C$, determine
+$a$ and enumerate $i$. If $A=C=0$, require $B_0=0$ and retain all bounded
+$a,i$. Impose $0\leq a,g,j\leq M$ and $b\leq h,i\leq M$,
+exact divisibility, and all six original equations.
+
+If $b=0<c$, determine
+\[
+ h=\frac{d^2+e^2-ad-1}{c},\quad
+ i=\frac{e(d+f-a)}c,\quad
+ j=\frac{c^2+e^2+f^2-af-1}c.
+\]
+For $e>0$, integrality of $i$ gives
+$a\equiv d+f\pmod{c/\gcd(c,e)}$. Enumerate $c,d,e,f$ and this
+progression for $a$; the bounds on $h,i,j$ give further linear interval
+restrictions. The equation $eg=h(d-f)+ei-cd$ determines $g$.
+For $e=0$, nonnegativity forces $d,h>0$ and
+\[
+ \gcd(c,d)=1,\qquad a\equiv d-d^{-1}\pmod c,\qquad
+ f=d-\frac{cd}{h}.
+\]
+Indeed $ch=d^2-ad-1$ implies the coprimality, and $h(d-f)=cd$
+gives the last identity. Enumerate $c,d,a$, determine $h,f,j$, and
+retain every bounded $g$. The congruence modulo one is unrestricted.
+
+Finally, $b=c=0$ gives
+\[
+ ad-d^2-e^2+1=0,\quad e(a-d-f)=0,\quad af-e^2-f^2+1=0.
+\]
+For $e>0$ these are $a=d+f$ and $df=e^2-1$. Enumerate the bounded
+factor pairs, including $e=1,d=0$ with every bounded $f$, then enumerate
+$h,i$ and determine
+\[
+ eg=h(d-f)+ei,\qquad ej=eh+i(f-d).
+\]
+For $e=0$, the preliminary equations force $a=0,d=f=1$. The remaining
+equation is $gi+hj=h^2+i^2-2$. If $h>0$, enumerate $h,i,g$ and solve
+for $j$; if $h=0<i$, solve for $g$ and retain every bounded $j$.
+The case $h=i=0$ is impossible. In every branch, all six equations and
+all coefficient bounds are tested again.
+
+\subsection{One dual pair}
+If $X^*=X$ and $Y^*=Z$, the general matrices are
+\[
+N_X=\begin{pmatrix}0&1&0&0\\1&a&b&b\\0&b&c&d\\0&b&d&c\end{pmatrix},\quad
+N_Y=\begin{pmatrix}0&0&1&0\\0&b&c&d\\0&d&e&f\\1&c&e&e\end{pmatrix},\quad
+N_Z=N_Y^{\mathsf T}.
+\]
+Associativity is equivalent to
+\begin{align*}
+ ac-b^2+2be-c^2-d^2+1&=0,&ad-b^2+be+bf-2cd&=0,\\
+ b(c-d)+d(e-f)&=0,&-c^2+d^2-e^2+f^2-1&=0.
+\end{align*}
+Enumerate $c,d,e$. The last equation determines the unique nonnegative
+candidate $f=\sqrt{1+c^2-d^2+e^2}$; retain it only if integral and
+bounded. If $c\ne d$, determine $b=-d(e-f)/(c-d)$. If $c=d$, require
+$d(e-f)=0$ and retain every bounded $b$. Determine $a$ from the first
+equation if $c>0$, or from the second if $d>0$; if $c=d=0$, retain
+all bounded $a$. Finally test all four equations and all bounds.
+The square-root implementation corrects its initial estimate by integer
+comparisons and checks its square exactly.
+
+\begin{proposition}[Completeness and cost]\label{prop:census}
+The preceding algorithm enumerates all rank-four fusion rings of
+multiplicity at most $M$, up to based-ring isomorphism. The parameter
+search uses $O((M+1)^6)$ integer operations before canonicalization.
+\end{proposition}
+\begin{proof}
+The two presentations exhaust duality and reciprocity. Each branch either
+solves a necessary linear equation by exact division or exhausts every
+allowed value when its coefficient vanishes. Final equation checks are
+necessary and sufficient for associativity. Thus no ring is omitted or
+spuriously admitted. In the self-dual search choose the lexicographically
+least parameter tuple among its permutations satisfying the same
+minimal-$b$ condition. Comparing only those images is essential: the
+unconstrained least tuple need not satisfy that condition. Each orbit has
+exactly one retained tuple. In the other duality type the only possible
+nontrivial based automorphism interchanges $Y,Z$, and fixes all six
+parameters. Thus every retained non-self-dual tuple is already one class.
+The full-tensor interface additionally canonicalizes under all six
+permutations and checks distinctness independently.
+
+There are five outer parameters in the positive-$b$ branch. Solving
+\eqref{eq:census-linear} takes $O(\log(M+1))$ arithmetic operations for
+the greatest common divisor and at most $M+1$ candidates. The apparently
+singular branch $A=C=B_0=0$ cannot occur there: if $e=0$, then
+$A=0$ forces $f=d$ and $B_0=-b^2cd\ne0$; if $e>0$, the equations
+$A=C=0$ give $cd=be$, $bf=ce$, and substitution gives $B_0=be\ne0$.
+The zero-$b$ branches use at most five free coordinates, and the
+non-self-dual search at most five. The stated $O((M+1)^6)$ arithmetic
+bound follows. Bit costs grow with $\log(M+1)$; the implementation
+restricts its integer range explicitly.
+\end{proof}
+
+\subsection{Current implementation and complete run}
+The current implementation is \texttt{code/rank4\_census.cpp}; the
+reproduction entry point is \texttt{code/run\_census.py}. The full
+run through multiplicity $128$ produces $889530$ based-isomorphism
+classes. Every output tensor is independently checked for the full
+fusion-ring axioms and canonicalized over all six unit-fixing
+permutations. The exact counts and execution reports are in the
+accompanying release. Exhaustiveness rests on the argument above,
+not on comparison with an existing list.

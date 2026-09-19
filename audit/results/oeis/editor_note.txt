@@ -1,0 +1,17 @@
+Proposed correction of A354473; not yet submitted.
+
+Input: https://arxiv.org/src/2205.15637v4/anc/FusionRingMultiplicationTables
+SHA-256: b587c3f683157369da7cc090f762bbff0e18dcf11acc3f5031d6bc0c643843f8
+28451 records represent 25138 distinct based rings.
+Removed 3313 repetitions: 2973 exact labelled-tensor repeats and 340 further labellings.
+All repetitions occur at rank 5, multiplicities 9,10,11,12.
+Old counts: 1463,1794,2283,3049. New counts: 863,1082,1383,1948.
+Deleted records: 600,712,900,1101 respectively.
+
+Each tensor was checked for the fusion-ring axioms, including associativity, in exact integer arithmetic in the default run. Isomorphisms are permutations of the distinguished basis fixing its unit. The full ordered multiplication tensor is compared, so noncommutative rings are included.
+Every removed line has a directly checked permutation witness in duplicates.csv. For example, physical lines 11485 and 11486 are identical. Line 11602 is isomorphic to line 11601 by the 0-based map [0,2,3,1,4].
+
+The optimized canonical algorithm sorts isomorphism-invariant element signatures, then exhausts permutations within tied cells. Its equality tests are exact, not probabilistic. The --exhaustive switch instead tries all unit-fixing permutations.
+
+This fixes duplicate counting within the enumeration; it does not independently re-prove the completeness of the original search. No terms beyond n=12 are proposed here.
+The six other sequence prefixes in comparison.json are unchanged.

@@ -1,0 +1,51 @@
+{
+  "rank": 6,
+  "bound": 2,
+  "threads": 2,
+  "enumeration_budget_seconds": 90.0,
+  "complete": true,
+  "runs": [
+    {
+      "name": "pairs1",
+      "elapsed_seconds": 0.015766211000027397,
+      "returncode": 0
+    },
+    {
+      "name": "pairs2",
+      "elapsed_seconds": 0.007556559000022389,
+      "returncode": 0
+    },
+    {
+      "name": "selfdual",
+      "elapsed_seconds": 0.07267711800000143,
+      "returncode": 0
+    }
+  ],
+  "code_sha256": "62b2d69c90b7483c297c6f2a8ea8ce97c1c693498cedbe89b304cfebd31fb891",
+  "compilation_seconds": 16.8373567000001,
+  "enumeration_seconds": 0.09606968299999608,
+  "counts": {
+    "1": 39,
+    "2": 154
+  },
+  "classes": 193,
+  "sort_export_seconds": 0.8327956380001069,
+  "verifier_compilation_seconds": 0.00010930400003417162,
+  "independent_verification_seconds": 0.0069822760001443385,
+  "independent_verification": {
+    "input_records": 193,
+    "input_physical_lines": 193,
+    "distinct_rings": 193,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "all unit-fixing permutations",
+    "permutations_examined": 23160,
+    "elapsed_seconds": 0.004753502
+  },
+  "verified": true,
+  "parameters.txt_sha256": "03b0283c1e27415a1cc8f8da73cca6fc8b641c1fa2ab8f94364149c7b62f0d18",
+  "FusionRingMultiplicationTables.txt_sha256": "e0e658738db271db73fa29ddf4e06b9ef2b10c873da2a9fcc0e30c4fab42a7c1",
+  "compression_seconds": 0.026408993999893937
+}

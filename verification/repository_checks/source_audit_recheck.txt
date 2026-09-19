@@ -1,0 +1,5 @@
+28451 source records; 25138 distinct rings; 3313 duplicates (2973 literal repeats, 340 additional labellings).
+All witnesses checked. Associativity checked. Time: 0.644324 seconds.
+Independent Python witness verification passed in 2.948 seconds.
+Results: /mnt/data/census_repository_work/reference_recheck
+Report archive: /mnt/data/census_repository_work/reference_recheck.zip

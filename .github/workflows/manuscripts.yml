@@ -1,0 +1,33 @@
+name: Build explanatory manuscripts
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'manuscripts/**'
+      - 'methods/**'
+      - 'scripts/build_manuscripts.py'
+      - 'results/census.json'
+permissions:
+  contents: read
+jobs:
+  latex:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Install document tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-fonts-recommended lmodern
+      - name: Rebuild the six companions without shell escape
+        run: python3 scripts/build_manuscripts.py --compile
+      - name: Upload PDF companions
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: rank-companions-${{ github.run_id }}
+          path: manuscripts/*.pdf
+          if-no-files-found: error
+          retention-days: 90

@@ -1,0 +1,5 @@
+Local controller: all duality types of rank 8 at bound 2.
+One shared enumeration allowance: 1100 seconds; 4 threads.
+Job sequence: pairs1, pairs2, pairs3, selfdual.
+Result: pairs1 completed; pairs2 exhausted remaining allowance; no whole-rank result.
+Do not use partial outputs as census data.

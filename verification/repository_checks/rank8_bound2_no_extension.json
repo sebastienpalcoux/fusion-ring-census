@@ -1,0 +1,37 @@
+{
+  "rank": 8,
+  "bound": 2,
+  "scope": "all duality types",
+  "complete": false,
+  "budget_seconds": 1100.0,
+  "runs": [
+    {
+      "name": "pairs1",
+      "seconds": 877.740773938,
+      "returncode": 0,
+      "complete": true
+    },
+    {
+      "name": "pairs2",
+      "seconds": 222.0749936730001,
+      "returncode": 3,
+      "complete": false
+    }
+  ],
+  "enumeration_seconds": 1099.816749127,
+  "execution_location": "local container, not GitHub Actions",
+  "claim": "No new complete rank-eight bound. Baseline remains multiplicity one with 96 classes.",
+  "partial_tensor_files_in_release": false,
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "source_sha256": {
+    "code/enumerate_parallel.cpp": "08742e3bff0c5593ff390259973f4ed9fb7d504b91e6e8604f3e2bc2d034b0f9",
+    "code/verify_tables.cpp": "fbf920a4ee8a9db8bf3a80be6e3703df734b56e1db7fe8430a9f4a5e16c65e52",
+    "code/enumerate_selfdual_fast.cpp": "a05b9694f23e9135e87036ae77cd093d5ec0ad66fbb7a5eb87dbd02775406503",
+    "code/enumerate_bounded.cpp": "688f02a4ca5139e97ef51f8e53fa399a25ce2f73267a13fbef3284aed9f1017e",
+    "code/completion_solver.hpp": "1649f3c60dc6105a3c5598691ef92f7d829e7305966860ec5c8aca0fc4fe8d14",
+    "code/export_rank4.cpp": "88cc05029bdf518467f41867c0ba5a50a8be59b293e5f00a8cdb9bccd56db45a",
+    "code/rank4_census.cpp": "5054f8c3c6c60d7f2b15482def5237a5ff0da31b29fcf3a28e71f4a2dee7db59",
+    "code/rank3_census.cpp": "c9dbeab7d97786ed6af3ffbb890e7dbaa2d6bc77646d3c4e4a6f8fe0ae314c20"
+  },
+  "threads": 4
+}

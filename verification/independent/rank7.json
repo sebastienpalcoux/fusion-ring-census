@@ -1,0 +1,21 @@
+{
+  "rank": 7,
+  "bound": 3,
+  "complete_enumeration_records": 1421,
+  "generated_duplicate_classes": 0,
+  "all_fusion_axioms_checked": true,
+  "canonical_mode": "all unit-fixing permutations",
+  "permutations_examined": 1688400,
+  "reference_records_in_bound": 924,
+  "reference_distinct_classes_in_bound": 924,
+  "reference_source_lines_missing": [],
+  "reference_sha256": "b587c3f683157369da7cc090f762bbff0e18dcf11acc3f5031d6bc0c643843f8",
+  "new_classes_not_in_reference": 497,
+  "verified_counts": {
+    "1": 43,
+    "2": 319,
+    "3": 1059
+  },
+  "raw_verifier_seconds": 0.199451325,
+  "total_check_seconds": 0.21242779500016695
+}

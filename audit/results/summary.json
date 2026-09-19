@@ -1,0 +1,12 @@
+{
+  "input_records": 28451,
+  "input_physical_lines": 28451,
+  "distinct_rings": 25138,
+  "duplicates": 3313,
+  "literal_repeats": 2973,
+  "new_labellings": 340,
+  "associativity_checked": true,
+  "canonical_mode": "invariant-cell permutations",
+  "permutations_examined": 112936,
+  "elapsed_seconds": 0.604867947
+}

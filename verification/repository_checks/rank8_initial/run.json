@@ -1,0 +1,55 @@
+{
+  "rank": 8,
+  "bound": 1,
+  "threads": 2,
+  "enumeration_budget_seconds": 40.0,
+  "complete": true,
+  "runs": [
+    {
+      "name": "pairs1",
+      "elapsed_seconds": 1.0555200570000238,
+      "returncode": 0
+    },
+    {
+      "name": "pairs2",
+      "elapsed_seconds": 0.5293324339999685,
+      "returncode": 0
+    },
+    {
+      "name": "pairs3",
+      "elapsed_seconds": 0.1349782409999989,
+      "returncode": 0
+    },
+    {
+      "name": "selfdual",
+      "elapsed_seconds": 0.9900416099999916,
+      "returncode": 0
+    }
+  ],
+  "code_sha256": "488262ad2fe8185dc787ac39d7f5325e3c4b27701da4f4135662882a45a2e554",
+  "compilation_seconds": 17.207422681000025,
+  "enumeration_seconds": 2.710999829000002,
+  "counts": {
+    "1": 96
+  },
+  "classes": 96,
+  "sort_export_seconds": 0.8897881469999902,
+  "verifier_compilation_seconds": 2.8505278389999944,
+  "independent_verification_seconds": 0.03597133600004554,
+  "independent_verification": {
+    "input_records": 96,
+    "input_physical_lines": 96,
+    "distinct_rings": 96,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "all unit-fixing permutations",
+    "permutations_examined": 483840,
+    "elapsed_seconds": 0.033153946
+  },
+  "verified": true,
+  "parameters.txt_sha256": "51417e64cb301b32508266e59ed81ea4144b76b4c2a5403de7369ad3e1dcbca1",
+  "FusionRingMultiplicationTables.txt_sha256": "4ddf6402afff4f19ae4513ae63422cf73c327c605aa50cdcae731941de272ee7",
+  "compression_seconds": 0.05264501900001051
+}

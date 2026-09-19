@@ -1,0 +1,22 @@
+job 0 / 20 done 1 u 0 0 0 matrices 2 rings 65 seconds 0.00139527
+job 1 / 20 done 1 u 0 0 1 matrices 187 rings 23 seconds 0.000395124
+job 2 / 20 done 1 u 0 0 2 matrices 29 rings 2 seconds 8.0659e-05
+job 3 / 20 done 1 u 0 0 3 matrices 27 rings 0 seconds 8.094e-05
+job 4 / 20 done 1 u 0 1 1 matrices 582 rings 5 seconds 0.000593117
+job 5 / 20 done 1 u 0 1 2 matrices 1546 rings 3 seconds 0.000876425
+job 6 / 20 done 1 u 0 1 3 matrices 1400 rings 0 seconds 0.000845721
+job 7 / 20 done 1 u 0 2 2 matrices 94 rings 0 seconds 0.000172004
+job 8 / 20 done 1 u 0 2 3 matrices 1991 rings 0 seconds 0.000957766
+job 9 / 20 done 1 u 0 3 3 matrices 74 rings 0 seconds 0.000117313
+job 10 / 20 done 1 u 1 1 1 matrices 101 rings 2 seconds 0.000266624
+job 11 / 20 done 1 u 1 1 2 matrices 342 rings 2 seconds 0.000348565
+job 12 / 20 done 1 u 1 1 3 matrices 282 rings 0 seconds 0.000256579
+job 13 / 20 done 1 u 1 2 2 matrices 469 rings 1 seconds 0.000461702
+job 14 / 20 done 1 u 1 2 3 matrices 830 rings 0 seconds 0.000283048
+job 15 / 20 done 1 u 1 3 3 matrices 508 rings 0 seconds 0.000644743
+job 16 / 20 done 1 u 2 2 2 matrices 5 rings 1 seconds 4.6509e-05
+job 17 / 20 done 1 u 2 2 3 matrices 116 rings 1 seconds 0.000154178
+job 18 / 20 done 1 u 2 3 3 matrices 133 rings 0 seconds 0.000159786
+job 19 / 20 done 1 u 3 3 3 matrices 0 rings 0 seconds 9.013e-06
+FINAL rank 5 bound 3 complete 1 jobs 20 / 20 matrices 8718 singular 1206 completion_nodes 3217 classes 105 seconds 0.00875004 counts 10 28 67
+0.01 seconds

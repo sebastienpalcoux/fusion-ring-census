@@ -1,0 +1,13 @@
+{
+  "retrieved_date": "2026-09-18",
+  "note": "Read-only snapshot; no OEIS edits have been submitted.",
+  "sequences": {
+    "A348305": {"axis": "rank", "fixed_multiplicity": 1, "offset": 1, "terms": [1,2,4,10,16,39,43,96,142], "url": "https://oeis.org/A348305"},
+    "A354471": {"axis": "multiplicity", "fixed_rank": 3, "offset": 1, "terms": [4,3,4,6,5,9,6,10,12,9,10,20,9,13,16,25], "url": "https://oeis.org/A354471"},
+    "A354472": {"axis": "multiplicity", "fixed_rank": 4, "offset": 1, "terms": [10,17,24,45,55,81,92,137,151,186,238,291,246,340,349,525], "url": "https://oeis.org/A354472"},
+    "A354473": {"axis": "multiplicity", "fixed_rank": 5, "offset": 1, "terms": [16,37,82,134,209,336,477,733,1463,1794,2283,3049], "url": "https://oeis.org/A354473"},
+    "A354475": {"axis": "rank", "fixed_multiplicity": 2, "offset": 1, "terms": [0,1,3,17,37,154,319], "url": "https://oeis.org/A354475"},
+    "A354476": {"axis": "rank", "fixed_multiplicity": 3, "offset": 1, "terms": [0,1,4,24,82,384], "url": "https://oeis.org/A354476"},
+    "A354477": {"axis": "rank", "fixed_multiplicity": 4, "offset": 1, "terms": [0,1,6,45,134,872], "url": "https://oeis.org/A354477"}
+  }
+}

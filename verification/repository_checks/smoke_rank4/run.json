@@ -1,0 +1,41 @@
+{
+  "rank": 4,
+  "bound": 2,
+  "threads": 2,
+  "enumeration_budget_seconds": 90.0,
+  "complete": true,
+  "runs": [
+    {
+      "name": "all",
+      "elapsed_seconds": 0.03977768400000059,
+      "returncode": 0
+    }
+  ],
+  "code_sha256": "62b2d69c90b7483c297c6f2a8ea8ce97c1c693498cedbe89b304cfebd31fb891",
+  "compilation_seconds": 3.451713803999951,
+  "enumeration_seconds": 0.039799457000071925,
+  "counts": {
+    "1": 10,
+    "2": 17
+  },
+  "classes": 27,
+  "sort_export_seconds": 1.7053629659999388,
+  "verifier_compilation_seconds": 0.00014966599997023877,
+  "independent_verification_seconds": 0.004596535999894513,
+  "independent_verification": {
+    "input_records": 27,
+    "input_physical_lines": 27,
+    "distinct_rings": 27,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "all unit-fixing permutations",
+    "permutations_examined": 162,
+    "elapsed_seconds": 0.00055878
+  },
+  "verified": true,
+  "parameters.txt_sha256": "c3ab68415809415977c568f46916dcfdbd2c57c9bc49fc6cfdd43615b2d19914",
+  "FusionRingMultiplicationTables.txt_sha256": "619a3ba531591de09f9aa73f409d6b5eda654e7af4227f01e14ce1727c6ac8c9",
+  "compression_seconds": 0.0005798830000003363
+}

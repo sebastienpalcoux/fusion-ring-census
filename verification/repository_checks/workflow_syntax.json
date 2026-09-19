@@ -1,0 +1,23 @@
+{
+  "frontier.yml": {
+    "parsed": true,
+    "job_timeouts_minutes": [
+      20
+    ],
+    "contents_permission": "read"
+  },
+  "ci.yml": {
+    "parsed": true,
+    "job_timeouts_minutes": [
+      20
+    ],
+    "contents_permission": "read"
+  },
+  "manuscripts.yml": {
+    "parsed": true,
+    "job_timeouts_minutes": [
+      20
+    ],
+    "contents_permission": "read"
+  }
+}

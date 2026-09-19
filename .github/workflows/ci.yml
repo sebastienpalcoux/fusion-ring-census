@@ -1,0 +1,30 @@
+name: Verify code and released data
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Unit tests and scope safeguards
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Small whole-rank regression searches
+        run: python3 scripts/smoke_test.py --out _ci/smoke
+      - name: Independently verify all released tensors
+        run: python3 scripts/check_release.py --full --out _ci/release-check.json
+      - name: Preserve check reports
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: exact-checks-${{ github.run_id }}
+          path: _ci/
+          if-no-files-found: error
+          retention-days: 30

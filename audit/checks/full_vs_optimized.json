@@ -1,0 +1,22 @@
+{
+  "all_tests_passed": true,
+  "comparison_files": {
+    "counts.csv": {
+      "byte_identical": true,
+      "sha256": "b251129eed44f348a50f9660fa2e3e13acfabcd85c2dd8299ba204106d01a780"
+    },
+    "FusionRingMultiplicationTables.deduplicated": {
+      "byte_identical": true,
+      "sha256": "b0c0196728877b3a2de7c758933be5c15c3740b22c431b9c776a33b9e1112c69"
+    },
+    "line_map.csv": {
+      "byte_identical": true,
+      "sha256": "5a38cac8016f66f32d20d2c35868db9b9be804e13be75339213ea3e39c4e09e3"
+    },
+    "duplicates.csv": {
+      "byte_identical": true,
+      "sha256": "70ba02566ea640d15fbde90972d3f9653faccaf20cf1ac248a77f30355d43c79"
+    }
+  },
+  "independent_python_verification": "../results/python_verification.json"
+}

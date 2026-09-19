@@ -1,0 +1,400 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=23mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,longtable,array,microtype,xcolor}
+\usepackage{hyperref,fancyhdr,listings,enumitem}
+\definecolor{ink}{HTML}{163348}\definecolor{accent}{HTML}{147D83}
+\hypersetup{colorlinks=true,linkcolor=ink,urlcolor=accent,citecolor=accent,pdfauthor={Sébastien Palcoux}}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\sffamily\small FUSION RING CENSUS}
+\fancyhead[R]{\sffamily\small Rank \Rank}\fancyfoot[L]{\sffamily\footnotesize Computational companion \textbullet\ September 2026}
+\fancyfoot[R]{\sffamily\small\thepage}\renewcommand{\headrulewidth}{0.4pt}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\ZZ}{\mathbb Z}\newcommand{\CC}{\mathbb C}\newcommand{\Q}{\mathbb Q}
+\newcommand{\NN}{\mathbb Z_{\geq0}}\newcommand{\FPdim}{\operatorname{FPdim}}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0.45em}\setlength{\emergencystretch}{3em}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,frame=single,rulecolor=\color{accent},aboveskip=1em,belowskip=1em}
+\setcounter{tocdepth}{2}
+\newcommand{\Rank}{4}
+\begin{document}
+\thispagestyle{empty}{\sffamily\small\color{accent} EXACT ENUMERATION / DATA / VERIFICATION}\par\vspace{1cm}
+{\sffamily\Huge\bfseries\color{ink} Rank-4 fusion rings\par}
+\vspace{0.35cm}
+{\sffamily\Large A reproducible census through multiplicity 128\par}
+\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 19 September 2026}\par\vspace{0.8cm}
+\begin{abstract}
+We explain the exact enumeration of all based fusion rings of rank 4 through multiplicity 128, comprising 889,530 isomorphism classes. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
+\end{abstract}\vspace{0.4cm}\noindent\textbf{AI assistance and verification.} GPT-6 Astra Pro assisted with code, exposition and computational checks. Exhaustive-search arguments and exact independent tensor verification are recorded separately; no proof-assistant certification or peer-reviewed acceptance is claimed.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage
+
+\section{Objects, equivalence and the counting convention}
+A \emph{fusion ring} here is a free abelian group with a distinguished finite basis
+$B=\{b_0,b_1,\ldots,b_{r-1}\}$, an associative multiplication with unit $b_0$,
+and an involution $i\mapsto i^*$ fixing $0$. Its structure constants satisfy
+\[
+b_i b_j=\sum_k N_{ij}^{k}b_k,\qquad N_{ij}^{k}\in\NN,
+\]
+\begin{align}
+N_{0j}^{k}=N_{j0}^{k}&=\delta_{jk},&N_{ij}^{0}&=\delta_{i^*,j},\\
+N_{ij}^{k}&=N_{i^*k}^{j}=N_{kj^*}^{i}.&&\label{eq:reciprocity}
+\end{align}
+These conventions agree with the usual based-ring definition; see
+\cite{EGNO,VS}. No assumption of categorifiability, commutativity or integrality
+of Frobenius--Perron dimensions is imposed unless proved in the relevant rank.
+
+A based isomorphism is a bijection of the distinguished bases preserving the
+unit and multiplication. In tensor notation it is a permutation $q$ fixing $0$
+such that
+\[
+ N_{ij}^{k}={N'}_{q(i)q(j)}^{q(k)}\quad\hbox{for every }i,j,k.
+\]
+The coefficient of the unit determines the involution, so such an isomorphism
+automatically intertwines duality. The \emph{multiplicity} is the maximum entry
+of the \emph{full} ordered multiplication tensor. It is at least one, including
+for group rings. Put
+\[
+ c_r(m)=\#\{\text{rank-}r\text{ fusion rings of multiplicity exactly }m\}/\cong,
+ \qquad C_r(M)=\sum_{m=1}^{M}c_r(m).
+\]
+A list through $M$ contains all rings of multiplicity at most $M$, not only
+those of multiplicity equal to $M$. This distinction is essential when exporting
+OEIS b-files.
+
+\subsection{Why duality types can be searched separately}
+An involution on the $r-1$ nonunit elements consists of $p$ disjoint transpositions
+and $r-1-2p$ fixed points, with $0\leq p\leq\lfloor(r-1)/2\rfloor$. Fix one
+representative $d_p$ of each type. An isomorphism between two tensors with
+involution $d_p$ commutes with $d_p$. Hence it is sufficient to quotient that
+stratum by the centralizer
+\[
+ Z_{S_{r-1}}(d_p),\qquad |Z_{S_{r-1}}(d_p)|=2^p p!(r-1-2p)!.
+\]
+Different $p$ cannot be isomorphic. Therefore a whole-rank census is complete
+exactly when every required stratum has been searched exhaustively. Finishing
+only the non-self-dual strata does not certify a whole-rank counting term.
+\section{The certified release at rank 4}
+The released bound is $M=128$ and the cumulative number of classes is $C_{4}(128)=889,530$. Every duality type is included. The accompanying full tensor file has one record per based-isomorphism class.
+
+
+\begin{center}\begin{tabular}{rr}\toprule Exact multiplicity $m$ & $c_{\Rank}(m)$\\\midrule
+1 & 10\\
+2 & 17\\
+3 & 24\\
+4 & 45\\
+5 & 55\\
+6 & 81\\
+7 & 92\\
+8 & 137\\
+9 & 151\\
+10 & 186\\
+11 & 238\\
+12 & 291\\
+13 & 246\\
+14 & 340\\
+15 & 349\\
+16 & 525\\
+\bottomrule\end{tabular}\end{center}
+The complete table through the released bound appears in Appendix A.
+
+The complete-run evidence is available through \path{results/census.json} and the corresponding reports under \path{verification/}. Earlier ranks retain their original completed-run provenance; repository checks and newly executed runs are labelled separately.
+
+\section{Why the rank-four specialization is commutative}
+The coefficient-of-unit functional $\tau$ gives the positive inner product
+$\langle x,y\rangle=\tau(xy^*)$ on the complexified based ring. The basis is
+orthonormal and multiplication is closed under adjoints. Consequently its
+complexification is semisimple. The Frobenius--Perron dimension character is a
+one-dimensional representation. A noncommutative semisimple complex algebra
+with a one-dimensional representation has dimension at least $1+2^2=5$.
+Thus a rank-four fusion ring is commutative. This justifies the specialization
+below without any categorical assumption.
+\section{An independent rank-four census}\label{sec:census}
+We give a complete integer enumeration, with no input from an external
+catalogue. In this section all parameters lie in $\{0,\ldots,M\}$.
+The unit coefficients ensure that the multiplicity is the maximum of one
+and the parameters. Commutativity was proved above; duality has just two possible types.
+
+\subsection{Self-dual parameters and elimination}
+Frobenius reciprocity gives the following general matrices:
+\[
+N_x=\begin{pmatrix}0&1&0&0\\1&a&b&c\\0&b&d&e\\0&c&e&f\end{pmatrix},\quad
+N_y=\begin{pmatrix}0&0&1&0\\0&b&d&e\\1&d&g&h\\0&e&h&i\end{pmatrix},\quad
+N_z=\begin{pmatrix}0&0&0&1\\0&c&e&f\\0&e&h&i\\1&f&i&j\end{pmatrix}.
+\]
+Their pairwise commutativity is equivalent to the six equations
+\begin{align}
+ ad-b^2+bg+ch-d^2-e^2+1&=0,\label{eq:census1}\\
+ ae-bc+bh+ci-de-ef&=0,\label{eq:census2}\\
+ be-cd+dh-eg+ei-fh&=0,\label{eq:census3}\\
+ af+bi-c^2+cj-e^2-f^2+1&=0,\label{eq:census4}\\
+ bf-ce+di-eh+ej-fi&=0,\label{eq:census5}\\
+ df-e^2+gi-h^2+hj-i^2+1&=0.\label{eq:census6}
+\end{align}
+These are necessary and sufficient for associativity. Indeed the first
+row of $N_uN_v$ records $uv$. Commutativity implies that every other row
+of $N_uN_v-\sum_wN_{uv}^wN_w$ is obtained by multiplying its zero first
+row by a regular matrix, so the difference vanishes.
+
+The six mixed coordinates $b,c,d,f,h,i$ form one orbit under
+permutations of $x,y,z$. Every based-ring orbit therefore has a
+representative with
+\[
+ b=\min\{b,c,d,f,h,i\}.
+\]
+For $b>0$, enumerate $b,c,d,e,f$, with $c,d,f\geq b$, and put
+\begin{align*}
+ H_0&=e(d+f)+bc,&G_0&=b^2+d^2+e^2-1,\\
+ J_0&=c^2+e^2+f^2-1,&
+ A&=e(b^2-c^2)+bc(f-d),\\
+ C&=e(bf-ce),&
+ B_0&=b^3e-b^2cd+b(d-f)H_0-ebG_0+ecH_0.
+\end{align*}
+The first, second and fourth equations give
+\[
+ h=\frac{H_0-ae-ci}{b},\qquad
+ g=\frac{G_0-ad-ch}{b},\qquad
+ j=\frac{J_0-af-bi}{c}.
+\]
+After substitution, the third equation multiplied by $b^2$ is
+\begin{equation}\label{eq:census-linear}
+ Ca+Ai+B_0=0.
+\end{equation}
+If $A\ne0$, let $q=\gcd(A,C)$. There is no solution unless $q\mid B_0$.
+Otherwise $a$ runs through the unique residue class solving
+$(C/q)a\equiv-B_0/q\pmod{|A/q|}$, and $i$ is determined.
+A modulus of one means every bounded $a$. If $A=0\ne C$, determine
+$a$ and enumerate $i$. If $A=C=0$, require $B_0=0$ and retain all bounded
+$a,i$. Impose $0\leq a,g,j\leq M$ and $b\leq h,i\leq M$,
+exact divisibility, and all six original equations.
+
+If $b=0<c$, determine
+\[
+ h=\frac{d^2+e^2-ad-1}{c},\quad
+ i=\frac{e(d+f-a)}c,\quad
+ j=\frac{c^2+e^2+f^2-af-1}c.
+\]
+For $e>0$, integrality of $i$ gives
+$a\equiv d+f\pmod{c/\gcd(c,e)}$. Enumerate $c,d,e,f$ and this
+progression for $a$; the bounds on $h,i,j$ give further linear interval
+restrictions. The equation $eg=h(d-f)+ei-cd$ determines $g$.
+For $e=0$, nonnegativity forces $d,h>0$ and
+\[
+ \gcd(c,d)=1,\qquad a\equiv d-d^{-1}\pmod c,\qquad
+ f=d-\frac{cd}{h}.
+\]
+Indeed $ch=d^2-ad-1$ implies the coprimality, and $h(d-f)=cd$
+gives the last identity. Enumerate $c,d,a$, determine $h,f,j$, and
+retain every bounded $g$. The congruence modulo one is unrestricted.
+
+Finally, $b=c=0$ gives
+\[
+ ad-d^2-e^2+1=0,\quad e(a-d-f)=0,\quad af-e^2-f^2+1=0.
+\]
+For $e>0$ these are $a=d+f$ and $df=e^2-1$. Enumerate the bounded
+factor pairs, including $e=1,d=0$ with every bounded $f$, then enumerate
+$h,i$ and determine
+\[
+ eg=h(d-f)+ei,\qquad ej=eh+i(f-d).
+\]
+For $e=0$, the preliminary equations force $a=0,d=f=1$. The remaining
+equation is $gi+hj=h^2+i^2-2$. If $h>0$, enumerate $h,i,g$ and solve
+for $j$; if $h=0<i$, solve for $g$ and retain every bounded $j$.
+The case $h=i=0$ is impossible. In every branch, all six equations and
+all coefficient bounds are tested again.
+
+\subsection{One dual pair}
+If $X^*=X$ and $Y^*=Z$, the general matrices are
+\[
+N_X=\begin{pmatrix}0&1&0&0\\1&a&b&b\\0&b&c&d\\0&b&d&c\end{pmatrix},\quad
+N_Y=\begin{pmatrix}0&0&1&0\\0&b&c&d\\0&d&e&f\\1&c&e&e\end{pmatrix},\quad
+N_Z=N_Y^{\mathsf T}.
+\]
+Associativity is equivalent to
+\begin{align*}
+ ac-b^2+2be-c^2-d^2+1&=0,&ad-b^2+be+bf-2cd&=0,\\
+ b(c-d)+d(e-f)&=0,&-c^2+d^2-e^2+f^2-1&=0.
+\end{align*}
+Enumerate $c,d,e$. The last equation determines the unique nonnegative
+candidate $f=\sqrt{1+c^2-d^2+e^2}$; retain it only if integral and
+bounded. If $c\ne d$, determine $b=-d(e-f)/(c-d)$. If $c=d$, require
+$d(e-f)=0$ and retain every bounded $b$. Determine $a$ from the first
+equation if $c>0$, or from the second if $d>0$; if $c=d=0$, retain
+all bounded $a$. Finally test all four equations and all bounds.
+The square-root implementation corrects its initial estimate by integer
+comparisons and checks its square exactly.
+
+\begin{proposition}[Completeness and cost]\label{prop:census}
+The preceding algorithm enumerates all rank-four fusion rings of
+multiplicity at most $M$, up to based-ring isomorphism. The parameter
+search uses $O((M+1)^6)$ integer operations before canonicalization.
+\end{proposition}
+\begin{proof}
+The two presentations exhaust duality and reciprocity. Each branch either
+solves a necessary linear equation by exact division or exhausts every
+allowed value when its coefficient vanishes. Final equation checks are
+necessary and sufficient for associativity. Thus no ring is omitted or
+spuriously admitted. In the self-dual search choose the lexicographically
+least parameter tuple among its permutations satisfying the same
+minimal-$b$ condition. Comparing only those images is essential: the
+unconstrained least tuple need not satisfy that condition. Each orbit has
+exactly one retained tuple. In the other duality type the only possible
+nontrivial based automorphism interchanges $Y,Z$, and fixes all six
+parameters. Thus every retained non-self-dual tuple is already one class.
+The full-tensor interface additionally canonicalizes under all six
+permutations and checks distinctness independently.
+
+There are five outer parameters in the positive-$b$ branch. Solving
+\eqref{eq:census-linear} takes $O(\log(M+1))$ arithmetic operations for
+the greatest common divisor and at most $M+1$ candidates. The apparently
+singular branch $A=C=B_0=0$ cannot occur there: if $e=0$, then
+$A=0$ forces $f=d$ and $B_0=-b^2cd\ne0$; if $e>0$, the equations
+$A=C=0$ give $cd=be$, $bf=ce$, and substitution gives $B_0=be\ne0$.
+The zero-$b$ branches use at most five free coordinates, and the
+non-self-dual search at most five. The stated $O((M+1)^6)$ arithmetic
+bound follows. Bit costs grow with $\log(M+1)$; the implementation
+restricts its integer range explicitly.
+\end{proof}
+
+\subsection{Current implementation and complete run}
+The current implementation is \texttt{code/rank4\_census.cpp}; the
+reproduction entry point is \texttt{code/run\_census.py}. The full
+run through multiplicity $128$ produces $889530$ based-isomorphism
+classes. Every output tensor is independently checked for the full
+fusion-ring axioms and canonicalized over all six unit-fixing
+permutations. The exact counts and execution reports are in the
+accompanying release. Exhaustiveness rests on the argument above,
+not on comparison with an existing list.
+
+\section{What the independent verification establishes}
+The enumerator and verifier have separate mathematical tasks. Exhaustiveness
+uses the complete coordinate parameterization, the safe-pruning proof and the
+normal completion of every required branch. The verifier reads only the emitted
+\emph{full tensors}; it neither reconstructs the parameterization nor trusts the
+generator's polynomial list.
+
+For every tensor it checks nonnegative integral coefficients, both unit laws,
+uniqueness and involutivity of the dual, both reciprocity identities, and every
+integer associativity identity for all four indices. It then canonicalizes
+under \emph{every} unit-fixing basis permutation. A matching hash is only a
+lookup aid: actual canonical tensors are compared. This detects both literal
+repetitions and different labellings of an isomorphic based ring.
+
+Passing these checks proves soundness and uniqueness of the emitted data; by
+itself it would not prove that no ring was omitted. That is why normal completion
+logs and the mathematical coverage argument are retained separately. Comparison
+with the original ancillary file is an additional containment/regression test,
+not an input to enumeration and not a replacement for an exhaustiveness proof.
+
+\subsection{Provenance and reproducibility}
+The retained Vercleyen--Slingerland v4 ancillary file has SHA-256
+\begin{center}\footnotesize\ttfamily
+b587c3f683157369da7cc090f762bbff0e18dcf11acc3f5031d6bc0c643843f8
+\end{center}
+Its 28,451 records contain 25,138 distinct classes. The 3,313 redundant records
+occur at rank five and exact multiplicities 9--12. Their original and corrected
+counts are respectively
+\[
+(1463,1794,2283,3049)\quad\longrightarrow\quad(863,1082,1383,1948).
+\]
+Every deletion has an explicit basis-permutation witness in the audit folder.
+This audit does not establish completeness of the source's partial-search cells.
+
+The primary manifest \path{results/census.json} records every released count,
+bound, filename and checksum. Compressed tensors use the original line-per-ring,
+nested-curly-brace format. An entry is $N[i][j][k]=N_{ij}^{k}$: the output index
+has already been dualized where the internal parameter convention requires it.
+The raw tensor needs no additional index conversion.
+
+\subsection{Computation budgets and release gates}
+The repository provides a manually dispatched GitHub Actions matrix. Each
+whole-rank job has a 20-minute ceiling. The frontier driver has a shared
+1,100-second wall-clock deadline, including compilation, enumeration, export
+and independent verification; the remaining job allowance accommodates checkout
+and artifact handling. All attempts at a given rank share that deadline.
+
+A larger incomplete attempt never replaces an earlier complete one. Only a
+whole-rank run with successful verification enters the \path{best/} artifact.
+Partial-stratum tensors are discarded from release data. A run that finds no
+extension leaves the checked-in baseline untouched. The code and workflow files
+are provided for reproducibility; their presence is not evidence that a GitHub
+run was actually launched or completed.
+
+\section{Reading and reusing the data}
+The result files count based rings, not monoidal categories or realizations of
+a ring. One tensor can admit several inequivalent categorifications, or none.
+No number here is a classification of fusion categories. The rank-specific
+count files use exact multiplicity; cumulative totals belong only in the
+summary column. Proposed OEIS additions must be regenerated from a complete
+manifest, not copied from an interrupted log.
+
+The retained code was generated with AI assistance and is accompanied by explicit
+mathematical coverage arguments and independent integer checks. These checks
+are not a formal proof in a proof assistant. The present text is an explanatory
+computational companion, not a claim of journal acceptance or external peer review.
+
+\section{Reproduction commands}
+From the repository root, a complete run can be requested as follows. A timeout reports failure to finish, not a smaller theorem.
+\begin{lstlisting}
+python3 code/run_census.py --rank 4 --bound 128 \
+  --seconds 1200 --threads 4 --verify --out rerun_rank4
+\end{lstlisting}
+To verify the supplied release without recomputing it:
+\begin{lstlisting}
+python3 scripts/check_release.py --full
+\end{lstlisting}
+For a shared-budget frontier search, use \path{scripts/extend_census.py}. Its checked-in starting points are heuristics, not a claim of time-optimality. Rank three is instead capped at 1000.
+\appendix
+\section{All exact-multiplicity rank-four counts}
+\begin{longtable}{rr@{\hspace{1.1cm}}rr@{\hspace{1.1cm}}rr@{\hspace{1.1cm}}rr}
+\toprule $m$ & $c_4(m)$ & $m$ & $c_4(m)$ & $m$ & $c_4(m)$ & $m$ & $c_4(m)$\\\midrule\endhead
+1 & 10 & 2 & 17 & 3 & 24 & 4 & 45\\
+5 & 55 & 6 & 81 & 7 & 92 & 8 & 137\\
+9 & 151 & 10 & 186 & 11 & 238 & 12 & 291\\
+13 & 246 & 14 & 340 & 15 & 349 & 16 & 525\\
+17 & 424 & 18 & 477 & 19 & 513 & 20 & 713\\
+21 & 704 & 22 & 668 & 23 & 654 & 24 & 1,121\\
+25 & 868 & 26 & 938 & 27 & 989 & 28 & 1,286\\
+29 & 1,356 & 30 & 1,347 & 31 & 1,220 & 32 & 1,671\\
+33 & 1,460 & 34 & 1,579 & 35 & 1,613 & 36 & 2,301\\
+37 & 1,646 & 38 & 1,824 & 39 & 2,111 & 40 & 2,653\\
+41 & 2,131 & 42 & 2,588 & 43 & 2,169 & 44 & 2,857\\
+45 & 2,699 & 46 & 2,639 & 47 & 2,452 & 48 & 3,985\\
+49 & 2,947 & 50 & 3,314 & 51 & 3,378 & 52 & 3,776\\
+53 & 3,250 & 54 & 3,704 & 55 & 3,785 & 56 & 5,213\\
+57 & 4,182 & 58 & 3,863 & 59 & 3,987 & 60 & 6,004\\
+61 & 4,383 & 62 & 4,472 & 63 & 5,150 & 64 & 6,557\\
+65 & 5,107 & 66 & 5,773 & 67 & 4,791 & 68 & 6,260\\
+69 & 6,001 & 70 & 6,205 & 71 & 5,799 & 72 & 8,710\\
+73 & 5,858 & 74 & 6,223 & 75 & 7,280 & 76 & 9,507\\
+77 & 6,953 & 78 & 7,917 & 79 & 6,933 & 80 & 10,208\\
+81 & 8,031 & 82 & 7,939 & 83 & 7,408 & 84 & 10,993\\
+85 & 8,464 & 86 & 8,568 & 87 & 9,088 & 88 & 11,767\\
+89 & 9,145 & 90 & 10,765 & 91 & 9,896 & 92 & 11,188\\
+93 & 10,385 & 94 & 10,153 & 95 & 10,048 & 96 & 15,447\\
+97 & 10,003 & 98 & 11,249 & 99 & 12,082 & 100 & 14,037\\
+101 & 11,361 & 102 & 13,068 & 103 & 10,861 & 104 & 16,150\\
+105 & 14,958 & 106 & 12,338 & 107 & 12,102 & 108 & 16,509\\
+109 & 12,849 & 110 & 14,390 & 111 & 15,119 & 112 & 18,964\\
+113 & 13,293 & 114 & 16,769 & 115 & 14,900 & 116 & 17,484\\
+117 & 16,252 & 118 & 14,963 & 119 & 16,058 & 120 & 25,126\\
+121 & 16,103 & 122 & 15,670 & 123 & 17,292 & 124 & 19,682\\
+125 & 17,760 & 126 & 20,720 & 127 & 17,015 & 128 & 23,185\\
+\bottomrule\end{longtable}
+
+\begin{thebibliography}{9}
+\bibitem{EGNO} P. Etingof, S. Gelaki, D. Nikshych and V. Ostrik,
+\emph{Tensor Categories}, Mathematical Surveys and Monographs 205,
+American Mathematical Society, 2015.
+\bibitem{VS} G. Vercleyen and J. Slingerland,
+\emph{On Low Rank Fusion Rings}, Journal of Mathematical Physics 64 (2023),
+091703; \href{https://arxiv.org/abs/2205.15637v4}{arXiv:2205.15637v4}.
+\bibitem{Ostrik} V. Ostrik, \emph{On formal codegrees of fusion categories},
+Mathematical Research Letters 16 (2009), 895--901;
+\href{https://arxiv.org/abs/0810.3242}{arXiv:0810.3242}.
+\bibitem{DP} J. Dong and S. Palcoux, rank-four and rank-five census derivations,
+project manuscripts and computational supplements, September 2026.
+The relevant derivations are retained in the repository's \path{methods/} directory.
+\bibitem{OEIS} OEIS Foundation Inc., \emph{The On-Line Encyclopedia of Integer
+Sequences}, entries A348305, A354471, A354472, A354473, A354475, A354476
+and A354477. Proposed updates in this repository are not submitted edits.
+\end{thebibliography}
+\end{document}

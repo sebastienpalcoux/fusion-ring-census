@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "known_isomorphism_classes": 8,
+  "labelled_test_records": 40,
+  "invalid_inputs_rejected": 7,
+  "noncommutative_group_test": true,
+  "both_canonical_modes_tested": true,
+  "independent_python_witness_checks": true,
+  "overwrite_protection_tested": true,
+  "random_seed": 20260918
+}
