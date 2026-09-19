@@ -16,6 +16,10 @@ existing repository, makes a local initial commit if needed, creates a **private
 repository, pushes it, and requests the frontier workflow exactly once. Use
 `--public` only as an explicit decision to publish. Credentials remain in the
 GitHub CLI authentication store; they are neither arguments nor repository files.
+The ZIP has no pre-existing remote. A clone from the optional Git bundle has a
+local `origin`; review it and use `git remote remove origin` before running the
+publisher. The helper refuses an existing remote rather than silently replacing it.
+
 Creating the repository or dispatching a run can fail because of permissions,
 Actions policy, billing restrictions or an existing name. Such failures must be
 resolved explicitly; the script does not pretend they succeeded.

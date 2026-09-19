@@ -21,6 +21,10 @@ def main() -> int:
     a=ap.parse_args()
     if not shutil.which('gh') or not shutil.which('git'):
         ap.error('Install GitHub CLI and Git, then authenticate using: gh auth login')
+    if (ROOT/'.git').exists():
+        origin=subprocess.run(['git','remote','get-url','origin'],cwd=ROOT,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        if origin.returncode==0:
+            ap.error('an origin remote already exists; review and explicitly remove/rename it before creating a new GitHub repository')
     run(['gh','auth','status'])
     login=run(['gh','api','user','--jq','.login'],True).stdout.strip()
     if login!='sebastienpalcoux':ap.error(f'Authenticated as {login!r}, not sebastienpalcoux; refusing to publish to a different account')
