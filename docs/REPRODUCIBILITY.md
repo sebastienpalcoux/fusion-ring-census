@@ -81,9 +81,12 @@ normal outcome with no new claim. Artifacts expire after 14 days. Upload can
 still fail if GitHub cancels or loses the runner; a green check or an uploaded
 artifact name alone is never a certificate of a new census.
 
-See [the launch record and diagnostics](LONG_CAMPAIGN.md). Archived manuscript
-workflow descriptions document the original short campaign; the limits above
-apply to the separate long campaign without rewriting those manuscripts.
+See [the launch contract](LONG_CAMPAIGN.md) and [the completed campaign review](CAMPAIGN_REVIEW.md).
+The six companions now document both workflow limits and the reviewed outcome.
+In the Work environment, use only lightweight tests and checks: enumeration and
+full tensor verification belong on GitHub Actions. Manuscript builds do not run
+numerical searches. The targeted `review-rank5-m19.yml` audit ran only the accepted
+rank-five tensors, with a 10-minute job ceiling and no enumeration.
 
 ## Input format
 

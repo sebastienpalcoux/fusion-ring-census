@@ -32,7 +32,8 @@ numerical additions are restricted to the verified manifest.
 The replacements are 1463 → 863, 1794 → 1082, 2283 → 1383, and 3049 → 1948.
 The original authors' enumeration remains credited; the correction and independent
 extensions should be credited separately. Keep the existing references and add a
-stable repository/release link only after one actually exists.
+publicly accessible stable reference before submitting. This repository exists
+but remains private, so its URL alone is not a public OEIS reference.
 
 ## Cross-sequence impact
 
@@ -43,6 +44,8 @@ of OEIS. In particular, check fixed-multiplicity entries at 9, 10, 11 and 12 if 
 are located. The four rank-five duplicate corrections do not change the existing
 multiplicity-1, -2, -3 or -4 prefixes.
 
+The rank-five multiplicity-19 value 5640 extends the local A354473 draft to a(19).
+It comes from the reviewed complete GitHub run, with the entire old prefix checked.
 The rank-seven multiplicity-three value 1059 extends A354476 at a(7).
 Any additional rank-eight multiplicity-two value is exported to A354475 only when
 the complete rank-eight bound-two run is certified in the manifest.

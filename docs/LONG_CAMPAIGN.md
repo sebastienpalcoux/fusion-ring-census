@@ -1,8 +1,10 @@
 # Ranks 5–8: bounded long campaign
 
-This campaign changes execution and reporting, not the released mathematical
-results or enumerator algorithms. It starts from the existing private repository
-and preserves the supplied history, datasets, manuscripts, OEIS data and proofs.
+This document preserves the launch contract and original starting bounds for the
+completed campaign. Its reviewed outcome is now recorded in
+[CAMPAIGN_REVIEW.md](CAMPAIGN_REVIEW.md): rank 5 extended to multiplicity 19;
+ranks 6–8 did not extend. The enumerator algorithms and mathematical scope did
+not change. Original datasets and history remain preserved.
 
 ## Reviewed previous run
 
@@ -11,7 +13,7 @@ used commit `5173786bd7c60d9bc7713db559c38ef9f9731527`. GitHub marked it success
 but all four extension attempts were incomplete and unverified. The small
 artifacts are preserved under `verification/github_actions/run35433992685/`.
 
-| Rank | Released bound | Released classes | Restart bound | Previous timeout stage |
+| Rank | Initial released bound | Initial classes | Campaign restart bound | Previous timeout stage |
 |---:|---:|---:|---:|---|
 | 5 | 18 | 28,493 | 19 | selfdual |
 | 6 | 6 | 5,799 | 7 | selfdual |
@@ -67,5 +69,7 @@ parameters/tensors and redundant uncompressed canonical tensor copies are not
 uploaded. Detailed log counts are diagnostic and cannot supply census or OEIS
 claims. Runner loss can prevent evidence upload despite `if: always()`.
 
-Candidates remain reviewable artifacts. This launch task does not promote them,
-rewrite manuscripts, change OEIS terms, or promise any larger complete bound.
+The launch task left candidates as reviewable artifacts. The subsequent user-requested
+review integrated only rank 5 through multiplicity 19, after fresh independent
+verification. Future campaigns still require explicit authorization and a spending
+check; their starting bounds are read from the current manifest.

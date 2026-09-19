@@ -28,14 +28,21 @@ expire after 14 days. There is no automated promotion or manuscript/OEIS update.
 
 Download and extract the workflow artifact. Check the run's conclusion, exact
 commit, command and environment, then read `frontier.json` and `best/run.json`.
-An artifact without `best/` contains no new certified bound. To import a candidate:
+An artifact without `best/` contains no new certified bound. Full numerical
+verification must run on GitHub Actions when operating from Work. For this review,
+`review-rank5-m19.yml` pins the source run and commit, invokes the guarded importer
+on the runner, and uploads verified integration files without committing them.
+It is manual, read-only to the repository, and capped at 10 job minutes.
+Its dataset/manifest files are downloaded only after successful verification.
+The equivalent importer command below belongs on that runner; documentation
+and PDF regeneration can run in Work:
 
 ```bash
 python3 scripts/promote_result.py extracted-artifact/best
 python3 scripts/refresh_documentation.py
 python3 scripts/build_manuscripts.py --compile
 python3 scripts/build_site.py
-python3 scripts/check_release.py --full
+python3 scripts/check_release.py  # lightweight integrity check; --full belongs on Actions
 python3 -m unittest discover -s tests -v
 git diff --stat
 ```

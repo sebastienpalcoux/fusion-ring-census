@@ -20,7 +20,7 @@ def main() -> int:
         tmp=Path(tmp);exe=tmp/'verify'
         if a.full:subprocess.run([os.environ.get('CXX','g++'),'-O3','-std=c++17',str(ROOT/'code/verify_tables.cpp'),'-o',str(exe)],check=True)
         for r,item in sorted(data['ranks'].items(),key=lambda x:int(x[0])):
-            assert item['complete'] is True,(r,'uncertified release')
+            assert item['complete'] is True and item.get('verified') is True,(r,'uncertified release')
             assert sorted(map(int,item['counts']))==list(range(1,item['bound']+1)),(r,'count gaps')
             assert sum(item['counts'].values())==item['classes'],(r,'incorrect total')
             if r=='3':assert item['bound']<=1000
@@ -31,6 +31,13 @@ def main() -> int:
                     h.update(line);lines+=bool(line.strip())
             assert lines==item['classes'],(r,'record count mismatch')
             assert h.hexdigest()==item['tables_uncompressed_sha256'],(r,'uncompressed checksum mismatch')
+            if 'parameters' in item:
+                parameters=ROOT/item['parameters']
+                assert sha256(parameters)==item['parameters_gz_sha256'],(r,'parameter compressed checksum mismatch')
+                h=hashlib.sha256()
+                with gzip.open(parameters,'rb') as f:
+                    for block in iter(lambda:f.read(1<<20),b''):h.update(block)
+                assert h.hexdigest()==item['parameters_uncompressed_sha256'],(r,'parameter uncompressed checksum mismatch')
             rec={'rank':int(r),'bound':item['bound'],'classes':lines,'hashes_verified':True}
             if a.full:
                 plain=tmp/f'rank{r}.txt'
@@ -49,6 +56,7 @@ def main() -> int:
                 plain.unlink()
             report['ranks'][r]=rec;print(f'Rank {r}, through {item["bound"]}: {lines:,} records OK',flush=True)
     report['total_classes']=sum(x['classes'] for x in report['ranks'].values());report['elapsed_seconds']=time.monotonic()-t0
+    assert report['total_classes']==data['total_classes'],'manifest total mismatch'
     if a.out:
         a.out.parent.mkdir(parents=True,exist_ok=True);a.out.write_text(json.dumps(report,indent=2)+'\n')
     return 0

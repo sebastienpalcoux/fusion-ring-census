@@ -64,3 +64,28 @@ tensors and partial-stratum counts are not included. This was a local attempt,
 not a GitHub Actions run. The rank-four through rank-seven large bounds were
 not rerun in this repository-assembly session; their original full run records
 and the fresh independent audit remain separate.
+
+## GitHub publication and reviewed extension, 19 September 2026
+
+The repository was published privately at commit
+`5173786bd7c60d9bc7713db559c38ef9f9731527`. Its first frontier run
+35433992685 did not extend ranks 5–8. The later four-rank campaign,
+[run 35440299307](https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35440299307),
+used commit `931addc686e8d93e86e480c6a8cc56d0301dfabf` and two CPU threads per job.
+It completed rank 5 through multiplicity 19, with 34,133 distinct classes.
+Both rank-five duality strata completed and the exhaustive independent verifier
+checked every tensor and all 24 unit-fixing basis permutations. Exact-multiplicity
+counts through 18 agree with the earlier release; the new count at 19 is 5,640.
+
+A second independent audit ran on GitHub in run 35449570360 before integration.
+Original candidate and fresh verifier reports are under
+`verification/imports/rank5_through19/`. Small campaign diagnostics for every rank
+are permanently retained under `verification/github_actions/run35440299307/`.
+The rank-five bound-18 data and all earlier verification reports remain preserved
+as historical evidence. They have not been relabelled as checks of the new bound.
+
+Rank 5 at 20 and ranks 6/7/8 at 7/4/2 exhausted their enumeration allowance.
+Successful nonselfdual strata at those bounds do not establish whole-rank counts.
+No compilation, resource or verification failure was found in the retained logs.
+Ranks 3 and 4 were not recomputed or extended. The review changed the rank-five
+release and derived documentation, not the enumerator algorithms or proof methods.

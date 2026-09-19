@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "Please cite the exact revision and the relevant mathematical companion."
 title: "Fusion Ring Census: exact whole-rank enumeration and verification"
 type: software
+repository-code: "https://github.com/sebastienpalcoux/fusion-ring-census"
 version: "0.1.0"
 date-released: "2026-09-19"
 authors:

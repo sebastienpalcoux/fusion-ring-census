@@ -1,0 +1,43 @@
+{
+  "full_axiom_check": false,
+  "ranks": {
+    "3": {
+      "rank": 3,
+      "bound": 1000,
+      "classes": 460353,
+      "hashes_verified": true
+    },
+    "4": {
+      "rank": 4,
+      "bound": 128,
+      "classes": 889530,
+      "hashes_verified": true
+    },
+    "5": {
+      "rank": 5,
+      "bound": 19,
+      "classes": 34133,
+      "hashes_verified": true
+    },
+    "6": {
+      "rank": 6,
+      "bound": 6,
+      "classes": 5799,
+      "hashes_verified": true
+    },
+    "7": {
+      "rank": 7,
+      "bound": 3,
+      "classes": 1421,
+      "hashes_verified": true
+    },
+    "8": {
+      "rank": 8,
+      "bound": 1,
+      "classes": 96,
+      "hashes_verified": true
+    }
+  },
+  "total_classes": 1391332,
+  "elapsed_seconds": 3.33454298200013
+}

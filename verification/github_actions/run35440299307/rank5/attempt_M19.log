@@ -1,0 +1,159 @@
+{
+  "rank": 5,
+  "bound": 19,
+  "threads": 2,
+  "enumeration_budget_seconds": 3777.2999924166,
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "nonselfdual",
+      "command": [
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank5/build-cache/rank5_ns",
+        "19"
+      ],
+      "allowance_seconds": 3777.2999916246004,
+      "elapsed_seconds": 0.11474176900000543,
+      "returncode": 0
+    },
+    {
+      "name": "selfdual",
+      "command": [
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank5/build-cache/rank5_sd",
+        "19"
+      ],
+      "allowance_seconds": 3777.1849215246,
+      "elapsed_seconds": 2151.1352475800004,
+      "returncode": 0
+    }
+  ],
+  "github_sha": "931addc686e8d93e86e480c6a8cc56d0301dfabf",
+  "github_run_id": "35440299307",
+  "deadline_monotonic": 4351.758330244,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "compilation:rank5_ns",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/code/rank5/enumerate_nonselfdual.cpp",
+        "-o",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank5/build-cache/rank5_ns"
+      ],
+      "started_elapsed_seconds": 0.002159874999989597,
+      "returncode": 0,
+      "elapsed_seconds": 2.1766157170000042
+    },
+    {
+      "phase": "compilation:rank5_sd",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/code/rank5/enumerate_selfdual.cpp",
+        "-o",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank5/build-cache/rank5_sd"
+      ],
+      "started_elapsed_seconds": 2.1800614649999943,
+      "returncode": 0,
+      "elapsed_seconds": 2.4691240839999864
+    },
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/usr/bin/python3",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/code/export_tables.py",
+        "--rank",
+        "5",
+        "--input",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank5/attempt_M19/parameters.txt",
+        "--systems",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/systems",
+        "--output",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank5/attempt_M19/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 2156.151609708,
+      "returncode": 0,
+      "elapsed_seconds": 2.518584929000099
+    },
+    {
+      "phase": "compilation:verify_tables",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/code/verify_tables.cpp",
+        "-o",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank5/build-cache/verify_tables"
+      ],
+      "started_elapsed_seconds": 2158.6717587939997,
+      "returncode": 0,
+      "elapsed_seconds": 2.3200436820002324
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank5/build-cache/verify_tables",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank5/attempt_M19/FusionRingMultiplicationTables.txt",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank5/attempt_M19/independent_check",
+        "--exhaustive"
+      ],
+      "started_elapsed_seconds": 2160.993270692,
+      "returncode": 0,
+      "elapsed_seconds": 0.5647974189996603
+    }
+  ],
+  "code_sha256": "2e0af30c168bfbb4a6742cb3c8caf54d694fa5b2d89ebc006d354c4079ee8139",
+  "elapsed_seconds": 2164.076476752,
+  "compilation_seconds": 4.650006300000001,
+  "expected_strata": [
+    "nonselfdual",
+    "selfdual"
+  ],
+  "enumeration_seconds": 2151.250844336,
+  "counts": {
+    "1": 16,
+    "2": 37,
+    "3": 82,
+    "4": 134,
+    "5": 209,
+    "6": 336,
+    "7": 477,
+    "8": 733,
+    "9": 863,
+    "10": 1082,
+    "11": 1383,
+    "12": 1948,
+    "13": 2211,
+    "14": 2554,
+    "15": 2936,
+    "16": 4157,
+    "17": 4255,
+    "18": 5080,
+    "19": 5640
+  },
+  "classes": 34133,
+  "sort_export_seconds": 2.7699743929997567,
+  "verifier_compilation_seconds": 2.321612807999827,
+  "independent_verification_seconds": 0.5665510339999855,
+  "independent_verification": {
+    "input_records": 34133,
+    "input_physical_lines": 34133,
+    "distinct_rings": 34133,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "all unit-fixing permutations",
+    "permutations_examined": 819192,
+    "elapsed_seconds": 0.508186173
+  },
+  "parameters.txt_sha256": "c1c0458ad936ce419ae726738010a04f6b687715598fd551a8c9dcf1c3649ed2",
+  "FusionRingMultiplicationTables.txt_sha256": "8304fc543862f2838d300226c7da43d3a5168942319f07899ed111f27f7ae199",
+  "compression_seconds": 2.5166737899999134,
+  "outcome": "verified_complete"
+}

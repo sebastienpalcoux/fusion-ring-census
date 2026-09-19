@@ -11,9 +11,9 @@ def main():
         if item.get('complete') is not True or item.get('verified') is not True:raise ValueError('cannot export an incomplete or unverified census')
         if sorted(map(int,item['counts']))!=list(range(1,item['bound']+1)):raise ValueError('noncontiguous census')
         with (ROOT/f'results/rank{rank}_counts.csv').open('w',newline='') as f:
-            w=csv.writer(f);w.writerow(['rank','multiplicity','classes']);w.writerows((rank,m,c) for m,c in item['counts'].items())
+            w=csv.writer(f,lineterminator="\n");w.writerow(['rank','multiplicity','classes']);w.writerows((rank,m,c) for m,c in item['counts'].items())
     with (ROOT/'results/counts.csv').open('w',newline='') as f:
-        w=csv.writer(f);w.writerow(['rank','multiplicity','classes'])
+        w=csv.writer(f,lineterminator="\n");w.writerow(['rank','multiplicity','classes'])
         for rank,item in ranks.items():w.writerows((rank,m,c) for m,c in item['counts'].items())
     oeis=ROOT/'oeis';oeis.mkdir(exist_ok=True)
     assigned={3:'A354471',4:'A354472',5:'A354473'}
@@ -63,9 +63,10 @@ in the **ordered** product `i*j`. All results include every duality type.
 **These are classifications of based rings, not of fusion categories.** No
 categorifiability criterion is applied. Rank three is intentionally capped at 1000.
 
-Ranks 3–7 retain the completed census data and provenance from 18 September 2026.
-Rank eight is independently generated with the expanded solver in this repository.
-New local verification is recorded separately from the original execution logs.
+The original datasets and execution provenance remain preserved. The reviewed
+GitHub campaign extended rank 5 through multiplicity 19; ranks 3, 4 and 6–8
+retain their earlier complete datasets. Independent verification reports are
+recorded separately from enumeration logs. See [the campaign review](docs/CAMPAIGN_REVIEW.md).
 
 ## Three ways to use the project
 
@@ -114,8 +115,7 @@ independent verification share that budget. The thread count comes from `nproc`.
 The enumeration allowance is 90% of the remaining driver time, reserving the rest
 for verification and export; no shorter 1,100/1,200-second cap remains in this campaign.
 
-The first bounds are read from the released manifest plus one (currently 19, 7,
-4 and 2). An interrupted search is restarted, not resumed. A completed candidate
+The first bounds are read from the released manifest plus one (currently {', '.join(str(ranks[str(r)]['bound']+1) for r in range(5,9))} for ranks 5–8). An interrupted search is restarted, not resumed. A completed candidate
 must pass exhaustive independent tensor/isomorphism verification and agree with
 the entire old exact-multiplicity count prefix before entering `best/`.
 
@@ -134,9 +134,13 @@ Verification and manuscript workflows also remain manual. Check account-wide
 included usage and enforced spending controls before each authorized dispatch.
 Do not change visibility or billing to obtain more capacity.
 
-The first published run finished without a complete extension for ranks 5–8;
-its green workflow conclusion did not certify larger bounds. The released counts
-above are unchanged. Review [the release procedure](docs/RELEASES.md) before any
+The first published run found no complete extension for ranks 5–8. The longer
+[run 35440299307](https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35440299307)
+completed rank 5 through multiplicity 19: **34,133 classes**, including **5,640
+at exact multiplicity 19**. It did not complete rank 5 at 20, rank 6 at 7,
+rank 7 at 4 or rank 8 at 2. After a fresh independent GitHub audit, the rank-5
+candidate was integrated; every other released bound is unchanged. Permanent
+[review evidence](docs/CAMPAIGN_REVIEW.md) records the accepted result and timeouts. Review [the release procedure](docs/RELEASES.md) before any
 future promotion. `scripts/publish_github.py` is an initial-publication helper;
 do not use it to recreate this existing repository.
 
@@ -171,14 +175,14 @@ tests/         Regressions, symmetry checks, scope checks and timeout tests
 
 ## Cite and contribute
 
-Use **Cite this repository** after publication, or the metadata in `CITATION.cff`.
+Use **Cite this repository**, or the metadata in `CITATION.cff`.
 Report a suspected missed ring with its full multiplication tensor, rank,
 multiplicity, generating command and revision. Improvements must preserve every
 singular and zero-coefficient branch and pass independent checks. See
 [CONTRIBUTING.md](CONTRIBUTING.md).
 '''
     (ROOT/'README.md').write_text(readme)
-    (ROOT/'manuscripts/README.md').write_text('# Explanatory manuscripts\n\nEach companion contains definitions, a rank-specific enumeration argument, full-duality coverage, results, verification limits and reproduction commands. They are computational project notes, not claims of journal publication.\n\n'+ '\n'.join(f'- Rank {r}: [PDF](rank{r}.pdf), [LaTeX](rank{r}.tex).' for r in range(3,9))+'\n\nRegenerate sources and PDFs with `python3 scripts/build_manuscripts.py --compile` from the repository root.\n')
+    (ROOT/'manuscripts/README.md').write_text('# Explanatory manuscripts\n\nEach companion contains definitions, a rank-specific enumeration argument, full-duality coverage, results, verification limits and reproduction commands. They are computational project notes, not claims of journal publication.\n\n'+ '\n'.join(f'- Rank {r}, through multiplicity {ranks[str(r)]["bound"]}: {ranks[str(r)]["classes"]:,} classes. [PDF](rank{r}.pdf), [LaTeX](rank{r}.tex).' for r in range(3,9))+'\n\nRegenerate sources and PDFs with `python3 scripts/build_manuscripts.py --compile` from the repository root.\n')
     oeisread='''# OEIS workspace
 
 All files here are **proposed data or edits**, not submitted changes. The primary
@@ -213,7 +217,8 @@ numerical additions are restricted to the verified manifest.
 The replacements are 1463 → 863, 1794 → 1082, 2283 → 1383, and 3049 → 1948.
 The original authors' enumeration remains credited; the correction and independent
 extensions should be credited separately. Keep the existing references and add a
-stable repository/release link only after one actually exists.
+publicly accessible stable reference before submitting. This repository exists
+but remains private, so its URL alone is not a public OEIS reference.
 
 ## Cross-sequence impact
 
@@ -224,6 +229,8 @@ of OEIS. In particular, check fixed-multiplicity entries at 9, 10, 11 and 12 if 
 are located. The four rank-five duplicate corrections do not change the existing
 multiplicity-1, -2, -3 or -4 prefixes.
 
+The rank-five multiplicity-19 value 5640 extends the local A354473 draft to a(19).
+It comes from the reviewed complete GitHub run, with the entire old prefix checked.
 The rank-seven multiplicity-three value 1059 extends A354476 at a(7).
 Any additional rank-eight multiplicity-two value is exported to A354475 only when
 the complete rank-eight bound-two run is certified in the manifest.

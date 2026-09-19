@@ -5,7 +5,7 @@ Run with --compile to build PDFs. Sources and the retained rank-specific
 mathematical derivations remain editable. No new census is performed here.
 """
 from __future__ import annotations
-import argparse,json,subprocess
+import argparse,json,shutil,subprocess,tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 M=ROOT/'manuscripts'
@@ -317,18 +317,31 @@ has already been dualized where the internal parameter convention requires it.
 The raw tensor needs no additional index conversion.
 
 \subsection{Computation budgets and release gates}
-The repository provides a manually dispatched GitHub Actions matrix. Each
-whole-rank job has a 20-minute ceiling. The frontier driver has a shared
-1,100-second wall-clock deadline, including compilation, enumeration, export
-and independent verification; the remaining job allowance accommodates checkout
-and artifact handling. All attempts at a given rank share that deadline.
+The private repository provides two manually dispatched GitHub Actions campaigns.
+The original frontier has a 1,100-second shared driver deadline and a 20-minute
+job ceiling. The long frontier selects only ranks 5--8: each rank has one
+4,200-second (70-minute) shared deadline and a 75-minute job ceiling, at most
+300 runner-minutes in total. Compilation, all attempted multiplicities and
+duality types, export, compression and independent verification share the driver
+deadline. Enumeration receives 90\% of remaining driver time; the balance is
+reserved for other phases. Threads follow the actual runner CPU allocation.
 
-A larger incomplete attempt never replaces an earlier complete one. Only a
-whole-rank run with successful verification enters the \path{best/} artifact.
-Partial-stratum tensors are discarded from release data. A run that finds no
-extension leaves the checked-in baseline untouched. The code and workflow files
-are provided for reproducibility; their presence is not evidence that a GitHub
-run was actually launched or completed.
+Only a complete whole-rank run with successful independent verification enters
+\path{best/}. A later incomplete attempt never replaces it. Candidates require
+explicit review and fresh independent verification before integration. Partial
+logs remain diagnostic evidence and never supply exhaustive census or OEIS terms.
+All workflows are manual; neither a push nor this manuscript launches a search.
+
+The reviewed long campaign, GitHub run 35440299307 at source revision
+\texttt{931addc686e8} (full revision in the review record), completed rank five through
+multiplicity 19 with 34,133 classes, including 5,640 at exact multiplicity 19.
+The subsequent rank-five bound 20 and the attempted bounds 7, 4 and 2 at ranks
+six, seven and eight exhausted their search budgets. They yield no larger
+complete whole-rank counts. Ranks three and four were not recomputed.
+The accepted rank-five data underwent a fresh exhaustive tensor and
+based-isomorphism audit on GitHub before integration. The full earlier
+exact-multiplicity prefix agrees. See \path{docs/CAMPAIGN_REVIEW.md} and
+\path{verification/imports/rank5_through19/}.
 
 \section{Reading and reusing the data}
 The result files count based rings, not monoidal categories or realizations of
@@ -344,7 +357,7 @@ are not a formal proof in a proof assistant. The present text is an explanatory
 computational companion, not a claim of journal acceptance or external peer review.
 '''
 BIB=r'''
-\begin{thebibliography}{9}
+\begin{thebibliography}{9}\small\setlength{\itemsep}{2pt}
 \bibitem{EGNO} P. Etingof, S. Gelaki, D. Nikshych and V. Ostrik,
 \emph{Tensor Categories}, Mathematical Surveys and Monographs 205,
 American Mathematical Society, 2015.
@@ -426,11 +439,11 @@ a generic determinant is nonzero.
         else:body+=GENERAL+FAST
         body+=AUDIT
         body+='\n\\section{Reproduction commands}\nFrom the repository root, a complete run can be requested as follows. A timeout reports failure to finish, not a smaller theorem.\n'
-        body+='\\begin{lstlisting}\n'+f'python3 code/run_census.py --rank {r} --bound {item["bound"]} \\\n  --seconds 1200 --threads 4 --verify --out rerun_rank{r}\n'+'\\end{lstlisting}\n'
+        body+='\\begin{lstlisting}\n'+f'python3 code/run_census.py --rank {r} --bound {item["bound"]} \\\n  --seconds {4200 if r >= 5 else 1200} --threads "$(nproc)" --verify --out rerun_rank{r}\n'+'\\end{lstlisting}\n'
         body+='To verify the supplied release without recomputing it:\n\\begin{lstlisting}\npython3 scripts/check_release.py --full\n\\end{lstlisting}\n'
-        body+='For a shared-budget frontier search, use \\path{scripts/extend_census.py}. Its checked-in starting points are heuristics, not a claim of time-optimality. Rank three is instead capped at 1000.\n'
+        body+='For a shared-budget frontier search, use \\path{scripts/extend_census.py}. For ranks five through eight it starts at the released bound plus one and restarts the unfinished bound without claiming checkpoint resumption. The low-level command above limits enumeration only; the frontier wrapper additionally bounds every phase. Rank three is instead capped at 1000.\n'
         if r==4:
-            body+='\\appendix\n\\section{All exact-multiplicity rank-four counts}\n\\begin{longtable}{rr@{\\hspace{1.1cm}}rr@{\\hspace{1.1cm}}rr@{\\hspace{1.1cm}}rr}\n\\toprule $m$ & $c_4(m)$ & $m$ & $c_4(m)$ & $m$ & $c_4(m)$ & $m$ & $c_4(m)$\\\\\\midrule\\endhead\n'
+            body+='\\clearpage\\appendix\n\\section{All exact-multiplicity rank-four counts}\n\\begin{longtable}{rr@{\\hspace{1.1cm}}rr@{\\hspace{1.1cm}}rr@{\\hspace{1.1cm}}rr}\n\\toprule $m$ & $c_4(m)$ & $m$ & $c_4(m)$ & $m$ & $c_4(m)$ & $m$ & $c_4(m)$\\\\\\midrule\\endhead\n'
             values=list(item['counts'].items())
             for i in range(0,len(values),4):
                 fields=[]
@@ -440,15 +453,23 @@ a generic determinant is nonzero.
                 body+=' & '.join(fields)+'\\\\\n'
             body+='\\bottomrule\\end{longtable}\n'
         body+=BIB+'\\end{document}\n'
+        body=body.replace('\\begin{lstlisting}', '\\par\\noindent\\begin{minipage}{\\linewidth}\n\\begin{lstlisting}').replace('\\end{lstlisting}', '\\end{lstlisting}\n\\end{minipage}\\par')
         (M/f'rank{r}.tex').write_text(body)
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--compile',action='store_true');a=ap.parse_args()
     build_sources()
     if a.compile:
+        # Build away from released PDFs, then replace only completed output.
         for r in range(3,9):
-            with (M/f'rank{r}.build.txt').open('w') as log:
-                subprocess.run(['latexmk','-pdf','-interaction=nonstopmode','-halt-on-error','-pdflatex=pdflatex -no-shell-escape %O %S',f'rank{r}.tex'],cwd=M,check=True,stdout=log,stderr=subprocess.STDOUT)
-            subprocess.run(['latexmk','-c',f'rank{r}.tex'],cwd=M,check=True,stdout=subprocess.DEVNULL)
+            with tempfile.TemporaryDirectory(prefix=f'fusion-manuscript-{r}-') as tmp:
+                tmp=Path(tmp);shutil.copy2(M/f'rank{r}.tex',tmp/f'rank{r}.tex')
+                with (M/f'rank{r}.build.txt').open('w') as log:
+                    subprocess.run(['latexmk','-pdf','-interaction=nonstopmode','-halt-on-error','-pdflatex=pdflatex -no-shell-escape %O %S',f'rank{r}.tex'],cwd=tmp,check=True,stdout=log,stderr=subprocess.STDOUT)
+                pdf=(tmp/f'rank{r}.pdf').read_bytes()
+                if not pdf.startswith(b'%PDF-') or b'%%EOF' not in pdf[-100:]:
+                    raise RuntimeError(f'Incomplete PDF output for rank {r}; previous PDF retained')
+                staged=M/f'rank{r}.pdf.next';staged.write_bytes(pdf)
+                staged.replace(M/f'rank{r}.pdf')
             print(f'Built rank{r}.pdf',flush=True)
 if __name__=='__main__':main()

@@ -1166,9 +1166,10 @@
     },
     "5": {
       "rank": 5,
-      "bound": 18,
+      "bound": 19,
       "complete": true,
-      "classes": 28493,
+      "verified": true,
+      "classes": 34133,
       "counts": {
         "1": 16,
         "2": 37,
@@ -1187,23 +1188,19 @@
         "15": 2936,
         "16": 4157,
         "17": 4255,
-        "18": 5080
+        "18": 5080,
+        "19": 5640
       },
-      "sort_export_seconds": 2.4664527780000753,
-      "completed_stratum_runs": [
-        "rank5_sd_18",
-        "rank5_ns_18"
-      ],
-      "parameters_uncompressed_sha256": "498cc5163c29b70dc6846d7fe6164a129a0009d3ebae8253fd27abbf4a003356",
-      "parameters": "results/rank5_through18_parameters.txt.gz",
-      "parameters_compression_seconds": 0.020605250999778946,
-      "parameters_gz_sha256": "a65b2d1378cf1bae955ef067ee8c1fe561332c6b81aad6b0d6445acc5bc1c7a9",
-      "tables_uncompressed_sha256": "adde209e542ad3244785352fb0ab1a389d2d15127fc27024f3db82ccd7022666",
-      "tables": "results/rank5_through18_tables.txt.gz",
-      "tables_compression_seconds": 0.08497877999980119,
-      "tables_gz_sha256": "3a0cf7967cf3b4c9f0018346182310a1a7c0fec2ee3cef8b3f0c30ed2d750a44",
-      "provenance": "Retained complete census from 18 September 2026; original execution logs and independent audits included.",
-      "verified": true
+      "provenance": "Complete whole-rank GitHub campaign 35440299307 at 931addc686e8d93e86e480c6a8cc56d0301dfabf; fresh exhaustive audit in run 35449570360. Reports: verification/imports/rank5_through19/.",
+      "tables": "results/rank5_through19_tables.txt.gz",
+      "tables_gz_sha256": "dd2810a40247080dede093c8d157a72db6a603017374699999610d5e7a1c7f2b",
+      "tables_uncompressed_sha256": "8304fc543862f2838d300226c7da43d3a5168942319f07899ed111f27f7ae199",
+      "parameters": "results/rank5_through19_parameters.txt.gz",
+      "parameters_gz_sha256": "f75b2db22125a945cab7e5ce33617fa9e323e50667cec009f0c3cb24fdb6c60a",
+      "parameters_uncompressed_sha256": "c1c0458ad936ce419ae726738010a04f6b687715598fd551a8c9dcf1c3649ed2",
+      "source_run_url": "https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35440299307",
+      "verification_run_url": "https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35449570360",
+      "verification_reports": "verification/imports/rank5_through19/"
     },
     "6": {
       "rank": 6,
@@ -1281,7 +1278,7 @@
       "parameters_uncompressed_sha256": "51417e64cb301b32508266e59ed81ea4144b76b4c2a5403de7369ad3e1dcbca1"
     }
   },
-  "total_classes": 1385692,
+  "total_classes": 1391332,
   "release_date": "2026-09-19",
-  "publication_status": "local prepared repository; no remote GitHub repository created in this session"
+  "publication_status": "Published privately at https://github.com/sebastienpalcoux/fusion-ring-census; reviewed rank-5 extension integrated after independent GitHub verification."
 }

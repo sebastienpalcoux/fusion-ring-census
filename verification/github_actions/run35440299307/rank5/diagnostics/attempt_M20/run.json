@@ -1,0 +1,45 @@
+{
+  "rank": 5,
+  "bound": 20,
+  "threads": 2,
+  "enumeration_budget_seconds": 1829.5529895603,
+  "complete": false,
+  "verified": false,
+  "runs": [
+    {
+      "name": "nonselfdual",
+      "command": [
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank5/build-cache/rank5_ns",
+        "20"
+      ],
+      "allowance_seconds": 1829.5529890592998,
+      "elapsed_seconds": 0.11449514700007057,
+      "returncode": 0
+    },
+    {
+      "name": "selfdual",
+      "command": [
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank5/build-cache/rank5_sd",
+        "20"
+      ],
+      "allowance_seconds": 1829.4381367263,
+      "elapsed_seconds": 1829.439624449,
+      "timeout": true
+    }
+  ],
+  "github_sha": "931addc686e8d93e86e480c6a8cc56d0301dfabf",
+  "github_run_id": "35440299307",
+  "deadline_monotonic": 4351.758330244,
+  "phase": "enumeration:selfdual",
+  "commands": [],
+  "code_sha256": "2e0af30c168bfbb4a6742cb3c8caf54d694fa5b2d89ebc006d354c4079ee8139",
+  "compilation_seconds": 0.0019732039995687956,
+  "expected_strata": [
+    "nonselfdual",
+    "selfdual"
+  ],
+  "elapsed_seconds": 1829.5569481179996,
+  "error": "selfdual exceeded the shared enumeration budget",
+  "failure_kind": "budget_exhausted",
+  "error_type": "TimeoutError"
+}

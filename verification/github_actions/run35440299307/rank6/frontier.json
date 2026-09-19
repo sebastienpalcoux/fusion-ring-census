@@ -1,0 +1,50 @@
+{
+  "rank": 6,
+  "budget_seconds": 4200.0,
+  "threads": 2,
+  "timing": "one shared wall clock: compilation, enumeration, export, compression, verification and candidate acceptance",
+  "github_run_id": "35440299307",
+  "github_sha": "931addc686e8d93e86e480c6a8cc56d0301dfabf",
+  "github_run_attempt": "1",
+  "baseline_bound": 6,
+  "baseline_classes": 5799,
+  "starting_bound": 7,
+  "max_bound": 15,
+  "attempts": [
+    {
+      "bound": 7,
+      "command": [
+        "/usr/bin/python3",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/code/run_census.py",
+        "--rank",
+        "6",
+        "--bound",
+        "7",
+        "--seconds",
+        "3777.2999925696",
+        "--deadline",
+        "4297.218560924",
+        "--threads",
+        "2",
+        "--verify",
+        "--build-dir",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank6/build-cache",
+        "--out",
+        "/home/runner/work/fusion-ring-census/fusion-ring-census/frontier/rank6/attempt_M7"
+      ],
+      "remaining_seconds_at_start": 4196.999991744,
+      "complete": false,
+      "started_elapsed_seconds": 4.8972000001867855e-05,
+      "returncode": 3,
+      "elapsed_seconds": 3790.506884249,
+      "outcome": "budget_exhausted",
+      "error": "selfdual did not finish",
+      "phase": "enumeration:selfdual"
+    }
+  ],
+  "best_verified_bound": null,
+  "partial_counts_published": false,
+  "outcome": "no_extension_within_budget",
+  "stop_reason": "budget_exhausted",
+  "elapsed_seconds": 3790.509163533
+}

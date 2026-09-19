@@ -21,10 +21,10 @@
 \thispagestyle{empty}{\sffamily\small\color{accent} EXACT ENUMERATION / DATA / VERIFICATION}\par\vspace{1cm}
 {\sffamily\Huge\bfseries\color{ink} Rank-5 fusion rings\par}
 \vspace{0.35cm}
-{\sffamily\Large A reproducible census through multiplicity 18\par}
+{\sffamily\Large A reproducible census through multiplicity 19\par}
 \vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 19 September 2026}\par\vspace{0.8cm}
 \begin{abstract}
-We explain the exact enumeration of all based fusion rings of rank 5 through multiplicity 18, comprising 28,493 isomorphism classes. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
+We explain the exact enumeration of all based fusion rings of rank 5 through multiplicity 19, comprising 34,133 isomorphism classes. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
 \end{abstract}\vspace{0.4cm}\noindent\textbf{AI assistance and verification.} GPT-6 Astra Pro assisted with code, exposition and computational checks. Exhaustive-search arguments and exact independent tensor verification are recorded separately; no proof-assistant certification or peer-reviewed acceptance is claimed.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage
 
 \section{Objects, equivalence and the counting convention}
@@ -73,7 +73,7 @@ Different $p$ cannot be isomorphic. Therefore a whole-rank census is complete
 exactly when every required stratum has been searched exhaustively. Finishing
 only the non-self-dual strata does not certify a whole-rank counting term.
 \section{The certified release at rank 5}
-The released bound is $M=18$ and the cumulative number of classes is $C_{5}(18)=28,493$. Every duality type is included. The accompanying full tensor file has one record per based-isomorphism class.
+The released bound is $M=19$ and the cumulative number of classes is $C_{5}(19)=34,133$. Every duality type is included. The accompanying full tensor file has one record per based-isomorphism class.
 
 
 \begin{center}\begin{tabular}{rr}\toprule Exact multiplicity $m$ & $c_{\Rank}(m)$\\\midrule
@@ -95,6 +95,7 @@ The released bound is $M=18$ and the cumulative number of classes is $C_{5}(18)=
 16 & 4,157\\
 17 & 4,255\\
 18 & 5,080\\
+19 & 5,640\\
 \bottomrule\end{tabular}\end{center}
 
 The complete-run evidence is available through \path{results/census.json} and the corresponding reports under \path{verification/}. Earlier ranks retain their original completed-run provenance; repository checks and newly executed runs are labelled separately.
@@ -308,18 +309,31 @@ has already been dualized where the internal parameter convention requires it.
 The raw tensor needs no additional index conversion.
 
 \subsection{Computation budgets and release gates}
-The repository provides a manually dispatched GitHub Actions matrix. Each
-whole-rank job has a 20-minute ceiling. The frontier driver has a shared
-1,100-second wall-clock deadline, including compilation, enumeration, export
-and independent verification; the remaining job allowance accommodates checkout
-and artifact handling. All attempts at a given rank share that deadline.
+The private repository provides two manually dispatched GitHub Actions campaigns.
+The original frontier has a 1,100-second shared driver deadline and a 20-minute
+job ceiling. The long frontier selects only ranks 5--8: each rank has one
+4,200-second (70-minute) shared deadline and a 75-minute job ceiling, at most
+300 runner-minutes in total. Compilation, all attempted multiplicities and
+duality types, export, compression and independent verification share the driver
+deadline. Enumeration receives 90\% of remaining driver time; the balance is
+reserved for other phases. Threads follow the actual runner CPU allocation.
 
-A larger incomplete attempt never replaces an earlier complete one. Only a
-whole-rank run with successful verification enters the \path{best/} artifact.
-Partial-stratum tensors are discarded from release data. A run that finds no
-extension leaves the checked-in baseline untouched. The code and workflow files
-are provided for reproducibility; their presence is not evidence that a GitHub
-run was actually launched or completed.
+Only a complete whole-rank run with successful independent verification enters
+\path{best/}. A later incomplete attempt never replaces it. Candidates require
+explicit review and fresh independent verification before integration. Partial
+logs remain diagnostic evidence and never supply exhaustive census or OEIS terms.
+All workflows are manual; neither a push nor this manuscript launches a search.
+
+The reviewed long campaign, GitHub run 35440299307 at source revision
+\texttt{931addc686e8} (full revision in the review record), completed rank five through
+multiplicity 19 with 34,133 classes, including 5,640 at exact multiplicity 19.
+The subsequent rank-five bound 20 and the attempted bounds 7, 4 and 2 at ranks
+six, seven and eight exhausted their search budgets. They yield no larger
+complete whole-rank counts. Ranks three and four were not recomputed.
+The accepted rank-five data underwent a fresh exhaustive tensor and
+based-isomorphism audit on GitHub before integration. The full earlier
+exact-multiplicity prefix agrees. See \path{docs/CAMPAIGN_REVIEW.md} and
+\path{verification/imports/rank5_through19/}.
 
 \section{Reading and reusing the data}
 The result files count based rings, not monoidal categories or realizations of
@@ -336,17 +350,21 @@ computational companion, not a claim of journal acceptance or external peer revi
 
 \section{Reproduction commands}
 From the repository root, a complete run can be requested as follows. A timeout reports failure to finish, not a smaller theorem.
+\par\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}
-python3 code/run_census.py --rank 5 --bound 18 \
-  --seconds 1200 --threads 4 --verify --out rerun_rank5
+python3 code/run_census.py --rank 5 --bound 19 \
+  --seconds 4200 --threads "$(nproc)" --verify --out rerun_rank5
 \end{lstlisting}
+\end{minipage}\par
 To verify the supplied release without recomputing it:
+\par\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}
 python3 scripts/check_release.py --full
 \end{lstlisting}
-For a shared-budget frontier search, use \path{scripts/extend_census.py}. Its checked-in starting points are heuristics, not a claim of time-optimality. Rank three is instead capped at 1000.
+\end{minipage}\par
+For a shared-budget frontier search, use \path{scripts/extend_census.py}. For ranks five through eight it starts at the released bound plus one and restarts the unfinished bound without claiming checkpoint resumption. The low-level command above limits enumeration only; the frontier wrapper additionally bounds every phase. Rank three is instead capped at 1000.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{9}\small\setlength{\itemsep}{2pt}
 \bibitem{EGNO} P. Etingof, S. Gelaki, D. Nikshych and V. Ostrik,
 \emph{Tensor Categories}, Mathematical Surveys and Monographs 205,
 American Mathematical Society, 2015.
