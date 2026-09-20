@@ -22,7 +22,14 @@ is a full check of every shipped tensor, not a sample: it verifies SHA-256 hashe
 unit and duality, reciprocity, all associativity identities and canonicalization
 under every unit-fixing basis permutation. Input order need not be canonical.
 
-## Reproduce a particular bound
+## Local runs without a clock limit
+
+Use `python3 scripts/run_laptop.py --rank R --bound M` on your laptop.
+See [supported bounds, installation and result ZIPs](LAPTOP.md). This mode
+requires exhaustive independent verification and agreement with the known count
+prefix; it refuses GitHub Actions. Hosted budgets remain finite.
+
+## Reproduce a particular bound with a clock limit
 
 ```bash
 python3 code/run_census.py --rank 7 --bound 3 --seconds 1200 \
@@ -94,7 +101,9 @@ The separately authorized [rank-6 bound-7 campaign](RANK6_M7_MAX.md) opts in wit
 `--rank6-m7-max` on both drivers: at most 21,300 shared seconds, a fixed bound of
 7, and a six-hour hosted-job ceiling. It reserves 120 seconds instead of 10% for
 other phases and does not attempt bound 8. Every standard mode retains its
-existing validation limits. Results remain artifacts pending the user's return.
+existing validation limits. That hosted run exhausted its budget. The subsequent
+[laptop result](RANK6_LAPTOP_REVIEW.md) completed bound 7 and passed a fresh
+independent GitHub audit before integration.
 
 ## Input format
 

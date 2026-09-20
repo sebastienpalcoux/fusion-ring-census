@@ -46,6 +46,8 @@ multiplicity-1, -2, -3 or -4 prefixes.
 
 The rank-five multiplicity-19 value 5640 extends the local A354473 draft to a(19).
 It comes from the reviewed complete GitHub run, with the entire old prefix checked.
+The reviewed laptop result adds c_6(7)=3814 to `fixed_rank_6.txt`, after a fresh
+independent GitHub audit; no OEIS accession is assigned here.
 The rank-seven multiplicity-three value 1059 extends A354476 at a(7).
 Any additional rank-eight multiplicity-two value is exported to A354475 only when
 the complete rank-eight bound-two run is certified in the manifest.

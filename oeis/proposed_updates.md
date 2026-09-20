@@ -16,6 +16,9 @@ Rank-six, rank-seven and rank-eight exact-multiplicity count files are supplied 
 
 The multiplicity-19 term was accepted after review of GitHub run 35440299307 and
 fresh independent verification in run 35449570360. No term is claimed for rank
-five at multiplicity 20, rank six at 7, rank seven at 4 or rank eight at 2. The
+five at multiplicity 20, rank seven at 4 or rank eight at 2.
+The later laptop result adds c_6(7)=3814 to the fixed-rank-six draft, following
+fresh independent GitHub verification in run 35499152450. Its prefix is now
+39, 154, 384, 872, 1582, 2768, 3814. No accession number is assigned here. The
 repository remains private; no online OEIS edits or public-reference release
 were made during this review.

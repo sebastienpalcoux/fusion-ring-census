@@ -1,7 +1,13 @@
 # Rank 6, multiplicity 7: maximum-duration hosted job
 
-This separately authorized campaign attempts **rank 6 through multiplicity 7
-only**. The released baseline is bound 6 with 5,799 classes. It restarts the
+**Historical outcome:** [run 35451839114](https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35451839114)
+exhausted its budget without a complete extension. The later
+[laptop result](RANK6_LAPTOP_REVIEW.md) completed bound 7 and was independently
+reverified before integration. The current baseline is 7 / 9,613; this historical
+workflow refuses to repeat the completed bound.
+
+This separately authorized campaign attempted **rank 6 through multiplicity 7
+only**. The baseline at launch was bound 6 with 5,799 classes. It restarts the
 unfinished bound; the previous attempts left no verified resumable checkpoint.
 It does not search bound 8 or run any other rank.
 
@@ -49,8 +55,8 @@ collections are excluded. Genuine errors fail the job; expected budget exhaustio
 records `no_extension_within_budget` without changing the released baseline.
 
 The user requested **launch then stop**. No integration job, automatic commit,
-manuscript build or OEIS update runs in this campaign. A successful candidate
-will be reviewed and integrated when the user returns. The repository stays private.
+manuscript build or OEIS update runs in this campaign. This campaign produced no complete candidate; its retained diagnostics are under
+`verification/github_actions/run35451839114/`. The repository stays private.
 
 The equivalent driver invocation on GitHub is:
 

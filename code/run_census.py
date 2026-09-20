@@ -15,6 +15,7 @@ import hashlib
 import json
 import math
 import os
+import platform
 import shutil
 import subprocess
 import sys
@@ -27,15 +28,36 @@ CODE = ROOT/'code'
 SYSTEMS = ROOT/'systems'
 
 
+def check_local_prefix(rank, bound, counts):
+    baseline = json.loads((ROOT/'results/census.json').read_text())['ranks'][str(rank)]
+    if not (baseline.get('complete') is True and baseline.get('verified') is True):
+        raise ValueError('released baseline is not certified')
+    through = min(bound, baseline['bound'])
+    if any(counts.get(str(m)) != baseline['counts'].get(str(m)) for m in range(1, through+1)):
+        raise ValueError('existing exact-multiplicity prefix mismatch')
+    return through
+
+
+def parallel_depth(bound):
+    # The parallel enumerator rejects more than two million prefix jobs.
+    # Any depth partitions the entire domain; shorten only when necessary.
+    depth = 6
+    while (bound+1)**depth > 2000000:
+        depth -= 1
+    return depth
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--rank', type=int, choices=(3,4,5,6,7,8), required=True)
     ap.add_argument('--bound', type=int, required=True)
     ap.add_argument('--seconds', type=float, default=None)
+    ap.add_argument('--local-unlimited', action='store_true',
+                    help='Local laptop only: no clock limit; requires independent verification')
     ap.add_argument('--rank6-m7-max', action='store_true',
                     help='Allow the explicitly bounded rank-6 multiplicity-7 campaign only')
     ap.add_argument('--deadline', type=float, help='Parent monotonic wall-clock deadline; never reset between phases')
-    ap.add_argument('--threads', type=int, default=4)
+    ap.add_argument('--threads', type=int, default=min(64, len(os.sched_getaffinity(0))) if hasattr(os, 'sched_getaffinity') else min(64, os.cpu_count() or 1))
     ap.add_argument('--out', type=Path, required=True)
     ap.add_argument('--compiler', default=os.environ.get('CXX','g++'))
     ap.add_argument('--verify', action='store_true')
@@ -46,11 +68,15 @@ def main() -> int:
         ap.error(f'bound must be in [1,{cap}]; threads in [1,64]')
     budget = a.seconds if a.seconds is not None else {3:60,4:1200,5:1200,6:1200,7:1200,8:1200}[a.rank]
     limit = 4200
+    if a.local_unlimited:
+        if os.environ.get('GITHUB_ACTIONS') or not a.verify or a.seconds is not None or a.deadline is not None or a.rank6_m7_max:
+            ap.error('--local-unlimited requires --verify, local execution, and no other budget flags')
+        budget = math.inf
     if a.rank6_m7_max:
         if (a.rank,a.bound)!=(6,7) or a.deadline is None or not a.verify:
             ap.error('--rank6-m7-max requires rank 6, bound 7, --verify and a shared --deadline')
         limit = 21300
-    if not math.isfinite(budget) or not 0 < budget <= limit:
+    if not a.local_unlimited and (not math.isfinite(budget) or not 0 < budget <= limit):
         ap.error(f'--seconds must be finite, positive and at most {limit}')
     if a.deadline is not None and (not math.isfinite(a.deadline) or not 0 < a.deadline-time.monotonic() <= limit):
         ap.error(f'--deadline must be finite and within the next {limit} seconds')
@@ -63,7 +89,11 @@ def main() -> int:
     logs=a.out/'logs';logs.mkdir()
     raw=a.out/'diagnostics';raw.mkdir()
     report={'rank':a.rank,'bound':a.bound,'threads':a.threads,
-            'enumeration_budget_seconds':budget,'complete':False,'verified':False,'runs':[],
+            'enumeration_budget_seconds':None if a.local_unlimited else budget,
+            'time_limit':'none (local laptop)' if a.local_unlimited else 'bounded',
+            'environment':{'python':platform.python_version(),'system':platform.system()+' '+platform.release()+' '+platform.machine(),
+                           'cpu_count':os.cpu_count(),'threads':a.threads},
+            'complete':False,'verified':False,'runs':[],
             'github_sha':os.environ.get('GITHUB_SHA'),'github_run_id':os.environ.get('GITHUB_RUN_ID'),
             'deadline_monotonic':a.deadline,'phase':'initialization','commands':[]}
     env=dict(os.environ,OMP_NUM_THREADS=str(a.threads))
@@ -77,7 +107,7 @@ def main() -> int:
     def persist():
         report['elapsed_seconds']=time.monotonic()-started
         temp=a.out/'run.json.next'
-        temp.write_text(json.dumps(report,indent=2)+'\n')
+        temp.write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')
         temp.replace(a.out/'run.json')
 
     def phase(name):
@@ -139,7 +169,7 @@ def main() -> int:
                 path=SYSTEMS/f'rank{a.rank}_pairs{p}.txt'
                 if a.rank>=7 and p==1:
                     # Argument index 3 is replaced with the shared remaining budget.
-                    jobs.append((f'pairs{p}',[str(parallel),str(path),str(a.bound),'TIME',str(a.threads),'6'],3))
+                    jobs.append((f'pairs{p}',[str(parallel),str(path),str(a.bound),'TIME',str(a.threads),str(parallel_depth(a.bound))],3))
                 else:
                     jobs.append((f'pairs{p}',[str(general),str(path),str(a.bound),'TIME'],3))
             jobs.append(('selfdual',[str(fast),str(SYSTEMS/f'system{a.rank}sd.txt'),str(a.rank),str(a.bound),'TIME',str(a.threads)],4))
@@ -160,11 +190,11 @@ def main() -> int:
             output=raw/(name+'.parameters.txt');logpath=logs/(name+'.log')
             st=time.monotonic()
             phase('enumeration:'+name)
-            entry={'name':name,'command':cmd,'allowance_seconds':remaining}
+            entry={'name':name,'command':cmd,'allowance_seconds':None if a.local_unlimited else remaining}
             report['runs'].append(entry);persist()
             try:
                 with output.open('w') as out,logpath.open('w') as log:
-                    run=subprocess.run(cmd,stdout=out,stderr=log,env=env,timeout=remaining)
+                    run=subprocess.run(cmd,stdout=out,stderr=log,env=env,timeout=None if a.local_unlimited else remaining)
                 elapsed=time.monotonic()-st
                 entry.update(elapsed_seconds=elapsed,returncode=run.returncode);persist()
                 if run.returncode==3:
@@ -212,7 +242,10 @@ def main() -> int:
             with (logs/'verification.log').open('w') as log:
                 run_checked([str(verifier),str(table),str(a.out/'independent_check'),'--exhaustive'],stdout=log,stderr=subprocess.STDOUT)
             check=json.loads((a.out/'independent_check/summary.json').read_text())
-            if check['duplicates']!=0 or check['distinct_rings']!=len(rows):
+            if (check['duplicates']!=0 or check['distinct_rings']!=len(rows)
+                    or check.get('input_records')!=len(rows)
+                    or check.get('associativity_checked') is not True
+                    or check.get('canonical_mode')!='all unit-fixing permutations'):
                 raise ValueError('independent verification found duplicate or missing records')
             verified_counts={str(m):0 for m in range(1,a.bound+1)}
             with (a.out/'independent_check/counts.csv').open() as f:
@@ -224,6 +257,8 @@ def main() -> int:
                 raise ValueError('independent exact-multiplicity counts do not match')
             report['independent_verification_seconds']=time.monotonic()-st
             report['independent_verification']=check
+            if a.local_unlimited:
+                report['existing_prefix_checked_through']=check_local_prefix(a.rank,a.bound,report['counts'])
             report['verified']=True
         st=time.monotonic()
         phase('compression')

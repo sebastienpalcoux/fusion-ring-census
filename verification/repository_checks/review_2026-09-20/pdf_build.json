@@ -1,0 +1,38 @@
+[
+  {
+    "rank": 3,
+    "pages": 6,
+    "sha256": "31461e55e64ce043cddc7d0552dcafc5176eabbe285a1dea70ae3594660868dd",
+    "valid_pdf": true
+  },
+  {
+    "rank": 4,
+    "pages": 9,
+    "sha256": "acd3693c5c5f6d3084e41ef6fb70f02a00c38cf5f2e2b8646f4d49e6d5484534",
+    "valid_pdf": true
+  },
+  {
+    "rank": 5,
+    "pages": 9,
+    "sha256": "704c22b6428a84fe3010bf884850fdb1bacf6db8fd5d2cb568a3637f40c7abe9",
+    "valid_pdf": true
+  },
+  {
+    "rank": 6,
+    "pages": 8,
+    "sha256": "583eb1019540dc6cdbdda1e101e31cbb62754249ced0a94916122dbbc06ab21b",
+    "valid_pdf": true
+  },
+  {
+    "rank": 7,
+    "pages": 8,
+    "sha256": "e4623886577523e492bead76bb45268414b4466f76fd99a949c1f4f4f0794539",
+    "valid_pdf": true
+  },
+  {
+    "rank": 8,
+    "pages": 8,
+    "sha256": "7cc39606398a4f145009f159935e1a198388f97f5a5ba157b9b26c4b2521b1a2",
+    "valid_pdf": true
+  }
+]

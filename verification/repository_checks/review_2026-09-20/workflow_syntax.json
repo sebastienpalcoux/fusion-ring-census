@@ -1,0 +1,12 @@
+{
+  "manual_only": true,
+  "files": [
+    ".github/workflows/long-frontier.yml",
+    ".github/workflows/frontier.yml",
+    ".github/workflows/rank6-m7-max.yml",
+    ".github/workflows/manuscripts.yml",
+    ".github/workflows/review-rank6-m7-laptop.yml",
+    ".github/workflows/ci.yml",
+    ".github/workflows/review-rank5-m19.yml"
+  ]
+}

@@ -317,7 +317,7 @@ has already been dualized where the internal parameter convention requires it.
 The raw tensor needs no additional index conversion.
 
 \subsection{Computation budgets and release gates}
-The private repository provides two manually dispatched GitHub Actions campaigns.
+The private repository provides manually dispatched GitHub Actions campaigns.
 The original frontier has a 1,100-second shared driver deadline and a 20-minute
 job ceiling. The long frontier selects only ranks 5--8: each rank has one
 4,200-second (70-minute) shared deadline and a 75-minute job ceiling, at most
@@ -332,16 +332,22 @@ explicit review and fresh independent verification before integration. Partial
 logs remain diagnostic evidence and never supply exhaustive census or OEIS terms.
 All workflows are manual; neither a push nor this manuscript launches a search.
 
-The reviewed long campaign, GitHub run 35440299307 at source revision
-\texttt{931addc686e8} (full revision in the review record), completed rank five through
-multiplicity 19 with 34,133 classes, including 5,640 at exact multiplicity 19.
-The subsequent rank-five bound 20 and the attempted bounds 7, 4 and 2 at ranks
-six, seven and eight exhausted their search budgets. They yield no larger
-complete whole-rank counts. Ranks three and four were not recomputed.
-The accepted rank-five data underwent a fresh exhaustive tensor and
-based-isomorphism audit on GitHub before integration. The full earlier
-exact-multiplicity prefix agrees. See \path{docs/CAMPAIGN_REVIEW.md} and
-\path{verification/imports/rank5_through19/}.
+The reviewed long campaign (GitHub run 35440299307, revision
+\texttt{931addc686e8}) completed rank five through 19: 34,133 classes, including
+5,640 at exact multiplicity 19, with the old prefix unchanged. Larger attempts
+at ranks five through eight timed out. The accepted result passed a fresh
+independent GitHub audit before integration; see \path{docs/CAMPAIGN_REVIEW.md}
+and \path{verification/imports/rank5_through19/} for source and audit records.
+
+The later six-hour hosted rank-six job (35451839114) timed out. A laptop run
+received on 20 September 2026 completed all duality types in 3,532.36 seconds
+with 12 threads: 9,613 classes through 7, including $c_6(7)=3814$. The prefix
+$(39,154,384,872,1582,2768)$ agrees. A fresh GitHub audit (35499152450) checked
+all tensors and 1,153,560 unit-fixing permutations, finding zero duplicates.
+See \path{docs/RANK6_LAPTOP_REVIEW.md} and
+\path{verification/imports/rank6_through7/} for original logs and both audits.
+Other ranks were not re-enumerated. Unlimited local runs require independent
+verification and prefix agreement; GitHub workflow budgets remain finite.
 
 \section{Reading and reusing the data}
 The result files count based rings, not monoidal categories or realizations of
@@ -407,7 +413,7 @@ def build_sources():
         body+=r'\thispagestyle{empty}{\sffamily\small\color{accent} EXACT ENUMERATION / DATA / VERIFICATION}\par\vspace{1cm}'+'\n'
         body+=f'{{\\sffamily\\Huge\\bfseries\\color{{ink}} Rank-{r} fusion rings\\par}}\n\\vspace{{0.35cm}}\n'
         body+=f'{{\\sffamily\\Large A reproducible census through multiplicity {item["bound"]}\\par}}\n'
-        body+=r'\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 19 September 2026}\par\vspace{0.8cm}'+'\n'
+        body+=r'\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 20 September 2026}\par\vspace{0.8cm}'+'\n'
         body+=r'\begin{abstract}'+'\n'
         body+=f'We explain the exact enumeration of all based fusion rings of rank {r} through multiplicity {item["bound"]}, comprising {item["classes"]:,} isomorphism classes. '
         body+='The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. '
@@ -438,10 +444,10 @@ a generic determinant is nonzero.
 '''
         else:body+=GENERAL+FAST
         body+=AUDIT
-        body+='\n\\section{Reproduction commands}\nFrom the repository root, a complete run can be requested as follows. A timeout reports failure to finish, not a smaller theorem.\n'
-        body+='\\begin{lstlisting}\n'+f'python3 code/run_census.py --rank {r} --bound {item["bound"]} \\\n  --seconds {4200 if r >= 5 else 1200} --threads "$(nproc)" --verify --out rerun_rank{r}\n'+'\\end{lstlisting}\n'
+        body+='\n\\section{Reproduction commands}\nFrom the repository root on a local computer, request a complete run with no clock limit. An interruption does not certify a smaller census.\n'
+        body+='\\begin{lstlisting}\n'+f'python3 scripts/run_laptop.py --rank {r} --bound {item["bound"]}\n'+'\\end{lstlisting}\n'
         body+='To verify the supplied release without recomputing it:\n\\begin{lstlisting}\npython3 scripts/check_release.py --full\n\\end{lstlisting}\n'
-        body+='For a shared-budget frontier search, use \\path{scripts/extend_census.py}. For ranks five through eight it starts at the released bound plus one and restarts the unfinished bound without claiming checkpoint resumption. The low-level command above limits enumeration only; the frontier wrapper additionally bounds every phase. Rank three is instead capped at 1000.\n'
+        body+='For a shared-budget frontier search, use \\path{scripts/extend_census.py}. For ranks five through eight it starts at the released bound plus one and restarts the unfinished bound without claiming checkpoint resumption. The local command above verifies all tensors and the old count prefix before packaging a result. The separate timed frontier wrapper bounds every phase. Rank three is instead capped at 1000.\n'
         if r==4:
             body+='\\clearpage\\appendix\n\\section{All exact-multiplicity rank-four counts}\n\\begin{longtable}{rr@{\\hspace{1.1cm}}rr@{\\hspace{1.1cm}}rr@{\\hspace{1.1cm}}rr}\n\\toprule $m$ & $c_4(m)$ & $m$ & $c_4(m)$ & $m$ & $c_4(m)$ & $m$ & $c_4(m)$\\\\\\midrule\\endhead\n'
             values=list(item['counts'].items())
@@ -452,6 +458,7 @@ a generic determinant is nonzero.
                     else:fields += ['','']
                 body+=' & '.join(fields)+'\\\\\n'
             body+='\\bottomrule\\end{longtable}\n'
+        if r==5:body+='\\clearpage\n'  # Keep the bibliography together.
         body+=BIB+'\\end{document}\n'
         body=body.replace('\\begin{lstlisting}', '\\par\\noindent\\begin{minipage}{\\linewidth}\n\\begin{lstlisting}').replace('\\end{lstlisting}', '\\end{lstlisting}\n\\end{minipage}\\par')
         (M/f'rank{r}.tex').write_text(body)

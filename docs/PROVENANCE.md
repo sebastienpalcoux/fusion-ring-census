@@ -89,3 +89,13 @@ Successful nonselfdual strata at those bounds do not establish whole-rank counts
 No compilation, resource or verification failure was found in the retained logs.
 Ranks 3 and 4 were not recomputed or extended. The review changed the rank-five
 release and derived documentation, not the enumerator algorithms or proof methods.
+
+## Reviewed laptop extension, 20 September 2026
+
+Sébastien Palcoux supplied the completed rank-six bound-seven laptop archive.
+All duality strata returned normally; 9,613 tensors and 3,814 exact-multiplicity-seven
+classes were independently verified on the laptop and then freshly on GitHub
+in run 35499152450. See [the review](RANK6_LAPTOP_REVIEW.md) for checksums,
+source lineage, timing and the preceding unsuccessful six-hour hosted attempt.
+Original bound-six data remain preserved. Enumeration algorithms and coverage
+arguments are unchanged; the local launcher changes clock controls and diagnostics.

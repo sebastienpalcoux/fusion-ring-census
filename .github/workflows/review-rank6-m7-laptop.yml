@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           persist-credentials: false
+          ref: 7397377085bbdd911a0fc70246a77687b6c579ec # Frozen pre-integration candidate and baseline
       - name: Check received file hashes
         working-directory: verification/candidates/rank6_M7_laptop
         run: sha256sum --check SHA256SUMS

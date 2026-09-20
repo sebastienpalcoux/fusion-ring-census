@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.1 — 2026-09-20
+
+- Integrated the complete laptop rank-six census through multiplicity 7: 9,613
+  classes, including 3,814 at exact multiplicity 7. Preserved original data/logs;
+  freshly verified every tensor and all basis relabellings on GitHub before import.
+- Updated all six manuscripts, count projections, website, documentation and
+  unsubmitted OEIS drafts. Other ranks' data are unchanged.
+- Added a rank-3–8 local launcher with no clock limit, full independent checking,
+  old-prefix checks, result archives and a reproducible standalone package builder.
+  Hosted budgets stay bounded; safe mathematical input caps are unchanged.
+- Preserved diagnostics of the unsuccessful six-hour hosted rank-six attempt.
+
+
 ## Reviewed GitHub campaign — 19 September 2026
 
 - Integrated the complete rank-5 census through multiplicity 19: 34,133 classes,

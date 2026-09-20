@@ -76,3 +76,7 @@ OEIS submission is a separate reviewed action, not part of tagging or CI.
 - Repository creation: https://cli.github.com/manual/gh_repo_create
 - Workflow dispatch: https://cli.github.com/manual/gh_workflow_run
 - Workflow syntax and job limits: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
+
+The rank-six bound-seven result was subsequently completed on the user's laptop
+and [freshly audited and integrated](RANK6_LAPTOP_REVIEW.md). The historical
+maximum-duration campaign cannot rerun against the new baseline.

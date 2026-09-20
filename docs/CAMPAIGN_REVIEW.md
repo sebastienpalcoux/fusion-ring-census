@@ -4,7 +4,9 @@ The longer GitHub campaign produced **one complete extension**: rank 5 through
 multiplicity 19, with **34,133 distinct based-isomorphism classes**. The new exact
 multiplicity term is **c₅(19) = 5,640**. After a fresh independent audit on GitHub,
 this candidate was integrated into the release. All other complete bounds remain
-unchanged. The current six-rank total is **1,391,332 classes**.
+unchanged. The six-rank total at that review was **1,391,332 classes**.
+The subsequent [laptop review](RANK6_LAPTOP_REVIEW.md) extended rank 6; this page
+retains the historical campaign snapshot.
 
 | Rank | Previous bound / classes | Reviewed bound / classes | Incomplete attempt |
 |---:|---:|---:|---|

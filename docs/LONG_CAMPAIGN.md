@@ -73,3 +73,6 @@ The launch task left candidates as reviewable artifacts. The subsequent user-req
 review integrated only rank 5 through multiplicity 19, after fresh independent
 verification. Future campaigns still require explicit authorization and a spending
 check; their starting bounds are read from the current manifest.
+
+The later [laptop review](RANK6_LAPTOP_REVIEW.md) extended rank 6 through 7.
+The table above is historical; future starts use the current manifest.

@@ -28,6 +28,16 @@ class CampaignTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.out = Path(self.temp.name) / 'campaign'
+        # Historical budget tests use a fixed baseline, independent of later releases.
+        fixture = Path(self.temp.name) / 'repository'
+        (fixture/'results').mkdir(parents=True)
+        data = json.loads((ROOT/'results/census.json').read_text())
+        six = data['ranks']['6']
+        six.update(bound=6, classes=5799, counts={str(k): v for k, v in enumerate([39,154,384,872,1582,2768],1)})
+        (fixture/'results/census.json').write_text(json.dumps(data))
+        root_patch = patch.object(frontier, 'ROOT', fixture)
+        root_patch.start()
+        self.addCleanup(root_patch.stop)
         self.now = 100.0
         self.commands = []
         self.environment = patch.dict(os.environ, {'GITHUB_RUN_ATTEMPT': '1'})
@@ -47,7 +57,7 @@ class CampaignTests(unittest.TestCase):
                 self.pid = 12345
                 self.path = Path(cmd[cmd.index('--out') + 1])
                 bound = int(cmd[cmd.index('--bound') + 1])
-                baseline = json.loads((ROOT / 'results/census.json').read_text())['ranks']['6']
+                baseline = json.loads((frontier.ROOT / 'results/census.json').read_text())['ranks']['6']
                 self.path.mkdir()
                 (self.path / 'logs').mkdir()
                 (self.path / 'logs/selfdual.log').write_text('mock per-duality evidence\n')

@@ -64,11 +64,17 @@ in the **ordered** product `i*j`. All results include every duality type.
 categorifiability criterion is applied. Rank three is intentionally capped at 1000.
 
 The original datasets and execution provenance remain preserved. The reviewed
-GitHub campaign extended rank 5 through multiplicity 19; ranks 3, 4 and 6–8
-retain their earlier complete datasets. Independent verification reports are
-recorded separately from enumeration logs. See [the campaign review](docs/CAMPAIGN_REVIEW.md).
+GitHub campaign extended rank 5 through multiplicity 19. The reviewed laptop
+run extended rank 6 through multiplicity 7: **9,613 classes**, including **3,814
+at exact multiplicity 7**. Ranks 3, 4, 7 and 8 retain their earlier complete
+datasets. See [the laptop result review](docs/RANK6_LAPTOP_REVIEW.md) and
+[the earlier campaign review](docs/CAMPAIGN_REVIEW.md).
 
-## Three ways to use the project
+## Using the project
+
+For an unlimited local run, use `python3 scripts/run_laptop.py --rank 6 --bound 8`.
+The [laptop guide](docs/LAPTOP.md) lists all six ranks, supported bounds, setup
+and verified ZIP output. These local runs never launch from GitHub Actions.
 
 Read `manuscripts/rankR.pdf` for the definitions, mathematical coverage argument,
 rank-specific method, results, singular cases and verification boundary.
@@ -82,7 +88,7 @@ python3 scripts/check_release.py --full
 Reproduce a complete bounded census, or request a larger whole-rank search:
 
 ```bash
-python3 code/run_census.py --rank 6 --bound 6 --seconds 1200 \\
+python3 code/run_census.py --rank 6 --bound 7 --seconds 4200 \\
   --threads 4 --verify --out runs/rank6-reproduction
 python3 scripts/extend_census.py --rank 6 --seconds 4200 \\
   --threads "$(nproc)" --out runs/rank6-frontier
@@ -110,6 +116,8 @@ uses one standard Ubuntu job with GitHub's **six-hour maximum job ceiling** and
 one 21,300-second shared driver deadline. It searches only bound 7, preserves
 verified artifacts, and does not automatically change the release. Its explicit
 `--rank6-m7-max` option does not enlarge the budgets of the other workflows.
+That historical run timed out; the later laptop result completed bound 7.
+The special campaign now refuses to recompute the completed bound.
 
 Published privately at [sebastienpalcoux/fusion-ring-census](https://github.com/sebastienpalcoux/fusion-ring-census).
 The [long campaign](.github/workflows/long-frontier.yml) is manually triggered and
@@ -145,7 +153,7 @@ The first published run found no complete extension for ranks 5–8. The longer
 completed rank 5 through multiplicity 19: **34,133 classes**, including **5,640
 at exact multiplicity 19**. It did not complete rank 5 at 20, rank 6 at 7,
 rank 7 at 4 or rank 8 at 2. After a fresh independent GitHub audit, the rank-5
-candidate was integrated; every other released bound is unchanged. Permanent
+candidate was integrated; the later laptop review extended rank 6 to bound 7. Permanent
 [review evidence](docs/CAMPAIGN_REVIEW.md) records the accepted result and timeouts. Review [the release procedure](docs/RELEASES.md) before any
 future promotion. `scripts/publish_github.py` is an initial-publication helper;
 do not use it to recreate this existing repository.
@@ -237,6 +245,8 @@ multiplicity-1, -2, -3 or -4 prefixes.
 
 The rank-five multiplicity-19 value 5640 extends the local A354473 draft to a(19).
 It comes from the reviewed complete GitHub run, with the entire old prefix checked.
+The reviewed laptop result adds c_6(7)=3814 to `fixed_rank_6.txt`, after a fresh
+independent GitHub audit; no OEIS accession is assigned here.
 The rank-seven multiplicity-three value 1059 extends A354476 at a(7).
 Any additional rank-eight multiplicity-two value is exported to A354475 only when
 the complete rank-eight bound-two run is certified in the manifest.
