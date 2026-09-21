@@ -1,0 +1,32 @@
+{
+  "rank": 8,
+  "bound": 2,
+  "classes": 973,
+  "counts": {
+    "1": 96,
+    "2": 877
+  },
+  "outcome": "verified_extension",
+  "previous_bound": 1,
+  "previous_classes": 96,
+  "source_commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b",
+  "code_sha256": "0f7690b2c58d7c300d3ab24a2751d1859f676f0db72958d91ad8c4b0ff0a3753",
+  "verification_commit": "b5e15383c75f46e1d00679a3815dc56e638f4a56",
+  "verification_run_id": "35553424461",
+  "complete": true,
+  "verified": true,
+  "independent_verification": {
+    "input_records": 973,
+    "input_physical_lines": 973,
+    "distinct_rings": 973,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "all unit-fixing permutations",
+    "permutations_examined": 4903920,
+    "elapsed_seconds": 0.363488956
+  },
+  "tables_sha256": "97b86d2de8ca0352c5c6e14686cd1d43dbd52180dc53b2ff1ccf7a61788c9600",
+  "parameters_sha256": "cb9d84fb05ef00f572d59a3a5df4609a83ec00a793d8afed4f74c405469d09b7"
+}

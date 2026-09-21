@@ -5,8 +5,7 @@ contents have been reviewed. Do not execute scripts from a mathematical data
 submission automatically. Tensor files contain nonnegative integers, not programs.
 
 Workflows have read-only repository permissions and pinned external action commits.
-They do not receive secrets or write back results. The manual publisher uses a
-local authenticated GitHub CLI session and never prints or embeds access tokens.
+They do not receive secrets or write back results. Publication uses the maintainer's authenticated Git session; credentials never belong in datasets or logs.
 
 The enumeration programs are bounded scientific utilities, not hardened services
 for arbitrary adversarial inputs. Keep input rank, coefficient and workspace

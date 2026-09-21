@@ -23,4 +23,4 @@ jobs:
           name: rank-companions-${{ github.run_id }}
           path: manuscripts/*.pdf
           if-no-files-found: error
-          retention-days: 90
+          retention-days: 14

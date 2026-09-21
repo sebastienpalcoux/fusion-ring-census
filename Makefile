@@ -8,6 +8,7 @@ verify:
 	$(PYTHON) scripts/check_release.py --full --out runs/full-verification.json
 docs:
 	$(PYTHON) scripts/refresh_documentation.py
+	$(PYTHON) scripts/build_site.py
 	$(PYTHON) scripts/build_manuscripts.py --compile
 site:
 	$(PYTHON) scripts/build_site.py

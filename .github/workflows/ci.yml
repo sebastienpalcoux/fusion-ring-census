@@ -24,4 +24,4 @@ jobs:
           name: exact-checks-${{ github.run_id }}
           path: _ci/
           if-no-files-found: error
-          retention-days: 30
+          retention-days: 14

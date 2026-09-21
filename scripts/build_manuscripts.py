@@ -6,6 +6,7 @@ mathematical derivations remain editable. No new census is performed here.
 """
 from __future__ import annotations
 import argparse,json,shutil,subprocess,tempfile
+from datetime import date
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 M=ROOT/'manuscripts'
@@ -316,38 +317,33 @@ nested-curly-brace format. An entry is $N[i][j][k]=N_{ij}^{k}$: the output index
 has already been dualized where the internal parameter convention requires it.
 The raw tensor needs no additional index conversion.
 
-\subsection{Computation budgets and release gates}
-The private repository provides manually dispatched GitHub Actions campaigns.
-The original frontier has a 1,100-second shared driver deadline and a 20-minute
-job ceiling. The long frontier selects only ranks 5--8: each rank has one
-4,200-second (70-minute) shared deadline and a 75-minute job ceiling, at most
-300 runner-minutes in total. Compilation, all attempted multiplicities and
-duality types, export, compression and independent verification share the driver
-deadline. Enumeration receives 90\% of remaining driver time; the balance is
-reserved for other phases. Threads follow the actual runner CPU allocation.
+\subsection{Current evidence and release gates}
+There is one current dataset per rank under \path{results/rankR/} and one
+corresponding evidence directory under \path{verification/rankR/}. Ranks three
+and four retain their complete original runs and independent audits. The supplied
+laptop censuses at ranks five through eight passed a fresh independent GitHub
+audit, run \href{https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35553424461}{35553424461}.
+Every emitted tensor was checked under all unit-fixing permutations, with zero
+duplicate classes and exact agreement with the previous count prefixes. Archive
+checksums, source identities, commands, environments and nonempty subprocess
+logs are retained. The rank-six upload reproduces the existing bound-seven
+census exactly; it is not an additional extension.
 
-Only a complete whole-rank run with successful independent verification enters
-\path{best/}. A later incomplete attempt never replaces it. Candidates require
-explicit review and fresh independent verification before integration. Partial
-logs remain diagnostic evidence and never supply exhaustive census or OEIS terms.
-All workflows are manual; neither a push nor this manuscript launches a search.
+The hosted frontier workflow is manual and selects ranks five through eight.
+Each rank has one 4,200-second shared driver deadline and a 75-minute job ceiling,
+at most 300 runner-minutes in total. Compilation, every attempted multiplicity,
+all duality types, export, compression and independent verification share that
+deadline. Enumeration receives 90\% of remaining driver time, reserving the
+balance for the other phases. Threads follow the actual runner CPU allocation.
+The local launcher has no clock limit; its mathematical scope limits and mandatory
+verification remain in force.
 
-The reviewed long campaign (GitHub run 35440299307, revision
-\texttt{931addc686e8}) completed rank five through 19: 34,133 classes, including
-5,640 at exact multiplicity 19, with the old prefix unchanged. Larger attempts
-at ranks five through eight timed out. The accepted result passed a fresh
-independent GitHub audit before integration; see \path{docs/CAMPAIGN_REVIEW.md}
-and \path{verification/imports/rank5_through19/} for source and audit records.
-
-The later six-hour hosted rank-six job (35451839114) timed out. A laptop run
-received on 20 September 2026 completed all duality types in 3,532.36 seconds
-with 12 threads: 9,613 classes through 7, including $c_6(7)=3814$. The prefix
-$(39,154,384,872,1582,2768)$ agrees. A fresh GitHub audit (35499152450) checked
-all tensors and 1,153,560 unit-fixing permutations, finding zero duplicates.
-See \path{docs/RANK6_LAPTOP_REVIEW.md} and
-\path{verification/imports/rank6_through7/} for original logs and both audits.
-Other ranks were not re-enumerated. Unlimited local runs require independent
-verification and prefix agreement; GitHub workflow budgets remain finite.
+Only a complete, independently verified whole-rank result can become a candidate.
+A subsequent timeout preserves the last verified candidate. Integration requires
+explicit review and a fresh independent audit. Interrupted output cannot supply
+exhaustive census or OEIS terms. All workflows are manual; a push starts no search.
+Earlier payloads and campaigns remain in Git history, without duplicate releases
+in the current tree. See \path{docs/PROVENANCE.md} and \path{verification/README.md}.
 
 \section{Reading and reusing the data}
 The result files count based rings, not monoidal categories or realizations of
@@ -403,17 +399,18 @@ def results_section(r,item):
         text+=r'\bottomrule\end{tabular}\end{center}'+'\n'
         if r==4:text+='The complete table through the released bound appears in Appendix A.\n'
     else:text+='The first sixteen terms are $4,3,4,6,5,9,6,10,12,9,10,20,9,13,16,25$. The complete 1,000-term file is supplied as \\path{oeis/b354471.txt}.\n'
-    text+='\nThe complete-run evidence is available through \\path{results/census.json} and the corresponding reports under \\path{verification/}. Earlier ranks retain their original completed-run provenance; repository checks and newly executed runs are labelled separately.\n'
+    text+=f'\nThe data and their checksums are recorded in \\path{{results/census.json}}. The corresponding completed-run evidence and independent audit are under \\path{{verification/rank{r}/}}.\n'
     return text
 
 def build_sources():
     data=json.loads((ROOT/'results/census.json').read_text());M.mkdir(exist_ok=True)
+    release_date=date.fromisoformat(data['release_date']).strftime('%d %B %Y')
     for r in range(3,9):
         item=data['ranks'][str(r)];body=PREAMBLE+f'\\newcommand{{\\Rank}}{{{r}}}\n\\begin{{document}}\n'
         body+=r'\thispagestyle{empty}{\sffamily\small\color{accent} EXACT ENUMERATION / DATA / VERIFICATION}\par\vspace{1cm}'+'\n'
         body+=f'{{\\sffamily\\Huge\\bfseries\\color{{ink}} Rank-{r} fusion rings\\par}}\n\\vspace{{0.35cm}}\n'
         body+=f'{{\\sffamily\\Large A reproducible census through multiplicity {item["bound"]}\\par}}\n'
-        body+=r'\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 20 September 2026}\par\vspace{0.8cm}'+'\n'
+        body+=(r'\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, RELEASEDATE}\par\vspace{0.8cm}').replace('RELEASEDATE',release_date)+'\n'
         body+=r'\begin{abstract}'+'\n'
         body+=f'We explain the exact enumeration of all based fusion rings of rank {r} through multiplicity {item["bound"]}, comprising {item["classes"]:,} isomorphism classes. '
         body+='The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. '
@@ -458,7 +455,6 @@ a generic determinant is nonzero.
                     else:fields += ['','']
                 body+=' & '.join(fields)+'\\\\\n'
             body+='\\bottomrule\\end{longtable}\n'
-        if r==5:body+='\\clearpage\n'  # Keep the bibliography together.
         body+=BIB+'\\end{document}\n'
         body=body.replace('\\begin{lstlisting}', '\\par\\noindent\\begin{minipage}{\\linewidth}\n\\begin{lstlisting}').replace('\\end{lstlisting}', '\\end{lstlisting}\n\\end{minipage}\\par')
         (M/f'rank{r}.tex').write_text(body)

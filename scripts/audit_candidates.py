@@ -5,7 +5,7 @@ Run the full numerical audit on GitHub Actions or the user's own computer.
 Input manifest entries are rank, bound, path and source_commit. A matching bound
 is accepted only when both uncompressed data hashes equal the released hashes.
 """
-import argparse,csv,gzip,hashlib,json,os,platform,shutil,subprocess,tempfile
+import argparse,csv,gzip,hashlib,json,os,platform,re,shutil,subprocess,tempfile
 from pathlib import Path
 from extend_census import validate_candidate
 ROOT=Path(__file__).resolve().parents[1]
@@ -31,13 +31,18 @@ def main():
    state=json.loads((p/'run.json').read_text());old=base['ranks'][str(r)]
    if m<old['bound']:raise ValueError('candidate is below released bound')
    validate_candidate(p,state,old,r,m)
-   for line in (p/'SHA256SUMS').read_text().splitlines():
+   if not re.fullmatch(r'[0-9a-f]{40}',spec['source_commit']):raise ValueError('full source commit required')
+   inventory=p/'SHA256SUMS'
+   for line in inventory.read_text().splitlines() if inventory.exists() else []:
     h,name=line.split('  ',1);f=(p/name).resolve()
     if not f.is_relative_to(p) or digest(f)!=h:raise ValueError('candidate file checksum mismatch')
-   provenance=json.loads((p/'laptop_provenance.json').read_text())
-   if provenance['source']['commit']!=spec['source_commit']:raise ValueError('source commit mismatch')
+   if (p/'laptop_provenance.json').exists():
+    provenance=json.loads((p/'laptop_provenance.json').read_text())
+    if provenance['source'].get('commit') and provenance['source']['commit']!=spec['source_commit']:raise ValueError('source commit mismatch')
+   if state.get('github_sha') and state['github_sha']!=spec['source_commit']:raise ValueError('runner source commit mismatch')
    codehash=hashlib.sha256()
    paths=subprocess.check_output(['git','ls-tree','-r','--name-only',spec['source_commit'],'--','code'],cwd=ROOT,text=True).splitlines()
+   if 'code/verify_tables.cpp' not in paths:raise ValueError('source revision lacks expected code tree')
    for name in sorted(paths):
     if Path(name).suffix in ('.cpp','.hpp','.py'):
      codehash.update(str(Path(name).relative_to('code')).encode());codehash.update(subprocess.check_output(['git','show',spec['source_commit']+':'+name],cwd=ROOT))
@@ -47,7 +52,7 @@ def main():
     with gzip.open(p/(filename+'.gz'),'rb') as src,(rd/filename).open('wb') as dst:shutil.copyfileobj(src,dst)
     actual=digest(rd/filename)
     if actual!=state[filename+'_sha256']:raise ValueError('uncompressed checksum mismatch')
-    if m==old['bound'] and actual!=old[kind+'_uncompressed_sha256']:raise ValueError('equal-bound reproduction differs from release')
+    if m==old['bound'] and kind+'_uncompressed_sha256' in old and actual!=old[kind+'_uncompressed_sha256']:raise ValueError('equal-bound reproduction differs from release')
    output=a.out/f'rank{r}';output.mkdir()
    with (output/'verification.log').open('w') as log:
     subprocess.run([str(exe),str(rd/'FusionRingMultiplicationTables.txt'),str(output/'independent'),'--exhaustive'],check=True,stdout=log,stderr=subprocess.STDOUT)

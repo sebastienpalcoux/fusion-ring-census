@@ -1,0 +1,4 @@
+{
+  "description": "Retained historical optimization regressions. These concern the indicated small bounds and strata, not the complete current release. Earlier source versions and raw logs remain in Git history.",
+  "retained_at_commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b"
+}

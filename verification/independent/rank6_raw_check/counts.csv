@@ -1,7 +1,0 @@
-rank,multiplicity,source_records,distinct_rings,duplicates,literal_repeats,new_labellings,commutative,noncommutative
-6,1,78,39,39,3,36,37,2
-6,2,308,154,154,15,139,152,2
-6,3,768,384,384,35,349,383,1
-6,4,1744,872,872,75,797,871,1
-6,5,2115,1582,533,31,502,1581,1
-6,6,3640,2768,872,66,806,2766,2

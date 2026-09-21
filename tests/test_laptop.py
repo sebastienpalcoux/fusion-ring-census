@@ -40,7 +40,7 @@ class LaptopTests(unittest.TestCase):
 
     def test_budget_combinations_caps_and_github_are_rejected(self):
         base=['driver','--rank','6','--bound','8','--local-unlimited','--verify','--out','unused']
-        for extra in (['--seconds','100'],['--deadline','100'],['--rank6-m7-max'],['--rank','3','--bound','1001'],['--rank','5','--bound','33'],['--rank','7','--bound','16']):
+        for extra in (['--seconds','100'],['--deadline','100'],['--rank','3','--bound','1001'],['--rank','5','--bound','33'],['--rank','7','--bound','16']):
             with self.subTest(extra=extra), patch.dict(os.environ,{},clear=True), patch.object(sys,'argv',base+extra), patch.object(runner.subprocess,'run') as run, contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):runner.main()
             run.assert_not_called()
         with patch.dict(os.environ,{'GITHUB_ACTIONS':'true'}), patch.object(sys,'argv',base), contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):runner.main()

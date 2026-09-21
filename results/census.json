@@ -1,5 +1,8 @@
 {
+  "version": "0.2.0",
+  "release_date": "2026-09-21",
   "scope": "All fusion rings in the stated complete whole-rank regions; all duality types; no categorifiability filter.",
+  "publication_status": "Private GitHub repository.",
   "ranks": {
     "3": {
       "rank": 3,
@@ -1009,15 +1012,16 @@
         "999": 994,
         "1000": 1074
       },
-      "tables": "results/rank3_through1000_tables.txt.gz",
+      "verification_reports": "verification/rank3/",
+      "tables": "results/rank3/tables.txt.gz",
       "tables_gz_sha256": "6e1c5b9349870ca5d3745ed629051b90726ddaa1890f30782b8f2cd465d716eb",
-      "tables_uncompressed_sha256": "bfebca55e08ef811173dc271556befadba842f25600d97ac59d58f96d73c8b58",
-      "provenance": "Previously exported rank-three census, capped at multiplicity 1000; full independent audit retained."
+      "tables_uncompressed_sha256": "bfebca55e08ef811173dc271556befadba842f25600d97ac59d58f96d73c8b58"
     },
     "4": {
       "rank": 4,
       "bound": 128,
       "complete": true,
+      "verified": true,
       "classes": 889530,
       "counts": {
         "1": 10,
@@ -1149,27 +1153,20 @@
         "127": 17015,
         "128": 23185
       },
-      "sort_export_seconds": 1.1729952800001229,
-      "completed_stratum_runs": [
-        "rank4_128"
-      ],
-      "parameters_uncompressed_sha256": "66924969637eee20048b8a934759196d46cccf0d5d8cbf3af2620132d8b93df8",
-      "parameters": "results/rank4_through128_parameters.txt.gz",
-      "parameters_compression_seconds": 0.5476466060003986,
-      "parameters_gz_sha256": "0c3ab657ebfa9c78719e909a7d5857769e0bf791564a67971350237e752aaf6d",
-      "tables_uncompressed_sha256": "d54fe08711103f970fa08ae346a4d03e9277aac403054a87d89a2d760d8d5fc9",
-      "tables": "results/rank4_through128_tables.txt.gz",
-      "tables_compression_seconds": 1.9611312120000548,
+      "verification_reports": "verification/rank4/",
+      "tables": "results/rank4/tables.txt.gz",
       "tables_gz_sha256": "9b91cebd5b1cb570c12793dee289783815a51212d6511c8f2d6d1e650a78b2d8",
-      "provenance": "Retained complete census from 18 September 2026; original execution logs and independent audits included.",
-      "verified": true
+      "tables_uncompressed_sha256": "d54fe08711103f970fa08ae346a4d03e9277aac403054a87d89a2d760d8d5fc9",
+      "parameters": "results/rank4/parameters.txt.gz",
+      "parameters_gz_sha256": "0c3ab657ebfa9c78719e909a7d5857769e0bf791564a67971350237e752aaf6d",
+      "parameters_uncompressed_sha256": "66924969637eee20048b8a934759196d46cccf0d5d8cbf3af2620132d8b93df8"
     },
     "5": {
       "rank": 5,
-      "bound": 19,
+      "bound": 20,
       "complete": true,
       "verified": true,
-      "classes": 34133,
+      "classes": 40999,
       "counts": {
         "1": 16,
         "2": 37,
@@ -1189,18 +1186,16 @@
         "16": 4157,
         "17": 4255,
         "18": 5080,
-        "19": 5640
+        "19": 5640,
+        "20": 6866
       },
-      "provenance": "Complete whole-rank GitHub campaign 35440299307 at 931addc686e8d93e86e480c6a8cc56d0301dfabf; fresh exhaustive audit in run 35449570360. Reports: verification/imports/rank5_through19/.",
-      "tables": "results/rank5_through19_tables.txt.gz",
-      "tables_gz_sha256": "dd2810a40247080dede093c8d157a72db6a603017374699999610d5e7a1c7f2b",
-      "tables_uncompressed_sha256": "8304fc543862f2838d300226c7da43d3a5168942319f07899ed111f27f7ae199",
-      "parameters": "results/rank5_through19_parameters.txt.gz",
-      "parameters_gz_sha256": "f75b2db22125a945cab7e5ce33617fa9e323e50667cec009f0c3cb24fdb6c60a",
-      "parameters_uncompressed_sha256": "c1c0458ad936ce419ae726738010a04f6b687715598fd551a8c9dcf1c3649ed2",
-      "source_run_url": "https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35440299307",
-      "verification_run_url": "https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35449570360",
-      "verification_reports": "verification/imports/rank5_through19/"
+      "verification_reports": "verification/rank5/",
+      "tables": "results/rank5/tables.txt.gz",
+      "tables_gz_sha256": "4542c0871498337ef38ce3903407933289699a5ff06c85ad0f6c2bd57da823fb",
+      "tables_uncompressed_sha256": "119ac6da8271e90402d2703b768cf072bee67ce48f4a8f8cea68346d7129967f",
+      "parameters": "results/rank5/parameters.txt.gz",
+      "parameters_gz_sha256": "ebf63a33adfa9317d61c6b1a978223d0d89bcb08f983031c8ee84df5ff7b954c",
+      "parameters_uncompressed_sha256": "3e972b4b8acde8ea930a7921332ad6e9ddaf2a5a8792d772cfb40e72b679b674"
     },
     "6": {
       "rank": 6,
@@ -1217,64 +1212,52 @@
         "6": 2768,
         "7": 3814
       },
-      "provenance": "Laptop whole-rank census; fresh full independent GitHub verification before integration.",
-      "tables": "results/rank6_through7_tables.txt.gz",
+      "verification_reports": "verification/rank6/",
+      "tables": "results/rank6/tables.txt.gz",
       "tables_gz_sha256": "a4e67e074399bea4de4df847473bff60e785a65d67753aacdc9521deb5728902",
       "tables_uncompressed_sha256": "9495a021e580d8f7567ff3098d7af653844712a1ff04446aebc0daa4f2c1220f",
-      "parameters": "results/rank6_through7_parameters.txt.gz",
+      "parameters": "results/rank6/parameters.txt.gz",
       "parameters_gz_sha256": "14e9deb671cfc2ce173adeba813044d9c334e59e53b2e780f9f6bebc5e68f4dc",
-      "parameters_uncompressed_sha256": "09afad3707f87282f25534bda7f0ec0c977ed8d394e721227c9da7582b5ee6ce",
-      "source_commit": "42b7a8f22994b087154fcea880f51b244894ba84",
-      "verification_run": "https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35499152450",
-      "verification_reports": "verification/imports/rank6_through7"
+      "parameters_uncompressed_sha256": "09afad3707f87282f25534bda7f0ec0c977ed8d394e721227c9da7582b5ee6ce"
     },
     "7": {
       "rank": 7,
-      "bound": 3,
+      "bound": 4,
       "complete": true,
-      "classes": 1421,
+      "verified": true,
+      "classes": 4201,
       "counts": {
         "1": 43,
         "2": 319,
-        "3": 1059
+        "3": 1059,
+        "4": 2780
       },
-      "sort_export_seconds": 0.8238831969997591,
-      "completed_stratum_runs": [
-        "fast5_7_3",
-        "parallel7_p1_3",
-        "general7_p2_3",
-        "general7_p3_3"
-      ],
-      "parameters_uncompressed_sha256": "9ebff1f04240d8a3b5bc8ccb1fcad2c1a8c1b5d7f91d5e3cf7fe92811dcb5d80",
-      "parameters": "results/rank7_through3_parameters.txt.gz",
-      "parameters_compression_seconds": 0.0016436119999525545,
-      "parameters_gz_sha256": "47995799eb0bf98cdf019331e9a55fc767e5827ab2206bdc6ebd37423ea2d975",
-      "tables_uncompressed_sha256": "610ee7a01a95407dff2da36f7e59ace753f2acca5b1ddca1e1c4dde1c82357ce",
-      "tables": "results/rank7_through3_tables.txt.gz",
-      "tables_compression_seconds": 0.009447941999951581,
-      "tables_gz_sha256": "67fed3ea90e018d2e1c6ec3e6102ad974f7f7f86ea258aba69a3c6dfcb8a6b34",
-      "provenance": "Retained complete census from 18 September 2026; original execution logs and independent audits included.",
-      "verified": true
+      "verification_reports": "verification/rank7/",
+      "tables": "results/rank7/tables.txt.gz",
+      "tables_gz_sha256": "6ddea4c66de7fbe077e9552e71e8cf95ec3fec5bbd30a615e68e2d8fcb9ae9c9",
+      "tables_uncompressed_sha256": "d01245e7f534c3de8f66e7edcf70ba60c710827d1b9c85094b358eb6f134e300",
+      "parameters": "results/rank7/parameters.txt.gz",
+      "parameters_gz_sha256": "f7295ed0d50df234c2cbc61d7227379e5554b0271963fd5735a793020063c620",
+      "parameters_uncompressed_sha256": "44ca419c73ab5eec09d7658ac764661e176001c21b89ca83e618393fc1d2a2a4"
     },
     "8": {
       "rank": 8,
-      "bound": 1,
+      "bound": 2,
       "complete": true,
       "verified": true,
-      "classes": 96,
+      "classes": 973,
       "counts": {
-        "1": 96
+        "1": 96,
+        "2": 877
       },
-      "provenance": "New local independent enumeration with dynamic linear-algebra workspaces and rank-eight template instantiation.",
-      "tables": "results/rank8_through1_tables.txt.gz",
-      "tables_gz_sha256": "02ead89d28720d68e536eec8542ce2532ba7d4a35220401190490c2aa871517f",
-      "tables_uncompressed_sha256": "4ddf6402afff4f19ae4513ae63422cf73c327c605aa50cdcae731941de272ee7",
-      "parameters": "results/rank8_through1_parameters.txt.gz",
-      "parameters_gz_sha256": "a9303ae3bd33c554bb0c760987f6b331af26d0b8b50e12f9128e5e4aabe1b47e",
-      "parameters_uncompressed_sha256": "51417e64cb301b32508266e59ed81ea4144b76b4c2a5403de7369ad3e1dcbca1"
+      "verification_reports": "verification/rank8/",
+      "tables": "results/rank8/tables.txt.gz",
+      "tables_gz_sha256": "35a8d69e9af8c873b3003890218a35b38b792abb89c19066f6705bf9c1c1d1ed",
+      "tables_uncompressed_sha256": "97b86d2de8ca0352c5c6e14686cd1d43dbd52180dc53b2ff1ccf7a61788c9600",
+      "parameters": "results/rank8/parameters.txt.gz",
+      "parameters_gz_sha256": "8d36556d0c350fbae174dbb7f693eaedff8b328fb56d89a422a6c22391aad1ee",
+      "parameters_uncompressed_sha256": "cb9d84fb05ef00f572d59a3a5df4609a83ec00a793d8afed4f74c405469d09b7"
     }
   },
-  "total_classes": 1395146,
-  "release_date": "2026-09-19",
-  "publication_status": "Private GitHub repository; reviewed rank-five bound-19 and laptop rank-six bound-7 extensions integrated."
+  "total_classes": 1405669
 }

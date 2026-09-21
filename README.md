@@ -1,157 +1,205 @@
 # Fusion Ring Census
 
-### Exact enumeration · all duality types · independently checked tensors
+**Exact enumeration of based fusion rings, at ranks 3–8.**
 
-A reproducible collection of **1,395,146 fusion rings**, with fast integer generators,
-complete counting tables, explanatory mathematical companions and an OEIS workspace.
+[Data](#complete-datasets) · [Manuscripts](manuscripts/README.md) · [Run & verify](docs/REPRODUCIBILITY.md) · [OEIS](oeis/README.md) · [Evidence](verification/README.md)
 
-[View the landing page](docs/index.html) · [Start with the data](results/census.json) · [Read the manuscripts](manuscripts/README.md) ·
-[Reproduce a census](docs/REPRODUCIBILITY.md) · [OEIS](oeis/README.md) · [Audit the source](audit/README.md)
+1,405,669 distinct classes in the certified datasets. Every duality
+type is included, including noncommutative rings. No categorifiability filter.
 
-## Certified coverage
+## Counts by rank and multiplicity
 
-| Rank | Complete multiplicity bound | Distinct classes | Manuscript | Full tensors |
+Each entry is **the number of based-isomorphism classes at exactly multiplicity
+m**. A dash means *not yet completely enumerated*, never zero.
+
+| Multiplicity | Rank 3 | Rank 4 | Rank 5 | Rank 6 | Rank 7 | Rank 8 |
+|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 4 | 10 | 16 | 39 | 43 | 96 |
+| 2 | 3 | 17 | 37 | 154 | 319 | 877 |
+| 3 | 4 | 24 | 82 | 384 | 1,059 | — |
+| 4 | 6 | 45 | 134 | 872 | 2,780 | — |
+| 5 | 5 | 55 | 209 | 1,582 | — | — |
+| 6 | 9 | 81 | 336 | 2,768 | — | — |
+| 7 | 6 | 92 | 477 | 3,814 | — | — |
+| 8 | 10 | 137 | 733 | — | — | — |
+| 9 | 12 | 151 | 863 | — | — | — |
+| 10 | 9 | 186 | 1,082 | — | — | — |
+| 11 | 10 | 238 | 1,383 | — | — | — |
+| 12 | 20 | 291 | 1,948 | — | — | — |
+| 13 | 9 | 246 | 2,211 | — | — | — |
+| 14 | 13 | 340 | 2,554 | — | — | — |
+| 15 | 16 | 349 | 2,936 | — | — | — |
+| 16 | 25 | 525 | 4,157 | — | — | — |
+| 17 | 11 | 424 | 4,255 | — | — | — |
+| 18 | 18 | 477 | 5,080 | — | — | — |
+| 19 | 20 | 513 | 5,640 | — | — | — |
+| 20 | 22 | 713 | 6,866 | — | — | — |
+
+<details>
+<summary><strong>Multiplicities 21–128 · ranks 3 and 4</strong></summary>
+
+| Multiplicity | Rank 3 | Rank 4 |
+|---:|---:|---:|
+| 21 | 24 | 704 |
+| 22 | 12 | 668 |
+| 23 | 22 | 654 |
+| 24 | 44 | 1,121 |
+| 25 | 19 | 868 |
+| 26 | 28 | 938 |
+| 27 | 20 | 989 |
+| 28 | 22 | 1,286 |
+| 29 | 25 | 1,356 |
+| 30 | 42 | 1,347 |
+| 31 | 24 | 1,220 |
+| 32 | 40 | 1,671 |
+| 33 | 36 | 1,460 |
+| 34 | 30 | 1,579 |
+| 35 | 24 | 1,613 |
+| 36 | 55 | 2,301 |
+| 37 | 33 | 1,646 |
+| 38 | 16 | 1,824 |
+| 39 | 36 | 2,111 |
+| 40 | 58 | 2,653 |
+| 41 | 29 | 2,131 |
+| 42 | 48 | 2,588 |
+| 43 | 34 | 2,169 |
+| 44 | 52 | 2,857 |
+| 45 | 48 | 2,699 |
+| 46 | 34 | 2,639 |
+| 47 | 38 | 2,452 |
+| 48 | 82 | 3,985 |
+| 49 | 46 | 2,947 |
+| 50 | 25 | 3,314 |
+| 51 | 58 | 3,378 |
+| 52 | 28 | 3,776 |
+| 53 | 39 | 3,250 |
+| 54 | 74 | 3,704 |
+| 55 | 40 | 3,785 |
+| 56 | 80 | 5,213 |
+| 57 | 40 | 4,182 |
+| 58 | 47 | 3,863 |
+| 59 | 54 | 3,987 |
+| 60 | 95 | 6,004 |
+| 61 | 61 | 4,383 |
+| 62 | 39 | 4,472 |
+| 63 | 48 | 5,150 |
+| 64 | 75 | 6,557 |
+| 65 | 62 | 5,107 |
+| 66 | 78 | 5,773 |
+| 67 | 50 | 4,791 |
+| 68 | 60 | 6,260 |
+| 69 | 50 | 6,001 |
+| 70 | 64 | 6,205 |
+| 71 | 58 | 5,799 |
+| 72 | 142 | 8,710 |
+| 73 | 51 | 5,858 |
+| 74 | 39 | 6,223 |
+| 75 | 88 | 7,280 |
+| 76 | 68 | 9,507 |
+| 77 | 50 | 6,953 |
+| 78 | 76 | 7,917 |
+| 79 | 60 | 6,933 |
+| 80 | 96 | 10,208 |
+| 81 | 68 | 8,031 |
+| 82 | 56 | 7,939 |
+| 83 | 68 | 7,408 |
+| 84 | 156 | 10,993 |
+| 85 | 58 | 8,464 |
+| 86 | 84 | 8,568 |
+| 87 | 80 | 9,088 |
+| 88 | 86 | 11,767 |
+| 89 | 91 | 9,145 |
+| 90 | 90 | 10,765 |
+| 91 | 72 | 9,896 |
+| 92 | 69 | 11,188 |
+| 93 | 74 | 10,385 |
+| 94 | 80 | 10,153 |
+| 95 | 78 | 10,048 |
+| 96 | 212 | 15,447 |
+| 97 | 65 | 10,003 |
+| 98 | 64 | 11,249 |
+| 99 | 104 | 12,082 |
+| 100 | 111 | 14,037 |
+| 101 | 75 | 11,361 |
+| 102 | 68 | 13,068 |
+| 103 | 76 | 10,861 |
+| 104 | 118 | 16,150 |
+| 105 | 118 | 14,958 |
+| 106 | 75 | 12,338 |
+| 107 | 76 | 12,102 |
+| 108 | 72 | 16,509 |
+| 109 | 87 | 12,849 |
+| 110 | 119 | 14,390 |
+| 111 | 128 | 15,119 |
+| 112 | 134 | 18,964 |
+| 113 | 87 | 13,293 |
+| 114 | 169 | 16,769 |
+| 115 | 70 | 14,900 |
+| 116 | 72 | 17,484 |
+| 117 | 126 | 16,252 |
+| 118 | 70 | 14,963 |
+| 119 | 86 | 16,058 |
+| 120 | 272 | 25,126 |
+| 121 | 110 | 16,103 |
+| 122 | 95 | 15,670 |
+| 123 | 106 | 17,292 |
+| 124 | 124 | 19,682 |
+| 125 | 103 | 17,760 |
+| 126 | 140 | 20,720 |
+| 127 | 94 | 17,015 |
+| 128 | 156 | 23,185 |
+
+</details>
+
+[Full table through multiplicity 1000](results/table.md) · [Download CSV](results/counts.csv) · [Offline interactive table](docs/index.html)
+
+Download `docs/index.html` and open it in a browser to filter the interactive table.
+
+## Complete datasets
+
+Bounds and totals below are cumulative: all rings of multiplicity **at most M**.
+
+| Rank | Complete through | Classes in total | Data | Companion |
 |---:|---:|---:|---|---|
-| **3** | **1000** | **460,353** | [PDF](manuscripts/rank3.pdf) · [TeX](manuscripts/rank3.tex) | [gzip](results/rank3_through1000_tables.txt.gz) |
-| **4** | **128** | **889,530** | [PDF](manuscripts/rank4.pdf) · [TeX](manuscripts/rank4.tex) | [gzip](results/rank4_through128_tables.txt.gz) |
-| **5** | **19** | **34,133** | [PDF](manuscripts/rank5.pdf) · [TeX](manuscripts/rank5.tex) | [gzip](results/rank5_through19_tables.txt.gz) |
-| **6** | **7** | **9,613** | [PDF](manuscripts/rank6.pdf) · [TeX](manuscripts/rank6.tex) | [gzip](results/rank6_through7_tables.txt.gz) |
-| **7** | **3** | **1,421** | [PDF](manuscripts/rank7.pdf) · [TeX](manuscripts/rank7.tex) | [gzip](results/rank7_through3_tables.txt.gz) |
-| **8** | **1** | **96** | [PDF](manuscripts/rank8.pdf) · [TeX](manuscripts/rank8.tex) | [gzip](results/rank8_through1_tables.txt.gz) |
+| 3 | 1,000 | 460,353 | [Tensors](results/rank3/tables.txt.gz) · [Counts](results/rank3/counts.csv) | [PDF](manuscripts/rank3.pdf) · [TeX](manuscripts/rank3.tex) |
+| 4 | 128 | 889,530 | [Tensors](results/rank4/tables.txt.gz) · [Counts](results/rank4/counts.csv) | [PDF](manuscripts/rank4.pdf) · [TeX](manuscripts/rank4.tex) |
+| 5 | 20 | 40,999 | [Tensors](results/rank5/tables.txt.gz) · [Counts](results/rank5/counts.csv) | [PDF](manuscripts/rank5.pdf) · [TeX](manuscripts/rank5.tex) |
+| 6 | 7 | 9,613 | [Tensors](results/rank6/tables.txt.gz) · [Counts](results/rank6/counts.csv) | [PDF](manuscripts/rank6.pdf) · [TeX](manuscripts/rank6.tex) |
+| 7 | 4 | 4,201 | [Tensors](results/rank7/tables.txt.gz) · [Counts](results/rank7/counts.csv) | [PDF](manuscripts/rank7.pdf) · [TeX](manuscripts/rank7.tex) |
+| 8 | 2 | 973 | [Tensors](results/rank8/tables.txt.gz) · [Counts](results/rank8/counts.csv) | [PDF](manuscripts/rank8.pdf) · [TeX](manuscripts/rank8.tex) |
 
-The unit has index zero and `N[i][j][k]` is the coefficient of basis element `k`
-in the **ordered** product `i*j`. All results include every duality type.
-**These are classifications of based rings, not of fusion categories.** No
-categorifiability criterion is applied. Rank three is intentionally capped at 1000.
+Each tensor uses basis unit 0 and ordered coefficients `N[i][j][k]`. Data are
+gzip-compressed, with one full tensor per line. The [manifest](results/census.json)
+records exact counts, checksums and evidence links. Rank 3 stops at 1000.
 
-The original datasets and execution provenance remain preserved. The reviewed
-GitHub campaign extended rank 5 through multiplicity 19. The reviewed laptop
-run extended rank 6 through multiplicity 7: **9,613 classes**, including **3,814
-at exact multiplicity 7**. Ranks 3, 4, 7 and 8 retain their earlier complete
-datasets. See [the laptop result review](docs/RANK6_LAPTOP_REVIEW.md) and
-[the earlier campaign review](docs/CAMPAIGN_REVIEW.md).
+## Reproduce a census
 
-## Using the project
-
-For an unlimited local run, use `python3 scripts/run_laptop.py --rank 6 --bound 8`.
-The [laptop guide](docs/LAPTOP.md) lists all six ranks, supported bounds, setup
-and verified ZIP output. These local runs never launch from GitHub Actions.
-
-Read `manuscripts/rankR.pdf` for the definitions, mathematical coverage argument,
-rank-specific method, results, singular cases and verification boundary.
-
-Verify the released tensors without repeating the search:
+Python 3.9+ and GNU g++ with C++17/OpenMP are sufficient. On your own computer:
 
 ```bash
-python3 scripts/check_release.py --full
+python3 scripts/run_laptop.py --rank 7 --bound 5
 ```
 
-Reproduce a complete bounded census, or request a larger whole-rank search:
+The local launcher has no clock limit. It includes every duality type and creates
+a result ZIP only after independent tensor verification, isomorphism checking and
+agreement with the released count prefix. [Installation and all rank limits →](docs/REPRODUCIBILITY.md)
 
-```bash
-python3 code/run_census.py --rank 6 --bound 7 --seconds 4200 \
-  --threads 4 --verify --out runs/rank6-reproduction
-python3 scripts/extend_census.py --rank 6 --seconds 4200 \
-  --threads "$(nproc)" --out runs/rank6-frontier
-```
+A search is complete only when every stratum finishes. The verifier establishes
+validity and uniqueness; [coverage arguments](methods/completeness.md) establish
+why the search is exhaustive. Interrupted output never supplies census terms.
 
-Requirements: Python 3.9+, GNU g++ with C++17/OpenMP. The mathematical code uses
-only Python's standard library. LaTeX is needed only to rebuild PDFs. No SageMath,
-Mathematica or NumPy is required. See [platform notes](docs/REPRODUCIBILITY.md).
+## Read and reuse
 
-## A complete result, or no new claim
+The six [mathematical companions](manuscripts/README.md) explain the definitions,
+rank-specific methods and complete counts. These are censuses of **based rings**;
+they do not classify their categorifications.
 
-A whole-rank result must finish **every** involution type. The independent checker
-then verifies every fusion-ring axiom, all integer associativity identities and
-all unit-fixing basis permutations. A larger interrupted attempt cannot replace
-the last completed and verified bound. No partial-stratum counts are exported to OEIS.
+The [source audit](audit/README.md) corrects 3,313 redundant records in the
+Vercleyen–Slingerland ancillary database. Its attribution and deletion witnesses
+are retained. The [OEIS folder](oeis/README.md) contains proposed data and edits;
+no online submission is implied.
 
-Completeness is justified by the exhaustive parameterization and safe-pruning
-proofs; checking emitted tensors alone would not prove that nothing was omitted.
-The distinction is made explicitly in [the methods](methods/completeness.md).
+Sébastien Palcoux · BIMSA · [Cite](CITATION.cff) · [Attribution & licensing](NOTICE.md) · [Contribute](CONTRIBUTING.md)
 
-## GitHub computation
-
-The separately authorized [rank-6 multiplicity-7 campaign](docs/RANK6_M7_MAX.md)
-uses one standard Ubuntu job with GitHub's **six-hour maximum job ceiling** and
-one 21,300-second shared driver deadline. It searches only bound 7, preserves
-verified artifacts, and does not automatically change the release. Its explicit
-`--rank6-m7-max` option does not enlarge the budgets of the other workflows.
-That historical run timed out; the later laptop result completed bound 7.
-The special campaign now refuses to recompute the completed bound.
-
-Published privately at [sebastienpalcoux/fusion-ring-census](https://github.com/sebastienpalcoux/fusion-ring-census).
-The [long campaign](.github/workflows/long-frontier.yml) is manually triggered and
-runs **ranks 5, 6, 7 and 8 only**, with at most four concurrent standard Ubuntu jobs.
-Each rank receives one **4,200-second (70-minute) shared driver budget** and a
-**75-minute job ceiling**: at most **300 runner-minutes** for the four jobs.
-Compilation, all attempted bounds and duality types, export, compression and
-independent verification share that budget. The thread count comes from `nproc`.
-The enumeration allowance is 90% of the remaining driver time, reserving the rest
-for verification and export; no shorter 1,100/1,200-second cap remains in this campaign.
-
-The first bounds are read from the released manifest plus one (currently 20, 8, 4, 2 for ranks 5–8). An interrupted search is restarted, not resumed. A completed candidate
-must pass exhaustive independent tensor/isomorphism verification and agree with
-the entire old exact-multiplicity count prefix before entering `best/`.
-
-Outcomes are `verified_extension`, `no_extension_within_budget`, or `error`.
-Expected timeouts make no new claim; genuine failures make the job fail. Logs,
-timing ledgers, commands, environment and verifier reports are retained for
-14 days, together with the last verified candidate, if any. Incomplete tensor
-collections are excluded. Candidates are never automatically promoted or copied
-into manuscripts or OEIS tables. See [campaign details](docs/LONG_CAMPAIGN.md).
-
-The original [frontier workflow](.github/workflows/frontier.yml) remains a
-separate manual tool with its 1,100-second driver and 20-minute job limits; it is
-not dispatched by the long campaign. Both workflows share a concurrency lock,
-and job reruns are disabled to prevent resetting the campaign allowance.
-Verification and manuscript workflows also remain manual. Check account-wide
-included usage and enforced spending controls before each authorized dispatch.
-Do not change visibility or billing to obtain more capacity.
-
-The first published run found no complete extension for ranks 5–8. The longer
-[run 35440299307](https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35440299307)
-completed rank 5 through multiplicity 19: **34,133 classes**, including **5,640
-at exact multiplicity 19**. It did not complete rank 5 at 20, rank 6 at 7,
-rank 7 at 4 or rank 8 at 2. After a fresh independent GitHub audit, the rank-5
-candidate was integrated; the later laptop review extended rank 6 to bound 7. Permanent
-[review evidence](docs/CAMPAIGN_REVIEW.md) records the accepted result and timeouts. Review [the release procedure](docs/RELEASES.md) before any
-future promotion. `scripts/publish_github.py` is an initial-publication helper;
-do not use it to recreate this existing repository.
-
-## Source audit and attribution
-
-The audit of Vercleyen–Slingerland's arXiv v4 ancillary file identifies 3,313
-redundant records, all at rank five and multiplicities 9–12. Exact permutation
-witnesses and the corrected table are retained under `audit/`. The source was
-used for comparison only, never as enumeration input. Its original partial
-search cells are not promoted to complete counts merely by deduplication.
-
-The specialized rank-four and rank-five derivations come from the Dong–Palcoux
-census project; the original excerpts and execution records are preserved.
-See [provenance](docs/PROVENANCE.md), [citation metadata](CITATION.cff), and
-[licensing scope](NOTICE.md). AI assistance and verification status are disclosed.
-
-## Repository map
-
-```text
-code/          Exact generators, exporters and independent tensor checker
-systems/       Regenerable reciprocity orbits and associativity systems
-results/       Only complete datasets, count tables and the primary manifest
-manuscripts/   Six explanatory companions, in LaTeX and PDF
-methods/       Coverage proofs and retained rank-specific derivations
-oeis/          b-files, correction text, impact map and submission policy
-audit/         Original-database deduplication code and certificates
-verification/  Execution provenance, regression tests and independent audits
-scripts/       Timed search, release checking, publication and result import
-tests/         Regressions, symmetry checks, scope checks and timeout tests
-.github/       CI, manual frontier search and issue templates
-```
-
-## Cite and contribute
-
-Use **Cite this repository**, or the metadata in `CITATION.cff`.
-Report a suspected missed ring with its full multiplication tensor, rank,
-multiplicity, generating command and revision. Improvements must preserve every
-singular and zero-coefficient branch and pass independent checks. See
-[CONTRIBUTING.md](CONTRIBUTING.md).
+Repository access is private. [Provenance and verification](docs/PROVENANCE.md)
+explain the current release, AI assistance and the limits of computational evidence.

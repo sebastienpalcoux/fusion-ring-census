@@ -127,8 +127,6 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--rank', type=int, choices=range(3, 9), required=True)
     ap.add_argument('--seconds', type=float, default=1100)
-    ap.add_argument('--rank6-m7-max', action='store_true',
-                    help='Explicit single-bound campaign: rank 6, multiplicity 7, at most 21300 shared seconds')
     ap.add_argument('--threads', type=int, default=min(64, len(os.sched_getaffinity(0))) if hasattr(os, 'sched_getaffinity') else min(64, os.cpu_count() or 1))
     ap.add_argument('--start-bound', type=int)
     ap.add_argument('--step', type=int)
@@ -136,10 +134,6 @@ def main(argv=None):
     ap.add_argument('--out', type=Path, required=True)
     a = ap.parse_args(argv)
     limit = MAX_SECONDS if a.rank >= 5 else 1200
-    if a.rank6_m7_max:
-        if a.rank != 6:
-            ap.error('--rank6-m7-max is restricted to rank 6')
-        limit = 21300
     if not math.isfinite(a.seconds) or not 0 < a.seconds <= limit:
         ap.error(f'shared wall-clock budget must be finite and at most {limit} seconds')
     if not 1 <= a.threads <= 64:
@@ -150,10 +144,6 @@ def main(argv=None):
     start = a.start_bound if a.start_bound is not None else ({3: 1000, 4: 160}.get(a.rank, baseline['bound'] + 1))
     step = a.step if a.step is not None else (16 if a.rank == 4 else 1)
     maximum = a.max_bound if a.max_bound is not None else CAP[a.rank]
-    if a.rank6_m7_max:
-        if baseline['bound'] != 6 or start != 7 or step != 1 or a.max_bound not in (None, 7):
-            ap.error('maximum-duration campaign requires baseline 6 and searches only bound 7')
-        maximum = 7
     if not 1 <= start <= maximum <= CAP[a.rank] or step < 1:
         ap.error('invalid bound/step or repository cap reached')
     if a.rank >= 5 and (start != baseline['bound'] + 1 or step != 1):
@@ -169,7 +159,7 @@ def main(argv=None):
     execution_deadline = deadline - CLEANUP_MARGIN
     report = {
         'rank': a.rank, 'budget_seconds': a.seconds, 'threads': a.threads,
-        'campaign': 'rank6-m7-max' if a.rank6_m7_max else 'standard',
+        'campaign': 'standard',
         'timing': 'one shared wall clock: compilation, enumeration, export, compression, verification and candidate acceptance',
         'github_run_id': os.environ.get('GITHUB_RUN_ID'), 'github_sha': os.environ.get('GITHUB_SHA'),
         'github_run_attempt': os.environ.get('GITHUB_RUN_ATTEMPT'),
@@ -189,15 +179,13 @@ def main(argv=None):
                 report['stop_reason'] = 'budget_exhausted'
                 break
             attempt = out / f'attempt_M{bound}'
-            enumeration_seconds = remaining - 120 if a.rank6_m7_max else remaining * .90
+            enumeration_seconds = remaining * .90
             if enumeration_seconds <= 0:
                 break
             command = [sys.executable, str(ROOT / 'code/run_census.py'), '--rank', str(a.rank),
                        '--bound', str(bound), '--seconds', str(enumeration_seconds),
                        '--deadline', str(execution_deadline), '--threads', str(a.threads), '--verify',
                        '--build-dir', str(out / 'build-cache'), '--out', str(attempt)]
-            if a.rank6_m7_max:
-                command.append('--rank6-m7-max')
             item = {'bound': bound, 'command': command, 'remaining_seconds_at_start': remaining,
                     'complete': False, 'started_elapsed_seconds': time.monotonic() - began}
             report['attempts'].append(item)

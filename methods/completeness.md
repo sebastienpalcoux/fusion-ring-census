@@ -252,14 +252,11 @@ polynomial evaluations use 64-bit integers. Rank four permits M<=1000,
 uses 64-bit integer polynomials and 128-bit modular products. Rank five
 retains its original M<=32 restriction and exact integer arithmetic.
 
-All reported search times are elapsed wall time, not summed CPU time.
-OpenMP uses up to four threads on this machine (three in the rank-four
-runs). `budget_ledger.json` includes exploratory and regression enumeration
-runs, including abandoned incomplete runs; these are not counted again
-as new census data. Compilation, export, source comparison, independent
-verification, and compression are recorded separately from the bounded
-enumeration budgets. Total interaction time also includes algorithm
-development and checking, and is not an enumeration benchmark.
+Run records report elapsed wall time rather than summed CPU time. Current
+source identity, compilation and enumeration timings, completion status, and
+independent verification are indexed by rank in `verification/README.md`.
+A finite campaign shares one deadline across all phases and all attempts;
+unlimited local runs retain the same mathematical scope and verification gates.
 
 OpenMP can change raw output order. The release parameter files are sorted
 lexicographically by (tag, integer parameter vector), and the exporter
@@ -276,17 +273,16 @@ integrality and trace identities used in the rank-five commutativity argument.
 G. Vercleyen and J. Slingerland, *On Low Rank Fusion Rings*, Journal of
 Mathematical Physics 64 (2023), 091703; arXiv:2205.15637v4. The original
 ancillary database is used only for comparison, with its exact checksum in
-`reference/source.json`.
+`audit/source.json`.
 
 The earlier Dong--Palcoux rank-four and rank-five census derivations are
 retained as the accompanying TeX excerpts. They are provenance for the
 specialized code, not a reference to an asserted published article.
 
-## Rank-eight implementation extension
+## Workspace bounds at rank eight
 
-Rank eight is included without imposing commutativity. Its self-dual system has
+Rank eight includes every duality type without imposing commutativity. Its self-dual system has
 84 variables and 231 nonzero associativity equations. Modular matrix storage is
-now sized from the actual variable/equation counts instead of historical fixed
+sized from the actual variable/equation counts instead of historical fixed
 80/200 buffers. The same necessary-condition and singular-completion arguments
-apply; merely changing a rank flag would not have been safe. Fresh whole-rank
-small-bound regressions and exhaustive tensor verification are in `verification/`.
+apply; merely changing a rank flag would not have been safe. Current whole-rank evidence is indexed in `verification/README.md`.

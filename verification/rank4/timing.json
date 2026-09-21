@@ -1,0 +1,8 @@
+{
+  "timing_convention": "Elapsed enumeration wall time. Includes exploratory and regression enumerations; excludes compilation, algorithm development, export, comparison, verification and compression. Runs do not overlap another large census search.",
+  "completed_bound_128": {
+    "run": "rank4_128",
+    "wall_seconds": 223.15,
+    "status": "completed specialized enumeration"
+  }
+}

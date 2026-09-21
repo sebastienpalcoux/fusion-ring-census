@@ -2,65 +2,75 @@
   {
     "rank": 3,
     "bound": 1000,
-    "assigned_entry_in_this_package": "A354471",
-    "b_file": "oeis/b354471.txt"
+    "entry": "A354471",
+    "file": "b354471.txt",
+    "submission_status": "not submitted"
   },
   {
     "rank": 4,
     "bound": 128,
-    "assigned_entry_in_this_package": "A354472",
-    "b_file": "oeis/b354472.txt"
+    "entry": "A354472",
+    "file": "b354472.txt",
+    "submission_status": "not submitted"
   },
   {
     "rank": 5,
-    "bound": 19,
-    "assigned_entry_in_this_package": "A354473",
-    "b_file": "oeis/b354473.txt"
+    "bound": 20,
+    "entry": "A354473",
+    "file": "b354473.txt",
+    "submission_status": "not submitted"
   },
   {
     "rank": 6,
     "bound": 7,
-    "assigned_entry_in_this_package": null,
-    "b_file": "oeis/fixed_rank_6.txt"
+    "entry": null,
+    "file": "fixed_rank_6.txt",
+    "submission_status": "not submitted"
   },
   {
     "rank": 7,
-    "bound": 3,
-    "assigned_entry_in_this_package": null,
-    "b_file": "oeis/fixed_rank_7.txt"
+    "bound": 4,
+    "entry": null,
+    "file": "fixed_rank_7.txt",
+    "submission_status": "not submitted"
   },
   {
     "rank": 8,
-    "bound": 1,
-    "assigned_entry_in_this_package": null,
-    "b_file": "oeis/fixed_rank_8.txt"
+    "bound": 2,
+    "entry": null,
+    "file": "fixed_rank_8.txt",
+    "submission_status": "not submitted"
   },
   {
-    "fixed_multiplicity": 1,
+    "multiplicity": 1,
     "entry": "A348305",
     "through_rank": 9,
-    "rank9_source_only": true,
+    "file": "b348305.txt",
+    "rank9_reference_only": true,
     "submission_status": "not submitted"
   },
   {
-    "fixed_multiplicity": 2,
+    "multiplicity": 2,
     "entry": "A354475",
-    "through_rank": 7,
-    "rank9_source_only": false,
+    "through_rank": 8,
+    "file": "b354475.txt",
+    "rank9_reference_only": false,
     "submission_status": "not submitted"
   },
   {
-    "fixed_multiplicity": 3,
+    "multiplicity": 3,
     "entry": "A354476",
     "through_rank": 7,
-    "rank9_source_only": false,
+    "file": "b354476.txt",
+    "rank9_reference_only": false,
     "submission_status": "not submitted"
   },
   {
-    "fixed_multiplicity": 4,
+    "multiplicity": 4,
     "entry": "A354477",
-    "through_rank": 6,
-    "rank9_source_only": false,
+    "through_rank": 7,
+    "file": "b354477.txt",
+    "rank9_reference_only": false,
     "submission_status": "not submitted"
   }
 ]

@@ -1,61 +1,50 @@
-# OEIS workspace
+# OEIS drafts
 
-All files here are **proposed data or edits**, not submitted changes. The primary
-source for numerical output is `results/census.json`, which contains only complete
-whole-rank datasets. `scripts/refresh_documentation.py` regenerates this folder's
-b-files and impact map.
+[Counting table](../results/table.md) · [Verification](../verification/README.md) · [Source audit](../audit/README.md)
 
-| Entry | Meaning | File |
-|---|---|---|
-| A354471 | Rank 3, multiplicity varies; stop at 1000 | `b354471.txt` |
-| A354472 | Rank 4, multiplicity varies | `b354472.txt` |
-| A354473 | Rank 5, multiplicity varies | `b354473.txt` |
-| A348305 | Multiplicity 1, rank varies | `b348305.txt` |
-| A354475 | Multiplicity 2, rank varies | `b354475.txt` |
-| A354476 | Multiplicity 3, rank varies | `b354476.txt` |
-| A354477 | Multiplicity 4, rank varies | `b354477.txt` |
+All files are **proposed data or edits, not submitted changes**. Terms count based
+fusion rings at exact multiplicity. Only complete whole-rank counts are exported
+from `results/census.json`.
 
-`fixed_rank_6.txt`, `fixed_rank_7.txt`, and `fixed_rank_8.txt` are separately prepared
-fixed-rank sequences. **No new A-numbers are invented or reserved here.** Search OEIS
-for an existing entry before proposing one. Their current prefixes may be too short
-for a new entry without further explanatory content.
+| Sequence | Direction | Prepared coverage | File |
+|---|---|---|---|
+| A354471 | Rank 3; multiplicity varies | 1–1000 | [b-file](b354471.txt) |
+| A354472 | Rank 4; multiplicity varies | 1–128 | [b-file](b354472.txt) |
+| A354473 | Rank 5; multiplicity varies | 1–20 | [b-file](b354473.txt) |
+| A348305 | Multiplicity 1; rank varies | 1–9¹ | [b-file](b348305.txt) |
+| A354475 | Multiplicity 2; rank varies | 1–8 | [b-file](b354475.txt) |
+| A354476 | Multiplicity 3; rank varies | 1–7 | [b-file](b354476.txt) |
+| A354477 | Multiplicity 4; rank varies | 1–7 | [b-file](b354477.txt) |
 
-The multiplicity-one b-file retains the published rank-nine value 142 from the
-reference census. It is **not** an independently recomputed rank-nine result in
-this repository, whose computation scope ends at rank eight. All newly generated
-numerical additions are restricted to the verified manifest.
+¹ The rank-nine value 142 is retained from the reference census; it is not an
+independently recomputed rank-nine result. This repository's computation scope
+ends at rank 8. Rank-1 and rank-2 terms follow symbolically.
 
-## Rank-five correction sentence
+Unassigned fixed-rank drafts: [rank 6](fixed_rank_6.txt), [rank 7](fixed_rank_7.txt),
+[rank 8](fixed_rank_8.txt). No A-number is invented or reserved here.
+
+## Correction and extensions
+
+The source audit replaces A354473 terms 9–12:
+**1463 → 863, 1794 → 1082, 2283 → 1383, 3049 → 1948**.
+Suggested comment:
 
 > Terms a(9)–a(12) were corrected by removing repeated isomorphism classes from the ancillary database of Vercleyen and Slingerland (arXiv:2205.15637v4).
 
-The replacements are 1463 → 863, 1794 → 1082, 2283 → 1383, and 3049 → 1948.
-The original authors' enumeration remains credited; the correction and independent
-extensions should be credited separately. Keep the existing references and add a
-publicly accessible stable reference before submitting. This repository exists
-but remains private, so its URL alone is not a public OEIS reference.
+The independent census extends the rank-5 draft through 20, with **a(20)=6866**.
+The multiplicity-2 draft includes **A354475: a(8)=877**; the multiplicity-4 draft
+includes **A354477: a(7)=2780**. The multiplicity-3 draft includes
+**A354476: a(7)=1059**. Fixed-rank drafts include **c₆(7)=3814**, **c₇(4)=2780**
+and **c₈(2)=877**. These additions preserve the old verified prefixes.
 
-## Cross-sequence impact
+## Before submitting
 
-A correction to c_r(m) affects a fixed-rank entry at a(m), a fixed-multiplicity
-entry at a(r), and any derived sequence using that cell. `impact_map.json` records
-the entries handled by this package; it is not an exhaustive assertion about all
-of OEIS. In particular, check fixed-multiplicity entries at 9, 10, 11 and 12 if any
-are located. The four rank-five duplicate corrections do not change the existing
-multiplicity-1, -2, -3 or -4 prefixes.
+Check the live entry, indexing and b-file; the retained source snapshot is dated
+18 September 2026. Preserve attribution to Vercleyen and Slingerland and credit
+the independent census separately. Supply a public, stable reference to the exact
+revision and verification evidence: this private repository's URL alone is not
+a public reference. Search for existing entries before proposing new fixed-rank
+sequences. Check other projections of a changed cell using `impact_map.json`.
+The source correction and newly appended terms are different changes.
 
-The rank-five multiplicity-19 value 5640 extends the local A354473 draft to a(19).
-It comes from the reviewed complete GitHub run, with the entire old prefix checked.
-The reviewed laptop result adds c_6(7)=3814 to `fixed_rank_6.txt`, after a fresh
-independent GitHub audit; no OEIS accession is assigned here.
-The rank-seven multiplicity-three value 1059 extends A354476 at a(7).
-Any additional rank-eight multiplicity-two value is exported to A354475 only when
-the complete rank-eight bound-two run is certified in the manifest.
-
-## Submission checklist
-
-Check the live entry, its indexing and existing b-file. Compare the entire old
-prefix. Distinguish corrected terms from newly appended terms. Provide the exact
-release revision, source checksum, algorithm, completeness explanation and audit
-witnesses. Submit through the OEIS editorial workflow; do not claim acceptance
-until the edit is actually approved.
+OEIS text retains its [attribution and licensing terms](../NOTICE.md).

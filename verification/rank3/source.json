@@ -1,0 +1,14 @@
+{
+  "origin": "Retained complete computation, 18 September 2026; not re-enumerated in this revision.",
+  "retained_at_commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b",
+  "dataset": {
+    "rank": 3,
+    "bound": 1000,
+    "complete": true,
+    "verified": true,
+    "classes": 460353,
+    "tables": "results/rank3_through1000_tables.txt.gz",
+    "tables_gz_sha256": "6e1c5b9349870ca5d3745ed629051b90726ddaa1890f30782b8f2cd465d716eb",
+    "tables_uncompressed_sha256": "bfebca55e08ef811173dc271556befadba842f25600d97ac59d58f96d73c8b58"
+  }
+}

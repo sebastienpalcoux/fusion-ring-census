@@ -5,7 +5,6 @@ on:
       manifest:
         description: Repository path to the candidate manifest at this revision
         required: true
-        default: verification/candidates/manifest.json
 permissions:
   contents: read
 concurrency:

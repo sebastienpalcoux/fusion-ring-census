@@ -54,8 +54,6 @@ def main() -> int:
     ap.add_argument('--seconds', type=float, default=None)
     ap.add_argument('--local-unlimited', action='store_true',
                     help='Local laptop only: no clock limit; requires independent verification')
-    ap.add_argument('--rank6-m7-max', action='store_true',
-                    help='Allow the explicitly bounded rank-6 multiplicity-7 campaign only')
     ap.add_argument('--deadline', type=float, help='Parent monotonic wall-clock deadline; never reset between phases')
     ap.add_argument('--threads', type=int, default=min(64, len(os.sched_getaffinity(0))) if hasattr(os, 'sched_getaffinity') else min(64, os.cpu_count() or 1))
     ap.add_argument('--out', type=Path, required=True)
@@ -69,13 +67,9 @@ def main() -> int:
     budget = a.seconds if a.seconds is not None else {3:60,4:1200,5:1200,6:1200,7:1200,8:1200}[a.rank]
     limit = 4200
     if a.local_unlimited:
-        if os.environ.get('GITHUB_ACTIONS') or not a.verify or a.seconds is not None or a.deadline is not None or a.rank6_m7_max:
+        if os.environ.get('GITHUB_ACTIONS') or not a.verify or a.seconds is not None or a.deadline is not None:
             ap.error('--local-unlimited requires --verify, local execution, and no other budget flags')
         budget = math.inf
-    if a.rank6_m7_max:
-        if (a.rank,a.bound)!=(6,7) or a.deadline is None or not a.verify:
-            ap.error('--rank6-m7-max requires rank 6, bound 7, --verify and a shared --deadline')
-        limit = 21300
     if not a.local_unlimited and (not math.isfinite(budget) or not 0 < budget <= limit):
         ap.error(f'--seconds must be finite, positive and at most {limit}')
     if a.deadline is not None and (not math.isfinite(a.deadline) or not 0 < a.deadline-time.monotonic() <= limit):

@@ -1,0 +1,24 @@
+{
+  "total_classes": 1405669,
+  "internal_links_checked": 150,
+  "broken_links": [],
+  "oeis_projections_match": true,
+  "rank_csvs_match": true,
+  "fresh_audits_match_release": true,
+  "manual_workflows": [
+    "audit-candidates.yml",
+    "ci.yml",
+    "frontier.yml",
+    "manuscripts.yml"
+  ],
+  "frontier_ranks": [
+    5,
+    6,
+    7,
+    8
+  ],
+  "enumerator_cpp_unchanged": true,
+  "latex_final_passes_clean": true,
+  "html_manifest_matches": true,
+  "interactive_exact_cumulative_and_invalid_range_checks": true
+}

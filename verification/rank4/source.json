@@ -1,0 +1,23 @@
+{
+  "origin": "Retained complete computation, 18 September 2026; not re-enumerated in this revision.",
+  "retained_at_commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b",
+  "dataset": {
+    "rank": 4,
+    "bound": 128,
+    "complete": true,
+    "classes": 889530,
+    "sort_export_seconds": 1.1729952800001229,
+    "completed_stratum_runs": [
+      "rank4_128"
+    ],
+    "parameters_uncompressed_sha256": "66924969637eee20048b8a934759196d46cccf0d5d8cbf3af2620132d8b93df8",
+    "parameters": "results/rank4_through128_parameters.txt.gz",
+    "parameters_compression_seconds": 0.5476466060003986,
+    "parameters_gz_sha256": "0c3ab657ebfa9c78719e909a7d5857769e0bf791564a67971350237e752aaf6d",
+    "tables_uncompressed_sha256": "d54fe08711103f970fa08ae346a4d03e9277aac403054a87d89a2d760d8d5fc9",
+    "tables": "results/rank4_through128_tables.txt.gz",
+    "tables_compression_seconds": 1.9611312120000548,
+    "tables_gz_sha256": "9b91cebd5b1cb570c12793dee289783815a51212d6511c8f2d6d1e650a78b2d8",
+    "verified": true
+  }
+}

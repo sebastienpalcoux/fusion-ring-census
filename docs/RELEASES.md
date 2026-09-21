@@ -1,82 +1,44 @@
-# Publication and promotion of computed data
+# Reviewing and releasing census data
 
-## Existing private repository and bounded campaigns
+A release is one complete dataset per rank, described by `results/census.json`.
+Generated count tables, manuscripts, the README, HTML viewer and OEIS drafts all
+use that manifest. `verification/rankR/` holds the evidence for the current dataset.
+Earlier data and execution instructions remain in Git history.
 
-The project is published privately at
-[sebastienpalcoux/fusion-ring-census](https://github.com/sebastienpalcoux/fusion-ring-census).
-Preserve its Git history; do not rerun the initial repository-creation helper,
-force-push, change visibility, or alter billing settings.
+## Candidate audit
 
-The manual `long-frontier.yml` campaign runs ranks 5–8 only, with four jobs at
-most, 4,200 driver seconds per rank and 75 job minutes per rank (300 runner-minutes
-total). The legacy `frontier.yml` remains manual with its original 1,100-second
-and 20-minute limits. Both share the same concurrency lock. Reruns are rejected;
-a further campaign requires a separately authorized dispatch and budget check.
+Never execute code from an uploaded data archive. Inspect its paths, checksums,
+source identity and completion records. Every duality type must finish normally;
+every old exact-multiplicity term must agree. An equal-bound submission is a
+reproduction and must match every existing uncompressed tensor and parameter checksum.
 
-The separate [rank-6 bound-7 maximum-duration campaign](RANK6_M7_MAX.md) has one
-six-hour job and a 21,300-second shared driver deadline, explicitly restricted to
-that rank and bound. It shares the concurrency lock and only uploads verified
-candidates/diagnostics. Its launch-then-stop authorization does not promote data.
+Stage a reviewed candidate tree and a JSON list of entries with `rank`, `bound`,
+`path` and full `source_commit`. Dispatch the manual **Audit candidate data**
+workflow at that exact revision, passing the manifest path. It compiles the
+repository's independent checker, verifies source and data hashes, checks every
+tensor and every unit-fixing permutation, and compares exact counts. The audit
+has a 10-minute ceiling and uploads reports for 14 days. Check included allowance
+and enforced spending controls before dispatch. Do not rerun enumeration.
 
-Before dispatch, inspect active runs and the account-wide included Actions
-minutes/storage and enforced spending controls. Use standard Ubuntu runners
-and existing included capacity only. If paid usage cannot be excluded, prepare
-and push safe changes but stop before dispatch. Do not infer quota from elapsed
-run time or an Actions timing API returning zero. Do not enable overages or buy
-capacity. Check the exact pushed revision and dispatch once. No results are
-implied by launch acceptance, a green check, or an artifact name.
+Only `verified_extension` may enlarge a bound. `verified_reproduction` adds
+confirmation without changing counts. A workflow's green status, an artifact
+name or a partial stratum is never sufficient evidence of a larger census.
 
-See [the long campaign contract](LONG_CAMPAIGN.md). Candidates and diagnostics
-expire after 14 days. There is no automated promotion or manuscript/OEIS update.
+## Integration checklist
 
-## Review a frontier result
+1. Read the successful audit reports and compare their candidate/source hashes.
+2. Update the selected rank's current data and manifest; preserve raw run records,
+   per-duality logs and the fresh audit under `verification/rankR/`.
+3. Run `make docs`, lightweight tests and `scripts/check_release.py`; inspect PDFs,
+   links, table projections, scope and the final diff.
+4. Remove superseded current-tree payloads, stale one-off instructions and duplicate
+   derived output. Keep mathematical arguments, licensing, source attribution and
+   evidence needed to reproduce the release. History retains previous versions.
+5. Commit and push normally. Confirm the published manifest and private visibility.
 
-Download and extract the workflow artifact. Check the run's conclusion, exact
-commit, command and environment, then read `frontier.json` and `best/run.json`.
-An artifact without `best/` contains no new certified bound. Full numerical
-verification must run on GitHub Actions when operating from Work. For this review,
-`review-rank5-m19.yml` pins the source run and commit, invokes the guarded importer
-on the runner, and uploads verified integration files without committing them.
-It is manual, read-only to the repository, and capped at 10 job minutes.
-Its dataset/manifest files are downloaded only after successful verification.
-The equivalent importer command below belongs on that runner; documentation
-and PDF regeneration can run in Work:
+## External publication
 
-```bash
-python3 scripts/promote_result.py extracted-artifact/best
-python3 scripts/refresh_documentation.py
-python3 scripts/build_manuscripts.py --compile
-python3 scripts/build_site.py
-python3 scripts/check_release.py  # lightweight integrity check; --full belongs on Actions
-python3 -m unittest discover -s tests -v
-git diff --stat
-```
-
-The importer requires `complete: true` and `verified: true`, an actual larger
-bound, agreement with all existing-prefix counts, correct uncompressed hashes,
-and a new full independent tensor audit. It does not commit or push. The release
-manifest, manuscripts, count files and OEIS projections must be updated together.
-Inspect the diff, preserve logs and obtain mathematical review before tagging a
-release. The project deliberately does not auto-commit new mathematical claims.
-
-## Release inventory
-
-`results/census.json` is authoritative for complete bounds, class counts and
-tensor digests. Historical inputs and reports remain separately under `reference/`,
-`audit/` and `verification/`. Never call a source-only partial count exhaustive.
-Avoid adding binaries, build caches, raw timed-out tensor fragments or credentials.
-Prefer compressed text datasets and release artifacts for large reruns.
-
-A useful release contains tagged source, systems, PDFs and TeX, counts, tensor
-digests, independent verification reports, provenance and a clear changelog.
-OEIS submission is a separate reviewed action, not part of tagging or CI.
-
-## Platform references
-
-- Repository creation: https://cli.github.com/manual/gh_repo_create
-- Workflow dispatch: https://cli.github.com/manual/gh_workflow_run
-- Workflow syntax and job limits: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
-
-The rank-six bound-seven result was subsequently completed on the user's laptop
-and [freshly audited and integrated](RANK6_LAPTOP_REVIEW.md). The historical
-maximum-duration campaign cannot rerun against the new baseline.
+Keep this repository private unless the maintainer explicitly authorizes a
+visibility change. OEIS drafts are not submissions. Before an OEIS edit, compare
+the live entry and provide a stable public reference with exact revision,
+checksums, definitions, coverage argument and verification evidence.
