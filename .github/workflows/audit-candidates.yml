@@ -1,0 +1,39 @@
+name: Audit candidate data
+on:
+  workflow_dispatch:
+    inputs:
+      manifest:
+        description: Repository path to the candidate manifest at this revision
+        required: true
+        default: verification/candidates/manifest.json
+permissions:
+  contents: read
+concurrency:
+  group: census-candidate-review
+  cancel-in-progress: false
+jobs:
+  audit:
+    if: github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Independently verify all supplied candidates
+        env:
+          MANIFEST: ${{ inputs.manifest }}
+        run: |
+          set -o pipefail
+          python3 scripts/audit_candidates.py "$MANIFEST" --out candidate-audit 2>&1 | tee candidate-audit.log
+      - name: Preserve audit evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: candidate-audit-${{ github.run_id }}
+          path: |
+            candidate-audit/
+            candidate-audit.log
+          retention-days: 14
+          if-no-files-found: error

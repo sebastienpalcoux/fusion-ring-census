@@ -1,0 +1,24 @@
+{
+  "baseline": {
+    "rank": 8,
+    "bound": 1,
+    "complete": true,
+    "verified": true,
+    "classes": 96,
+    "counts": {
+      "1": 96
+    },
+    "provenance": "New local independent enumeration with dynamic linear-algebra workspaces and rank-eight template instantiation.",
+    "tables": "results/rank8_through1_tables.txt.gz",
+    "tables_gz_sha256": "02ead89d28720d68e536eec8542ce2532ba7d4a35220401190490c2aa871517f",
+    "tables_uncompressed_sha256": "4ddf6402afff4f19ae4513ae63422cf73c327c605aa50cdcae731941de272ee7",
+    "parameters": "results/rank8_through1_parameters.txt.gz",
+    "parameters_gz_sha256": "a9303ae3bd33c554bb0c760987f6b331af26d0b8b50e12f9128e5e4aabe1b47e",
+    "parameters_uncompressed_sha256": "51417e64cb301b32508266e59ed81ea4144b76b4c2a5403de7369ad3e1dcbca1"
+  },
+  "source": {
+    "repository": "https://github.com/sebastienpalcoux/fusion-ring-census",
+    "commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b",
+    "scope": "unmodified code, systems and methods from this revision; no tensor datasets bundled"
+  }
+}

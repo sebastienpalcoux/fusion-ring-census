@@ -1,0 +1,26 @@
+[
+  {
+    "rank": 5,
+    "bound": 20,
+    "path": "verification/candidates/rank5",
+    "source_commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b"
+  },
+  {
+    "rank": 6,
+    "bound": 7,
+    "path": "verification/candidates/rank6",
+    "source_commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b"
+  },
+  {
+    "rank": 7,
+    "bound": 4,
+    "path": "verification/candidates/rank7",
+    "source_commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b"
+  },
+  {
+    "rank": 8,
+    "bound": 2,
+    "path": "verification/candidates/rank8",
+    "source_commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b"
+  }
+]

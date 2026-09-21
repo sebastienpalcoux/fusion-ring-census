@@ -1,0 +1,35 @@
+{
+  "baseline": {
+    "rank": 7,
+    "bound": 3,
+    "complete": true,
+    "classes": 1421,
+    "counts": {
+      "1": 43,
+      "2": 319,
+      "3": 1059
+    },
+    "sort_export_seconds": 0.8238831969997591,
+    "completed_stratum_runs": [
+      "fast5_7_3",
+      "parallel7_p1_3",
+      "general7_p2_3",
+      "general7_p3_3"
+    ],
+    "parameters_uncompressed_sha256": "9ebff1f04240d8a3b5bc8ccb1fcad2c1a8c1b5d7f91d5e3cf7fe92811dcb5d80",
+    "parameters": "results/rank7_through3_parameters.txt.gz",
+    "parameters_compression_seconds": 0.0016436119999525545,
+    "parameters_gz_sha256": "47995799eb0bf98cdf019331e9a55fc767e5827ab2206bdc6ebd37423ea2d975",
+    "tables_uncompressed_sha256": "610ee7a01a95407dff2da36f7e59ace753f2acca5b1ddca1e1c4dde1c82357ce",
+    "tables": "results/rank7_through3_tables.txt.gz",
+    "tables_compression_seconds": 0.009447941999951581,
+    "tables_gz_sha256": "67fed3ea90e018d2e1c6ec3e6102ad974f7f7f86ea258aba69a3c6dfcb8a6b34",
+    "provenance": "Retained complete census from 18 September 2026; original execution logs and independent audits included.",
+    "verified": true
+  },
+  "source": {
+    "repository": "https://github.com/sebastienpalcoux/fusion-ring-census",
+    "commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b",
+    "scope": "unmodified code, systems and methods from this revision; no tensor datasets bundled"
+  }
+}
