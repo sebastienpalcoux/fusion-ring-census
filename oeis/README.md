@@ -42,9 +42,9 @@ and **c₈(2)=877**. These additions preserve the old verified prefixes.
 Check the live entry, indexing and b-file; the retained source snapshot is dated
 18 September 2026. Preserve attribution to Vercleyen and Slingerland and credit
 the independent census separately. Supply a public, stable reference to the exact
-revision and verification evidence: this private repository's URL alone is not
-a public reference. Search for existing entries before proposing new fixed-rank
-sequences. Check other projections of a changed cell using `impact_map.json`.
+revision and verification evidence. Use a permanent commit link to this public
+repository and the corresponding audit records. Search for existing entries before
+proposing new fixed-rank sequences. Check other projections of a changed cell using `impact_map.json`.
 The source correction and newly appended terms are different changes.
 
 OEIS text retains its [attribution and licensing terms](../NOTICE.md).

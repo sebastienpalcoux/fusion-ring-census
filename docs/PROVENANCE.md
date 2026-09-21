@@ -75,4 +75,5 @@ Superseded tensor copies, dated review narratives, temporary audit payloads and
 single-bound workflows have been removed from the current tree. Their records
 remain in [Git history](https://github.com/sebastienpalcoux/fusion-ring-census/commits/main),
 including the complete [pre-integration audit revision](https://github.com/sebastienpalcoux/fusion-ring-census/tree/b5e15383c75f46e1d00679a3815dc56e638f4a56).
-Repository visibility remains private. No online OEIS submission is implied.
+Repository visibility is public by the maintainer’s authorization. No online
+OEIS submission is implied.

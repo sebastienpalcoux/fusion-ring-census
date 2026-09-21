@@ -201,5 +201,5 @@ no online submission is implied.
 
 Sébastien Palcoux · BIMSA · [Cite](CITATION.cff) · [Attribution & licensing](NOTICE.md) · [Contribute](CONTRIBUTING.md)
 
-Repository access is private. [Provenance and verification](docs/PROVENANCE.md)
+Repository access is public. [Provenance and verification](docs/PROVENANCE.md)
 explain the current release, AI assistance and the limits of computational evidence.

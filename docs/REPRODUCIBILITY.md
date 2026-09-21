@@ -116,9 +116,8 @@ record `error` and fail the job. Artifacts retain diagnostics and complete verif
 candidates for 14 days. Partial tensor collections are excluded.
 
 Before an authorized dispatch, check account-wide included minutes/storage and
-enforced spending controls. Use standard Ubuntu runners, keep the repository
-private, and do not enable paid overages. The local unlimited mode refuses GitHub
-Actions. Standard low-level timed runs accept at most 4,200 seconds; the frontier
+enforced spending controls. Use standard Ubuntu runners and do not enable paid
+overages. The local unlimited mode refuses GitHub Actions. Standard low-level timed runs accept at most 4,200 seconds; the frontier
 wrapper limits ranks 3–4 to 1,200 seconds and ranks 5–8 to 4,200 seconds.
 
 ## Review and publication

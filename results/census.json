@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "release_date": "2026-09-21",
   "scope": "All fusion rings in the stated complete whole-rank regions; all duality types; no categorifiability filter.",
-  "publication_status": "Private GitHub repository.",
+  "publication_status": "Public GitHub repository.",
   "ranks": {
     "3": {
       "rank": 3,

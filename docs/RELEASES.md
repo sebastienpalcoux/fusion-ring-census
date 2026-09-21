@@ -34,11 +34,12 @@ name or a partial stratum is never sufficient evidence of a larger census.
 4. Remove superseded current-tree payloads, stale one-off instructions and duplicate
    derived output. Keep mathematical arguments, licensing, source attribution and
    evidence needed to reproduce the release. History retains previous versions.
-5. Commit and push normally. Confirm the published manifest and private visibility.
+5. Commit and push normally. Confirm the published manifest and authorized
+   repository visibility.
 
 ## External publication
 
-Keep this repository private unless the maintainer explicitly authorizes a
-visibility change. OEIS drafts are not submissions. Before an OEIS edit, compare
+Change repository visibility only with explicit maintainer authorization.
+OEIS drafts are not submissions. Before an OEIS edit, compare
 the live entry and provide a stable public reference with exact revision,
 checksums, definitions, coverage argument and verification evidence.
