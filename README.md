@@ -7,6 +7,13 @@
 1,412,668 distinct classes in the certified datasets. Every duality
 type is included, including noncommutative rings. No categorifiability filter.
 
+The separate [Grothendieck-ring classification repository](https://github.com/sebastienpalcoux/grothendieck-ring-classification)
+tracks categorical realizations, proof manuscripts and per-band decisions;
+its [visual atlas](https://grothendieck-ring-atlas.sebastien-palcoux.chatgpt.site)
+offers the same distinction interactively. Both classification links currently
+require private access. The census counts below include fusion rings that
+have been excluded from categorification or remain unresolved.
+
 ## Counts by rank and multiplicity
 
 Each entry is **the number of based-isomorphism classes at exactly multiplicity
