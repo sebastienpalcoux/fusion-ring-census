@@ -4,7 +4,7 @@
 
 [Data](#complete-datasets) · [Manuscripts](manuscripts/README.md) · [Run & verify](docs/REPRODUCIBILITY.md) · [OEIS](oeis/README.md) · [Evidence](verification/README.md)
 
-1,405,669 distinct classes in the certified datasets. Every duality
+1,412,668 distinct classes in the certified datasets. Every duality
 type is included, including noncommutative rings. No categorifiability filter.
 
 ## Counts by rank and multiplicity
@@ -21,7 +21,7 @@ m**. A dash means *not yet completely enumerated*, never zero.
 | 5 | 5 | 55 | 209 | 1,582 | — | — |
 | 6 | 9 | 81 | 336 | 2,768 | — | — |
 | 7 | 6 | 92 | 477 | 3,814 | — | — |
-| 8 | 10 | 137 | 733 | — | — | — |
+| 8 | 10 | 137 | 733 | 6,999 | — | — |
 | 9 | 12 | 151 | 863 | — | — | — |
 | 10 | 9 | 186 | 1,082 | — | — | — |
 | 11 | 10 | 238 | 1,383 | — | — | — |
@@ -164,7 +164,7 @@ Bounds and totals below are cumulative: all rings of multiplicity **at most M**.
 | 3 | 1,000 | 460,353 | [Tensors](results/rank3/tables.txt.gz) · [Counts](results/rank3/counts.csv) | [PDF](manuscripts/rank3.pdf) · [TeX](manuscripts/rank3.tex) |
 | 4 | 128 | 889,530 | [Tensors](results/rank4/tables.txt.gz) · [Counts](results/rank4/counts.csv) | [PDF](manuscripts/rank4.pdf) · [TeX](manuscripts/rank4.tex) |
 | 5 | 20 | 40,999 | [Tensors](results/rank5/tables.txt.gz) · [Counts](results/rank5/counts.csv) | [PDF](manuscripts/rank5.pdf) · [TeX](manuscripts/rank5.tex) |
-| 6 | 7 | 9,613 | [Tensors](results/rank6/tables.txt.gz) · [Counts](results/rank6/counts.csv) | [PDF](manuscripts/rank6.pdf) · [TeX](manuscripts/rank6.tex) |
+| 6 | 8 | 16,612 | [Tensors](results/rank6/tables.txt.gz) · [Counts](results/rank6/counts.csv) | [PDF](manuscripts/rank6.pdf) · [TeX](manuscripts/rank6.tex) |
 | 7 | 4 | 4,201 | [Tensors](results/rank7/tables.txt.gz) · [Counts](results/rank7/counts.csv) | [PDF](manuscripts/rank7.pdf) · [TeX](manuscripts/rank7.tex) |
 | 8 | 2 | 973 | [Tensors](results/rank8/tables.txt.gz) · [Counts](results/rank8/counts.csv) | [PDF](manuscripts/rank8.pdf) · [TeX](manuscripts/rank8.tex) |
 

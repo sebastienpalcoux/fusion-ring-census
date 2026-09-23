@@ -1,7 +1,7 @@
 {
   "rank": 6,
-  "bound": 7,
-  "classes": 9613,
+  "bound": 8,
+  "classes": 16612,
   "counts": {
     "1": 39,
     "2": 154,
@@ -9,29 +9,30 @@
     "4": 872,
     "5": 1582,
     "6": 2768,
-    "7": 3814
+    "7": 3814,
+    "8": 6999
   },
-  "outcome": "verified_reproduction",
+  "outcome": "verified_extension",
   "previous_bound": 7,
   "previous_classes": 9613,
   "source_commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b",
   "code_sha256": "0f7690b2c58d7c300d3ab24a2751d1859f676f0db72958d91ad8c4b0ff0a3753",
-  "verification_commit": "b5e15383c75f46e1d00679a3815dc56e638f4a56",
-  "verification_run_id": "35553424461",
+  "verification_commit": "ecd8efe483411c45c8c950da9ba7f3c82041f0dc",
+  "verification_run_id": "35807052254",
   "complete": true,
   "verified": true,
   "independent_verification": {
-    "input_records": 9613,
-    "input_physical_lines": 9613,
-    "distinct_rings": 9613,
+    "input_records": 16612,
+    "input_physical_lines": 16612,
+    "distinct_rings": 16612,
     "duplicates": 0,
     "literal_repeats": 0,
     "new_labellings": 0,
     "associativity_checked": true,
     "canonical_mode": "all unit-fixing permutations",
-    "permutations_examined": 1153560,
-    "elapsed_seconds": 0.209841735
+    "permutations_examined": 1993440,
+    "elapsed_seconds": 0.540246188
   },
-  "tables_sha256": "9495a021e580d8f7567ff3098d7af653844712a1ff04446aebc0daa4f2c1220f",
-  "parameters_sha256": "09afad3707f87282f25534bda7f0ec0c977ed8d394e721227c9da7582b5ee6ce"
+  "tables_sha256": "7898a833dfffd0f645436c1d326740db29ea6a29980de307c67227f0b67122b0",
+  "parameters_sha256": "f4b3823a7a596ae1952153faefd007e8cb3bb3464bff79dbcbdcd7b9d2efd257"
 }

@@ -317,33 +317,25 @@ nested-curly-brace format. An entry is $N[i][j][k]=N_{ij}^{k}$: the output index
 has already been dualized where the internal parameter convention requires it.
 The raw tensor needs no additional index conversion.
 
-\subsection{Current evidence and release gates}
-There is one current dataset per rank under \path{results/rankR/} and one
-corresponding evidence directory under \path{verification/rankR/}. Ranks three
-and four retain their complete original runs and independent audits. The supplied
-laptop censuses at ranks five through eight passed a fresh independent GitHub
-audit, run \href{https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35553424461}{35553424461}.
-Every emitted tensor was checked under all unit-fixing permutations, with zero
-duplicate classes and exact agreement with the previous count prefixes. Archive
-checksums, source identities, commands, environments and nonempty subprocess
-logs are retained. The rank-six upload reproduces the existing bound-seven
-census exactly; it is not an additional extension.
+\subsection{Certified datasets and reproducibility}
+The primary manifest gives the complete bound, exact counts and data checksums
+for every rank. Each \path{verification/rankR/} directory records the independent
+audit and source identity for that dataset. For the laptop censuses it also
+retains the completed enumeration, commands, environment, phase timings and
+nonempty subprocess logs. Every required duality stratum completed normally;
+independent canonicalization found zero duplicate classes.
 
-The hosted frontier workflow is manual and selects ranks five through eight.
-Each rank has one 4,200-second shared driver deadline and a 75-minute job ceiling,
-at most 300 runner-minutes in total. Compilation, every attempted multiplicity,
-all duality types, export, compression and independent verification share that
-deadline. Enumeration receives 90\% of remaining driver time, reserving the
-balance for the other phases. Threads follow the actual runner CPU allocation.
-The local launcher has no clock limit; its mathematical scope limits and mandatory
-verification remain in force.
+The independent checks of ranks five through eight ran on GitHub using the
+supplied tensors. They did not rerun enumeration. The per-rank reports identify
+the exact verification revision and run, and certify agreement with the established
+exact-multiplicity count prefix. See \path{verification/README.md} for the evidence
+index and \path{docs/PROVENANCE.md} for attribution.
 
-Only a complete, independently verified whole-rank result can become a candidate.
-A subsequent timeout preserves the last verified candidate. Integration requires
-explicit review and a fresh independent audit. Interrupted output cannot supply
-exhaustive census or OEIS terms. All workflows are manual; a push starts no search.
-Earlier payloads and campaigns remain in Git history, without duplicate releases
-in the current tree. See \path{docs/PROVENANCE.md} and \path{verification/README.md}.
+The local launcher has no clock limit, while the manual hosted workflow uses a
+finite shared deadline covering every computational phase. A timeout never
+certifies the unfinished bound. Only a complete, independently verified whole-rank
+candidate can enter the release; a later failed attempt cannot replace it.
+Reproduction commands and supported limits are in \path{docs/REPRODUCIBILITY.md}.
 
 \section{Reading and reusing the data}
 The result files count based rings, not monoidal categories or realizations of
@@ -441,10 +433,11 @@ a generic determinant is nonzero.
 '''
         else:body+=GENERAL+FAST
         body+=AUDIT
-        body+='\n\\section{Reproduction commands}\nFrom the repository root on a local computer, request a complete run with no clock limit. An interruption does not certify a smaller census.\n'
+        body+='\n\\par\\noindent\\begin{minipage}{\\linewidth}\n\\section{Reproduction commands}\nFrom the repository root on a local computer, request a complete run with no clock limit. An interruption does not certify a smaller census.\n'
         body+='\\begin{lstlisting}\n'+f'python3 scripts/run_laptop.py --rank {r} --bound {item["bound"]}\n'+'\\end{lstlisting}\n'
         body+='To verify the supplied release without recomputing it:\n\\begin{lstlisting}\npython3 scripts/check_release.py --full\n\\end{lstlisting}\n'
         body+='For a shared-budget frontier search, use \\path{scripts/extend_census.py}. For ranks five through eight it starts at the released bound plus one and restarts the unfinished bound without claiming checkpoint resumption. The local command above verifies all tensors and the old count prefix before packaging a result. The separate timed frontier wrapper bounds every phase. Rank three is instead capped at 1000.\n'
+        body+='\n\\end{minipage}\\par\n'
         if r==4:
             body+='\\clearpage\\appendix\n\\section{All exact-multiplicity rank-four counts}\n\\begin{longtable}{rr@{\\hspace{1.1cm}}rr@{\\hspace{1.1cm}}rr@{\\hspace{1.1cm}}rr}\n\\toprule $m$ & $c_4(m)$ & $m$ & $c_4(m)$ & $m$ & $c_4(m)$ & $m$ & $c_4(m)$\\\\\\midrule\\endhead\n'
             values=list(item['counts'].items())

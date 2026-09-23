@@ -31,6 +31,6 @@ test_prefix_every_rank_and_shorter_reproduction (test_laptop.LaptopTests.test_pr
 test_success_archive_excludes_partial_and_compiler_files (test_laptop.LaptopTests.test_success_archive_excludes_partial_and_compiler_files) ... ok
 
 ----------------------------------------------------------------------
-Ran 31 tests in 0.551s
+Ran 31 tests in 0.536s
 
 OK

@@ -3,8 +3,8 @@ message: "Please cite the exact revision and the relevant mathematical companion
 title: "Fusion Ring Census: exact whole-rank enumeration and verification"
 type: software
 repository-code: "https://github.com/sebastienpalcoux/fusion-ring-census"
-version: "0.2.0"
-date-released: "2026-09-21"
+version: "0.2.1"
+date-released: "2026-09-23"
 authors:
   - family-names: "Palcoux"
     given-names: "Sébastien"

@@ -1,6 +1,6 @@
 {
-  "version": "0.2.0",
-  "release_date": "2026-09-21",
+  "version": "0.2.1",
+  "release_date": "2026-09-23",
   "scope": "All fusion rings in the stated complete whole-rank regions; all duality types; no categorifiability filter.",
   "publication_status": "Public GitHub repository.",
   "ranks": {
@@ -1199,10 +1199,10 @@
     },
     "6": {
       "rank": 6,
-      "bound": 7,
+      "bound": 8,
       "complete": true,
       "verified": true,
-      "classes": 9613,
+      "classes": 16612,
       "counts": {
         "1": 39,
         "2": 154,
@@ -1210,15 +1210,16 @@
         "4": 872,
         "5": 1582,
         "6": 2768,
-        "7": 3814
+        "7": 3814,
+        "8": 6999
       },
       "verification_reports": "verification/rank6/",
       "tables": "results/rank6/tables.txt.gz",
-      "tables_gz_sha256": "a4e67e074399bea4de4df847473bff60e785a65d67753aacdc9521deb5728902",
-      "tables_uncompressed_sha256": "9495a021e580d8f7567ff3098d7af653844712a1ff04446aebc0daa4f2c1220f",
+      "tables_gz_sha256": "0138c6228dbb06b0861ad38b8dfe67fcd1fc829add80d441c34c09a1afb78675",
+      "tables_uncompressed_sha256": "7898a833dfffd0f645436c1d326740db29ea6a29980de307c67227f0b67122b0",
       "parameters": "results/rank6/parameters.txt.gz",
-      "parameters_gz_sha256": "14e9deb671cfc2ce173adeba813044d9c334e59e53b2e780f9f6bebc5e68f4dc",
-      "parameters_uncompressed_sha256": "09afad3707f87282f25534bda7f0ec0c977ed8d394e721227c9da7582b5ee6ce"
+      "parameters_gz_sha256": "c9d6f69824d5d94ab10b3d3b3589a42d86d270f50d11671221cf0e6dfc405c72",
+      "parameters_uncompressed_sha256": "f4b3823a7a596ae1952153faefd007e8cb3bb3464bff79dbcbdcd7b9d2efd257"
     },
     "7": {
       "rank": 7,
@@ -1259,5 +1260,5 @@
       "parameters_uncompressed_sha256": "cb9d84fb05ef00f572d59a3a5df4609a83ec00a793d8afed4f74c405469d09b7"
     }
   },
-  "total_classes": 1405669
+  "total_classes": 1412668
 }

@@ -36,7 +36,7 @@ independent verification. `--mult` is an alias for `--bound`.
 | 3 | 1000 | Supported ceiling reached | 1–1000 |
 | 4 | 128 | 129 | 1–1000 |
 | 5 | 20 | 21 | 1–32 |
-| 6 | 7 | 8 | 1–15 |
+| 6 | 8 | 9 | 1–15 |
 | 7 | 4 | 5 | 1–15 |
 | 8 | 2 | 3 | 1–15 |
 

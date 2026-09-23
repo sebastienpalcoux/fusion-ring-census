@@ -20,8 +20,8 @@ from `results/census.json`.
 independently recomputed rank-nine result. This repository's computation scope
 ends at rank 8. Rank-1 and rank-2 terms follow symbolically.
 
-Unassigned fixed-rank drafts: [rank 6](fixed_rank_6.txt), [rank 7](fixed_rank_7.txt),
-[rank 8](fixed_rank_8.txt). No A-number is invented or reserved here.
+Fixed-rank data files: [rank 6](fixed_rank_6.txt), [rank 7](fixed_rank_7.txt),
+[rank 8](fixed_rank_8.txt). No A-number is assigned to these files in this repository.
 
 ## Correction and extensions
 
@@ -34,8 +34,11 @@ Suggested comment:
 The independent census extends the rank-5 draft through 20, with **a(20)=6866**.
 The multiplicity-2 draft includes **A354475: a(8)=877**; the multiplicity-4 draft
 includes **A354477: a(7)=2780**. The multiplicity-3 draft includes
-**A354476: a(7)=1059**. Fixed-rank drafts include **c₆(7)=3814**, **c₇(4)=2780**
-and **c₈(2)=877**. These additions preserve the old verified prefixes.
+**A354476: a(7)=1059**. Fixed-rank files include
+**c₆(8)=6999**,
+**c₇(4)=2780** and
+**c₈(2)=877**.
+These terms come from complete, independently verified datasets.
 
 ## Before submitting
 

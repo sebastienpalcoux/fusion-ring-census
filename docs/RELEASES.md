@@ -3,7 +3,6 @@
 A release is one complete dataset per rank, described by `results/census.json`.
 Generated count tables, manuscripts, the README, HTML viewer and OEIS drafts all
 use that manifest. `verification/rankR/` holds the evidence for the current dataset.
-Earlier data and execution instructions remain in Git history.
 
 ## Candidate audit
 
