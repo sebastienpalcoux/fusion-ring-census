@@ -1,7 +1,7 @@
 {
   "rank": 6,
-  "bound": 8,
-  "classes": 16612,
+  "bound": 9,
+  "classes": 25421,
   "counts": {
     "1": 39,
     "2": 154,
@@ -10,29 +10,93 @@
     "5": 1582,
     "6": 2768,
     "7": 3814,
-    "8": 6999
+    "8": 6999,
+    "9": 8809
   },
-  "outcome": "verified_extension",
-  "previous_bound": 7,
-  "previous_classes": 9613,
-  "source_commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b",
-  "code_sha256": "0f7690b2c58d7c300d3ab24a2751d1859f676f0db72958d91ad8c4b0ff0a3753",
-  "verification_commit": "ecd8efe483411c45c8c950da9ba7f3c82041f0dc",
-  "verification_run_id": "35807052254",
   "complete": true,
   "verified": true,
+  "outcome": "verified_extension",
+  "previous_bound": 8,
+  "previous_classes": 16612,
+  "source_commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b",
+  "code_sha256": "0f7690b2c58d7c300d3ab24a2751d1859f676f0db72958d91ad8c4b0ff0a3753",
+  "verification_environment": "local workspace",
+  "verification_date": "2026-10-01",
+  "verification_run_id": null,
+  "verification_command": "python3 scripts/check_release.py --full --ranks 6 --out verification/rank6/release_check.json",
+  "verifier_source_sha256": "fbf920a4ee8a9db8bf3a80be6e3703df734b56e1db7fe8430a9f4a5e16c65e52",
+  "verifier_python_sha256": "cd09947f09af96064d1fd040582fd77d1811e1e775f378df039b9c62d175eb98",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux-6.18.44-x86_64-with-glibc2.39"
+  },
   "independent_verification": {
-    "input_records": 16612,
-    "input_physical_lines": 16612,
-    "distinct_rings": 16612,
+    "input_records": 25421,
+    "input_physical_lines": 25421,
+    "distinct_rings": 25421,
     "duplicates": 0,
     "literal_repeats": 0,
     "new_labellings": 0,
     "associativity_checked": true,
     "canonical_mode": "all unit-fixing permutations",
-    "permutations_examined": 1993440,
-    "elapsed_seconds": 0.540246188
+    "permutations_examined": 3050520,
+    "elapsed_seconds": 0.718667921
   },
-  "tables_sha256": "7898a833dfffd0f645436c1d326740db29ea6a29980de307c67227f0b67122b0",
-  "parameters_sha256": "f4b3823a7a596ae1952153faefd007e8cb3bb3464bff79dbcbdcd7b9d2efd257"
+  "tables_sha256": "be377c8114d4c0a532b79850efd588090c1dfb5ae3ffc847ecf3eadb97f88ab3",
+  "parameters_sha256": "97bbb56344224c12f0c052a362df113f94d6830ab0252d53f224d49e131d1554",
+  "established_count_prefix_checked_through": 8,
+  "enumeration_repeated": false,
+  "completion_evidence": {
+    "selfdual": {
+      "bound": 9,
+      "complete": true,
+      "classes": 22977,
+      "counts": {
+        "1": 20,
+        "2": 102,
+        "3": 286,
+        "4": 703,
+        "5": 1362,
+        "6": 2428,
+        "7": 3449,
+        "8": 6412,
+        "9": 8215
+      },
+      "terminal_log_line": "FINAL rank 6 bound 9 complete 1 jobs 715 / 715 matrices 1005550500034 singular 2256456 completion_nodes 3995697 classes 22977 seconds 79397.3 counts 20 102 286 703 1362 2428 3449 6412 8215"
+    },
+    "pairs1": {
+      "bound": 9,
+      "complete": true,
+      "classes": 2265,
+      "counts": {
+        "1": 11,
+        "2": 39,
+        "3": 82,
+        "4": 152,
+        "5": 202,
+        "6": 312,
+        "7": 342,
+        "8": 557,
+        "9": 568
+      },
+      "terminal_log_line": "rank 6 pairs 1 bound 9 complete 1 nodes 63116671 classes 2265 seconds 77.7531 counts 11 39 82 152 202 312 342 557 568"
+    },
+    "pairs2": {
+      "bound": 9,
+      "complete": true,
+      "classes": 179,
+      "counts": {
+        "1": 8,
+        "2": 13,
+        "3": 16,
+        "4": 17,
+        "5": 18,
+        "6": 28,
+        "7": 23,
+        "8": 30,
+        "9": 26
+      },
+      "terminal_log_line": "rank 6 pairs 2 bound 9 complete 1 nodes 20516719 classes 179 seconds 23.1148 counts 8 13 16 17 18 28 23 30 26"
+    }
+  }
 }

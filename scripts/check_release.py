@@ -13,13 +13,16 @@ def sha256(path: Path) -> str:
 
 def main() -> int:
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--full',action='store_true')
+    ap.add_argument('--ranks',type=int,nargs='+',choices=range(3,9),help='Verify only these ranks (default: all).')
     ap.add_argument('--out',type=Path);a=ap.parse_args()
-    data=json.loads((ROOT/'results/census.json').read_text());report={'full_axiom_check':a.full,'ranks':{}}
+    data=json.loads((ROOT/'results/census.json').read_text());selected=set(map(str,a.ranks)) if a.ranks else set(data['ranks'])
+    report={'full_axiom_check':a.full,'selected_ranks':sorted(map(int,selected)),'ranks':{}}
     t0=time.monotonic()
     with tempfile.TemporaryDirectory(prefix='fusion-verify-') as tmp:
         tmp=Path(tmp);exe=tmp/'verify'
         if a.full:subprocess.run([os.environ.get('CXX','g++'),'-O3','-std=c++17',str(ROOT/'code/verify_tables.cpp'),'-o',str(exe)],check=True)
         for r,item in sorted(data['ranks'].items(),key=lambda x:int(x[0])):
+            if r not in selected:continue
             assert item['complete'] is True and item.get('verified') is True,(r,'uncertified release')
             assert sorted(map(int,item['counts']))==list(range(1,item['bound']+1)),(r,'count gaps')
             assert sum(item['counts'].values())==item['classes'],(r,'incorrect total')
@@ -56,7 +59,8 @@ def main() -> int:
                 plain.unlink()
             report['ranks'][r]=rec;print(f'Rank {r}, through {item["bound"]}: {lines:,} records OK',flush=True)
     report['total_classes']=sum(x['classes'] for x in report['ranks'].values());report['elapsed_seconds']=time.monotonic()-t0
-    assert report['total_classes']==data['total_classes'],'manifest total mismatch'
+    assert sum(v['classes'] for v in data['ranks'].values())==data['total_classes'],'manifest total mismatch'
+    report['manifest_total_classes']=data['total_classes']
     if a.out:
         a.out.parent.mkdir(parents=True,exist_ok=True);a.out.write_text(json.dumps(report,indent=2)+'\n')
     return 0

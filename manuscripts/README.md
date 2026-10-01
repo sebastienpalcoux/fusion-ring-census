@@ -7,8 +7,8 @@ Each companion gives definitions, a rank-specific coverage argument, exact count
 | 3 | 1000 | 460,353 | [PDF](rank3.pdf) · [LaTeX](rank3.tex) |
 | 4 | 128 | 889,530 | [PDF](rank4.pdf) · [LaTeX](rank4.tex) |
 | 5 | 20 | 40,999 | [PDF](rank5.pdf) · [LaTeX](rank5.tex) |
-| 6 | 8 | 16,612 | [PDF](rank6.pdf) · [LaTeX](rank6.tex) |
+| 6 | 9 | 25,421 | [PDF](rank6.pdf) · [LaTeX](rank6.tex) |
 | 7 | 4 | 4,201 | [PDF](rank7.pdf) · [LaTeX](rank7.tex) |
 | 8 | 2 | 973 | [PDF](rank8.pdf) · [LaTeX](rank8.tex) |
 
-Rebuild with `python3 scripts/build_manuscripts.py --compile`. Counts are read from the same manifest as the repository front page.
+Rebuild with `python3 scripts/build_manuscripts.py --compile`, or select one companion with `--ranks 6 --compile`. Counts and the displayed release date are read from the same manifest as the repository front page.

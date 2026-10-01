@@ -4,7 +4,7 @@
 
 ## Certified data
 
-Release 0.2.1, dated 2026-09-23, contains **1,412,668**
+Release 0.2.2, dated 2026-10-01, contains **1,421,477**
 distinct based-ring classes across six complete regions. The
 [manifest](../results/census.json) fixes every bound, exact-multiplicity count,
 tensor checksum and verification location.
@@ -14,7 +14,7 @@ tensor checksum and verification location.
 | 3 | 1000 | 460,353 | Completed project census |
 | 4 | 128 | 889,530 | Completed project census |
 | 5 | 20 | 40,999 | Completed laptop census |
-| 6 | 8 | 16,612 | Completed laptop census |
+| 6 | 9 | 25,421 | Completed laptop census |
 | 7 | 4 | 4,201 | Completed laptop census |
 | 8 | 2 | 973 | Completed laptop census |
 
@@ -24,9 +24,10 @@ archive checksum and exact code revision; run records retain commands, environme
 and timings. Archive inventories, decompressed hashes and established count prefixes
 are checked before integration. Every required duality stratum must finish normally.
 
-The supplied rank-5–8 tensors were independently checked on GitHub under every
-unit-fixing basis permutation, with no duplicate classes. The hosted jobs ran
-verification only. Laptop enumeration times remain attributed to the laptop.
+The supplied rank-5–8 tensors were independently checked under every unit-fixing
+basis permutation, with no duplicate classes. The evidence index distinguishes
+hosted audits from local checks. These checks ran verification only; laptop
+enumeration times remain attributed to the laptop.
 No incomplete search contributes an exhaustive count.
 
 ## Mathematical sources

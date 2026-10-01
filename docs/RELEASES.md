@@ -6,6 +6,19 @@ use that manifest. `verification/rankR/` holds the evidence for the current data
 
 ## Candidate audit
 
+The rank-six multiplicity-nine extension in version 0.2.2 was checked locally:
+`python3 scripts/check_release.py --full --ranks 6`. Its source receipt, fresh
+report, checker hashes, environment and command log are retained under
+`verification/rank6/`. The reports distinguish local verification from a hosted
+workflow; no hosted run is claimed for this extension. The complete supplied
+enumeration logs cover all three duality strata. Verification did not repeat
+enumeration. Other ranks retain their prior evidence.
+
+The `--ranks` option restricts verification to the selected datasets and reports
+that scope explicitly. Without it, the checker verifies every released rank.
+To update one companion without regenerating the others, use
+`python3 scripts/build_manuscripts.py --ranks 6 --compile`.
+
 Never execute code from an uploaded data archive. Inspect its paths, checksums,
 source identity and completion records. Every duality type must finish normally;
 every old exact-multiplicity term must agree. An equal-bound submission is a

@@ -6,7 +6,7 @@
 \definecolor{ink}{HTML}{163348}\definecolor{accent}{HTML}{147D83}
 \hypersetup{colorlinks=true,linkcolor=ink,urlcolor=accent,citecolor=accent,pdfauthor={Sébastien Palcoux}}
 \pagestyle{fancy}\fancyhf{}\fancyhead[L]{\sffamily\small FUSION RING CENSUS}
-\fancyhead[R]{\sffamily\small Rank \Rank}\fancyfoot[L]{\sffamily\footnotesize Computational companion \textbullet\ September 2026}
+\fancyhead[R]{\sffamily\small Rank \Rank}\fancyfoot[L]{\sffamily\footnotesize Computational companion \textbullet\ October 2026}
 \fancyfoot[R]{\sffamily\small\thepage}\renewcommand{\headrulewidth}{0.4pt}
 \newtheorem{theorem}{Theorem}[section]\newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}\newtheorem{corollary}[theorem]{Corollary}
@@ -21,10 +21,10 @@
 \thispagestyle{empty}{\sffamily\small\color{accent} EXACT ENUMERATION / DATA / VERIFICATION}\par\vspace{1cm}
 {\sffamily\Huge\bfseries\color{ink} Rank-6 fusion rings\par}
 \vspace{0.35cm}
-{\sffamily\Large A reproducible census through multiplicity 8\par}
-\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 23 September 2026}\par\vspace{0.8cm}
+{\sffamily\Large A reproducible census through multiplicity 9\par}
+\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 01 October 2026}\par\vspace{0.8cm}
 \begin{abstract}
-We explain the exact enumeration of all based fusion rings of rank 6 through multiplicity 8, comprising 16,612 isomorphism classes. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
+We explain the exact enumeration of all based fusion rings of rank 6 through multiplicity 9, comprising 25,421 isomorphism classes. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
 \end{abstract}\vspace{0.4cm}\noindent\textbf{AI assistance and verification.} GPT-6 Astra Pro assisted with code, exposition and computational checks. Exhaustive-search arguments and exact independent tensor verification are recorded separately; no proof-assistant certification or peer-reviewed acceptance is claimed.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage
 
 \section{Objects, equivalence and the counting convention}
@@ -73,7 +73,7 @@ Different $p$ cannot be isomorphic. Therefore a whole-rank census is complete
 exactly when every required stratum has been searched exhaustively. Finishing
 only the non-self-dual strata does not certify a whole-rank counting term.
 \section{The certified release at rank 6}
-The released bound is $M=8$ and the cumulative number of classes is $C_{6}(8)=16,612$. Every duality type is included. The accompanying full tensor file has one record per based-isomorphism class.
+The released bound is $M=9$ and the cumulative number of classes is $C_{6}(9)=25,421$. Every duality type is included. The accompanying full tensor file has one record per based-isomorphism class.
 
 \begin{center}\begin{tabular}{rrrr}\toprule Dual pairs & Variables & Equations & Relabellings\\\midrule
 0 & 35 & 55 & 120\\
@@ -90,9 +90,12 @@ The released bound is $M=8$ and the cumulative number of classes is $C_{6}(8)=16
 6 & 2,768\\
 7 & 3,814\\
 8 & 6,999\\
+9 & 8,809\\
 \bottomrule\end{tabular}\end{center}
 
 The data and their checksums are recorded in \path{results/census.json}. The corresponding completed-run evidence and independent audit are under \path{verification/rank6/}.
+
+The fresh audit for this dataset ran locally, checking 3,050,520 unit-fixing permutations across all 25,421 tensors. It found no duplicate classes and confirmed every exact-multiplicity count. This audit did not rerun enumeration, and no hosted audit is claimed for this dataset.
 
 \section{An exhaustive finite-domain model}
 \subsection{Coordinates directly from reciprocity}
@@ -281,11 +284,11 @@ retains the completed enumeration, commands, environment, phase timings and
 nonempty subprocess logs. Every required duality stratum completed normally;
 independent canonicalization found zero duplicate classes.
 
-The independent checks of ranks five through eight ran on GitHub using the
-supplied tensors. They did not rerun enumeration. The per-rank reports identify
-the exact verification revision and run, and certify agreement with the established
-exact-multiplicity count prefix. See \path{verification/README.md} for the evidence
-index and \path{docs/PROVENANCE.md} for attribution.
+Independent checks use the supplied tensors; they do not rerun enumeration.
+The per-rank reports identify the verification environment and source revision,
+and certify agreement with the established exact-multiplicity count prefix.
+Hosted audits and local checks are identified separately in
+\path{verification/README.md}; see \path{docs/PROVENANCE.md} for attribution.
 
 The local launcher has no clock limit, while the manual hosted workflow uses a
 finite shared deadline covering every computational phase. A timeout never
@@ -311,7 +314,7 @@ computational companion, not a claim of journal acceptance or external peer revi
 From the repository root on a local computer, request a complete run with no clock limit. An interruption does not certify a smaller census.
 \par\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}
-python3 scripts/run_laptop.py --rank 6 --bound 8
+python3 scripts/run_laptop.py --rank 6 --bound 9
 \end{lstlisting}
 \end{minipage}\par
 To verify the supplied release without recomputing it:

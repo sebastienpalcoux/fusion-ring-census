@@ -1,2 +1,2 @@
-16612 source records; 16612 distinct rings; 0 duplicates (0 literal repeats, 0 additional labellings).
-All witnesses checked. Associativity checked. Time: 0.540246 seconds.
+$ python3 scripts/check_release.py --full --ranks 6 --out verification/rank6/release_check.json
+Rank 6, through 9: 25,421 records OK

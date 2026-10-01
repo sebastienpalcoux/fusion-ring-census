@@ -35,7 +35,7 @@ The independent census extends the rank-5 draft through 20, with **a(20)=6866**.
 The multiplicity-2 draft includes **A354475: a(8)=877**; the multiplicity-4 draft
 includes **A354477: a(7)=2780**. The multiplicity-3 draft includes
 **A354476: a(7)=1059**. Fixed-rank files include
-**c₆(8)=6999**,
+**c₆(9)=8809**,
 **c₇(4)=2780** and
 **c₈(2)=877**.
 These terms come from complete, independently verified datasets.

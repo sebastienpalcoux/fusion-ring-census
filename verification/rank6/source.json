@@ -1,12 +1,14 @@
 {
-  "archive": "rank6_multiplicity8_verified.zip",
-  "archive_sha256": "48d62401fe2d287941aa32a591c01b15f7caf76bebbef2b3d55506f5a474a28d",
-  "received_date": "2026-09-23",
+  "archive": "rank6_multiplicity9_verified.zip",
+  "archive_sha256": "335bb340d53340ab1aaa51abe6a9906171487b0c8d0ec11732e4d0e3801402f8",
+  "received_date": "2026-10-01",
   "source": {
     "repository": "https://github.com/sebastienpalcoux/fusion-ring-census",
     "commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b",
     "scope": "unmodified code, systems and methods from this revision; no tensor datasets bundled"
   },
-  "verified_prefix_through": 7,
-  "verification_run_url": "https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35807052254"
+  "verified_prefix_through": 8,
+  "verification_environment": "local workspace",
+  "verification_report": "verification/rank6/audit.json",
+  "hosted_verification_run": null
 }

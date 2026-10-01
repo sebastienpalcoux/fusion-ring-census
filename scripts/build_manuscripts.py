@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate six explanatory LaTeX companions from the certified census manifest.
+"""Generate selected LaTeX companions from the certified census manifest.
 
 Run with --compile to build PDFs. Sources and the retained rank-specific
 mathematical derivations remain editable. No new census is performed here.
@@ -18,7 +18,7 @@ PREAMBLE=r'''\documentclass[11pt,a4paper]{article}
 \definecolor{ink}{HTML}{163348}\definecolor{accent}{HTML}{147D83}
 \hypersetup{colorlinks=true,linkcolor=ink,urlcolor=accent,citecolor=accent,pdfauthor={Sébastien Palcoux}}
 \pagestyle{fancy}\fancyhf{}\fancyhead[L]{\sffamily\small FUSION RING CENSUS}
-\fancyhead[R]{\sffamily\small Rank \Rank}\fancyfoot[L]{\sffamily\footnotesize Computational companion \textbullet\ September 2026}
+\fancyhead[R]{\sffamily\small Rank \Rank}\fancyfoot[L]{\sffamily\footnotesize Computational companion \textbullet\ RELEASEMONTH}
 \fancyfoot[R]{\sffamily\small\thepage}\renewcommand{\headrulewidth}{0.4pt}
 \newtheorem{theorem}{Theorem}[section]\newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}\newtheorem{corollary}[theorem]{Corollary}
@@ -325,11 +325,11 @@ retains the completed enumeration, commands, environment, phase timings and
 nonempty subprocess logs. Every required duality stratum completed normally;
 independent canonicalization found zero duplicate classes.
 
-The independent checks of ranks five through eight ran on GitHub using the
-supplied tensors. They did not rerun enumeration. The per-rank reports identify
-the exact verification revision and run, and certify agreement with the established
-exact-multiplicity count prefix. See \path{verification/README.md} for the evidence
-index and \path{docs/PROVENANCE.md} for attribution.
+Independent checks use the supplied tensors; they do not rerun enumeration.
+The per-rank reports identify the verification environment and source revision,
+and certify agreement with the established exact-multiplicity count prefix.
+Hosted audits and local checks are identified separately in
+\path{verification/README.md}; see \path{docs/PROVENANCE.md} for attribution.
 
 The local launcher has no clock limit, while the manual hosted workflow uses a
 finite shared deadline covering every computational phase. A timeout never
@@ -392,13 +392,18 @@ def results_section(r,item):
         if r==4:text+='The complete table through the released bound appears in Appendix A.\n'
     else:text+='The first sixteen terms are $4,3,4,6,5,9,6,10,12,9,10,20,9,13,16,25$. The complete 1,000-term file is supplied as \\path{oeis/b354471.txt}.\n'
     text+=f'\nThe data and their checksums are recorded in \\path{{results/census.json}}. The corresponding completed-run evidence and independent audit are under \\path{{verification/rank{r}/}}.\n'
+    audit_path=ROOT/f'verification/rank{r}/audit.json'
+    if audit_path.exists():
+        audit=json.loads(audit_path.read_text())
+        if audit.get('verification_environment')=='local workspace':
+            text+=f"\nThe fresh audit for this dataset ran locally, checking {audit['independent_verification']['permutations_examined']:,} unit-fixing permutations across all {item['classes']:,} tensors. It found no duplicate classes and confirmed every exact-multiplicity count. This audit did not rerun enumeration, and no hosted audit is claimed for this dataset.\n"
     return text
 
-def build_sources():
+def build_sources(ranks=range(3,9)):
     data=json.loads((ROOT/'results/census.json').read_text());M.mkdir(exist_ok=True)
     release_date=date.fromisoformat(data['release_date']).strftime('%d %B %Y')
-    for r in range(3,9):
-        item=data['ranks'][str(r)];body=PREAMBLE+f'\\newcommand{{\\Rank}}{{{r}}}\n\\begin{{document}}\n'
+    for r in ranks:
+        item=data['ranks'][str(r)];body=PREAMBLE.replace('RELEASEMONTH',date.fromisoformat(data['release_date']).strftime('%B %Y'))+f'\\newcommand{{\\Rank}}{{{r}}}\n\\begin{{document}}\n'
         body+=r'\thispagestyle{empty}{\sffamily\small\color{accent} EXACT ENUMERATION / DATA / VERIFICATION}\par\vspace{1cm}'+'\n'
         body+=f'{{\\sffamily\\Huge\\bfseries\\color{{ink}} Rank-{r} fusion rings\\par}}\n\\vspace{{0.35cm}}\n'
         body+=f'{{\\sffamily\\Large A reproducible census through multiplicity {item["bound"]}\\par}}\n'
@@ -453,11 +458,13 @@ a generic determinant is nonzero.
         (M/f'rank{r}.tex').write_text(body)
 
 def main():
-    ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--compile',action='store_true');a=ap.parse_args()
-    build_sources()
+    ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--compile',action='store_true')
+    ap.add_argument('--ranks',type=int,nargs='+',choices=range(3,9),default=list(range(3,9)),help='Regenerate only these ranks (default: all).')
+    a=ap.parse_args();selected=sorted(set(a.ranks))
+    build_sources(selected)
     if a.compile:
         # Build away from released PDFs, then replace only completed output.
-        for r in range(3,9):
+        for r in selected:
             with tempfile.TemporaryDirectory(prefix=f'fusion-manuscript-{r}-') as tmp:
                 tmp=Path(tmp);shutil.copy2(M/f'rank{r}.tex',tmp/f'rank{r}.tex')
                 with (M/f'rank{r}.build.txt').open('w') as log:

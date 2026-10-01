@@ -1,0 +1,21 @@
+name: Verify rank-six census
+on:
+  push:
+    paths:
+      - 'results/rank6/**'
+      - 'verification/rank6/**'
+      - 'scripts/check_release.py'
+      - '.github/workflows/rank6-census.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-rank-six:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Check every tensor and every unit-fixing permutation
+        run: python3 scripts/check_release.py --full --ranks 6 --out /tmp/rank6-check.json

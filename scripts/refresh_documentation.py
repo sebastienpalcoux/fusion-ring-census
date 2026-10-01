@@ -14,6 +14,11 @@ def table(ranks, first, last, columns=range(3,9)):
 
 def main():
  d=json.loads((ROOT/'results/census.json').read_text());ranks=d['ranks'];oeis=ROOT/'oeis'
+ # Preserve maintained introductory cross-links when regenerating count tables.
+ existing=(ROOT/'README.md').read_text() if (ROOT/'README.md').exists() else ''
+ before_counts=existing.partition('## Counts by rank and multiplicity')[0]
+ readme_intro=before_counts.partition('No categorifiability filter.')[2].strip()
+ readme_intro=(readme_intro+'\n\n') if readme_intro else ''
  for r,v in ranks.items():
   assert v.get('complete') is True and v.get('verified') is True
   assert sorted(map(int,v['counts']))==list(range(1,v['bound']+1)) and sum(v['counts'].values())==v['classes']
@@ -33,7 +38,7 @@ def main():
 {d['total_classes']:,} distinct classes in the certified datasets. Every duality
 type is included, including noncommutative rings. No categorifiability filter.
 
-## Counts by rank and multiplicity
+{readme_intro}## Counts by rank and multiplicity
 
 Each entry is **the number of based-isomorphism classes at exactly multiplicity
 m**. A dash means *not yet completely enumerated*, never zero.
@@ -113,7 +118,7 @@ and [reproduction](../docs/REPRODUCIBILITY.md).
 ''')
  index=['# Mathematical companions','','Each companion gives definitions, a rank-specific coverage argument, exact counts, independent verification and reproduction commands. They are computational research notes, not claims of journal publication.','','| Rank | Complete through | Classes | Read |','|---:|---:|---:|---|']
  for r,v in ranks.items():index.append(f'| {r} | {v["bound"]} | {v["classes"]:,} | [PDF](rank{r}.pdf) · [LaTeX](rank{r}.tex) |')
- index+=['','Rebuild with `python3 scripts/build_manuscripts.py --compile`. Counts are read from the same manifest as the repository front page.','']
+ index+=['','Rebuild with `python3 scripts/build_manuscripts.py --compile`, or select one companion with `--ranks 6 --compile`. Counts and the displayed release date are read from the same manifest as the repository front page.','']
  (ROOT/'manuscripts/README.md').write_text('\n'.join(index))
  assigned={3:'A354471',4:'A354472',5:'A354473'};impact=[]
  for r,v in ranks.items():
@@ -197,8 +202,10 @@ def write_release_evidence(data):
  for r,a in checks.items():
   assert all(a[k]==ranks[r][k] for k in ('rank','bound','classes','counts','complete','verified')), f'rank {r}: audit and manifest disagree'
  executions={}
- for r,a in checks.items():executions.setdefault(a['verification_run_id'],[]).append(r)
+ for r,a in checks.items():
+  if a.get('verification_run_id'):executions.setdefault(a['verification_run_id'],[]).append(r)
  runs='\n'.join(f'- {"Rank" if len(rs)==1 else "Ranks"} {", ".join(rs)}: [audit {run}](https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/{run}).' for run,rs in executions.items())
+ local='\n'.join(f'- Rank {r}: [local audit](rank{r}/audit.json), [fresh check](rank{r}/fresh_verification/summary.json) and [retained log](rank{r}/logs/fresh_verification.log).' for r,a in checks.items() if not a.get('verification_run_id'))
  (ROOT/'verification/README.md').write_text(f'''# Verification evidence
 
 [Data](../results/README.md) · [Coverage arguments](../methods/completeness.md) · [Provenance](../docs/PROVENANCE.md)
@@ -216,14 +223,18 @@ laws, duality, reciprocity and all integer associativity identities. Canonicaliz
 uses every unit-fixing basis permutation, with exact tensor comparison. All released
 lists have zero duplicate based-isomorphism classes.
 
-The completed laptop datasets at ranks 5–8 also passed independent GitHub audits
-of their supplied tensors, source hashes, counts and established count prefixes:
+The supplied laptop datasets at ranks 5–8 passed independent checks of their
+tensors, source hashes, counts and established count prefixes. Hosted audits:
 
 {runs}
 
+Local checks (no hosted audit is claimed for these current datasets):
+
+{local or 'None.'}
+
 The rank-6 audit checked **{ranks['6']['classes']:,} tensors** and
 **{checks['6']['independent_verification']['permutations_examined']:,} permutations**.
-These hosted jobs performed verification only; they did not rerun enumeration.
+These checks performed verification only; they did not rerun enumeration.
 [Runner environments](environments.json) are indexed by audit run.
 
 The rank-4 audit jointly checked {ranks['4']['classes']:,} released tensors and 2,787
@@ -271,9 +282,10 @@ archive checksum and exact code revision; run records retain commands, environme
 and timings. Archive inventories, decompressed hashes and established count prefixes
 are checked before integration. Every required duality stratum must finish normally.
 
-The supplied rank-5–8 tensors were independently checked on GitHub under every
-unit-fixing basis permutation, with no duplicate classes. The hosted jobs ran
-verification only. Laptop enumeration times remain attributed to the laptop.
+The supplied rank-5–8 tensors were independently checked under every unit-fixing
+basis permutation, with no duplicate classes. The evidence index distinguishes
+hosted audits from local checks. These checks ran verification only; laptop
+enumeration times remain attributed to the laptop.
 No incomplete search contributes an exhaustive count.
 
 ## Mathematical sources
