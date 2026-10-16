@@ -2,6 +2,10 @@
 
 Each companion gives definitions, a rank-specific coverage argument, exact counts, independent verification and reproduction commands. They are computational research notes, not claims of journal publication.
 
+> **AI-generated research · independent verification pending.** Independent human verification and Lean formalization are pending. Treat the results and data with caution: automated checks establish only their stated scope.
+
+The separate [Grothendieck-ring classification project](https://github.com/sebastienpalcoux/grothendieck-ring-classification) supplies the unrestricted rank-four categorification theorem and its proof. These six companions enumerate based rings at the displayed bounds.
+
 | Rank | Complete through | Classes | Read |
 |---:|---:|---:|---|
 | 3 | 1000 | 460,353 | [PDF](rank3.pdf) · [LaTeX](rank3.tex) |

@@ -412,7 +412,7 @@ def build_sources(ranks=range(3,9)):
         body+=f'We explain the exact enumeration of all based fusion rings of rank {r} through multiplicity {item["bound"]}, comprising {item["classes"]:,} isomorphism classes. '
         body+='The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. '
         body+='All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.\n'
-        body+=r'\end{abstract}\vspace{0.4cm}\noindent\textbf{AI assistance and verification.} GPT-6 Astra Pro assisted with code, exposition and computational checks. Exhaustive-search arguments and exact independent tensor verification are recorded separately; no proof-assistant certification or peer-reviewed acceptance is claimed.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage'+'\n'
+        body+=r'\end{abstract}\vspace{0.4cm}\noindent\textbf{AI-generated research \textperiodcentered\ independent verification pending.} This manuscript, its code and data were developed with AI assistance. Independent human verification and Lean formalization are pending. Treat the results with caution: exact computational checks establish only their stated scope.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage'+'\n'
         body+=DEFINITIONS+results_section(r,item)
         if r==3:body+=RANK3
         elif r==4:

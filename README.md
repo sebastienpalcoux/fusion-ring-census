@@ -14,9 +14,14 @@ offers the same distinction interactively. Both are public. The census counts
 below include fusion rings that have been excluded from categorification or
 remain unresolved.
 
-> **Research notice.** This project contains AI-generated research, code and data.
-> Independent human verification and Lean formalization are pending. Use the
-> results with caution: automated checks establish only their stated scope.
+The classification project proves that exactly **15 rank-four Grothendieck rings**
+are categorifiable over the complex numbers, with **no multiplicity restriction**;
+every such category admits a spherical structure. Its unrestricted proof uses
+a theoretical dimension bound followed by exact finite certification. For the
+pivotal case, see Jingcheng Dong, Sébastien Palcoux and Arnaud Plessis,
+[*Classifying Grothendieck rings of pivotal fusion categories of rank four*](https://arxiv.org/abs/2609.33272).
+
+> **AI-generated research · independent verification pending.** Independent human verification and Lean formalization are pending. Treat the results and data with caution: automated checks establish only their stated scope.
 
 ## Counts by rank and multiplicity
 
