@@ -21,6 +21,12 @@ a theoretical dimension bound followed by exact finite certification. For the
 pivotal case, see Jingcheng Dong, Sébastien Palcoux and Arnaud Plessis,
 [*Classifying Grothendieck rings of pivotal fusion categories of rank four*](https://arxiv.org/abs/2609.33272).
 
+At rank eight, the classification through multiplicity two comprises **896
+exclusions and 77 unitary models**. The inner-square rigidity argument excludes
+`R8_2_24` over the complex numbers. The general questions `R6_4_155` and
+`R6_8_1660` remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
+for the precise proof scope and necessary constraints.
+
 > **AI-generated research · independent verification pending.** Independent human verification and Lean formalization are pending. Treat the results and data with caution: automated checks establish only their stated scope.
 
 ## Counts by rank and multiplicity
