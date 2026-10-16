@@ -9,10 +9,14 @@ type is included, including noncommutative rings. No categorifiability filter.
 
 The separate [Grothendieck-ring classification repository](https://github.com/sebastienpalcoux/grothendieck-ring-classification)
 tracks categorical realizations, proof manuscripts and per-band decisions;
-its [visual atlas](https://grothendieck-ring-atlas.sebastien-palcoux.chatgpt.site)
-offers the same distinction interactively. Both classification links currently
-require private access. The census counts below include fusion rings that
-have been excluded from categorification or remain unresolved.
+its [visual atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/)
+offers the same distinction interactively. Both are public. The census counts
+below include fusion rings that have been excluded from categorification or
+remain unresolved.
+
+> **Research notice.** This project contains AI-generated research, code and data.
+> Independent human verification and Lean formalization are pending. Use the
+> results with caution: automated checks establish only their stated scope.
 
 ## Counts by rank and multiplicity
 
@@ -210,3 +214,4 @@ Sébastien Palcoux · BIMSA · [Cite](CITATION.cff) · [Attribution & licensing]
 
 Repository access is public. [Provenance and verification](docs/PROVENANCE.md)
 explain the current release, AI assistance and the limits of computational evidence.
+
