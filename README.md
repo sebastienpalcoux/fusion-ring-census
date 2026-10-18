@@ -15,6 +15,8 @@ offers the same distinction interactively. Both are public. The census counts
 below include fusion rings that have been excluded from categorification or
 remain unresolved.
 
+**Project announcement:** [Hexagon · 2610.00300v1](https://hexagonmath.org/2610.00300?version=1).
+
 The classification project proves that exactly **15 rank-four Grothendieck rings**
 are categorifiable over the complex numbers, with **no multiplicity restriction**;
 every such category admits a spherical structure. Its unrestricted proof uses
