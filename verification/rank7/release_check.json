@@ -1,0 +1,29 @@
+{
+  "full_axiom_check": true,
+  "selected_ranks": [
+    7
+  ],
+  "ranks": {
+    "7": {
+      "rank": 7,
+      "bound": 5,
+      "classes": 10006,
+      "hashes_verified": true,
+      "independent_verification": {
+        "input_records": 10006,
+        "input_physical_lines": 10006,
+        "distinct_rings": 10006,
+        "duplicates": 0,
+        "literal_repeats": 0,
+        "new_labellings": 0,
+        "associativity_checked": true,
+        "canonical_mode": "all unit-fixing permutations",
+        "permutations_examined": 7204320,
+        "elapsed_seconds": 1.015382052
+      }
+    }
+  },
+  "total_classes": 10006,
+  "elapsed_seconds": 3.8296112879979773,
+  "manifest_total_classes": 1427282
+}

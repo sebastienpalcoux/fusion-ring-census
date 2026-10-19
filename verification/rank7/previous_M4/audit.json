@@ -1,0 +1,34 @@
+{
+  "rank": 7,
+  "bound": 4,
+  "classes": 4201,
+  "counts": {
+    "1": 43,
+    "2": 319,
+    "3": 1059,
+    "4": 2780
+  },
+  "outcome": "verified_extension",
+  "previous_bound": 3,
+  "previous_classes": 1421,
+  "source_commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b",
+  "code_sha256": "0f7690b2c58d7c300d3ab24a2751d1859f676f0db72958d91ad8c4b0ff0a3753",
+  "verification_commit": "b5e15383c75f46e1d00679a3815dc56e638f4a56",
+  "verification_run_id": "35553424461",
+  "complete": true,
+  "verified": true,
+  "independent_verification": {
+    "input_records": 4201,
+    "input_physical_lines": 4201,
+    "distinct_rings": 4201,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "all unit-fixing permutations",
+    "permutations_examined": 3024720,
+    "elapsed_seconds": 0.284387881
+  },
+  "tables_sha256": "d01245e7f534c3de8f66e7edcf70ba60c710827d1b9c85094b358eb6f134e300",
+  "parameters_sha256": "44ca419c73ab5eec09d7658ac764661e176001c21b89ca83e618393fc1d2a2a4"
+}

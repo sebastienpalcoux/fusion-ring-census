@@ -4,7 +4,7 @@
 
 [Data](#complete-datasets) · [Manuscripts](manuscripts/README.md) · [Run & verify](docs/REPRODUCIBILITY.md) · [OEIS](oeis/README.md) · [Evidence](verification/README.md)
 
-1,421,477 distinct classes in the certified datasets. Every duality
+1,427,282 distinct classes in the released datasets. Every duality
 type is included, including noncommutative rings. No categorifiability filter.
 
 **Companion repository:** [Grothendieck Ring Classification](https://github.com/sebastienpalcoux/grothendieck-ring-classification)
@@ -53,7 +53,7 @@ m**. A dash means *not yet completely enumerated*, never zero.
 | 2 | 3 | 17 | 37 | 154 | 319 | 877 |
 | 3 | 4 | 24 | 82 | 384 | 1,059 | — |
 | 4 | 6 | 45 | 134 | 872 | 2,780 | — |
-| 5 | 5 | 55 | 209 | 1,582 | — | — |
+| 5 | 5 | 55 | 209 | 1,582 | 5,805 | — |
 | 6 | 9 | 81 | 336 | 2,768 | — | — |
 | 7 | 6 | 92 | 477 | 3,814 | — | — |
 | 8 | 10 | 137 | 733 | 6,999 | — | — |
@@ -194,13 +194,19 @@ Download `docs/index.html` and open it in a browser to filter the interactive ta
 
 Bounds and totals below are cumulative: all rings of multiplicity **at most M**.
 
+**Rank 7 through 5:** the producer reports a completed exhaustive run. Fresh
+checks certify all 10,006 tensors and their uniqueness, including 5,805 new
+exact-multiplicity-5 classes. The modified enumeration source was not included
+in the supplied archive, so completeness has not been independently reproduced.
+See [the source qualification](verification/rank7/README.md).
+
 | Rank | Complete through | Classes in total | Data | Companion |
 |---:|---:|---:|---|---|
 | 3 | 1,000 | 460,353 | [Tensors](results/rank3/tables.txt.gz) · [Counts](results/rank3/counts.csv) | [PDF](manuscripts/rank3.pdf) · [TeX](manuscripts/rank3.tex) |
 | 4 | 128 | 889,530 | [Tensors](results/rank4/tables.txt.gz) · [Counts](results/rank4/counts.csv) | [PDF](manuscripts/rank4.pdf) · [TeX](manuscripts/rank4.tex) |
 | 5 | 20 | 40,999 | [Tensors](results/rank5/tables.txt.gz) · [Counts](results/rank5/counts.csv) | [PDF](manuscripts/rank5.pdf) · [TeX](manuscripts/rank5.tex) |
 | 6 | 9 | 25,421 | [Tensors](results/rank6/tables.txt.gz) · [Counts](results/rank6/counts.csv) | [PDF](manuscripts/rank6.pdf) · [TeX](manuscripts/rank6.tex) |
-| 7 | 4 | 4,201 | [Tensors](results/rank7/tables.txt.gz) · [Counts](results/rank7/counts.csv) | [PDF](manuscripts/rank7.pdf) · [TeX](manuscripts/rank7.tex) |
+| 7 | 5 | 10,006 | [Tensors](results/rank7/tables.txt.gz) · [Counts](results/rank7/counts.csv) | [PDF](manuscripts/rank7.pdf) · [TeX](manuscripts/rank7.tex) |
 | 8 | 2 | 973 | [Tensors](results/rank8/tables.txt.gz) · [Counts](results/rank8/counts.csv) | [PDF](manuscripts/rank8.pdf) · [TeX](manuscripts/rank8.tex) |
 
 Each tensor uses basis unit 0 and ordered coefficients `N[i][j][k]`. Data are
@@ -238,4 +244,3 @@ Sébastien Palcoux · BIMSA · [Cite](CITATION.cff) · [Attribution & licensing]
 
 Repository access is public. [Provenance and verification](docs/PROVENANCE.md)
 explain the current release, AI assistance and the limits of computational evidence.
-

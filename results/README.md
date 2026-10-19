@@ -10,6 +10,9 @@ the unit. Each line represents one based-isomorphism class. Multiplicity is
 the maximum entry of the full tensor, so even group rings have multiplicity 1.
 Parameter files contain generator coordinates, not additional classes.
 
-Only complete, independently verified whole-rank data appear here.
+Each released list has independently verified valid, distinct tensors.
+Rank-7 completeness through multiplicity 5 is producer-reported: the supplied
+archive omits the modified enumeration source, and enumeration was not rerun.
+See [the rank-7 qualification](../verification/rank7/README.md).
 See [verification](../verification/README.md)
 and [reproduction](../docs/REPRODUCIBILITY.md).

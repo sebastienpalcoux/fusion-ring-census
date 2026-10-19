@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-19",
+  "total_classes": 1427282,
+  "scope": "Release consistency checks; no enumeration was rerun.",
+  "rank_csvs_and_rank5_to_8_audits_match": true,
+  "rank7_oeis_projection_matches": true,
+  "html_manifest_matches": true,
+  "internal_links_checked": 133,
+  "broken_links": [],
+  "rank7_pdf_text_checked": true,
+  "rank7_pdf_pages": 8,
+  "rank7_pdf_visual_review": "All eight rendered pages reviewed; no clipping or overlap."
+}

@@ -145,3 +145,14 @@ python3 scripts/build_laptop_package.py --out /tmp/Fusion_Census_Laptop.zip
 It contains code, equation systems, proofs, manifest, attribution and tests, without
 duplicating released tensor datasets. Checksums are checked before computation.
 Its baseline is the snapshot identified in `SOURCE.json`.
+
+## Rank-7 multiplicity-5 source qualification (19 October 2026)
+
+The current rank-7 archive came from a modified local optimized source package.
+Its 10,006 tensors passed fresh output verification and exactly extend the old
+4,201-class tensor set, with 5,805 classes at exact multiplicity 5.
+All four enumeration strata report normal completion, but their modified source
+files were not bundled. The commands above use the repository implementation;
+no source identity with the producer's modified enumerator is asserted. A fresh
+full enumeration and comparison would independently test completeness. See
+[the retained receipt and verification scope](../verification/rank7/README.md).

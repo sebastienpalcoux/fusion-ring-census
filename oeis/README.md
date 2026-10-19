@@ -36,9 +36,12 @@ The multiplicity-2 draft includes **A354475: a(8)=877**; the multiplicity-4 draf
 includes **A354477: a(7)=2780**. The multiplicity-3 draft includes
 **A354476: a(7)=1059**. Fixed-rank files include
 **c₆(9)=8809**,
-**c₇(4)=2780** and
+**c₇(5)=5805** and
 **c₈(2)=877**.
-These terms come from complete, independently verified datasets.
+Tensor validity and uniqueness have been independently checked. The new rank-7
+term **c₇(5)=5805** relies on producer-reported enumeration completeness;
+the modified enumeration source was not supplied and the search was not rerun.
+Retain [this qualification](../verification/rank7/README.md) in any submission.
 
 ## Before submitting
 

@@ -6,7 +6,7 @@
 \definecolor{ink}{HTML}{163348}\definecolor{accent}{HTML}{147D83}
 \hypersetup{colorlinks=true,linkcolor=ink,urlcolor=accent,citecolor=accent,pdfauthor={Sébastien Palcoux}}
 \pagestyle{fancy}\fancyhf{}\fancyhead[L]{\sffamily\small FUSION RING CENSUS}
-\fancyhead[R]{\sffamily\small Rank \Rank}\fancyfoot[L]{\sffamily\footnotesize Computational companion \textbullet\ September 2026}
+\fancyhead[R]{\sffamily\small Rank \Rank}\fancyfoot[L]{\sffamily\footnotesize Computational companion \textbullet\ October 2026}
 \fancyfoot[R]{\sffamily\small\thepage}\renewcommand{\headrulewidth}{0.4pt}
 \newtheorem{theorem}{Theorem}[section]\newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}\newtheorem{corollary}[theorem]{Corollary}
@@ -21,10 +21,10 @@
 \thispagestyle{empty}{\sffamily\small\color{accent} EXACT ENUMERATION / DATA / VERIFICATION}\par\vspace{1cm}
 {\sffamily\Huge\bfseries\color{ink} Rank-7 fusion rings\par}
 \vspace{0.35cm}
-{\sffamily\Large A reproducible census through multiplicity 4\par}
-\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 23 September 2026}\par\vspace{0.8cm}
+{\sffamily\Large A verified dataset through multiplicity 5\par}
+\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 19 October 2026}\par\vspace{0.8cm}
 \begin{abstract}
-We explain the exact enumeration of all based fusion rings of rank 7 through multiplicity 4, comprising 4,201 isomorphism classes. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
+We document 10,006 verified based-isomorphism classes of fusion rings of rank 7 through multiplicity 5, including 5,805 at multiplicity five. The producer reports a complete enumeration, but the modified enumeration sources were not supplied and completeness has not been independently reproduced. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
 \end{abstract}\vspace{0.4cm}\noindent\textbf{AI-generated research \textperiodcentered\ independent verification pending.} This manuscript, its code and data were developed with AI assistance. Independent human verification and Lean formalization are pending. Treat the results with caution: exact computational checks establish only their stated scope.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage
 
 \section{Objects, equivalence and the counting convention}
@@ -73,7 +73,7 @@ Different $p$ cannot be isomorphic. Therefore a whole-rank census is complete
 exactly when every required stratum has been searched exhaustively. Finishing
 only the non-self-dual strata does not certify a whole-rank counting term.
 \section{The certified release at rank 7}
-The released bound is $M=4$ and the cumulative number of classes is $C_{7}(4)=4,201$. Every duality type is included. The accompanying full tensor file has one record per based-isomorphism class.
+The released bound is $M=5$ and the cumulative number of classes is $C_{7}(5)=10,006$. Every duality type is included. The accompanying full tensor file has one record per based-isomorphism class.
 
 \begin{center}\begin{tabular}{rrrr}\toprule Dual pairs & Variables & Equations & Relabellings\\\midrule
 0 & 56 & 120 & 720\\
@@ -87,9 +87,34 @@ The released bound is $M=4$ and the cumulative number of classes is $C_{7}(4)=4,
 2 & 319\\
 3 & 1,059\\
 4 & 2,780\\
+5 & 5,805\\
 \bottomrule\end{tabular}\end{center}
 
 The data and their checksums are recorded in \path{results/census.json}. The corresponding completed-run evidence and independent audit are under \path{verification/rank7/}.
+
+The fresh audit for this dataset ran locally, checking 7,204,320 unit-fixing permutations across all 10,006 tensors. It found no duplicate classes and confirmed every exact-multiplicity count. This audit did not rerun enumeration, and no hosted audit is claimed for this dataset.
+
+\subsection{Source qualification for the multiplicity-five extension}
+The new band consists of $5,805$ tensors. By number of nontrivial dual pairs
+$p=0,1,2,3$, its stratum counts are respectively $4,654$, $1,012$, $138$ and $1$;
+nine tensors are noncommutative. The supplied producer record reports normal
+completion of all four strata in $77,046$ seconds (about $21.4$ hours).
+
+The producer used modified local enumeration sources based on repository
+commit \texttt{d4c36cc2ee5eb5f0e5291de18d2bb433ffb7ce8b}. Their hashes and logs
+are retained, but the modified source files were not included in the supplied
+archive. Consequently completeness of this extension is producer-reported;
+this release does not independently reproduce or certify coverage of that
+modified search. The conditional coverage arguments below apply to the
+documented algorithms, and do not by themselves audit an unavailable variant.
+
+The fresh checks do establish the fusion-ring axioms and uniqueness of all
+$10,006$ supplied tensors under every unit-fixing permutation. Re-exporting
+the supplied parameters with the repository exporter gives byte-identical
+tensors, and the tensor set of multiplicity at most four is exactly the
+previous $4,201$-class release. Equation systems, exporter and independent
+verifier match the supplied source hashes. The producer receipt and prior
+audit remain in \path{verification/rank7/}; no enumeration was rerun.
 
 \section{An exhaustive finite-domain model}
 \subsection{Coordinates directly from reciprocity}
@@ -278,11 +303,11 @@ retains the completed enumeration, commands, environment, phase timings and
 nonempty subprocess logs. Every required duality stratum completed normally;
 independent canonicalization found zero duplicate classes.
 
-The independent checks of ranks five through eight ran on GitHub using the
-supplied tensors. They did not rerun enumeration. The per-rank reports identify
-the exact verification revision and run, and certify agreement with the established
-exact-multiplicity count prefix. See \path{verification/README.md} for the evidence
-index and \path{docs/PROVENANCE.md} for attribution.
+Independent checks use the supplied tensors; they do not rerun enumeration.
+The per-rank reports identify the verification environment and source revision,
+and certify agreement with the established exact-multiplicity count prefix.
+Hosted audits and local checks are identified separately in
+\path{verification/README.md}; see \path{docs/PROVENANCE.md} for attribution.
 
 The local launcher has no clock limit, while the manual hosted workflow uses a
 finite shared deadline covering every computational phase. A timeout never
@@ -303,12 +328,14 @@ mathematical coverage arguments and independent integer checks. These checks
 are not a formal proof in a proof assistant. The present text is an explanatory
 computational companion, not a claim of journal acceptance or external peer review.
 
+For this rank-seven extension, the completed-search and source qualification in Section 2 applies throughout: independent output checks do not establish completeness of the unavailable modified enumeration code.
+
 \par\noindent\begin{minipage}{\linewidth}
 \section{Reproduction commands}
 From the repository root on a local computer, request a complete run with no clock limit. An interruption does not certify a smaller census.
 \par\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}
-python3 scripts/run_laptop.py --rank 7 --bound 4
+python3 scripts/run_laptop.py --rank 7 --bound 5
 \end{lstlisting}
 \end{minipage}\par
 To verify the supplied release without recomputing it:

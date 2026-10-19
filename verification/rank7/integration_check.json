@@ -1,0 +1,47 @@
+{
+  "supplied_archive_hashes_verified": true,
+  "prefix_through": 4,
+  "prefix_classes": 4201,
+  "literal_tensor_set_equality": true,
+  "prefix_sequence_equal": false,
+  "exact_counts": {
+    "1": 43,
+    "4": 2780,
+    "3": 1059,
+    "5": 5805,
+    "2": 319
+  },
+  "duality_pair_counts": {
+    "0": 7589,
+    "1": 2039,
+    "2": 373,
+    "3": 5
+  },
+  "exact_multiplicity_5_duality_pair_counts": {
+    "0": 4654,
+    "1": 1012,
+    "2": 138,
+    "3": 1
+  },
+  "noncommutative_by_multiplicity": {
+    "1": 3,
+    "4": 6,
+    "3": 6,
+    "5": 9,
+    "2": 5
+  },
+  "enumeration_rerun": false,
+  "parameter_reexport_byte_equal": true,
+  "unchanged_source_hashes_verified": {
+    "code/export_tables.py": true,
+    "code/verify_tables.cpp": true,
+    "systems/rank7_pairs1.txt": true,
+    "systems/rank7_pairs1.txt.json": true,
+    "systems/rank7_pairs2.txt": true,
+    "systems/rank7_pairs2.txt.json": true,
+    "systems/rank7_pairs3.txt": true,
+    "systems/rank7_pairs3.txt.json": true,
+    "systems/system7sd.txt": true,
+    "systems/system7sd.txt.json": true
+  }
+}

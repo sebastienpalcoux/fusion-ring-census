@@ -1,17 +1,21 @@
 # Repository checks
 
-These are lightweight release checks, separate from the full independent
-mathematical audits in the rank directories. No census enumeration ran here.
+These checks are separate from mathematical enumeration. No enumeration ran
+during the 19 October 2026 integration.
 
-- `unit-tests.txt`: 31 tests, including mocked deadlines, failure classification,
-  local launch scope, verification gates and result packaging.
-- `integrity.json`: compressed and decompressed hashes, record totals and manifest
-  consistency for all six current datasets.
-- `consistency.json`: internal links, CSV/OEIS projections, audit-to-release
-  agreement, manual workflow configuration, HTML controls and final LaTeX passes.
-- `pdf-build.json`: six completed PDF builds, page bounds and resolved references.
-  Every page was also reviewed visually for layout and legibility.
+- `integrity.json`: current compressed and decompressed hashes, record totals
+  and manifest consistency for all six datasets.
+- `rank7-M5-consistency.json`: current rank CSVs and audits, rank-7 OEIS
+  projection, embedded HTML manifest, local links and rank-7 PDF review.
+- `unit-tests-2026-10-19.txt`: 31 repository tests passed after integration.
+- `unit-tests.txt`, `consistency.json` and `pdf-build.json`: retained historical
+  checks from the earlier release; their totals and build scope are historical.
 
-Reproduce routine checks with `make test`, `python3 scripts/check_release.py` and
-`make docs`. The current mathematical results were freshly audited on GitHub
-for ranks 5–8; ranks 3 and 4 retain their earlier full audits.
+The current rank-7 full tensor audit is
+[`../rank7/release_check.json`](../rank7/release_check.json).
+Its source and completeness qualification is in
+[`../rank7/README.md`](../rank7/README.md). The new rank-7 PDF has eight pages;
+all were rendered and visually reviewed. Other PDFs retain their prior build.
+
+Reproduce routine checks with `make test`,
+`python3 scripts/check_release.py`, and `make docs`.

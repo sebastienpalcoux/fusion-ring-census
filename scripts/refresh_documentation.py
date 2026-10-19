@@ -35,7 +35,7 @@ def main():
 
 [Data](#complete-datasets) · [Manuscripts](manuscripts/README.md) · [Run & verify](docs/REPRODUCIBILITY.md) · [OEIS](oeis/README.md) · [Evidence](verification/README.md)
 
-{d['total_classes']:,} distinct classes in the certified datasets. Every duality
+{d['total_classes']:,} distinct classes in the released datasets. Every duality
 type is included, including noncommutative rings. No categorifiability filter.
 
 {readme_intro}## Counts by rank and multiplicity
@@ -59,6 +59,12 @@ Download `docs/index.html` and open it in a browser to filter the interactive ta
 ## Complete datasets
 
 Bounds and totals below are cumulative: all rings of multiplicity **at most M**.
+
+**Rank 7 through 5:** the producer reports a completed exhaustive run. Fresh
+checks certify all 10,006 tensors and their uniqueness, including 5,805 new
+exact-multiplicity-5 classes. The modified enumeration source was not included
+in the supplied archive, so completeness has not been independently reproduced.
+See [the source qualification](verification/rank7/README.md).
 
 {chr(10).join(coverage)}
 
@@ -112,13 +118,16 @@ the unit. Each line represents one based-isomorphism class. Multiplicity is
 the maximum entry of the full tensor, so even group rings have multiplicity 1.
 Parameter files contain generator coordinates, not additional classes.
 
-Only complete, independently verified whole-rank data appear here.
+Each released list has independently verified valid, distinct tensors.
+Rank-7 completeness through multiplicity 5 is producer-reported: the supplied
+archive omits the modified enumeration source, and enumeration was not rerun.
+See [the rank-7 qualification](../verification/rank7/README.md).
 See [verification](../verification/README.md)
 and [reproduction](../docs/REPRODUCIBILITY.md).
 ''')
  index=['# Mathematical companions','','Each companion gives definitions, a rank-specific coverage argument, exact counts, independent verification and reproduction commands. They are computational research notes, not claims of journal publication.','','| Rank | Complete through | Classes | Read |','|---:|---:|---:|---|']
  for r,v in ranks.items():index.append(f'| {r} | {v["bound"]} | {v["classes"]:,} | [PDF](rank{r}.pdf) · [LaTeX](rank{r}.tex) |')
- index+=['','Rebuild with `python3 scripts/build_manuscripts.py --compile`, or select one companion with `--ranks 6 --compile`. Counts and the displayed release date are read from the same manifest as the repository front page.','']
+ index+=['','Rank-7 completeness through multiplicity 5 is producer-reported; the new tensors and their uniqueness were independently verified. The supplied archive omits the modified enumeration source. See [the qualification](../verification/rank7/README.md).','','Rebuild with `python3 scripts/build_manuscripts.py --compile`, or select one companion with `--ranks 6 --compile`. Counts and the displayed release date are read from the same manifest as the repository front page.','']
  (ROOT/'manuscripts/README.md').write_text('\n'.join(index))
  assigned={3:'A354471',4:'A354472',5:'A354473'};impact=[]
  for r,v in ranks.items():
@@ -174,7 +183,10 @@ includes **A354477: a(7)=2780**. The multiplicity-3 draft includes
 **c₆({ranks['6']['bound']})={ranks['6']['counts'][str(ranks['6']['bound'])]}**,
 **c₇({ranks['7']['bound']})={ranks['7']['counts'][str(ranks['7']['bound'])]}** and
 **c₈({ranks['8']['bound']})={ranks['8']['counts'][str(ranks['8']['bound'])]}**.
-These terms come from complete, independently verified datasets.
+Tensor validity and uniqueness have been independently checked. The new rank-7
+term **c₇(5)=5805** relies on producer-reported enumeration completeness;
+the modified enumeration source was not supplied and the search was not rerun.
+Retain [this qualification](../verification/rank7/README.md) in any submission.
 
 ## Before submitting
 
@@ -212,7 +224,9 @@ def write_release_evidence(data):
 
 Every released census covers the entire rank, including every duality type.
 Completeness uses the exhaustive search argument and normally completed enumeration;
-independent tensor checks establish validity and uniqueness.
+independent tensor checks establish validity and uniqueness. At rank 7 through
+multiplicity 5, completion is producer-reported, and the modified enumeration
+source was not supplied. See [the rank-7 qualification](rank7/README.md).
 
 {chr(10).join(rows)}
 
@@ -224,7 +238,9 @@ uses every unit-fixing basis permutation, with exact tensor comparison. All rele
 lists have zero duplicate based-isomorphism classes.
 
 The supplied laptop datasets at ranks 5–8 passed independent checks of their
-tensors, source hashes, counts and established count prefixes. Hosted audits:
+tensors, counts and established count prefixes. At rank 7, the verifier,
+exporter and equation-system hashes were checked against available sources;
+the modified enumeration sources were not available. Hosted audits:
 
 {runs}
 
@@ -270,7 +286,7 @@ and lightweight unit tests. They are separate from the mathematical checks above
 ## Certified data
 
 Release {data['version']}, dated {data['release_date']}, contains **{data['total_classes']:,}**
-distinct based-ring classes across six complete regions. The
+distinct based-ring classes across six bounded regions. The
 [manifest](../results/census.json) fixes every bound, exact-multiplicity count,
 tensor checksum and verification location.
 
@@ -287,6 +303,24 @@ basis permutation, with no duplicate classes. The evidence index distinguishes
 hosted audits from local checks. These checks ran verification only; laptop
 enumeration times remain attributed to the laptop.
 No incomplete search contributes an exhaustive count.
+
+### Rank-7 multiplicity-5 qualification
+
+The supplied archive reports normal completion of all four duality strata in
+77,046 seconds on the producer's laptop. Its new exact-multiplicity-5 band has
+5,805 classes; the cumulative list has 10,006. Fresh local checks verify all
+tensor axioms, 7,204,320 unit-fixing permutations, zero duplicate classes,
+byte-identical parameter re-export, and exact tensor-set agreement with the
+previous 4,201-class prefix. These checks did not rerun enumeration.
+
+The producer used an optimized local source package based on commit
+`d4c36cc2ee5eb5f0e5291de18d2bb433ffb7ce8b`. The archive contains source hashes
+and logs, but omits the modified enumeration sources. Therefore enumeration
+completeness remains **producer-reported**, not independently reproduced in
+this release. The original receipt, logs and previous audit are retained under
+[rank7](../verification/rank7/README.md). The available repository enumerator
+can attempt an independent rerun; matching its source to the producer's modified
+implementation is not claimed.
 
 ## Mathematical sources
 

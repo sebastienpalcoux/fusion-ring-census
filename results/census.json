@@ -1,6 +1,6 @@
 {
-  "version": "0.2.2",
-  "release_date": "2026-10-01",
+  "version": "0.2.3",
+  "release_date": "2026-10-19",
   "scope": "All fusion rings in the stated complete whole-rank regions; all duality types; no categorifiability filter.",
   "publication_status": "Public GitHub repository.",
   "ranks": {
@@ -1224,23 +1224,27 @@
     },
     "7": {
       "rank": 7,
-      "bound": 4,
+      "bound": 5,
       "complete": true,
       "verified": true,
-      "classes": 4201,
+      "classes": 10006,
       "counts": {
         "1": 43,
         "2": 319,
         "3": 1059,
-        "4": 2780
+        "4": 2780,
+        "5": 5805
       },
       "verification_reports": "verification/rank7/",
       "tables": "results/rank7/tables.txt.gz",
-      "tables_gz_sha256": "6ddea4c66de7fbe077e9552e71e8cf95ec3fec5bbd30a615e68e2d8fcb9ae9c9",
-      "tables_uncompressed_sha256": "d01245e7f534c3de8f66e7edcf70ba60c710827d1b9c85094b358eb6f134e300",
+      "tables_gz_sha256": "9018f6f195339fb153ea326ec308c955bb1adf9afe1ffc9423be1bef6818e073",
+      "tables_uncompressed_sha256": "a3fdcb75fbeb090913b1e4650e5124b9e0b1d016f1a71e0368a3f38e6e520c03",
       "parameters": "results/rank7/parameters.txt.gz",
-      "parameters_gz_sha256": "f7295ed0d50df234c2cbc61d7227379e5554b0271963fd5735a793020063c620",
-      "parameters_uncompressed_sha256": "44ca419c73ab5eec09d7658ac764661e176001c21b89ca83e618393fc1d2a2a4"
+      "parameters_gz_sha256": "ae746f708cfa349e76ea528ef5b600447e108a0e5dd384bd20ba5827edcd032d",
+      "parameters_uncompressed_sha256": "7ddbed80fe2287ef5e2ac74c2aa662fe0d8ed84664e3ce77ebdcfa4b7fab9732",
+      "completeness_basis": "Producer-reported completed exhaustive enumeration; optimized enumeration source not bundled in supplied archive.",
+      "independent_enumeration_rerun": false,
+      "independent_verification_scope": "Tensor axioms, all unit-fixing relabellings, parameter export, exact old tensor-set prefix, hashes and counts."
     },
     "8": {
       "rank": 8,
@@ -1261,5 +1265,5 @@
       "parameters_uncompressed_sha256": "cb9d84fb05ef00f572d59a3a5df4609a83ec00a793d8afed4f74c405469d09b7"
     }
   },
-  "total_classes": 1421477
+  "total_classes": 1427282
 }

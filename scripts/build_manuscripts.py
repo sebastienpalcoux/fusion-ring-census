@@ -419,6 +419,30 @@ def results_section(r,item):
         audit=json.loads(audit_path.read_text())
         if audit.get('verification_environment')=='local workspace':
             text+=f"\nThe fresh audit for this dataset ran locally, checking {audit['independent_verification']['permutations_examined']:,} unit-fixing permutations across all {item['classes']:,} tensors. It found no duplicate classes and confirmed every exact-multiplicity count. This audit did not rerun enumeration, and no hosted audit is claimed for this dataset.\n"
+    if item.get('independent_enumeration_rerun') is False:
+        text+=r'''
+\subsection{Source qualification for the multiplicity-five extension}
+The new band consists of $5,805$ tensors. By number of nontrivial dual pairs
+$p=0,1,2,3$, its stratum counts are respectively $4,654$, $1,012$, $138$ and $1$;
+nine tensors are noncommutative. The supplied producer record reports normal
+completion of all four strata in $77,046$ seconds (about $21.4$ hours).
+
+The producer used modified local enumeration sources based on repository
+commit \texttt{d4c36cc2ee5eb5f0e5291de18d2bb433ffb7ce8b}. Their hashes and logs
+are retained, but the modified source files were not included in the supplied
+archive. Consequently completeness of this extension is producer-reported;
+this release does not independently reproduce or certify coverage of that
+modified search. The conditional coverage arguments below apply to the
+documented algorithms, and do not by themselves audit an unavailable variant.
+
+The fresh checks do establish the fusion-ring axioms and uniqueness of all
+$10,006$ supplied tensors under every unit-fixing permutation. Re-exporting
+the supplied parameters with the repository exporter gives byte-identical
+tensors, and the tensor set of multiplicity at most four is exactly the
+previous $4,201$-class release. Equation systems, exporter and independent
+verifier match the supplied source hashes. The producer receipt and prior
+audit remain in \path{verification/rank7/}; no enumeration was rerun.
+'''
     return text
 
 def build_sources(ranks=range(3,9)):
@@ -428,10 +452,14 @@ def build_sources(ranks=range(3,9)):
         item=data['ranks'][str(r)];body=PREAMBLE.replace('RELEASEMONTH',date.fromisoformat(data['release_date']).strftime('%B %Y'))+f'\\newcommand{{\\Rank}}{{{r}}}\n\\begin{{document}}\n'
         body+=r'\thispagestyle{empty}{\sffamily\small\color{accent} EXACT ENUMERATION / DATA / VERIFICATION}\par\vspace{1cm}'+'\n'
         body+=f'{{\\sffamily\\Huge\\bfseries\\color{{ink}} Rank-{r} fusion rings\\par}}\n\\vspace{{0.35cm}}\n'
-        body+=f'{{\\sffamily\\Large A reproducible census through multiplicity {item["bound"]}\\par}}\n'
+        subtitle='A verified dataset' if item.get('independent_enumeration_rerun') is False else 'A reproducible census'
+        body+=f'{{\\sffamily\\Large {subtitle} through multiplicity {item["bound"]}\\par}}\n'
         body+=(r'\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, RELEASEDATE}\par\vspace{0.8cm}').replace('RELEASEDATE',release_date)+'\n'
         body+=r'\begin{abstract}'+'\n'
-        body+=f'We explain the exact enumeration of all based fusion rings of rank {r} through multiplicity {item["bound"]}, comprising {item["classes"]:,} isomorphism classes. '
+        if item.get('independent_enumeration_rerun') is False:
+            body+=f'We document {item["classes"]:,} verified based-isomorphism classes of fusion rings of rank {r} through multiplicity {item["bound"]}, including 5,805 at multiplicity five. The producer reports a complete enumeration, but the modified enumeration sources were not supplied and completeness has not been independently reproduced. '
+        else:
+            body+=f'We explain the exact enumeration of all based fusion rings of rank {r} through multiplicity {item["bound"]}, comprising {item["classes"]:,} isomorphism classes. '
         body+='The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. '
         body+='All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.\n'
         body+=r'\end{abstract}\vspace{0.4cm}\noindent\textbf{AI-generated research \textperiodcentered\ independent verification pending.} This manuscript, its code and data were developed with AI assistance. Independent human verification and Lean formalization are pending. Treat the results with caution: exact computational checks establish only their stated scope.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage'+'\n'
@@ -461,6 +489,8 @@ a generic determinant is nonzero.
 '''
         else:body+=GENERAL+FAST
         body+=AUDIT
+        if item.get('independent_enumeration_rerun') is False:
+            body+='\nFor this rank-seven extension, the completed-search and source qualification in Section 2 applies throughout: independent output checks do not establish completeness of the unavailable modified enumeration code.\n'
         body+='\n\\par\\noindent\\begin{minipage}{\\linewidth}\n\\section{Reproduction commands}\nFrom the repository root on a local computer, request a complete run with no clock limit. An interruption does not certify a smaller census.\n'
         body+='\\begin{lstlisting}\n'+f'python3 scripts/run_laptop.py --rank {r} --bound {item["bound"]}\n'+'\\end{lstlisting}\n'
         body+='To verify the supplied release without recomputing it:\n\\begin{lstlisting}\npython3 scripts/check_release.py --full\n\\end{lstlisting}\n'
