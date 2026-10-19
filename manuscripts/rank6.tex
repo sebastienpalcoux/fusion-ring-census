@@ -97,6 +97,15 @@ The data and their checksums are recorded in \path{results/census.json}. The cor
 
 The fresh audit for this dataset ran locally, checking 3,050,520 unit-fixing permutations across all 25,421 tensors. It found no duplicate classes and confirmed every exact-multiplicity count. This audit did not rerun enumeration, and no hosted audit is claimed for this dataset.
 
+\paragraph{A known categorical example.}
+The census includes the Grothendieck ring of the Extended Haagerup fusion
+category $\mathrm{EH}_1$, of rank six and fusion multiplicity seven.
+For the fusion categories and their fusion rules, see Grossman, Morrison,
+Penneys, Peters and Snyder~\cite{GMPPS}; the original planar-algebra
+construction is due to Bigelow, Morrison, Peters and Snyder~\cite{BMPS}.
+This identification is a categorical example within the census, not a
+categorifiability filter on its enumeration.
+
 \section{An exhaustive finite-domain model}
 \subsection{Coordinates directly from reciprocity}
 On nonunit triples apply the two transformations
@@ -343,5 +352,16 @@ The relevant derivations are retained in the repository's \path{methods/} direct
 \bibitem{OEIS} OEIS Foundation Inc., \emph{The On-Line Encyclopedia of Integer
 Sequences}, entries A348305, A354471, A354472, A354473, A354475, A354476
 and A354477. Proposed updates in this repository are not submitted edits.
+
+\bibitem{BMPS} S. Bigelow, S. Morrison, E. Peters and N. Snyder,
+\emph{Constructing the extended Haagerup planar algebra},
+Acta Mathematica \textbf{209} (2012), no.~1, 29--82;
+\href{https://doi.org/10.1007/s11511-012-0081-7}{doi:10.1007/s11511-012-0081-7}.
+\bibitem{GMPPS} P. Grossman, S. Morrison, D. Penneys, E. Peters and N. Snyder,
+\emph{The Extended Haagerup fusion categories},
+Annales Scientifiques de l'\'Ecole Normale Sup\'erieure (4) \textbf{56} (2023),
+no.~2, 589--664;
+\href{https://doi.org/10.24033/asens.2541}{doi:10.24033/asens.2541};
+\href{https://arxiv.org/abs/1810.06076}{arXiv:1810.06076}.
 \end{thebibliography}
 \end{document}

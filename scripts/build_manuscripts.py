@@ -369,6 +369,28 @@ Sequences}, entries A348305, A354471, A354472, A354473, A354475, A354476
 and A354477. Proposed updates in this repository are not submitted edits.
 \end{thebibliography}
 '''
+EH_CONTEXT=r'''
+\paragraph{A known categorical example.}
+The census includes the Grothendieck ring of the Extended Haagerup fusion
+category $\mathrm{EH}_1$, of rank six and fusion multiplicity seven.
+For the fusion categories and their fusion rules, see Grossman, Morrison,
+Penneys, Peters and Snyder~\cite{GMPPS}; the original planar-algebra
+construction is due to Bigelow, Morrison, Peters and Snyder~\cite{BMPS}.
+This identification is a categorical example within the census, not a
+categorifiability filter on its enumeration.
+'''
+EH_BIB=r'''
+\bibitem{BMPS} S. Bigelow, S. Morrison, E. Peters and N. Snyder,
+\emph{Constructing the extended Haagerup planar algebra},
+Acta Mathematica \textbf{209} (2012), no.~1, 29--82;
+\href{https://doi.org/10.1007/s11511-012-0081-7}{doi:10.1007/s11511-012-0081-7}.
+\bibitem{GMPPS} P. Grossman, S. Morrison, D. Penneys, E. Peters and N. Snyder,
+\emph{The Extended Haagerup fusion categories},
+Annales Scientifiques de l'\'Ecole Normale Sup\'erieure (4) \textbf{56} (2023),
+no.~2, 589--664;
+\href{https://doi.org/10.24033/asens.2541}{doi:10.24033/asens.2541};
+\href{https://arxiv.org/abs/1810.06076}{arXiv:1810.06076}.
+'''
 
 def results_section(r,item):
     text=f"\\section{{The certified release at rank {r}}}\n"
@@ -414,6 +436,7 @@ def build_sources(ranks=range(3,9)):
         body+='All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.\n'
         body+=r'\end{abstract}\vspace{0.4cm}\noindent\textbf{AI-generated research \textperiodcentered\ independent verification pending.} This manuscript, its code and data were developed with AI assistance. Independent human verification and Lean formalization are pending. Treat the results with caution: exact computational checks establish only their stated scope.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage'+'\n'
         body+=DEFINITIONS+results_section(r,item)
+        if r==6:body+=EH_CONTEXT
         if r==3:body+=RANK3
         elif r==4:
             s=(ROOT/'methods/rank4_completeness.tex').read_text()
@@ -453,7 +476,7 @@ a generic determinant is nonzero.
                     else:fields += ['','']
                 body+=' & '.join(fields)+'\\\\\n'
             body+='\\bottomrule\\end{longtable}\n'
-        body+=BIB+'\\end{document}\n'
+        body+=(BIB.replace(r'\end{thebibliography}',EH_BIB+r'\end{thebibliography}') if r==6 else BIB)+'\\end{document}\n'
         body=body.replace('\\begin{lstlisting}', '\\par\\noindent\\begin{minipage}{\\linewidth}\n\\begin{lstlisting}').replace('\\end{lstlisting}', '\\end{lstlisting}\n\\end{minipage}\\par')
         (M/f'rank{r}.tex').write_text(body)
 

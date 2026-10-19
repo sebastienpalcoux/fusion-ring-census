@@ -30,6 +30,16 @@ exclusions and 77 unitary models**. The inner-square rigidity argument excludes
 `R6_8_1660` remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
 for the precise proof scope and necessary constraints.
 
+**Extended Haagerup at rank six.** The census includes the Grothendieck ring of
+EH1, of rank 6 and fusion multiplicity 7. For the fusion categories and their
+fusion rules, see P. Grossman, S. Morrison, D. Penneys, E. Peters and N. Snyder,
+[*The Extended Haagerup fusion categories*](https://doi.org/10.24033/asens.2541),
+*Annales Scientifiques de l'École Normale Supérieure* (4) **56** (2023), no. 2,
+589–664 ([arXiv:1810.06076](https://arxiv.org/abs/1810.06076)). The original
+construction is S. Bigelow, S. Morrison, E. Peters and N. Snyder,
+[*Constructing the extended Haagerup planar algebra*](https://doi.org/10.1007/s11511-012-0081-7),
+*Acta Mathematica* **209** (2012), no. 1, 29–82.
+
 > **AI-generated research · independent verification pending.** Independent human verification and Lean formalization are pending. Treat the results and data with caution: automated checks establish only their stated scope.
 
 ## Counts by rank and multiplicity
