@@ -391,6 +391,21 @@ no.~2, 589--664;
 \href{https://doi.org/10.24033/asens.2541}{doi:10.24033/asens.2541};
 \href{https://arxiv.org/abs/1810.06076}{arXiv:1810.06076}.
 '''
+RANK7_CLASSIFICATION_CONTEXT=r'''
+\paragraph{Categorification in the companion project.}
+As of 20 October 2026, the
+\href{https://github.com/sebastienpalcoux/grothendieck-ring-classification}{companion classification}
+records 9,974 general exclusions, 30 known categorical models and two unresolved
+rings among these 10,006 tensors. At exact multiplicity five, the corresponding
+counts are 5,802, one and two. The unresolved source identifiers are
+\texttt{R7\_5\_3895} and \texttt{R7\_5\_5039}; the known model
+\texttt{R7\_5\_5678} is
+$\operatorname{Rep}(C_7\rtimes C_6)=\operatorname{Rep}(\operatorname{AGL}(1,7))$.
+The update includes thirteen further exclusions with exact replay certificates.
+These categorification decisions do not alter the census tensors or the
+enumeration-completeness qualification above. The companion project retains
+the proof manuscripts, source identifiers and full decision ledger.
+'''
 
 def results_section(r,item):
     text=f"\\section{{The certified release at rank {r}}}\n"
@@ -465,6 +480,7 @@ def build_sources(ranks=range(3,9)):
         body+=r'\end{abstract}\vspace{0.4cm}\noindent\textbf{AI-generated research \textperiodcentered\ independent verification pending.} This manuscript, its code and data were developed with AI assistance. Independent human verification and Lean formalization are pending. Treat the results with caution: exact computational checks establish only their stated scope.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage'+'\n'
         body+=DEFINITIONS+results_section(r,item)
         if r==6:body+=EH_CONTEXT
+        if r==7:body+=RANK7_CLASSIFICATION_CONTEXT
         if r==3:body+=RANK3
         elif r==4:
             s=(ROOT/'methods/rank4_completeness.tex').read_text()
