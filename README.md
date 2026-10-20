@@ -31,12 +31,14 @@ exclusions and 77 unitary models**. The inner-square rigidity argument excludes
 for the precise proof scope and necessary constraints.
 
 At rank seven through multiplicity five, the companion classification currently
-records **9,974 exclusions, 30 known models and 2 unresolved rings**. The new
-exact-multiplicity-five band has **5,802 exclusions, 1 known model and 2 unresolved
-rings**: `R7_5_3895` and `R7_5_5039`. Its known model `R7_5_5678` is
+records **9,975 exclusions, 30 known models and 1 unresolved ring**. The new
+exact-multiplicity-five band has **5,803 exclusions, 1 known model and 1 unresolved
+ring**, `R7_5_3895`. Its known model `R7_5_5678` is
 `Rep(C7 ⋊ C6) = Rep(AGL(1,7))`.
-The classification includes thirteen further exclusions certified on 20 October
-2026; the census tensors and enumeration-completeness qualification are unchanged.
+The classification includes fourteen further exclusions certified on 20 October
+2026, including the general exclusion of `R7_5_5039` by coupled cyclic rotations
+and integral fusion-norm inequalities. The census tensors and
+enumeration-completeness qualification are unchanged.
 
 **Extended Haagerup at rank six.** The census includes the Grothendieck ring of
 EH1, of rank 6 and fusion multiplicity 7. For the fusion categories and their

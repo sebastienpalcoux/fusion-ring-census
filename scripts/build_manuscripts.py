@@ -395,13 +395,16 @@ RANK7_CLASSIFICATION_CONTEXT=r'''
 \paragraph{Categorification in the companion project.}
 As of 20 October 2026, the
 \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification}{companion classification}
-records 9,974 general exclusions, 30 known categorical models and two unresolved
-rings among these 10,006 tensors. At exact multiplicity five, the corresponding
-counts are 5,802, one and two. The unresolved source identifiers are
-\texttt{R7\_5\_3895} and \texttt{R7\_5\_5039}; the known model
+records 9,975 general exclusions, 30 known categorical models and one unresolved
+ring among these 10,006 tensors. At exact multiplicity five, the corresponding
+counts are 5,803, one and one. The unresolved source identifier is
+\texttt{R7\_5\_3895}; the known model
 \texttt{R7\_5\_5678} is
 $\operatorname{Rep}(C_7\rtimes C_6)=\operatorname{Rep}(\operatorname{AGL}(1,7))$.
-The update includes thirteen further exclusions with exact replay certificates.
+The update includes fourteen further exclusions with exact replay certificates.
+In particular, coupled fourth and eighth rotations, all-order phase packets
+and integral fusion-norm inequalities exclude \texttt{R7\_5\_5039} in the
+general complex scope.
 These categorification decisions do not alter the census tensors or the
 enumeration-completeness qualification above. The companion project retains
 the proof manuscripts, source identifiers and full decision ledger.
