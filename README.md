@@ -30,14 +30,17 @@ exclusions and 77 unitary models**. The inner-square rigidity argument excludes
 `R6_8_1660` remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
 for the precise proof scope and necessary constraints.
 
-At rank seven through multiplicity five, the companion classification currently
-records **9,975 exclusions, 30 known models and 1 unresolved ring**. The new
-exact-multiplicity-five band has **5,803 exclusions, 1 known model and 1 unresolved
-ring**, `R7_5_3895`. Its known model `R7_5_5678` is
+At rank seven through multiplicity five, the companion classification resolves
+all **10,006 supplied tensors: 9,976 general exclusions, 30 known unitary models
+and no unresolved rings**. The new exact-multiplicity-five band has **5,804
+general exclusions, 1 known model and no unresolved rings**. Its known model `R7_5_5678` is
 `Rep(C7 ⋊ C6) = Rep(AGL(1,7))`.
-The classification includes fourteen further exclusions certified on 20 October
-2026, including the general exclusion of `R7_5_5039` by coupled cyclic rotations
-and integral fusion-norm inequalities. The census tensors and
+The classification includes fifteen further exclusions certified on 20 October
+2026. Coupled cyclic rotations, all-order phase packets and integral fusion-norm
+inequalities exclude both
+[`R7_5_3895`](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/rank7_m5_20261020/models/sqrt5/R3895_CYCLIC_CHAIN.md) and
+[`R7_5_5039`](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/rank7_m5_20261020/models/sqrt5/R5039_CYCLIC_CHAIN.md)
+over the complex numbers, with complete exact replay certificates. The census tensors and
 enumeration-completeness qualification are unchanged.
 
 **Extended Haagerup at rank six.** The census includes the Grothendieck ring of
