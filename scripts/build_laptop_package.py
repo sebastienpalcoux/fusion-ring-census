@@ -21,9 +21,11 @@ def main():
     with tempfile.TemporaryDirectory(prefix='fusion-laptop-package-') as td:
         package=Path(td)/'Fusion_Census_Laptop';package.mkdir()
         paths=[]
-        for folder in ('code','systems','methods'):
+        for folder in ('code','systems','methods','audits'):
             paths.extend(p for p in (ROOT/folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts and p.suffix not in ('.pyc','.pyo'))
         paths.extend(ROOT/p for p in ('scripts/run_laptop.py','results/census.json','tests/test_laptop.py','audit/source.json','LICENSE','NOTICE.md','CITATION.cff'))
+        paths.extend((ROOT/'tests').glob('audit_*.cpp'))
+        paths.append(ROOT/'tests/run_audits.py')
         for p in paths:
             target=package/p.relative_to(ROOT);target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,target)
         guide=(ROOT/'docs/REPRODUCIBILITY.md').read_text().split('## Verify the released data')[0]

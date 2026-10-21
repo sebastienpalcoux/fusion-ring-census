@@ -1,0 +1,12 @@
+{
+  "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+  "available_affinity_cpus": 9,
+  "processes_run_concurrently": 1,
+  "thread_counts": [
+    1,
+    4
+  ],
+  "repetitions": 3,
+  "timing": "sum of per-duality-type median C++ enumeration seconds; compilation/export/verification excluded",
+  "baseline_commit": "d4c36cc2ee5eb5f0e5291de18d2bb433ffb7ce8b"
+}

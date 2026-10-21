@@ -4,7 +4,7 @@
 
 ## Certified data
 
-Release 0.2.3, dated 2026-10-19, contains **1,427,282**
+Release 0.2.4, dated 2026-10-21, contains **1,430,809**
 distinct based-ring classes across six bounded regions. The
 [manifest](../results/census.json) fixes every bound, exact-multiplicity count,
 tensor checksum and verification location.
@@ -16,7 +16,7 @@ tensor checksum and verification location.
 | 5 | 20 | 40,999 | Completed laptop census |
 | 6 | 9 | 25,421 | Completed laptop census |
 | 7 | 5 | 10,006 | Completed laptop census |
-| 8 | 2 | 973 | Completed laptop census |
+| 8 | 3 | 4,500 | Completed laptop census |
 
 Each [rank's evidence](../verification/README.md) identifies its enumeration source,
 completed computation and independent audit. Laptop source receipts record the
@@ -39,14 +39,23 @@ tensor axioms, 7,204,320 unit-fixing permutations, zero duplicate classes,
 byte-identical parameter re-export, and exact tensor-set agreement with the
 previous 4,201-class prefix. These checks did not rerun enumeration.
 
-The producer used an optimized local source package based on commit
-`d4c36cc2ee5eb5f0e5291de18d2bb433ffb7ce8b`. The archive contains source hashes
-and logs, but omits the modified enumeration sources. Therefore enumeration
-completeness remains **producer-reported**, not independently reproduced in
-this release. The original receipt, logs and previous audit are retained under
-[rank7](../verification/rank7/README.md). The available repository enumerator
-can attempt an independent rerun; matching its source to the producer's modified
-implementation is not claimed.
+The complete optimized package was supplied on 21 October 2026. Its aggregate
+code hash `9177263413f1e4c775e5a81aa802a683d119de5af1123a8b9991b23daa1b0658`
+exactly matches both producer run records. Numerical C++ sources are integrated
+unchanged, with the launcher adjusted to use a local executable cache. Finite
+pruning audits and bounded baseline comparisons are separate from a full rerun.
+Completeness remains **producer-reported**, not independently reproduced.
+
+### Rank-8 multiplicity-3 extension
+
+The new release contains 4,500 classes: 96, 877 and 3,527 at exact
+multiplicities 1, 2 and 3. The producer reports normal completion of all four
+strata in 62,292 seconds. Fresh local verification checks all tensor axioms
+and 22,680,000 unit-fixing permutations, with no duplicates. Parameter export
+is byte-identical. Filtering to multiplicity at most two recovers all 973
+previous tensors and parameter records in their original order. The full
+search was not independently rerun. See [rank8](../verification/rank8/README.md)
+and [the optimization integration](../verification/optimization_20261021/README.md).
 
 ## Mathematical sources
 

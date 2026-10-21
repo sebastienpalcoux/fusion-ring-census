@@ -38,15 +38,6 @@ def check_local_prefix(rank, bound, counts):
     return through
 
 
-def parallel_depth(bound):
-    # The parallel enumerator rejects more than two million prefix jobs.
-    # Any depth partitions the entire domain; shorten only when necessary.
-    depth = 6
-    while (bound+1)**depth > 2000000:
-        depth -= 1
-    return depth
-
-
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--rank', type=int, choices=(3,4,5,6,7,8), required=True)
@@ -134,11 +125,18 @@ def main() -> int:
         stamp=build/(name+'.build.json')
         signature={'code_sha256':source_hash.hexdigest(),'compiler':a.compiler,'source':source,'openmp':openmp}
         if dest.exists() and stamp.exists() and json.loads(stamp.read_text())==signature:
+            if not os.access(dest, os.X_OK):
+                dest.chmod(dest.stat().st_mode | 0o111)
+            if not os.access(dest, os.X_OK):
+                raise PermissionError('Compilation cache is not executable; choose --build-dir on a local executable filesystem')
             return dest
         phase('compilation:'+name)
         cmd=[a.compiler,'-O3','-std=c++17']+(['-fopenmp'] if openmp else [])+[str(CODE/source),'-o',str(dest)]
         with (logs/(name+'_compile.log')).open('w') as log:
             run_checked(cmd,stdout=log,stderr=subprocess.STDOUT)
+        dest.chmod(dest.stat().st_mode | 0o111)
+        if not os.access(dest, os.X_OK):
+            raise PermissionError('Compilation cache is not executable; choose --build-dir on a local executable filesystem')
         stamp.write_text(json.dumps(signature,indent=2)+'\n')
         return dest
 
@@ -156,16 +154,13 @@ def main() -> int:
             jobs=[('nonselfdual',[str(ns),str(a.bound)],None),
                   ('selfdual',[str(sd),str(a.bound)],None)]
         else:
-            general=compile_one('enumerate_bounded.cpp','general')
+            # The adaptive frontier handles every nonselfdual involution type.
+            general=None
             fast=compile_one('enumerate_selfdual_fast.cpp','selfdual_fast')
-            parallel=compile_one('enumerate_parallel.cpp','parallel_general') if a.rank>=7 else None
+            parallel=compile_one('enumerate_parallel.cpp','parallel_general')
             for p in range(1,(a.rank-1)//2+1):
                 path=SYSTEMS/f'rank{a.rank}_pairs{p}.txt'
-                if a.rank>=7 and p==1:
-                    # Argument index 3 is replaced with the shared remaining budget.
-                    jobs.append((f'pairs{p}',[str(parallel),str(path),str(a.bound),'TIME',str(a.threads),str(parallel_depth(a.bound))],3))
-                else:
-                    jobs.append((f'pairs{p}',[str(general),str(path),str(a.bound),'TIME'],3))
+                jobs.append((f'pairs{p}',[str(parallel),str(path),str(a.bound),'TIME',str(a.threads),str(max(64,64*a.threads))],3))
             jobs.append(('selfdual',[str(fast),str(SYSTEMS/f'system{a.rank}sd.txt'),str(a.rank),str(a.bound),'TIME',str(a.threads)],4))
         report['compilation_seconds']=time.monotonic()-started
         report['expected_strata']=[job[0] for job in jobs]

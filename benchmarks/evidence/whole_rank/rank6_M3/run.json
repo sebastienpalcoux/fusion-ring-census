@@ -1,0 +1,130 @@
+{
+  "rank": 6,
+  "bound": 3,
+  "threads": 4,
+  "enumeration_budget_seconds": null,
+  "time_limit": "none (local laptop)",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux 6.18.55 x86_64",
+    "cpu_count": 9,
+    "threads": 4
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "pairs1",
+      "command": [
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/build_cache/parallel_general",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank6_pairs1.txt",
+        "3",
+        "inf",
+        "4",
+        "256"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 0.037161694999667816,
+      "returncode": 0
+    },
+    {
+      "name": "pairs2",
+      "command": [
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/build_cache/parallel_general",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank6_pairs2.txt",
+        "3",
+        "inf",
+        "4",
+        "256"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 0.021371860999352066,
+      "returncode": 0
+    },
+    {
+      "name": "selfdual",
+      "command": [
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/build_cache/selfdual_fast",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system6sd.txt",
+        "6",
+        "3",
+        "inf",
+        "4"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 0.17349343599926215,
+      "returncode": 0
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/code/export_tables.py",
+        "--rank",
+        "6",
+        "--input",
+        "/workspace/scratch/17929c6a8155/deep_package_validation/census/rank6_M3/parameters.txt",
+        "--systems",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems",
+        "--output",
+        "/workspace/scratch/17929c6a8155/deep_package_validation/census/rank6_M3/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 0.2403064350000932,
+      "returncode": 0,
+      "elapsed_seconds": 0.06316527700073493
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/build_cache/verify_tables",
+        "/workspace/scratch/17929c6a8155/deep_package_validation/census/rank6_M3/FusionRingMultiplicationTables.txt",
+        "/workspace/scratch/17929c6a8155/deep_package_validation/census/rank6_M3/independent_check",
+        "--exhaustive"
+      ],
+      "started_elapsed_seconds": 0.30444796699885046,
+      "returncode": 0,
+      "elapsed_seconds": 0.01817845900040993
+    }
+  ],
+  "code_sha256": "9177263413f1e4c775e5a81aa802a683d119de5af1123a8b9991b23daa1b0658",
+  "compilation_seconds": 0.0011345629991410533,
+  "expected_strata": [
+    "pairs1",
+    "pairs2",
+    "selfdual"
+  ],
+  "elapsed_seconds": 0.42540207199999713,
+  "enumeration_seconds": 0.23300975599886442,
+  "counts": {
+    "1": 39,
+    "2": 154,
+    "3": 384
+  },
+  "classes": 577,
+  "sort_export_seconds": 0.06956670299950929,
+  "verifier_compilation_seconds": 7.761599954392295e-05,
+  "independent_verification_seconds": 0.019375474999833386,
+  "independent_verification": {
+    "input_records": 577,
+    "input_physical_lines": 577,
+    "distinct_rings": 577,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "all unit-fixing permutations",
+    "permutations_examined": 69240,
+    "elapsed_seconds": 0.015923355
+  },
+  "existing_prefix_checked_through": 3,
+  "parameters.txt_sha256": "2014cd16515645ebeb541cc22100882e195afe48a2c02912ca8b11d1d1b17fc7",
+  "FusionRingMultiplicationTables.txt_sha256": "59f55d3f4ee5c7ca50902ee1d4042fd851bed18e916623498239961ca26dbc3e",
+  "compression_seconds": 0.10135414300020784,
+  "outcome": "verified_complete"
+}

@@ -138,9 +138,10 @@ lexicographic minimality proves uniqueness. Finally, duality types are disjoint
 and exhaust all possibilities.
 \end{proof}
 
-A parallel run partitions a fixed coordinate prefix into all bounded assignments.
-The resulting subtrees are disjoint and their union is the original tree. A run
-is marked complete only after every prefix finishes. A time limit is not a
+A parallel run adaptively splits prefix subtrees into every bounded value of
+the next unfixed coordinate. The resulting frontier subtrees are disjoint and
+their union is the original tree. A run is marked complete only after every
+frontier subtree finishes. A time limit is not a
 mathematical rejection rule: a timeout leaves the larger census uncertified.
 '''
 FAST=r'''
@@ -410,9 +411,9 @@ branches with 2,126 exact leaves; its complete source and branch coverage is
 replayed independently. No new categorical model is claimed.
 These categorification decisions do not alter the census tensors or the
 enumeration-completeness qualification above. The companion project retains
-the proof manuscripts, source identifiers and full decision ledger. Its only
-remaining general cases are the earlier rank-six rings
-\texttt{R6\_4\_155} and \texttt{R6\_8\_1660}.
+the proof manuscripts, source identifiers and full decision ledger. The earlier
+rank-six rings \texttt{R6\_4\_155} and \texttt{R6\_8\_1660} remain open;
+the companion project's rank-eight frontier is recorded separately there.
 '''
 
 def results_section(r,item):
@@ -442,7 +443,7 @@ def results_section(r,item):
         audit=json.loads(audit_path.read_text())
         if audit.get('verification_environment')=='local workspace':
             text+=f"\nThe fresh audit for this dataset ran locally, checking {audit['independent_verification']['permutations_examined']:,} unit-fixing permutations across all {item['classes']:,} tensors. It found no duplicate classes and confirmed every exact-multiplicity count. This audit did not rerun enumeration, and no hosted audit is claimed for this dataset.\n"
-    if item.get('independent_enumeration_rerun') is False:
+    if r==7 and item.get('independent_enumeration_rerun') is False:
         text+=r'''
 \subsection{Source qualification for the multiplicity-five extension}
 The new band consists of $5,805$ tensors. By number of nontrivial dual pairs
@@ -451,12 +452,12 @@ nine tensors are noncommutative. The supplied producer record reports normal
 completion of all four strata in $77,046$ seconds (about $21.4$ hours).
 
 The producer used modified local enumeration sources based on repository
-commit \texttt{d4c36cc2ee5eb5f0e5291de18d2bb433ffb7ce8b}. Their hashes and logs
-are retained, but the modified source files were not included in the supplied
-archive. Consequently completeness of this extension is producer-reported;
-this release does not independently reproduce or certify coverage of that
-modified search. The conditional coverage arguments below apply to the
-documented algorithms, and do not by themselves audit an unavailable variant.
+commit \path{d4c36cc2ee5eb5f0e5291de18d2bb433ffb7ce8b}. Their hashes and logs
+are retained. The complete optimized source archive was supplied separately
+on 21 October 2026; its aggregate code hash matches the producer run. Numerical
+C++ sources are integrated unchanged and finite pruning audits are available.
+Completeness nevertheless remains producer-reported: this release does not
+independently repeat the full search.
 
 The fresh checks do establish the fusion-ring axioms and uniqueness of all
 $10,006$ supplied tensors under every unit-fixing permutation. Re-exporting
@@ -465,6 +466,32 @@ tensors, and the tensor set of multiplicity at most four is exactly the
 previous $4,201$-class release. Equation systems, exporter and independent
 verifier match the supplied source hashes. The producer receipt and prior
 audit remain in \path{verification/rank7/}; no enumeration was rerun.
+'''
+    if r==8 and item.get('independent_enumeration_rerun') is False:
+        text+=r'''
+\subsection{Source qualification and optimized enumeration}
+The new multiplicity-three band consists of $3,527$ tensors. By number of
+nontrivial dual pairs $p=0,1,2,3$, its counts are $2,152$, $972$, $362$ and
+$41$; $85$ are noncommutative. The producer reports normal completion in
+$62,292$ seconds, including $61,908$ seconds for the self-dual stratum.
+These are producer timings, not timings from the independent check.
+
+The complete optimized enumeration source was supplied. Its aggregate code
+hash matches the producer records for both rank seven through five and rank
+eight through three. Numerical C++ sources are integrated unchanged; only
+launcher executable-cache handling was adjusted. Necessary finite-domain
+support projections and self-dual moment identities are documented in
+\path{methods/OPTIMIZATIONS.md}, \path{methods/SELFDUAL_PROOF.md} and
+\path{methods/GAUSSIAN_AUDIT.md}. Witness resource caps disable pruning
+for the branch; truncated witness lists cannot reject a solution.
+
+Fresh independent checks establish the fusion axioms and uniqueness of all
+$4,500$ tensors under $22,680,000$ unit-fixing permutations. Parameter re-export
+is byte-identical. Filtering to multiplicity at most two recovers all $973$
+previous tensors and parameter records in their original order. Full exhaustive
+enumeration was not independently rerun; completeness remains producer-reported.
+The fresh and producer checks are preserved separately under
+\path{verification/rank8/}.
 '''
     return text
 
@@ -480,7 +507,7 @@ def build_sources(ranks=range(3,9)):
         body+=(r'\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, RELEASEDATE}\par\vspace{0.8cm}').replace('RELEASEDATE',release_date)+'\n'
         body+=r'\begin{abstract}'+'\n'
         if item.get('independent_enumeration_rerun') is False:
-            body+=f'We document {item["classes"]:,} verified based-isomorphism classes of fusion rings of rank {r} through multiplicity {item["bound"]}, including 5,805 at multiplicity five. The producer reports a complete enumeration, but the modified enumeration sources were not supplied and completeness has not been independently reproduced. '
+            body+=f'We document {item["classes"]:,} verified based-isomorphism classes of fusion rings of rank {r} through multiplicity {item["bound"]}, including {item["counts"][str(item["bound"])]:,} at the maximum multiplicity. The producer reports a complete enumeration. The complete optimized source is supplied and hash-matched, but full enumeration has not been independently reproduced. '
         else:
             body+=f'We explain the exact enumeration of all based fusion rings of rank {r} through multiplicity {item["bound"]}, comprising {item["classes"]:,} isomorphism classes. '
         body+='The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. '

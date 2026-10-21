@@ -1,0 +1,199 @@
+{
+  "rank": 8,
+  "bound": 2,
+  "threads": 12,
+  "enumeration_budget_seconds": null,
+  "time_limit": "none (local laptop)",
+  "environment": {
+    "python": "3.12.3",
+    "system": "Linux 6.8.0-40-generic x86_64",
+    "cpu_count": 12,
+    "threads": 12
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "pairs1",
+      "command": [
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/parallel_general",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/systems/rank8_pairs1.txt",
+        "2",
+        "inf",
+        "12",
+        "6"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 684.3370184730011,
+      "returncode": 0
+    },
+    {
+      "name": "pairs2",
+      "command": [
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/general",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/systems/rank8_pairs2.txt",
+        "2",
+        "inf"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 816.5087621179991,
+      "returncode": 0
+    },
+    {
+      "name": "pairs3",
+      "command": [
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/general",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/systems/rank8_pairs3.txt",
+        "2",
+        "inf"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 7.49052586700418,
+      "returncode": 0
+    },
+    {
+      "name": "selfdual",
+      "command": [
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/selfdual_fast",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/systems/system8sd.txt",
+        "8",
+        "2",
+        "inf",
+        "12"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 545.5136898519995,
+      "returncode": 0
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "compilation:general",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/code/enumerate_bounded.cpp",
+        "-o",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/general"
+      ],
+      "started_elapsed_seconds": 0.0012603229988599196,
+      "returncode": 0,
+      "elapsed_seconds": 0.8198536970012356
+    },
+    {
+      "phase": "compilation:selfdual_fast",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/code/enumerate_selfdual_fast.cpp",
+        "-o",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/selfdual_fast"
+      ],
+      "started_elapsed_seconds": 0.8217803340085084,
+      "returncode": 0,
+      "elapsed_seconds": 7.15169773400703
+    },
+    {
+      "phase": "compilation:parallel_general",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/code/enumerate_parallel.cpp",
+        "-o",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/parallel_general"
+      ],
+      "started_elapsed_seconds": 7.9739933789969655,
+      "returncode": 0,
+      "elapsed_seconds": 0.9734244719875278
+    },
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/usr/bin/python3",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/code/export_tables.py",
+        "--rank",
+        "8",
+        "--input",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/parameters.txt",
+        "--systems",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/systems",
+        "--output",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 2062.815895783002,
+      "returncode": 0,
+      "elapsed_seconds": 0.12873211099940818
+    },
+    {
+      "phase": "compilation:verify_tables",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/code/verify_tables.cpp",
+        "-o",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/verify_tables"
+      ],
+      "started_elapsed_seconds": 2062.9453577130043,
+      "returncode": 0,
+      "elapsed_seconds": 1.4317731539922534
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/verify_tables",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/FusionRingMultiplicationTables.txt",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/independent_check",
+        "--exhaustive"
+      ],
+      "started_elapsed_seconds": 2064.378432493002,
+      "returncode": 0,
+      "elapsed_seconds": 0.32006180699681863
+    }
+  ],
+  "code_sha256": "0f7690b2c58d7c300d3ab24a2751d1859f676f0db72958d91ad8c4b0ff0a3753",
+  "elapsed_seconds": 2064.9747374069993,
+  "compilation_seconds": 8.947903232998215,
+  "expected_strata": [
+    "pairs1",
+    "pairs2",
+    "pairs3",
+    "selfdual"
+  ],
+  "enumeration_seconds": 2053.8517117910087,
+  "counts": {
+    "1": 96,
+    "2": 877
+  },
+  "classes": 973,
+  "sort_export_seconds": 0.14529833500273526,
+  "verifier_compilation_seconds": 1.4324290459917393,
+  "independent_verification_seconds": 0.3214715840003919,
+  "independent_verification": {
+    "input_records": 973,
+    "input_physical_lines": 973,
+    "distinct_rings": 973,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "all unit-fixing permutations",
+    "permutations_examined": 4903920,
+    "elapsed_seconds": 0.317856112
+  },
+  "existing_prefix_checked_through": 1,
+  "parameters.txt_sha256": "cb9d84fb05ef00f572d59a3a5df4609a83ec00a793d8afed4f74c405469d09b7",
+  "FusionRingMultiplicationTables.txt_sha256": "97b86d2de8ca0352c5c6e14686cd1d43dbd52180dc53b2ff1ccf7a61788c9600",
+  "compression_seconds": 0.27530505500908475,
+  "outcome": "verified_complete"
+}

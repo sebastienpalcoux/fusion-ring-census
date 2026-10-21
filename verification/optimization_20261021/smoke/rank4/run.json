@@ -1,0 +1,109 @@
+{
+  "rank": 4,
+  "bound": 2,
+  "threads": 2,
+  "enumeration_budget_seconds": 90.0,
+  "time_limit": "bounded",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux 6.18.55 x86_64",
+    "cpu_count": 9,
+    "threads": 2
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "all",
+      "command": [
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/rank4",
+        "2"
+      ],
+      "allowance_seconds": 89.99999958299941,
+      "elapsed_seconds": 0.004061456999806978,
+      "returncode": 0
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "compilation:rank4",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/code/rank4_census.cpp",
+        "-o",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/rank4"
+      ],
+      "started_elapsed_seconds": 0.0012054250000801403,
+      "returncode": 0,
+      "elapsed_seconds": 1.145198829999572
+    },
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/code/export_tables.py",
+        "--rank",
+        "4",
+        "--input",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank4/parameters.txt",
+        "--systems",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/systems",
+        "--output",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank4/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 1.1516905400003452,
+      "returncode": 0,
+      "elapsed_seconds": 0.031372180999824195
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/verify_tables",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank4/FusionRingMultiplicationTables.txt",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank4/independent_check",
+        "--exhaustive"
+      ],
+      "started_elapsed_seconds": 1.1837933019996854,
+      "returncode": 0,
+      "elapsed_seconds": 0.004260548999809544
+    }
+  ],
+  "code_sha256": "13c244e3eb7988c1cc32f9494a9a23c84c4fdd16661cb351d99d021c76bf7dcb",
+  "elapsed_seconds": 1.1895039930004714,
+  "compilation_seconds": 1.1469638050002686,
+  "expected_strata": [
+    "all"
+  ],
+  "enumeration_seconds": 0.00432424400059972,
+  "counts": {
+    "1": 10,
+    "2": 17
+  },
+  "classes": 27,
+  "sort_export_seconds": 0.032055951000074856,
+  "verifier_compilation_seconds": 7.772199933242518e-05,
+  "independent_verification_seconds": 0.0051100369992127526,
+  "independent_verification": {
+    "input_records": 27,
+    "input_physical_lines": 27,
+    "distinct_rings": 27,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "all unit-fixing permutations",
+    "permutations_examined": 162,
+    "elapsed_seconds": 0.000858286
+  },
+  "parameters.txt_sha256": "c3ab68415809415977c568f46916dcfdbd2c57c9bc49fc6cfdd43615b2d19914",
+  "FusionRingMultiplicationTables.txt_sha256": "619a3ba531591de09f9aa73f409d6b5eda654e7af4227f01e14ce1727c6ac8c9",
+  "compression_seconds": 0.0007550560003437568,
+  "outcome": "verified_complete"
+}

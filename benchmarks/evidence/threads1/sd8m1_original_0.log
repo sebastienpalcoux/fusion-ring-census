@@ -1,0 +1,5 @@
+job 0 / 7 done 1 u 0 0 0 0 0 0 matrices 5 rings 36 seconds 0.2514
+job 1 / 7 done 1 u 0 0 0 0 0 1 matrices 234 rings 1 seconds 0.00590121
+job 2 / 7 done 1 u 0 0 0 0 1 1 matrices 5124 rings 0 seconds 0.0460516
+job 3 / 7 done 1 u 0 0 0 1 1 1 matrices 27033 rings 0 seconds 0.129086
+job 4 / 7 done 1 u 0 0 1 1 1 1 matrices 42702 rings 1 seconds 0.160532

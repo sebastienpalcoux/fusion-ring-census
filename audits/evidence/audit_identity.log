@@ -1,0 +1,1 @@
+PASS direct_associativity_first_and_second_moment_identities=100000 ranks=4..8 bounds=1..15 C=1,2 seed=20261018 max_observed_residual=2974219

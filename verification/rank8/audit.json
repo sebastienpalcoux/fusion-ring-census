@@ -1,32 +1,78 @@
 {
   "rank": 8,
-  "bound": 2,
-  "classes": 973,
+  "bound": 3,
+  "classes": 4500,
   "counts": {
     "1": 96,
-    "2": 877
+    "2": 877,
+    "3": 3527
   },
-  "outcome": "verified_extension",
-  "previous_bound": 1,
-  "previous_classes": 96,
-  "source_commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b",
-  "code_sha256": "0f7690b2c58d7c300d3ab24a2751d1859f676f0db72958d91ad8c4b0ff0a3753",
-  "verification_commit": "b5e15383c75f46e1d00679a3815dc56e638f4a56",
-  "verification_run_id": "35553424461",
   "complete": true,
   "verified": true,
+  "completeness_basis": "Producer-reported completed exhaustive enumeration; complete optimized enumeration source supplied and audited, but full search not independently rerun.",
+  "independent_enumeration_rerun": false,
+  "enumeration_source_bundled": true,
+  "outcome": "verified_output_extension_with_producer_reported_completeness",
+  "previous_bound": 2,
+  "previous_classes": 973,
+  "verification_environment": "local workspace",
+  "verification_date": "2026-10-21",
+  "verification_run_id": null,
+  "code_sha256": "9177263413f1e4c775e5a81aa802a683d119de5af1123a8b9991b23daa1b0658",
   "independent_verification": {
-    "input_records": 973,
-    "input_physical_lines": 973,
-    "distinct_rings": 973,
+    "input_records": 4500,
+    "input_physical_lines": 4500,
+    "distinct_rings": 4500,
     "duplicates": 0,
     "literal_repeats": 0,
     "new_labellings": 0,
     "associativity_checked": true,
     "canonical_mode": "all unit-fixing permutations",
-    "permutations_examined": 4903920,
-    "elapsed_seconds": 0.363488956
+    "permutations_examined": 22680000,
+    "elapsed_seconds": 2.137747457
   },
-  "tables_sha256": "97b86d2de8ca0352c5c6e14686cd1d43dbd52180dc53b2ff1ccf7a61788c9600",
-  "parameters_sha256": "cb9d84fb05ef00f572d59a3a5df4609a83ec00a793d8afed4f74c405469d09b7"
+  "integration_check": {
+    "status": "PASS",
+    "archives": {
+      "Fusion_Census_Deep_Optimized_2026-10-19.zip": {
+        "sha256": "b5ed28b3423c923e0eb8186f6039baaabdf3fe5049cad5207689eab3841490ff",
+        "manifest_files_verified": 448
+      },
+      "rank8_multiplicity3_verified.zip": {
+        "sha256": "59d97a19bb34088f995c53b2a92e6116e32346494bbdfee275a6b0e9a7b8b9db",
+        "manifest_files_verified": 15
+      }
+    },
+    "prefix_through": 2,
+    "prefix_classes": 973,
+    "literal_tensor_set_equality": true,
+    "prefix_sequence_equal": true,
+    "parameter_prefix_equal": true,
+    "exact_counts": {
+      "1": 96,
+      "2": 877,
+      "3": 3527
+    },
+    "duality_pair_counts": {
+      "0": 2621,
+      "1": 1278,
+      "2": 516,
+      "3": 85
+    },
+    "exact_multiplicity_3_duality_pair_counts": {
+      "0": 2152,
+      "1": 972,
+      "2": 362,
+      "3": 41
+    },
+    "noncommutative_by_multiplicity": {
+      "1": 19,
+      "2": 40,
+      "3": 85
+    },
+    "enumeration_rerun": false,
+    "parameter_reexport_byte_equal": true
+  },
+  "tables_sha256": "7baaa0a2018e11a0464c3f19da9030195421f04a73806c22363cf9d5eeb92a84",
+  "parameters_sha256": "0c72c617e14fecaa0d4fd0fe7d4513b24d6c7187838c003a7542002f568d1c46"
 }

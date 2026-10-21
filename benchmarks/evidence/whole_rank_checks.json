@@ -1,0 +1,29 @@
+[
+  {
+    "rank": 6,
+    "bound": 3,
+    "classes": 577,
+    "complete": true,
+    "verified": true,
+    "released_exact_parameter_set_equal": true,
+    "code_sha256": "9177263413f1e4c775e5a81aa802a683d119de5af1123a8b9991b23daa1b0658"
+  },
+  {
+    "rank": 7,
+    "bound": 2,
+    "classes": 362,
+    "complete": true,
+    "verified": true,
+    "released_exact_parameter_set_equal": true,
+    "code_sha256": "9177263413f1e4c775e5a81aa802a683d119de5af1123a8b9991b23daa1b0658"
+  },
+  {
+    "rank": 8,
+    "bound": 1,
+    "classes": 96,
+    "complete": true,
+    "verified": true,
+    "released_exact_parameter_set_equal": true,
+    "code_sha256": "9177263413f1e4c775e5a81aa802a683d119de5af1123a8b9991b23daa1b0658"
+  }
+]

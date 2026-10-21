@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "archives": {
+    "Fusion_Census_Deep_Optimized_2026-10-19.zip": {
+      "sha256": "b5ed28b3423c923e0eb8186f6039baaabdf3fe5049cad5207689eab3841490ff",
+      "manifest_files_verified": 448
+    },
+    "rank8_multiplicity3_verified.zip": {
+      "sha256": "59d97a19bb34088f995c53b2a92e6116e32346494bbdfee275a6b0e9a7b8b9db",
+      "manifest_files_verified": 15
+    }
+  },
+  "producer_code_sha256": "9177263413f1e4c775e5a81aa802a683d119de5af1123a8b9991b23daa1b0658",
+  "recovery_note": "Rebuilt from the original verified input archives after workspace loss. Fresh checks are recorded separately; prior local receipts are not asserted to have survived.",
+  "integrated_code_sha256": "13c244e3eb7988c1cc32f9494a9a23c84c4fdd16661cb351d99d021c76bf7dcb",
+  "numerical_cpp_sources_equal_to_producer": true,
+  "source_differences_from_producer": [
+    "code/run_census.py"
+  ],
+  "launcher_changes": "Executable-cache permission checks; numerical code is byte-identical to the supplied package.",
+  "fresh_tensor_verification": "verification/rank8/fresh_verification/summary.json",
+  "parameter_reexport_byte_equal": true
+}

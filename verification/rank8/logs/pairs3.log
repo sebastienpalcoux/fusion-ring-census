@@ -1,1 +1,2 @@
-rank 8 pairs 3 bound 2 complete 1 nodes 1683984 classes 44 seconds 7.48822 counts 10 34
+frontier jobs 769 preparation_nodes 1261 seconds 0.0990733
+FINAL bound 3 complete 1 jobs 769 / 769 nodes 1749564 frontier_nodes 1261 classes 85 seconds 31.4726 counts 10 34 41

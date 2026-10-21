@@ -1,0 +1,54 @@
+[
+  {
+    "rank": 7,
+    "bound": 2,
+    "threads": 1,
+    "classes": 362,
+    "sum_of_stratum_medians_seconds": {
+      "original": 11.9728633,
+      "previous": 9.2838476,
+      "new": 1.5097858
+    },
+    "speedup_over_original": 7.93017347228991,
+    "speedup_over_v1": 6.149115722243513
+  },
+  {
+    "rank": 8,
+    "bound": 1,
+    "threads": 1,
+    "classes": 96,
+    "sum_of_stratum_medians_seconds": {
+      "original": 2.1912351,
+      "previous": 0.7203137,
+      "new": 0.4263274
+    },
+    "speedup_over_original": 5.139794205110908,
+    "speedup_over_v1": 1.6895787134488656
+  },
+  {
+    "rank": 7,
+    "bound": 2,
+    "threads": 4,
+    "classes": 362,
+    "sum_of_stratum_medians_seconds": {
+      "original": 4.3564407,
+      "previous": 2.4526222,
+      "new": 0.4106302
+    },
+    "speedup_over_original": 10.609158069718205,
+    "speedup_over_v1": 5.9728246972580195
+  },
+  {
+    "rank": 8,
+    "bound": 1,
+    "threads": 4,
+    "classes": 96,
+    "sum_of_stratum_medians_seconds": {
+      "original": 1.0910549,
+      "previous": 0.4383645,
+      "new": 0.37523839999999997
+    },
+    "speedup_over_original": 2.9076312552233463,
+    "speedup_over_v1": 1.1682293176817724
+  }
+]

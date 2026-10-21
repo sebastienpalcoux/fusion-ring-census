@@ -1,0 +1,54 @@
+{
+  "source_sha256": "c78c177ff03f472cbdd86d65ffb114abb77788c2a4ef7c8fd8c778856f6d5a57",
+  "header_sha256": "9cc88c01a5d50953bb39b6977dfbb6ace206447cc528aa86e7d78b1ffe93dc86",
+  "checks": [
+    {
+      "rank": 6,
+      "bound": 2,
+      "mode": "normal",
+      "exact_match": true,
+      "sorted_output_sha256": "2ff8f8885441cabce48e7a7e16eca192039ad1dfad61fff9757f703f32c299df",
+      "final_log": "FINAL rank 6 bound 2 complete 1 jobs 15 / 15 matrices 1188 singular 366 completion_nodes 888 classes 122 seconds 0.021931 counts 20 102"
+    },
+    {
+      "rank": 6,
+      "bound": 2,
+      "mode": "stored_cap_1",
+      "exact_match": true,
+      "sorted_output_sha256": "2ff8f8885441cabce48e7a7e16eca192039ad1dfad61fff9757f703f32c299df",
+      "final_log": "FINAL rank 6 bound 2 complete 1 jobs 15 / 15 matrices 17008 singular 390 completion_nodes 913 classes 122 seconds 0.022675 counts 20 102"
+    },
+    {
+      "rank": 6,
+      "bound": 2,
+      "mode": "visit_cap_1",
+      "exact_match": true,
+      "sorted_output_sha256": "2ff8f8885441cabce48e7a7e16eca192039ad1dfad61fff9757f703f32c299df",
+      "final_log": "FINAL rank 6 bound 2 complete 1 jobs 15 / 15 matrices 22876 singular 391 completion_nodes 914 classes 122 seconds 0.0226299 counts 20 102"
+    },
+    {
+      "rank": 7,
+      "bound": 1,
+      "mode": "normal",
+      "exact_match": true,
+      "sorted_output_sha256": "b608a37333cf08a2d397afc96ccf9b7b6f2d38c4add34730d39532ce1c7ce322",
+      "final_log": "FINAL rank 7 bound 1 complete 1 jobs 6 / 6 matrices 327 singular 130 completion_nodes 357 classes 18 seconds 0.0130838 counts 18"
+    },
+    {
+      "rank": 7,
+      "bound": 1,
+      "mode": "stored_cap_1",
+      "exact_match": true,
+      "sorted_output_sha256": "b608a37333cf08a2d397afc96ccf9b7b6f2d38c4add34730d39532ce1c7ce322",
+      "final_log": "FINAL rank 7 bound 1 complete 1 jobs 6 / 6 matrices 1720 singular 161 completion_nodes 402 classes 18 seconds 0.0150723 counts 18"
+    },
+    {
+      "rank": 7,
+      "bound": 1,
+      "mode": "visit_cap_1",
+      "exact_match": true,
+      "sorted_output_sha256": "b608a37333cf08a2d397afc96ccf9b7b6f2d38c4add34730d39532ce1c7ce322",
+      "final_log": "FINAL rank 7 bound 1 complete 1 jobs 6 / 6 matrices 1932 singular 175 completion_nodes 416 classes 18 seconds 0.0140574 counts 18"
+    }
+  ]
+}

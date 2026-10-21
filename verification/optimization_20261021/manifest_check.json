@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "ranks": {
+    "3": {
+      "tables_gz_sha256": "6e1c5b9349870ca5d3745ed629051b90726ddaa1890f30782b8f2cd465d716eb",
+      "tables_uncompressed_sha256": "bfebca55e08ef811173dc271556befadba842f25600d97ac59d58f96d73c8b58"
+    },
+    "4": {
+      "tables_gz_sha256": "9b91cebd5b1cb570c12793dee289783815a51212d6511c8f2d6d1e650a78b2d8",
+      "tables_uncompressed_sha256": "d54fe08711103f970fa08ae346a4d03e9277aac403054a87d89a2d760d8d5fc9",
+      "parameters_gz_sha256": "0c3ab657ebfa9c78719e909a7d5857769e0bf791564a67971350237e752aaf6d",
+      "parameters_uncompressed_sha256": "66924969637eee20048b8a934759196d46cccf0d5d8cbf3af2620132d8b93df8"
+    },
+    "5": {
+      "tables_gz_sha256": "4542c0871498337ef38ce3903407933289699a5ff06c85ad0f6c2bd57da823fb",
+      "tables_uncompressed_sha256": "119ac6da8271e90402d2703b768cf072bee67ce48f4a8f8cea68346d7129967f",
+      "parameters_gz_sha256": "ebf63a33adfa9317d61c6b1a978223d0d89bcb08f983031c8ee84df5ff7b954c",
+      "parameters_uncompressed_sha256": "3e972b4b8acde8ea930a7921332ad6e9ddaf2a5a8792d772cfb40e72b679b674"
+    },
+    "6": {
+      "tables_gz_sha256": "0e7552e17620452f237e94751c40cd93b0757a466168629db8cc1bf0b9451d00",
+      "tables_uncompressed_sha256": "be377c8114d4c0a532b79850efd588090c1dfb5ae3ffc847ecf3eadb97f88ab3",
+      "parameters_gz_sha256": "6d67d40303920673ee491a09ad4b692cf5f64762947084fd9d718bbeb1515d3e",
+      "parameters_uncompressed_sha256": "97bbb56344224c12f0c052a362df113f94d6830ab0252d53f224d49e131d1554"
+    },
+    "7": {
+      "tables_gz_sha256": "9018f6f195339fb153ea326ec308c955bb1adf9afe1ffc9423be1bef6818e073",
+      "tables_uncompressed_sha256": "a3fdcb75fbeb090913b1e4650e5124b9e0b1d016f1a71e0368a3f38e6e520c03",
+      "parameters_gz_sha256": "ae746f708cfa349e76ea528ef5b600447e108a0e5dd384bd20ba5827edcd032d",
+      "parameters_uncompressed_sha256": "7ddbed80fe2287ef5e2ac74c2aa662fe0d8ed84664e3ce77ebdcfa4b7fab9732"
+    },
+    "8": {
+      "tables_gz_sha256": "1003a7684ec62797e63885eeb5af42fd094adc9ff3fec6caf049620b3afd0952",
+      "tables_uncompressed_sha256": "7baaa0a2018e11a0464c3f19da9030195421f04a73806c22363cf9d5eeb92a84",
+      "parameters_gz_sha256": "7b7e6d34963672e9a4d177ae8ba66d4b822863d736da350f870f0a5e95649935",
+      "parameters_uncompressed_sha256": "0c72c617e14fecaa0d4fd0fe7d4513b24d6c7187838c003a7542002f568d1c46"
+    }
+  }
+}

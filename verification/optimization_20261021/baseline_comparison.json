@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "baseline_commit": "476bc53e2a964934735d91c8422e06acfbea654a",
+  "scope": "Eight complete strata; not a full rank-7 M5 or rank-8 M3 rerun.",
+  "comparisons": [
+    {
+      "rank": 7,
+      "bound": 2,
+      "dual_pairs": 0,
+      "classes": 212,
+      "exact_sorted_parameter_match": true,
+      "sorted_output_sha256": "bf81064e170137c8e9bf6f2f20a1083ac18c1c9f1f5e873d2964e2f0a7b789d4",
+      "baseline_seconds": 5.247800764000203,
+      "optimized_seconds": 0.7981565569998565,
+      "baseline_log": "job 0 / 21 done 1 u 0 0 0 0 0 matrices 3 rings 176 seconds 0.225789\njob 1 / 21 done 1 u 0 0 0 0 1 matrices 2210 rings 15 seconds 0.0106193\njob 2 / 21 done 1 u 0 0 0 0 2 matrices 90 rings 0 seconds 0.00107848\njob 3 / 21 done 1 u 0 0 0 1 1 matrices 28729 rings 5 seconds 0.0675251\njob 4 / 21 done 1 u 0 0 0 1 2 matrices 135715 rings 3 seconds 0.101786\njob 5 / 21 done 1 u 0 0 0 2 2 matrices 1174 rings 0 seconds 0.00433795\njob 6 / 21 done 1 u 0 0 1 1 1 matrices 140348 rings 8 seconds 0.149708\njob 7 / 21 done 1 u 0 0 1 1 2 matrices 660728 rings 0 seconds 0.438074\njob 8 / 21 done 1 u 0 0 1 2 2 matrices 1127995 rings 0 seconds 0.697164\njob 9 / 21 done 1 u 0 0 2 2 2 matrices 4319 rings 0 seconds 0.00862289\njob 10 / 21 done 1 u 0 1 1 1 1 matrices 167300 rings 3 seconds 0.2226\njob 11 / 21 done 1 u 0 1 1 1 2 matrices 1034816 rings 0 seconds 0.672561\njob 12 / 21 done 1 u 0 1 1 2 2 matrices 2261207 rings 0 seconds 1.38934\njob 13 / 21 done 1 u 0 1 2 2 2 matrices 1798867 rings 0 seconds 1.10158\njob 14 / 21 done 1 u 0 2 2 2 2 matrices 4016 rings 0 seconds 0.0104281\njob 15 / 21 done 1 u 1 1 1 1 1 matrices 3455 rings 1 seconds 0.00709479\njob 16 / 21 done 1 u 1 1 1 1 2 matrices 21480 rings 0 seconds 0.0156524\njob 17 / 21 done 1 u 1 1 1 2 2 matrices 53090 rings 0 seconds 0.0344132\njob 18 / 21 done 1 u 1 1 2 2 2 matrices 63841 rings 1 seconds 0.0392365\njob 19 / 21 done 1 u 1 2 2 2 2 matrices 37929 rings 0 seconds 0.0456181\njob 20 / 21 done 1 u 2 2 2 2 2 matrices 0 rings 0 seconds 3.2061e-05\nFINAL rank 7 bound 2 complete 1 jobs 21 / 21 matrices 7547312 singular 16435 completion_nodes 30818 classes 212 seconds 5.24518 counts 18 194\n",
+      "optimized_log": "job 0 / 21 done 1 u 0 0 0 0 0 matrices 3 rings 176 seconds 0.100818\njob 1 / 21 done 1 u 0 0 0 0 1 matrices 1066 rings 15 seconds 0.0134508\njob 2 / 21 done 1 u 0 0 0 0 2 matrices 36 rings 0 seconds 0.00631589\njob 3 / 21 done 1 u 0 0 0 1 1 matrices 6241 rings 5 seconds 0.0521534\njob 4 / 21 done 1 u 0 0 0 1 2 matrices 5524 rings 3 seconds 0.0540579\njob 5 / 21 done 1 u 0 0 0 2 2 matrices 93 rings 0 seconds 0.0183419\njob 6 / 21 done 1 u 0 0 1 1 1 matrices 9887 rings 8 seconds 0.0626607\njob 7 / 21 done 1 u 0 0 1 1 2 matrices 13268 rings 0 seconds 0.112027\njob 8 / 21 done 1 u 0 0 1 2 2 matrices 6336 rings 0 seconds 0.0890005\njob 9 / 21 done 1 u 0 0 2 2 2 matrices 87 rings 0 seconds 0.0132096\njob 10 / 21 done 1 u 0 1 1 1 1 matrices 2860 rings 3 seconds 0.0510056\njob 11 / 21 done 1 u 0 1 1 1 2 matrices 8134 rings 0 seconds 0.0786301\njob 12 / 21 done 1 u 0 1 1 2 2 matrices 6086 rings 0 seconds 0.0844126\njob 13 / 21 done 1 u 0 1 2 2 2 matrices 2376 rings 0 seconds 0.0362002\njob 14 / 21 done 1 u 0 2 2 2 2 matrices 57 rings 0 seconds 0.00313987\njob 15 / 21 done 1 u 1 1 1 1 1 matrices 60 rings 1 seconds 0.00410106\njob 16 / 21 done 1 u 1 1 1 1 2 matrices 196 rings 0 seconds 0.00410522\njob 17 / 21 done 1 u 1 1 1 2 2 matrices 310 rings 0 seconds 0.00581928\njob 18 / 21 done 1 u 1 1 2 2 2 matrices 129 rings 1 seconds 0.00271507\njob 19 / 21 done 1 u 1 2 2 2 2 matrices 33 rings 0 seconds 0.00116849\njob 20 / 21 done 1 u 2 2 2 2 2 matrices 0 rings 0 seconds 3.5156e-05\nFINAL rank 7 bound 2 complete 1 jobs 21 / 21 matrices 62782 singular 5375 completion_nodes 9209 classes 212 seconds 0.795722 counts 18 194\n"
+    },
+    {
+      "rank": 7,
+      "bound": 2,
+      "dual_pairs": 1,
+      "classes": 108,
+      "exact_sorted_parameter_match": true,
+      "sorted_output_sha256": "7635f60fb9c0b44124a3022d14832cb1f1f9e072087c8a86d29da10486b499ab",
+      "baseline_seconds": 1.7029910109995399,
+      "optimized_seconds": 0.284102518000509,
+      "baseline_log": "rank 7 pairs 1 bound 2 complete 1 nodes 721956 classes 108 seconds 1.70051 counts 17 91\n",
+      "optimized_log": "rank 7 pairs 1 bound 2 complete 1 nodes 8312 classes 108 seconds 0.281635 counts 17 91\n"
+    },
+    {
+      "rank": 7,
+      "bound": 2,
+      "dual_pairs": 2,
+      "classes": 39,
+      "exact_sorted_parameter_match": true,
+      "sorted_output_sha256": "c9a450605d264b5666c8ec528a4514949a088a1d6b611e425a0ccd36888bcbfb",
+      "baseline_seconds": 0.36994218499967246,
+      "optimized_seconds": 0.2323624539994853,
+      "baseline_log": "rank 7 pairs 2 bound 2 complete 1 nodes 118202 classes 39 seconds 0.367577 counts 7 32\n",
+      "optimized_log": "rank 7 pairs 2 bound 2 complete 1 nodes 6165 classes 39 seconds 0.229999 counts 7 32\n"
+    },
+    {
+      "rank": 7,
+      "bound": 2,
+      "dual_pairs": 3,
+      "classes": 3,
+      "exact_sorted_parameter_match": true,
+      "sorted_output_sha256": "107b464dd7e0e2e804a02f0e1a3f0e6be8b4f52f9d06975150dc69e9748d2acf",
+      "baseline_seconds": 0.04823337400011951,
+      "optimized_seconds": 0.04395899199971609,
+      "baseline_log": "rank 7 pairs 3 bound 2 complete 1 nodes 11020 classes 3 seconds 0.0460514 counts 1 2\n",
+      "optimized_log": "rank 7 pairs 3 bound 2 complete 1 nodes 1408 classes 3 seconds 0.0415956 counts 1 2\n"
+    },
+    {
+      "rank": 8,
+      "bound": 1,
+      "dual_pairs": 0,
+      "classes": 38,
+      "exact_sorted_parameter_match": true,
+      "sorted_output_sha256": "a9f401bec45c0524fb02dfd81ecd494985516462efa465786d5df13299e5f07e",
+      "baseline_seconds": 0.7029570860004242,
+      "optimized_seconds": 0.15189760599969304,
+      "baseline_log": "job 0 / 7 done 1 u 0 0 0 0 0 0 matrices 5 rings 36 seconds 0.210909\njob 1 / 7 done 1 u 0 0 0 0 0 1 matrices 234 rings 1 seconds 0.00577996\njob 2 / 7 done 1 u 0 0 0 0 1 1 matrices 5124 rings 0 seconds 0.0439053\njob 3 / 7 done 1 u 0 0 0 1 1 1 matrices 27033 rings 0 seconds 0.10933\njob 4 / 7 done 1 u 0 0 1 1 1 1 matrices 42702 rings 1 seconds 0.131312\njob 5 / 7 done 1 u 0 1 1 1 1 1 matrices 23531 rings 0 seconds 0.18658\njob 6 / 7 done 1 u 1 1 1 1 1 1 matrices 2 rings 0 seconds 0.000139905\nFINAL rank 8 bound 1 complete 1 jobs 7 / 7 matrices 98631 singular 3802 completion_nodes 6723 classes 38 seconds 0.700132 counts 38\n",
+      "optimized_log": "job 0 / 7 done 1 u 0 0 0 0 0 0 matrices 5 rings 36 seconds 0.091642\njob 1 / 7 done 1 u 0 0 0 0 0 1 matrices 140 rings 1 seconds 0.00420638\njob 2 / 7 done 1 u 0 0 0 0 1 1 matrices 1078 rings 0 seconds 0.0138709\njob 3 / 7 done 1 u 0 0 0 1 1 1 matrices 1765 rings 0 seconds 0.0148247\njob 4 / 7 done 1 u 0 0 1 1 1 1 matrices 489 rings 1 seconds 0.0059077\njob 5 / 7 done 1 u 0 1 1 1 1 1 matrices 52 rings 0 seconds 0.00312612\njob 6 / 7 done 1 u 1 1 1 1 1 1 matrices 0 rings 0 seconds 4.7234e-05\nFINAL rank 8 bound 1 complete 1 jobs 7 / 7 matrices 3529 singular 706 completion_nodes 1716 classes 38 seconds 0.149363 counts 38\n"
+    },
+    {
+      "rank": 8,
+      "bound": 1,
+      "dual_pairs": 1,
+      "classes": 30,
+      "exact_sorted_parameter_match": true,
+      "sorted_output_sha256": "36ca30d937be3afa5df7571a09bd105c120f9235c8ff0120bb79b01456e7b14c",
+      "baseline_seconds": 0.7970847070000673,
+      "optimized_seconds": 0.11126979500022571,
+      "baseline_log": "rank 8 pairs 1 bound 1 complete 1 nodes 123931 classes 30 seconds 0.794826 counts 30\n",
+      "optimized_log": "rank 8 pairs 1 bound 1 complete 1 nodes 1697 classes 30 seconds 0.108873 counts 30\n"
+    },
+    {
+      "rank": 8,
+      "bound": 1,
+      "dual_pairs": 2,
+      "classes": 18,
+      "exact_sorted_parameter_match": true,
+      "sorted_output_sha256": "051904ae60071cfb12f34a533c33e65356161e1e679f0f3a80669d18983573b9",
+      "baseline_seconds": 0.5562366899994231,
+      "optimized_seconds": 0.1238465050000741,
+      "baseline_log": "rank 8 pairs 2 bound 1 complete 1 nodes 84167 classes 18 seconds 0.553832 counts 18\n",
+      "optimized_log": "rank 8 pairs 2 bound 1 complete 1 nodes 1751 classes 18 seconds 0.121511 counts 18\n"
+    },
+    {
+      "rank": 8,
+      "bound": 1,
+      "dual_pairs": 3,
+      "classes": 10,
+      "exact_sorted_parameter_match": true,
+      "sorted_output_sha256": "2dca700cfdfd956fce645b6ee8eaa497449d548c3bb856e3414303869b0d7f52",
+      "baseline_seconds": 0.09771819900015544,
+      "optimized_seconds": 0.05176195500007452,
+      "baseline_log": "rank 8 pairs 3 bound 1 complete 1 nodes 9159 classes 10 seconds 0.0955882 counts 10\n",
+      "optimized_log": "rank 8 pairs 3 bound 1 complete 1 nodes 729 classes 10 seconds 0.0495834 counts 10\n"
+    }
+  ]
+}

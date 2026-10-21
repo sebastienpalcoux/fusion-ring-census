@@ -47,7 +47,7 @@ The finite-domain solver applies only necessary conditions:
 * With at most two unfixed variables in an equation, all values in their
   current finite domains are examined and unsupported values removed.
 * Equations linear in the remaining variables are reduced modulo 257.
-  An inconsistent modular system rejects the branch. One- and two-variable
+  An inconsistent modular system rejects the branch. One-, two- and three-variable
   consequences retain precisely their supported domain values. A singular
   modular system is not grounds for rejection.
 * Lexicographic comparisons with involution-preserving basis permutations
@@ -59,9 +59,10 @@ Finally the first unfixed variable is assigned each remaining value, and
 all integer associativity equations are tested at a leaf. Thus induction
 on the number of unfixed variables proves exhaustiveness. The imposed
 lexicographic inequalities give exactly one output per based-isomorphism
-class. The parallel program partitions a fixed prefix into every possible
-bounded assignment; these subtrees are disjoint and their union is the
-whole search. It reports completion only after all prefixes finish.
+class. The parallel program adaptively partitions the current bounded domain into
+disjoint prefix subtrees. Replacing a frontier node by every value of its next
+unfixed coordinate preserves their union. Completion is reported only after
+every frontier subtree finishes.
 
 ## 3. Why specialization to commutative rings is safe at ranks four and five
 
@@ -286,3 +287,13 @@ Rank eight includes every duality type without imposing commutativity. Its self-
 sized from the actual variable/equation counts instead of historical fixed
 80/200 buffers. The same necessary-condition and singular-completion arguments
 apply; merely changing a rank flag would not have been safe. Current whole-rank evidence is indexed in `verification/README.md`.
+
+## Optimized pruning supplied in October 2026
+
+The optimized source retains exhaustive completion and adds necessary finite
+support projections and self-dual moment identities. See [the optimization
+account](OPTIMIZATIONS.md), [self-dual preservation proof](SELFDUAL_PROOF.md),
+[Gaussian-domain audit](GAUSSIAN_AUDIT.md), and [local audit](../audits/SELFDUAL_AUDIT.md).
+Witness and visit caps disable the corresponding pruning entirely; a truncated
+witness list is never used to reject a branch. Finite audits and bounded baseline
+comparisons do not replace full enumeration of the released rank-7/8 extensions.

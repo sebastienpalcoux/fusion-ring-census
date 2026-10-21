@@ -71,6 +71,21 @@ this ZIP for review. Failure or interruption creates no verified ZIP, and partia
 output is never a census term. Reproducing a smaller or equal bound does not
 extend the release. The laptop launcher never publishes results automatically.
 
+## Optimized source and executable cache
+
+The supplied October 2026 optimization package is integrated with unchanged
+numerical C++ sources. The laptop launcher places compiler products in
+`$XDG_CACHE_HOME/fusion-ring-census` (or `~/.cache/fusion-ring-census`) so synced
+folders cannot strip their executable permission. Override with `--build-dir`.
+The low-level driver also repairs missing executable bits in a valid cache.
+
+Run `python3 tests/run_audits.py` for six finite pruning/identity audits and
+`python3 audits/audit_selfdual_fallback.py` for complete forced-cap comparisons.
+Their exact scopes are recorded under `verification/optimization_20261021/`.
+Full rank-7 M5 and rank-8 M3 enumeration remains producer-reported; the supplied
+source hash matches both producer run records, but these full searches were
+not independently repeated.
+
 ## Verify the released data
 
 ```bash

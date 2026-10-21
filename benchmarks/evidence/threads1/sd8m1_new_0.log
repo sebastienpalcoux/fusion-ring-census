@@ -1,0 +1,8 @@
+job 0 / 7 done 1 u 0 0 0 0 0 0 matrices 5 rings 36 seconds 0.0911487
+job 1 / 7 done 1 u 0 0 0 0 0 1 matrices 140 rings 1 seconds 0.00388325
+job 2 / 7 done 1 u 0 0 0 0 1 1 matrices 1078 rings 0 seconds 0.0130394
+job 3 / 7 done 1 u 0 0 0 1 1 1 matrices 1765 rings 0 seconds 0.0140927
+job 4 / 7 done 1 u 0 0 1 1 1 1 matrices 489 rings 1 seconds 0.00572404
+job 5 / 7 done 1 u 0 1 1 1 1 1 matrices 52 rings 0 seconds 0.00279387
+job 6 / 7 done 1 u 1 1 1 1 1 1 matrices 0 rings 0 seconds 5.8628e-05
+FINAL rank 8 bound 1 complete 1 jobs 7 / 7 matrices 3529 singular 706 completion_nodes 1716 classes 38 seconds 0.147924 counts 38

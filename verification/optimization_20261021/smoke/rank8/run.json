@@ -1,0 +1,142 @@
+{
+  "rank": 8,
+  "bound": 1,
+  "threads": 2,
+  "enumeration_budget_seconds": 90.0,
+  "time_limit": "bounded",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux 6.18.55 x86_64",
+    "cpu_count": 9,
+    "threads": 2
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "pairs1",
+      "command": [
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/parallel_general",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/systems/rank8_pairs1.txt",
+        "1",
+        "89.94999969799956",
+        "2",
+        "128"
+      ],
+      "allowance_seconds": 89.99999969799956,
+      "elapsed_seconds": 0.16489072799959104,
+      "returncode": 0
+    },
+    {
+      "name": "pairs2",
+      "command": [
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/parallel_general",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/systems/rank8_pairs2.txt",
+        "1",
+        "89.78486411200011",
+        "2",
+        "128"
+      ],
+      "allowance_seconds": 89.8348641120001,
+      "elapsed_seconds": 0.11454177500036167,
+      "returncode": 0
+    },
+    {
+      "name": "pairs3",
+      "command": [
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/parallel_general",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/systems/rank8_pairs3.txt",
+        "1",
+        "89.67007688099984",
+        "2",
+        "128"
+      ],
+      "allowance_seconds": 89.72007688099984,
+      "elapsed_seconds": 0.06445676800012734,
+      "returncode": 0
+    },
+    {
+      "name": "selfdual",
+      "command": [
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/selfdual_fast",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/systems/system8sd.txt",
+        "8",
+        "1",
+        "89.60534902699983",
+        "2"
+      ],
+      "allowance_seconds": 89.65534902699983,
+      "elapsed_seconds": 0.16464497900051356,
+      "returncode": 0
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/code/export_tables.py",
+        "--rank",
+        "8",
+        "--input",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank8/parameters.txt",
+        "--systems",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/systems",
+        "--output",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank8/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 0.5125852580003993,
+      "returncode": 0,
+      "elapsed_seconds": 0.0751861379994807
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/verify_tables",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank8/FusionRingMultiplicationTables.txt",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank8/independent_check",
+        "--exhaustive"
+      ],
+      "started_elapsed_seconds": 0.5887218260004374,
+      "returncode": 0,
+      "elapsed_seconds": 0.04797415700068086
+    }
+  ],
+  "code_sha256": "13c244e3eb7988c1cc32f9494a9a23c84c4fdd16661cb351d99d021c76bf7dcb",
+  "compilation_seconds": 0.0011733310002455255,
+  "expected_strata": [
+    "pairs1",
+    "pairs2",
+    "pairs3",
+    "selfdual"
+  ],
+  "elapsed_seconds": 0.683577427000273,
+  "enumeration_seconds": 0.5096735580000313,
+  "counts": {
+    "1": 96
+  },
+  "classes": 96,
+  "sort_export_seconds": 0.0772877929994138,
+  "verifier_compilation_seconds": 8.542999967176002e-05,
+  "independent_verification_seconds": 0.04877694500009966,
+  "independent_verification": {
+    "input_records": 96,
+    "input_physical_lines": 96,
+    "distinct_rings": 96,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "all unit-fixing permutations",
+    "permutations_examined": 483840,
+    "elapsed_seconds": 0.046134356
+  },
+  "parameters.txt_sha256": "51417e64cb301b32508266e59ed81ea4144b76b4c2a5403de7369ad3e1dcbca1",
+  "FusionRingMultiplicationTables.txt_sha256": "4ddf6402afff4f19ae4513ae63422cf73c327c605aa50cdcae731941de272ee7",
+  "compression_seconds": 0.046200578000025416,
+  "outcome": "verified_complete"
+}

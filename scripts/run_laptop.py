@@ -13,6 +13,13 @@ ROOT = Path(__file__).resolve().parents[1]
 CAP = {3: 1000, 4: 1000, 5: 32, 6: 15, 7: 15, 8: 15}
 
 
+def default_build_dir():
+    """Keep executables outside synced project folders that strip execute bits."""
+    cache = Path(os.environ.get('XDG_CACHE_HOME', str(Path.home()/'.cache')))
+    identity = hashlib.sha256(str(ROOT.resolve()).encode()).hexdigest()[:16]
+    return cache/'fusion-ring-census'/identity/'laptop-v2'
+
+
 def package_result(out, archive, rank, bound, baseline):
     state = json.loads((out/'run.json').read_text())
     required = (['all'] if rank <= 4 else ['nonselfdual', 'selfdual'] if rank == 5
@@ -54,6 +61,8 @@ def main():
     ap.add_argument('--bound', '--mult', type=int, required=True)
     ap.add_argument('--threads', type=int, default=min(64, available))
     ap.add_argument('--output-dir', type=Path, default=ROOT/'runs')
+    ap.add_argument('--build-dir', type=Path, default=default_build_dir(),
+                    help='Local executable cache (default: XDG_CACHE_HOME or ~/.cache)')
     a = ap.parse_args()
     if os.environ.get('GITHUB_ACTIONS'):
         ap.error('unlimited execution is for your laptop, not GitHub Actions')
@@ -74,7 +83,7 @@ def main():
                 ap.error('package checksum mismatch: '+name)
     command = [sys.executable, str(ROOT/'code/run_census.py'), '--rank', str(a.rank),
                '--bound', str(a.bound), '--local-unlimited', '--threads', str(a.threads),
-               '--verify', '--out', str(out)]
+               '--verify', '--out', str(out), '--build-dir', str(a.build_dir.resolve())]
     print(f'Rank {a.rank} through {a.bound}; {a.threads} threads; NO clock limit. Keep the laptop awake.', flush=True)
     print(f'Progress and logs: {out}', flush=True)
     try:
