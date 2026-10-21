@@ -417,13 +417,19 @@ rank-six rings \texttt{R6\_4\_155} and \texttt{R6\_8\_1660} remain open;
 the companion project's rank-eight frontier is recorded separately there.
 '''
 
-RANK8_CLASSIFICATION_SNAPSHOT = {'date': '2026-10-21',
- 'exact': {'excluded': 3504, 'unitarily_realized': 15, 'unresolved': 8},
+# Fill this immutable pin after the classification publication, then regenerate
+# rank8.tex, README.md and docs/index.html before publishing this repository.
+CLASSIFICATION_PUBLICATION_COMMIT = '822e84ec02e9a18d0fca0eb7c05f4ac6206788b5'
+
+RANK8_CLASSIFICATION_SNAPSHOT = {'date': '2026-10-22',
+ 'exact': {'excluded': 3506, 'unitarily_realized': 15, 'unresolved': 6},
  'earlier': {'excluded': 896, 'unitarily_realized': 77, 'unresolved': 0},
- 'ledger_sha256': 'fccfbdb7e454511cd0d0908f321f3e22b971164f58a853d26880ecb03b28e33b',
- 'classification_commit': 'fb9aa289996a855f26e4e622a879108a3090f0f6',
+ 'ledger_sha256': '521b9b9fb16a86c7c4ba491b8c2c0ebad05de1e41aafb5bc225d6342c9477e4e',
+ 'classification_commit': CLASSIFICATION_PUBLICATION_COMMIT,
  'classification_stage': 'published_main_research_update',
- 'r721_model': True}
+ 'r721_model': True,
+ 'r65_excluded': True,
+ 'r1795_excluded': True}
 
 def rank8_classification(ledger=None):
     """Read an explicit companion ledger, or the last published snapshot.
@@ -458,6 +464,10 @@ def rank8_classification(ledger=None):
                             for k in summary['earlier']}
         summary['r721_model']=any(row['id']=='R8_3_721' and
                                  row['status']=='unitarily_realized' for row in rows)
+        summary['r65_excluded']=any(row['id']=='R8_3_65' and
+                                   row['status']=='excluded' for row in rows)
+        summary['r1795_excluded']=any(row['id']=='R8_3_1795' and
+                                     row['status']=='excluded' for row in rows)
         ledger_sha256=hashlib.sha256(raw).hexdigest()
         if summary.get('ledger_sha256') not in (None,ledger_sha256):
             summary.pop('classification_commit',None)
@@ -478,7 +488,8 @@ def rank8_classification_values(summary):
 
 def rank8_classification_provenance(summary,markup='markdown'):
     commit=summary.get('classification_commit')
-    if commit is None:return ''
+    if commit is None:
+        return 'Classification publication commit pending for this prepared research snapshot.'
     if re.fullmatch(r'[0-9a-f]{40}',commit) is None:
         raise ValueError('Invalid classification provenance commit')
     stage=summary.get('classification_stage')
@@ -501,10 +512,49 @@ def rank8_classification_provenance(summary,markup='markdown'):
             'certified_release':''}[stage]
     return 'These counts are bound to the '+link+'.'+suffix
 
+def rank8_research_addendum(summary,markup='markdown'):
+    """Reviewed research consequences; no additional model is asserted."""
+    if not (summary.get('r65_excluded') or summary.get('r1795_excluded')):return ''
+    ref=summary.get('classification_commit') or 'main'
+    base='https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/'+ref
+    def case(identifier):
+        if markup=='markdown':return '`'+identifier+'`'
+        if markup=='html':return '<code>'+identifier+'</code>'
+        if markup=='tex':return r'\texttt{'+identifier.replace('_',r'\_')+'}'
+        raise ValueError('Unsupported research markup')
+    def link(label,path):
+        url=base+path
+        if markup=='markdown':return f'[{label}]({url})'
+        if markup=='html':return f'<a href="{url}">{label}</a>'
+        if markup=='tex':return r'\href{'+url+'}{'+label+'}'
+        raise ValueError('Unsupported research markup')
+    parts=[]
+    if summary.get('r65_excluded'):
+        proof=link('six exact certificates','/evidence/rank8_research_20261022/r65/PROOF.md')
+        parts.append(f'The general exclusion of {case("R8_3_65")} uses pointed-induction '
+                     f'phases and integral Fourier fibers; {proof} cover every pointed '
+                     'associator class.')
+    if summary.get('r1795_excluded'):
+        proof=link('sixteen exact indicator branches','/evidence/rank8_research_20261022/pointed_followup/PROOF.md')
+        parts.append(f'The new general exclusion of {case("R8_3_1795")} uses finite '
+                     f'integer packing of the two pointed twist fibers; {proof} '
+                     'exclude both pointed associator classes.')
+    research=link('structural results','/manuscripts/rank8/paper/m3_research_20261022.tex')
+    followup=link('followup restrictions','/manuscripts/rank8/paper/m3_pointed_followup.tex')
+    parts.append('Every categorification of a remaining rank-eight case admits a '
+                 'spherical structure and has a pseudo-unitary Galois conjugate, '
+                 'and none is Morita equivalent to a braided category. '
+                 f'Further {research} restrict module actions and distinguish '
+                 f'possible centers. The {followup} force the nontrivial pointed '
+                 f'associator for {case("R8_3_1768")} and constrain additional '
+                 'twist-one central simples; no new categorification is supplied.')
+    return ' '.join(parts)
+
 def rank8_classification_addendum(summary,markup='markdown'):
-    """Current construction and separately labelled historical replay scope."""
-    if not summary.get('r721_model'):return ''
-    proof='https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/'+summary.get('classification_commit','main')+'/evidence/rank8_next_20261021/r721/r721_qsystem_model.tex'
+    """Current research and separately labelled construction/replay history."""
+    research=rank8_research_addendum(summary,markup)
+    if not summary.get('r721_model'):return research
+    proof='https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/'+(summary.get('classification_commit') or 'main')+'/evidence/rank8_next_20261021/r721/r721_qsystem_model.tex'
     historical='https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/95f38175256ba852b6634f88a055b674e920f941'
     if markup=='markdown':
         model='`R8_3_721`';algebra='`1 + rho`';groups=('`C2`','`C8`')
@@ -516,7 +566,7 @@ def rank8_classification_addendum(summary,markup='markdown'):
         model=r'\texttt{R8\_3\_721}';algebra=r'$\mathbf 1\oplus\rho$';groups=('$C_2$','$C_8$')
         proof_link=r'\href{'+proof+'}{construction proof}';history_link=r'\href{'+historical+r'}{snapshot \texttt{95f38175}}'
     else:raise ValueError('Unsupported construction markup')
-    return (f'The new model {model} is the Morita dual of the inherited Q-system '
+    return ((research+' ') if research else '')+(f'The known model {model} is the Morita dual of the inherited Q-system '
             f'{algebra} in the {groups[0]} de-equivariantization of the known unitary '
             f'{groups[1]} generalized-Haagerup category. The {proof_link} includes '
             'an exact fusion-coefficient bound and identification across all 4,500 '
@@ -548,7 +598,7 @@ def sync_rank8_readme(summary):
 
 RANK8_CLASSIFICATION_CONTEXT=r'''
 \paragraph{Categorification in the companion project.}
-As of 21 October 2026, the
+As of @@classification_date@@, the
 \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md}{companion classification}
 records @@exact_excluded@@ general complex exclusions, @@exact_unitarily_realized@@ unitary constructions and @@exact_unresolved@@
 unresolved categorification candidates among the 3,527 supplied rings of
@@ -566,7 +616,8 @@ qualification above.
 '''
 
 def rank8_classification_context(summary):
-    text=RANK8_CLASSIFICATION_CONTEXT
+    text=RANK8_CLASSIFICATION_CONTEXT.replace('@@classification_date@@',
+           date.fromisoformat(summary['date']).strftime('%d %B %Y'))
     for key,value in rank8_classification_values(summary).items():
         text=text.replace('@@'+key+'@@',value)
     if '@@' in text:
