@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "scope": "Rebuilt rank6/7/8 PDFs from current manifest; visually inspected rank8 title/pages3\u20134 and rank7 page4. No clipping or overlap; final-pass warnings listed below. Final rank8 classification crosslink remains pending.",
+  "scope": "Rebuilt rank6/7/8 PDFs from current manifest; visually inspected rank8 title/pages3–4 and rank7 page4. Rebuilt rank8 after staging final classification crosslinks and visually inspected its changed page4; no clipping or overlap. Final-pass warnings listed below. Publication awaits final companion classification freeze.",
   "manuscripts": [
     {
       "rank": 6,
@@ -16,8 +16,8 @@
     },
     {
       "rank": 8,
-      "pdf_sha256": "b580bbf2e3a1c939310671c140ad7b312a1ade867c736ae88100ca5542b4da61",
-      "tex_sha256": "ca273acd874ef7ee06efe0a2dce065c7d1ba05dbdf97c763c2ad6619dbdf5bec",
+      "pdf_sha256": "3619b5eaf80588f8ccad08c9ea7890a1b043e14a16cafad85978f11ae4a10d68",
+      "tex_sha256": "e7fcb8a74d1cd70a7176aca23d57fd9db667105742ae2725098ca795209d5a57",
       "final_pass_messages": []
     }
   ]

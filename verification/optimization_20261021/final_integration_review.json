@@ -1,24 +1,37 @@
 {
-  "status": "PASS_WITH_CLASSIFICATION_CROSSLINKS_PENDING",
+  "status": "PASS_STAGED_AWAITING_CLASSIFICATION_FREEZE",
   "date": "2026-10-21",
   "stable_recovery_checkpoint": {
-    "commit": "d404c6bba44df197218bbf0d1bf39266e490d72a",
-    "tree": "291e83f23f5cd8d9244268c7258e574fbba903a3",
+    "commit": "de230137151d45e20a7e77cf393323e8de548d8c",
+    "tree": "d7525cd9ca24f80befbcccb9ca42f09699a09b5a",
     "branch": "codex/rank8-m3-recovery-20261021"
   },
   "manifest_total": 1430809,
   "rank8_classes": 4500,
   "rank8_exact_m3": 3527,
-  "pending_files": [
+  "pending_files": [],
+  "pending_reason": "Crosslinks and rank8 PDF staged and checked; publication waits for final companion source freeze and matching normal/optimized replay acceptance.",
+  "independent_full_enumeration_repeated": false,
+  "license_notice_unchanged": true,
+  "tests": "30 Python regression tests, six finite audits, forced-cap comparisons, eight baseline strata, six end-to-end censuses, fresh rank8 full tensor verification and parameter export, all release hashes, clean-checkpoint standalone-package smoke all pass.",
+  "staged_classification_counts": {
+    "exact_m3": {
+      "excluded_general": 3478,
+      "unitary_models": 14,
+      "unresolved_general": 35
+    },
+    "through_m3": {
+      "excluded_general": 4374,
+      "unitary_models": 91,
+      "unresolved_general": 35
+    }
+  },
+  "crosslink_files": [
     "README.md",
     "scripts/build_site.py",
     "docs/index.html",
     "scripts/build_manuscripts.py",
     "manuscripts/rank8.tex",
     "manuscripts/rank8.pdf"
-  ],
-  "pending_reason": "Companion classification criteria still running; do not freeze final rank8 exclusion/model/residual counts yet.",
-  "independent_full_enumeration_repeated": false,
-  "license_notice_unchanged": true,
-  "tests": "30 Python regression tests, six finite audits, forced-cap comparisons, eight baseline strata, six end-to-end censuses, fresh rank8 full tensor verification and parameter export, all release hashes, clean-checkpoint standalone-package smoke all pass."
+  ]
 }

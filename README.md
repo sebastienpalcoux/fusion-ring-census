@@ -24,11 +24,15 @@ a theoretical dimension bound followed by exact finite certification. For the
 pivotal case, see Jingcheng Dong, Sébastien Palcoux and Arnaud Plessis,
 [*Classifying Grothendieck rings of pivotal fusion categories of rank four*](https://arxiv.org/abs/2609.33272).
 
-At rank eight, the classification through multiplicity two comprises **896
-exclusions and 77 unitary models**. The inner-square rigidity argument excludes
-`R8_2_24` over the complex numbers. The general questions `R6_4_155` and
-`R6_8_1660` remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
-for the precise proof scope and necessary constraints.
+At rank eight, the new exact-multiplicity-three band has **3,478 general
+exclusions, 14 unitary models and 35 unresolved categorification candidates**
+among its 3,527 supplied rings. Together with the earlier 896 exclusions and
+77 unitary models through multiplicity two, this gives **4,374 general
+exclusions, 91 unitary models and 35 unresolved rings** among 4,500 supplied
+rank-eight rings. The candidates are not asserted fusion categories or
+established exotic examples. The general questions `R6_4_155` and
+`R6_8_1660` also remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
+for the precise proof scope and individual attempt records.
 
 At rank seven through multiplicity five, the companion classification resolves
 all **10,006 supplied tensors: 9,976 general exclusions, 30 known unitary models

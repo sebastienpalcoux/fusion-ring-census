@@ -416,6 +416,25 @@ rank-six rings \texttt{R6\_4\_155} and \texttt{R6\_8\_1660} remain open;
 the companion project's rank-eight frontier is recorded separately there.
 '''
 
+RANK8_CLASSIFICATION_CONTEXT=r'''
+\paragraph{Categorification in the companion project.}
+As of 21 October 2026, the
+\href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md}{companion classification}
+records 3,478 general complex exclusions, 14 unitary constructions and 35
+unresolved categorification candidates among the 3,527 supplied rings of
+exact multiplicity three. The earlier classification through multiplicity
+two retains its 896 exclusions and 77 unitary models. Thus the cumulative
+inventory of 4,500 supplied rank-eight rings consists of 4,374 general
+exclusions, 91 unitary models and 35 unresolved cases.
+Each remaining tensor has an individual attempt record. These candidates
+are not asserted fusion categories or established exotic examples;
+a unitary-only exclusion leaves the general complex question unresolved.
+The companion project records full model tensors, exact certificates and
+the hypotheses of the categorical reductions. These categorification
+decisions do not alter the census or its enumeration-completeness
+qualification above.
+'''
+
 def results_section(r,item):
     text=f"\\section{{The certified release at rank {r}}}\n"
     text+=f"The released bound is $M={item['bound']}$ and the cumulative number of classes is $C_{{{r}}}({item['bound']})={item['classes']:,}$. "
@@ -515,6 +534,7 @@ def build_sources(ranks=range(3,9)):
         body+=DEFINITIONS+results_section(r,item)
         if r==6:body+=EH_CONTEXT
         if r==7:body+=RANK7_CLASSIFICATION_CONTEXT
+        if r==8:body+=RANK8_CLASSIFICATION_CONTEXT
         if r==3:body+=RANK3
         elif r==4:
             s=(ROOT/'methods/rank4_completeness.tex').read_text()
