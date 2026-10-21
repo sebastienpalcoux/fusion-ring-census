@@ -418,11 +418,12 @@ the companion project's rank-eight frontier is recorded separately there.
 '''
 
 RANK8_CLASSIFICATION_SNAPSHOT = {'date': '2026-10-21',
- 'exact': {'excluded': 3504, 'unitarily_realized': 14, 'unresolved': 9},
+ 'exact': {'excluded': 3504, 'unitarily_realized': 15, 'unresolved': 8},
  'earlier': {'excluded': 896, 'unitarily_realized': 77, 'unresolved': 0},
- 'ledger_sha256': 'bc63a1083e72b8ebf2a1a33b53b6046c0a2920a79b9f11c783b230c7cf5d7d83',
- 'classification_commit': '95f38175256ba852b6634f88a055b674e920f941',
- 'classification_stage': 'published_main_normal_verified'}
+ 'ledger_sha256': 'fccfbdb7e454511cd0d0908f321f3e22b971164f58a853d26880ecb03b28e33b',
+ 'classification_commit': 'fb9aa289996a855f26e4e622a879108a3090f0f6',
+ 'classification_stage': 'published_main_research_update',
+ 'r721_model': True}
 
 def rank8_classification(ledger=None):
     """Read an explicit companion ledger, or the last published snapshot.
@@ -455,6 +456,8 @@ def rank8_classification(ledger=None):
         summary['exact']={k:by_band[3][k] for k in summary['exact']}
         summary['earlier']={k:sum(by_band[m][k] for m in expected if m<3)
                             for k in summary['earlier']}
+        summary['r721_model']=any(row['id']=='R8_3_721' and
+                                 row['status']=='unitarily_realized' for row in rows)
         ledger_sha256=hashlib.sha256(raw).hexdigest()
         if summary.get('ledger_sha256') not in (None,ledger_sha256):
             summary.pop('classification_commit',None)
@@ -479,10 +482,11 @@ def rank8_classification_provenance(summary,markup='markdown'):
     if re.fullmatch(r'[0-9a-f]{40}',commit) is None:
         raise ValueError('Invalid classification provenance commit')
     stage=summary.get('classification_stage')
-    if stage not in {'reviewed_research_checkpoint','published_main_normal_verified','certified_release'}:
+    if stage not in {'reviewed_research_checkpoint','published_main_normal_verified','published_main_research_update','certified_release'}:
         raise ValueError('Invalid classification provenance stage')
     label={'reviewed_research_checkpoint':'reviewed research checkpoint',
            'published_main_normal_verified':'classification main snapshot',
+           'published_main_research_update':'classification main snapshot',
            'certified_release':'classification release'}[stage]
     url='https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/'+commit
     if markup=='markdown':link=f'[{label} `{commit[:8]}`]({url})'
@@ -493,8 +497,33 @@ def rank8_classification_provenance(summary,markup='markdown'):
             'published_main_normal_verified':
                 ' The 108-check canonical normal replay passed; all 8 center checks passed in normal and optimized Python.'
                 ' Optimized core and extracted-package full replays are pending.',
+            'published_main_research_update':'',
             'certified_release':''}[stage]
     return 'These counts are bound to the '+link+'.'+suffix
+
+def rank8_classification_addendum(summary,markup='markdown'):
+    """Current construction and separately labelled historical replay scope."""
+    if not summary.get('r721_model'):return ''
+    proof='https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/'+summary.get('classification_commit','main')+'/evidence/rank8_next_20261021/r721/r721_qsystem_model.tex'
+    historical='https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/95f38175256ba852b6634f88a055b674e920f941'
+    if markup=='markdown':
+        model='`R8_3_721`';algebra='`1 + rho`';groups=('`C2`','`C8`')
+        proof_link=f'[construction proof]({proof})';history_link=f'[snapshot `95f38175`]({historical})'
+    elif markup=='html':
+        model='<code>R8_3_721</code>';algebra='<code>1 + rho</code>';groups=('<code>C2</code>','<code>C8</code>')
+        proof_link=f'<a href="{proof}">construction proof</a>';history_link=f'<a href="{historical}">snapshot <code>95f38175</code></a>'
+    elif markup=='tex':
+        model=r'\texttt{R8\_3\_721}';algebra=r'$\mathbf 1\oplus\rho$';groups=('$C_2$','$C_8$')
+        proof_link=r'\href{'+proof+'}{construction proof}';history_link=r'\href{'+historical+r'}{snapshot \texttt{95f38175}}'
+    else:raise ValueError('Unsupported construction markup')
+    return (f'The new model {model} is the Morita dual of the inherited Q-system '
+            f'{algebra} in the {groups[0]} de-equivariantization of the known unitary '
+            f'{groups[1]} generalized-Haagerup category. The {proof_link} includes '
+            'an exact fusion-coefficient bound and identification across all 4,500 '
+            'supplied rank-eight tensors. '
+            f'Historical verification at {history_link}: the 108-check canonical normal '
+            'replay passed; all 8 center checks passed in normal and optimized Python. '
+            'At that checkpoint, optimized core and extracted-package full replays were pending.')
 
 def rank8_classification_readme(summary):
     v=rank8_classification_values(summary)
@@ -507,7 +536,8 @@ rank-eight rings. The candidates are not asserted fusion categories or
 established exotic examples. The general questions `R6_4_155` and
 `R6_8_1660` also remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
 for the precise proof scope and individual attempt records.
-{rank8_classification_provenance(summary)}'''
+{rank8_classification_provenance(summary)}
+{rank8_classification_addendum(summary)}'''
 
 def sync_rank8_readme(summary):
     path=ROOT/'README.md';text=path.read_text()
@@ -541,7 +571,10 @@ def rank8_classification_context(summary):
         text=text.replace('@@'+key+'@@',value)
     if '@@' in text:
         raise ValueError('Unexpanded companion classification field')
-    return text+'\n'+rank8_classification_provenance(summary,'tex')+'\n'
+    addendum=rank8_classification_addendum(summary,'tex')
+    if addendum:
+        addendum='\\par\\noindent\\begin{minipage}{\\linewidth}\n'+addendum+'\n\\end{minipage}\\par\n'
+    return text+'\n'+rank8_classification_provenance(summary,'tex')+'\n'+addendum
 
 def results_section(r,item):
     text=f"\\section{{The certified release at rank {r}}}\n"

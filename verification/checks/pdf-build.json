@@ -223,65 +223,58 @@
     "pages": [
       {
         "page": 1,
-        "text_characters": 1212,
+        "text_characters": 1181,
         "within_page": true
       },
       {
         "page": 2,
-        "text_characters": 1228,
+        "text_characters": 1227,
         "within_page": true
       },
       {
         "page": 3,
-        "text_characters": 2559,
+        "text_characters": 2589,
         "within_page": true
       },
       {
         "page": 4,
-        "text_characters": 3276,
+        "text_characters": 3072,
         "within_page": true
       },
       {
         "page": 5,
-        "text_characters": 3495,
+        "text_characters": 3353,
         "within_page": true
       },
       {
         "page": 6,
-        "text_characters": 2457,
+        "text_characters": 2555,
         "within_page": true
       },
       {
         "page": 7,
-        "text_characters": 3117,
+        "text_characters": 3191,
         "within_page": true
       },
       {
         "page": 8,
-        "text_characters": 3165,
+        "text_characters": 2801,
         "within_page": true
       },
       {
         "page": 9,
-        "text_characters": 750,
+        "text_characters": 1597,
         "within_page": true
       }
     ],
     "pdf_header_and_eof_valid": true,
-    "pdf_sha256": "3d5e9a8770fcb324561154ca34c36ff0f668d470e6c051995e702d4bb3a6aa7b",
-    "classification_ledger_sha256": "bc63a1083e72b8ebf2a1a33b53b6046c0a2920a79b9f11c783b230c7cf5d7d83",
-    "classification_commit": "95f38175256ba852b6634f88a055b674e920f941",
-    "classification_stage": "published_main_normal_verified",
+    "pdf_sha256": "b68ce8a8a665deca96830d4f3b2718f9e6781701103898e71c64a5f15721c296",
+    "classification_ledger_sha256": "fccfbdb7e454511cd0d0908f321f3e22b971164f58a853d26880ecb03b28e33b",
+    "classification_commit": "fb9aa289996a855f26e4e622a879108a3090f0f6",
+    "classification_stage": "published_main_research_update",
     "visual_reviewed_pages": [
-      1,
-      2,
-      3,
       4,
-      5,
-      6,
-      7,
-      8,
-      9
+      5
     ],
     "provenance_page_visual_review": "PASS",
     "final_latex_pass_warnings": []

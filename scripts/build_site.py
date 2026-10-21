@@ -2,7 +2,7 @@
 """Build a standalone, accessible census table from the release manifest."""
 import argparse,html,json,posixpath,re
 from pathlib import Path
-from build_manuscripts import rank8_classification, rank8_classification_values, rank8_classification_provenance
+from build_manuscripts import rank8_classification, rank8_classification_values, rank8_classification_provenance, rank8_classification_addendum
 ROOT=Path(__file__).resolve().parents[1]
 def main():
  parser=argparse.ArgumentParser(description=__doc__)
@@ -39,7 +39,7 @@ form.addEventListener('submit',event=>{event.preventDefault();const first=Number
  provenance_anchor='for the proof scope and individual attempt records.</section>'
  if template.count(provenance_anchor)!=1:raise ValueError('Expected one classification provenance anchor')
  template=template.replace(provenance_anchor,
-     'for the proof scope and individual attempt records. '+rank8_classification_provenance(classification,'html')+'</section>')
+     'for the proof scope and individual attempt records. '+rank8_classification_provenance(classification,'html')+' '+rank8_classification_addendum(classification,'html')+'</section>')
  if '@@' in template:raise ValueError('Unexpanded site field')
  template=re.sub(r'href="([^"#][^"]*)"',lambda m: m[0] if m[1].startswith(("https://", "http://", "mailto:")) else 'href="https://github.com/sebastienpalcoux/fusion-ring-census/blob/main/'+posixpath.normpath(posixpath.join('docs',m[1]))+'"',template)
  (ROOT/'docs/index.html').write_text(template);print('Built standalone census viewer.')

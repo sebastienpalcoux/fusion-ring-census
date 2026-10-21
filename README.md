@@ -25,15 +25,16 @@ pivotal case, see Jingcheng Dong, Sébastien Palcoux and Arnaud Plessis,
 [*Classifying Grothendieck rings of pivotal fusion categories of rank four*](https://arxiv.org/abs/2609.33272).
 
 At rank eight, the exact-multiplicity-three band has **3,504 general
-exclusions, 14 unitary models and 9 unresolved categorification candidates**
+exclusions, 15 unitary models and 8 unresolved categorification candidates**
 among its 3,527 supplied rings. Together with the earlier 896 exclusions and
 77 unitary models through multiplicity two, this gives **4,400 general
-exclusions, 91 unitary models and 9 unresolved rings** among 4,500 supplied
+exclusions, 92 unitary models and 8 unresolved rings** among 4,500 supplied
 rank-eight rings. The candidates are not asserted fusion categories or
 established exotic examples. The general questions `R6_4_155` and
 `R6_8_1660` also remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
 for the precise proof scope and individual attempt records.
-These counts are bound to the [classification main snapshot `95f38175`](https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/95f38175256ba852b6634f88a055b674e920f941). The 108-check canonical normal replay passed; all 8 center checks passed in normal and optimized Python. Optimized core and extracted-package full replays are pending.
+These counts are bound to the [classification main snapshot `fb9aa289`](https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/fb9aa289996a855f26e4e622a879108a3090f0f6).
+The new model `R8_3_721` is the Morita dual of the inherited Q-system `1 + rho` in the `C2` de-equivariantization of the known unitary `C8` generalized-Haagerup category. The [construction proof](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/fb9aa289996a855f26e4e622a879108a3090f0f6/evidence/rank8_next_20261021/r721/r721_qsystem_model.tex) includes an exact fusion-coefficient bound and identification across all 4,500 supplied rank-eight tensors. Historical verification at [snapshot `95f38175`](https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/95f38175256ba852b6634f88a055b674e920f941): the 108-check canonical normal replay passed; all 8 center checks passed in normal and optimized Python. At that checkpoint, optimized core and extracted-package full replays were pending.
 
 At rank seven through multiplicity five, the companion classification resolves
 all **10,006 supplied tensors: 9,976 general exclusions, 30 known unitary models
