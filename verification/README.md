@@ -5,8 +5,9 @@
 Every released census covers the entire rank, including every duality type.
 Completeness uses the exhaustive search argument and normally completed enumeration;
 independent tensor checks establish validity and uniqueness. At rank 7 through
-multiplicity 5, completion is producer-reported, and the modified enumeration
-source was not supplied. See [the rank-7 qualification](rank7/README.md).
+multiplicity 5 and rank 8 through multiplicity 3, completion is producer-reported.
+The complete optimized sources are now supplied and hash-matched, but the full
+searches have not been independently rerun. See [the rank-7 qualification](rank7/README.md).
 
 | Rank | Complete through | Classes | Evidence |
 |---:|---:|---:|---|
@@ -15,7 +16,7 @@ source was not supplied. See [the rank-7 qualification](rank7/README.md).
 | 5 | 20 | 40,999 | [Audit](rank5/audit.json) · [Source](rank5/source.json) · [Completed run](rank5/run.json) |
 | 6 | 9 | 25,421 | [Audit](rank6/audit.json) · [Source](rank6/source.json) · [Completed run](rank6/run.json) |
 | 7 | 5 | 10,006 | [Audit](rank7/audit.json) · [Source](rank7/source.json) · [Completed run](rank7/run.json) |
-| 8 | 2 | 973 | [Audit](rank8/audit.json) · [Source](rank8/source.json) · [Completed run](rank8/run.json) |
+| 8 | 3 | 4,500 | [Audit](rank8/audit.json) · [Source](rank8/source.json) · [Completed run](rank8/run.json) |
 
 ## Independent checks
 
@@ -29,12 +30,13 @@ tensors, counts and established count prefixes. At rank 7, the verifier,
 exporter and equation-system hashes were checked against available sources;
 the modified enumeration sources were not available. Hosted audits:
 
-- Ranks 5, 8: [audit 35553424461](https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35553424461).
+- Rank 5: [audit 35553424461](https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35553424461).
 
 Local checks (no hosted audit is claimed for these current datasets):
 
 - Rank 6: [local audit](rank6/audit.json), [fresh check](rank6/fresh_verification/summary.json) and [retained log](rank6/logs/fresh_verification.log).
 - Rank 7: [local audit](rank7/audit.json), [fresh check](rank7/fresh_verification/summary.json) and [retained log](rank7/logs/fresh_verification.log).
+- Rank 8: [local audit](rank8/audit.json), [fresh check](rank8/fresh_verification/summary.json) and [retained log](rank8/logs/fresh_verification.log).
 
 The rank-6 audit checked **25,421 tensors** and
 **3,050,520 permutations**.

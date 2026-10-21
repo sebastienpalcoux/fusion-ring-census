@@ -1,0 +1,1424 @@
+{
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+  "flags": [
+    "-O3",
+    "-std=c++17",
+    "-fopenmp"
+  ],
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "threads": 4,
+  "repeats": 3,
+  "timeout_seconds": 60.0,
+  "cases": [
+    {
+      "case": "sd7m2",
+      "runs": {
+        "original": [
+          {
+            "returncode": 0,
+            "wall_seconds": 3.6760943039989797,
+            "enumeration_seconds": 3.65499,
+            "rows": 212,
+            "duplicates": 0,
+            "sorted_sha256": "bf81064e170137c8e9bf6f2f20a1083ac18c1c9f1f5e873d2964e2f0a7b789d4",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system7sd.txt",
+              "7",
+              "2",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 7 bound 2 complete 1 jobs 21 / 21 matrices 7547312 singular 16435 completion_nodes 30818 classes 212 seconds 3.65499 counts 18 194"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 3.4740923149984155,
+            "enumeration_seconds": 3.47085,
+            "rows": 212,
+            "duplicates": 0,
+            "sorted_sha256": "bf81064e170137c8e9bf6f2f20a1083ac18c1c9f1f5e873d2964e2f0a7b789d4",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system7sd.txt",
+              "7",
+              "2",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 7 bound 2 complete 1 jobs 21 / 21 matrices 7547312 singular 16435 completion_nodes 30818 classes 212 seconds 3.47085 counts 18 194"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 3.4241442839993397,
+            "enumeration_seconds": 3.42029,
+            "rows": 212,
+            "duplicates": 0,
+            "sorted_sha256": "bf81064e170137c8e9bf6f2f20a1083ac18c1c9f1f5e873d2964e2f0a7b789d4",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system7sd.txt",
+              "7",
+              "2",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 7 bound 2 complete 1 jobs 21 / 21 matrices 7547312 singular 16435 completion_nodes 30818 classes 212 seconds 3.42029 counts 18 194"
+          }
+        ],
+        "previous": [
+          {
+            "returncode": 0,
+            "wall_seconds": 2.2202118419991166,
+            "enumeration_seconds": 2.17913,
+            "rows": 212,
+            "duplicates": 0,
+            "sorted_sha256": "bf81064e170137c8e9bf6f2f20a1083ac18c1c9f1f5e873d2964e2f0a7b789d4",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system7sd.txt",
+              "7",
+              "2",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 7 bound 2 complete 1 jobs 122 / 122 matrices 7547312 singular 16435 completion_nodes 23365 classes 212 seconds 2.17913 counts 18 194"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 2.1205091629999515,
+            "enumeration_seconds": 2.09848,
+            "rows": 212,
+            "duplicates": 0,
+            "sorted_sha256": "bf81064e170137c8e9bf6f2f20a1083ac18c1c9f1f5e873d2964e2f0a7b789d4",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system7sd.txt",
+              "7",
+              "2",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 7 bound 2 complete 1 jobs 122 / 122 matrices 7547312 singular 16435 completion_nodes 23365 classes 212 seconds 2.09848 counts 18 194"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 2.3229484100011177,
+            "enumeration_seconds": 2.27864,
+            "rows": 212,
+            "duplicates": 0,
+            "sorted_sha256": "bf81064e170137c8e9bf6f2f20a1083ac18c1c9f1f5e873d2964e2f0a7b789d4",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system7sd.txt",
+              "7",
+              "2",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 7 bound 2 complete 1 jobs 122 / 122 matrices 7547312 singular 16435 completion_nodes 23365 classes 212 seconds 2.27864 counts 18 194"
+          }
+        ],
+        "new": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.26521949600100925,
+            "enumeration_seconds": 0.224774,
+            "rows": 212,
+            "duplicates": 0,
+            "sorted_sha256": "bf81064e170137c8e9bf6f2f20a1083ac18c1c9f1f5e873d2964e2f0a7b789d4",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system7sd.txt",
+              "7",
+              "2",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 7 bound 2 complete 1 jobs 122 / 122 matrices 62782 singular 5375 completion_nodes 9209 classes 212 seconds 0.224774 counts 18 194"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.21463282500008063,
+            "enumeration_seconds": 0.208597,
+            "rows": 212,
+            "duplicates": 0,
+            "sorted_sha256": "bf81064e170137c8e9bf6f2f20a1083ac18c1c9f1f5e873d2964e2f0a7b789d4",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system7sd.txt",
+              "7",
+              "2",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 7 bound 2 complete 1 jobs 122 / 122 matrices 62782 singular 5375 completion_nodes 9209 classes 212 seconds 0.208597 counts 18 194"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.264757181999812,
+            "enumeration_seconds": 0.212815,
+            "rows": 212,
+            "duplicates": 0,
+            "sorted_sha256": "bf81064e170137c8e9bf6f2f20a1083ac18c1c9f1f5e873d2964e2f0a7b789d4",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system7sd.txt",
+              "7",
+              "2",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 7 bound 2 complete 1 jobs 122 / 122 matrices 62782 singular 5375 completion_nodes 9209 classes 212 seconds 0.212815 counts 18 194"
+          }
+        ]
+      },
+      "all_complete": true,
+      "completed_outputs_equal": true,
+      "medians": {
+        "original": 3.47085,
+        "previous": 2.17913,
+        "new": 0.212815
+      },
+      "speedups_vs_new": {
+        "original": 16.30923572116627,
+        "previous": 10.239550783544392
+      },
+      "released_rows": 212,
+      "released_outputs_equal": true
+    },
+    {
+      "case": "ns7p1m2",
+      "runs": {
+        "original": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.4653490740001871,
+            "enumeration_seconds": 0.46015,
+            "rows": 108,
+            "duplicates": 0,
+            "sorted_sha256": "7635f60fb9c0b44124a3022d14832cb1f1f9e072087c8a86d29da10486b499ab",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs1.txt",
+              "2",
+              "60.0",
+              "4",
+              "6"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 729 / 729 nodes 722459 classes 108 seconds 0.46015 counts 17 91"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.5178203510004096,
+            "enumeration_seconds": 0.505446,
+            "rows": 108,
+            "duplicates": 0,
+            "sorted_sha256": "7635f60fb9c0b44124a3022d14832cb1f1f9e072087c8a86d29da10486b499ab",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs1.txt",
+              "2",
+              "60.0",
+              "4",
+              "6"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 729 / 729 nodes 722459 classes 108 seconds 0.505446 counts 17 91"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.515920339999866,
+            "enumeration_seconds": 0.503716,
+            "rows": 108,
+            "duplicates": 0,
+            "sorted_sha256": "7635f60fb9c0b44124a3022d14832cb1f1f9e072087c8a86d29da10486b499ab",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs1.txt",
+              "2",
+              "60.0",
+              "4",
+              "6"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 729 / 729 nodes 722459 classes 108 seconds 0.503716 counts 17 91"
+          }
+        ],
+        "previous": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.16450293699926988,
+            "enumeration_seconds": 0.134306,
+            "rows": 108,
+            "duplicates": 0,
+            "sorted_sha256": "7635f60fb9c0b44124a3022d14832cb1f1f9e072087c8a86d29da10486b499ab",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs1.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 257 / 257 nodes 15884 frontier_nodes 746 classes 108 seconds 0.134306 counts 17 91"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.16436123900166422,
+            "enumeration_seconds": 0.128161,
+            "rows": 108,
+            "duplicates": 0,
+            "sorted_sha256": "7635f60fb9c0b44124a3022d14832cb1f1f9e072087c8a86d29da10486b499ab",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs1.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 257 / 257 nodes 15884 frontier_nodes 746 classes 108 seconds 0.128161 counts 17 91"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.1644500109996443,
+            "enumeration_seconds": 0.129219,
+            "rows": 108,
+            "duplicates": 0,
+            "sorted_sha256": "7635f60fb9c0b44124a3022d14832cb1f1f9e072087c8a86d29da10486b499ab",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs1.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 257 / 257 nodes 15884 frontier_nodes 746 classes 108 seconds 0.129219 counts 17 91"
+          }
+        ],
+        "new": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11444421099986357,
+            "enumeration_seconds": 0.0906367,
+            "rows": 108,
+            "duplicates": 0,
+            "sorted_sha256": "7635f60fb9c0b44124a3022d14832cb1f1f9e072087c8a86d29da10486b499ab",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs1.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 257 / 257 nodes 7820 frontier_nodes 749 classes 108 seconds 0.0906367 counts 17 91"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11430011999982526,
+            "enumeration_seconds": 0.087072,
+            "rows": 108,
+            "duplicates": 0,
+            "sorted_sha256": "7635f60fb9c0b44124a3022d14832cb1f1f9e072087c8a86d29da10486b499ab",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs1.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 257 / 257 nodes 7820 frontier_nodes 749 classes 108 seconds 0.087072 counts 17 91"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11444894299893349,
+            "enumeration_seconds": 0.100011,
+            "rows": 108,
+            "duplicates": 0,
+            "sorted_sha256": "7635f60fb9c0b44124a3022d14832cb1f1f9e072087c8a86d29da10486b499ab",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs1.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 257 / 257 nodes 7820 frontier_nodes 749 classes 108 seconds 0.100011 counts 17 91"
+          }
+        ]
+      },
+      "all_complete": true,
+      "completed_outputs_equal": true,
+      "medians": {
+        "original": 0.503716,
+        "previous": 0.129219,
+        "new": 0.0906367
+      },
+      "speedups_vs_new": {
+        "original": 5.557528021209952,
+        "previous": 1.42568076728301
+      },
+      "released_rows": 108,
+      "released_outputs_equal": true
+    },
+    {
+      "case": "ns7p2m2",
+      "runs": {
+        "original": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.3651057959996251,
+            "enumeration_seconds": 0.343661,
+            "rows": 39,
+            "duplicates": 0,
+            "sorted_sha256": "c9a450605d264b5666c8ec528a4514949a088a1d6b611e425a0ccd36888bcbfb",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_general",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs2.txt",
+              "2",
+              "60.0"
+            ],
+            "final": "rank 7 pairs 2 bound 2 complete 1 nodes 118202 classes 39 seconds 0.343661 counts 7 32"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.36510555499990005,
+            "enumeration_seconds": 0.349861,
+            "rows": 39,
+            "duplicates": 0,
+            "sorted_sha256": "c9a450605d264b5666c8ec528a4514949a088a1d6b611e425a0ccd36888bcbfb",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_general",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs2.txt",
+              "2",
+              "60.0"
+            ],
+            "final": "rank 7 pairs 2 bound 2 complete 1 nodes 118202 classes 39 seconds 0.349861 counts 7 32"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.3653432179999072,
+            "enumeration_seconds": 0.333557,
+            "rows": 39,
+            "duplicates": 0,
+            "sorted_sha256": "c9a450605d264b5666c8ec528a4514949a088a1d6b611e425a0ccd36888bcbfb",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_general",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs2.txt",
+              "2",
+              "60.0"
+            ],
+            "final": "rank 7 pairs 2 bound 2 complete 1 nodes 118202 classes 39 seconds 0.333557 counts 7 32"
+          }
+        ],
+        "previous": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11435274799987383,
+            "enumeration_seconds": 0.0787804,
+            "rows": 39,
+            "duplicates": 0,
+            "sorted_sha256": "c9a450605d264b5666c8ec528a4514949a088a1d6b611e425a0ccd36888bcbfb",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs2.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 257 / 257 nodes 9333 frontier_nodes 504 classes 39 seconds 0.0787804 counts 7 32"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.1143909269994765,
+            "enumeration_seconds": 0.0801488,
+            "rows": 39,
+            "duplicates": 0,
+            "sorted_sha256": "c9a450605d264b5666c8ec528a4514949a088a1d6b611e425a0ccd36888bcbfb",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs2.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 257 / 257 nodes 9333 frontier_nodes 504 classes 39 seconds 0.0801488 counts 7 32"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.1144978850006737,
+            "enumeration_seconds": 0.0879599,
+            "rows": 39,
+            "duplicates": 0,
+            "sorted_sha256": "c9a450605d264b5666c8ec528a4514949a088a1d6b611e425a0ccd36888bcbfb",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs2.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 257 / 257 nodes 9333 frontier_nodes 504 classes 39 seconds 0.0879599 counts 7 32"
+          }
+        ],
+        "new": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11421550199884223,
+            "enumeration_seconds": 0.0698166,
+            "rows": 39,
+            "duplicates": 0,
+            "sorted_sha256": "c9a450605d264b5666c8ec528a4514949a088a1d6b611e425a0ccd36888bcbfb",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs2.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 257 / 257 nodes 5918 frontier_nodes 504 classes 39 seconds 0.0698166 counts 7 32"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11422212300021783,
+            "enumeration_seconds": 0.0680548,
+            "rows": 39,
+            "duplicates": 0,
+            "sorted_sha256": "c9a450605d264b5666c8ec528a4514949a088a1d6b611e425a0ccd36888bcbfb",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs2.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 257 / 257 nodes 5918 frontier_nodes 504 classes 39 seconds 0.0680548 counts 7 32"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11448844200094754,
+            "enumeration_seconds": 0.0721734,
+            "rows": 39,
+            "duplicates": 0,
+            "sorted_sha256": "c9a450605d264b5666c8ec528a4514949a088a1d6b611e425a0ccd36888bcbfb",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs2.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 257 / 257 nodes 5918 frontier_nodes 504 classes 39 seconds 0.0721734 counts 7 32"
+          }
+        ]
+      },
+      "all_complete": true,
+      "completed_outputs_equal": true,
+      "medians": {
+        "original": 0.343661,
+        "previous": 0.0801488,
+        "new": 0.0698166
+      },
+      "speedups_vs_new": {
+        "original": 4.922339386335055,
+        "previous": 1.1479905924951945
+      },
+      "released_rows": 39,
+      "released_outputs_equal": true
+    },
+    {
+      "case": "ns7p3m2",
+      "runs": {
+        "original": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.06439588099965476,
+            "enumeration_seconds": 0.0382137,
+            "rows": 3,
+            "duplicates": 0,
+            "sorted_sha256": "107b464dd7e0e2e804a02f0e1a3f0e6be8b4f52f9d06975150dc69e9748d2acf",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_general",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs3.txt",
+              "2",
+              "60.0"
+            ],
+            "final": "rank 7 pairs 3 bound 2 complete 1 nodes 11020 classes 3 seconds 0.0382137 counts 1 2"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.06409543999870948,
+            "enumeration_seconds": 0.0381291,
+            "rows": 3,
+            "duplicates": 0,
+            "sorted_sha256": "107b464dd7e0e2e804a02f0e1a3f0e6be8b4f52f9d06975150dc69e9748d2acf",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_general",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs3.txt",
+              "2",
+              "60.0"
+            ],
+            "final": "rank 7 pairs 3 bound 2 complete 1 nodes 11020 classes 3 seconds 0.0381291 counts 1 2"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.06417614199926902,
+            "enumeration_seconds": 0.0397018,
+            "rows": 3,
+            "duplicates": 0,
+            "sorted_sha256": "107b464dd7e0e2e804a02f0e1a3f0e6be8b4f52f9d06975150dc69e9748d2acf",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_general",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs3.txt",
+              "2",
+              "60.0"
+            ],
+            "final": "rank 7 pairs 3 bound 2 complete 1 nodes 11020 classes 3 seconds 0.0397018 counts 1 2"
+          }
+        ],
+        "previous": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11427534299946274,
+            "enumeration_seconds": 0.0641244,
+            "rows": 3,
+            "duplicates": 0,
+            "sorted_sha256": "107b464dd7e0e2e804a02f0e1a3f0e6be8b4f52f9d06975150dc69e9748d2acf",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs3.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 3 / 3 nodes 3 frontier_nodes 2821 classes 3 seconds 0.0641244 counts 1 2"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11443533200144884,
+            "enumeration_seconds": 0.0644117,
+            "rows": 3,
+            "duplicates": 0,
+            "sorted_sha256": "107b464dd7e0e2e804a02f0e1a3f0e6be8b4f52f9d06975150dc69e9748d2acf",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs3.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 3 / 3 nodes 3 frontier_nodes 2821 classes 3 seconds 0.0644117 counts 1 2"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11440025999945647,
+            "enumeration_seconds": 0.0636253,
+            "rows": 3,
+            "duplicates": 0,
+            "sorted_sha256": "107b464dd7e0e2e804a02f0e1a3f0e6be8b4f52f9d06975150dc69e9748d2acf",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs3.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 3 / 3 nodes 3 frontier_nodes 2821 classes 3 seconds 0.0636253 counts 1 2"
+          }
+        ],
+        "new": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.06416099799935182,
+            "enumeration_seconds": 0.0373619,
+            "rows": 3,
+            "duplicates": 0,
+            "sorted_sha256": "107b464dd7e0e2e804a02f0e1a3f0e6be8b4f52f9d06975150dc69e9748d2acf",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs3.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 3 / 3 nodes 3 frontier_nodes 1408 classes 3 seconds 0.0373619 counts 1 2"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.06422195899904182,
+            "enumeration_seconds": 0.0405322,
+            "rows": 3,
+            "duplicates": 0,
+            "sorted_sha256": "107b464dd7e0e2e804a02f0e1a3f0e6be8b4f52f9d06975150dc69e9748d2acf",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs3.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 3 / 3 nodes 3 frontier_nodes 1408 classes 3 seconds 0.0405322 counts 1 2"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.06426465499862388,
+            "enumeration_seconds": 0.035053,
+            "rows": 3,
+            "duplicates": 0,
+            "sorted_sha256": "107b464dd7e0e2e804a02f0e1a3f0e6be8b4f52f9d06975150dc69e9748d2acf",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs3.txt",
+              "2",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 2 complete 1 jobs 3 / 3 nodes 3 frontier_nodes 1408 classes 3 seconds 0.035053 counts 1 2"
+          }
+        ]
+      },
+      "all_complete": true,
+      "completed_outputs_equal": true,
+      "medians": {
+        "original": 0.0382137,
+        "previous": 0.0641244,
+        "new": 0.0373619
+      },
+      "speedups_vs_new": {
+        "original": 1.0227986264081859,
+        "previous": 1.7163045776579884
+      },
+      "released_rows": 3,
+      "released_outputs_equal": true
+    },
+    {
+      "case": "sd8m1",
+      "runs": {
+        "original": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.2648683389998041,
+            "enumeration_seconds": 0.254568,
+            "rows": 38,
+            "duplicates": 0,
+            "sorted_sha256": "a9f401bec45c0524fb02dfd81ecd494985516462efa465786d5df13299e5f07e",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system8sd.txt",
+              "8",
+              "1",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 8 bound 1 complete 1 jobs 7 / 7 matrices 98631 singular 3802 completion_nodes 6723 classes 38 seconds 0.254568 counts 38"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.2647437470004661,
+            "enumeration_seconds": 0.255946,
+            "rows": 38,
+            "duplicates": 0,
+            "sorted_sha256": "a9f401bec45c0524fb02dfd81ecd494985516462efa465786d5df13299e5f07e",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system8sd.txt",
+              "8",
+              "1",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 8 bound 1 complete 1 jobs 7 / 7 matrices 98631 singular 3802 completion_nodes 6723 classes 38 seconds 0.255946 counts 38"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.2646933509986411,
+            "enumeration_seconds": 0.249133,
+            "rows": 38,
+            "duplicates": 0,
+            "sorted_sha256": "a9f401bec45c0524fb02dfd81ecd494985516462efa465786d5df13299e5f07e",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system8sd.txt",
+              "8",
+              "1",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 8 bound 1 complete 1 jobs 7 / 7 matrices 98631 singular 3802 completion_nodes 6723 classes 38 seconds 0.249133 counts 38"
+          }
+        ],
+        "previous": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.16443797899955825,
+            "enumeration_seconds": 0.145021,
+            "rows": 38,
+            "duplicates": 0,
+            "sorted_sha256": "a9f401bec45c0524fb02dfd81ecd494985516462efa465786d5df13299e5f07e",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system8sd.txt",
+              "8",
+              "1",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 8 bound 1 complete 1 jobs 20 / 20 matrices 98631 singular 3802 completion_nodes 5511 classes 38 seconds 0.145021 counts 38"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.16451055799916503,
+            "enumeration_seconds": 0.160512,
+            "rows": 38,
+            "duplicates": 0,
+            "sorted_sha256": "a9f401bec45c0524fb02dfd81ecd494985516462efa465786d5df13299e5f07e",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system8sd.txt",
+              "8",
+              "1",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 8 bound 1 complete 1 jobs 20 / 20 matrices 98631 singular 3802 completion_nodes 5511 classes 38 seconds 0.160512 counts 38"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.21452002499972878,
+            "enumeration_seconds": 0.17836,
+            "rows": 38,
+            "duplicates": 0,
+            "sorted_sha256": "a9f401bec45c0524fb02dfd81ecd494985516462efa465786d5df13299e5f07e",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system8sd.txt",
+              "8",
+              "1",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 8 bound 1 complete 1 jobs 20 / 20 matrices 98631 singular 3802 completion_nodes 5511 classes 38 seconds 0.17836 counts 38"
+          }
+        ],
+        "new": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11468454700116126,
+            "enumeration_seconds": 0.110135,
+            "rows": 38,
+            "duplicates": 0,
+            "sorted_sha256": "a9f401bec45c0524fb02dfd81ecd494985516462efa465786d5df13299e5f07e",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system8sd.txt",
+              "8",
+              "1",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 8 bound 1 complete 1 jobs 20 / 20 matrices 3529 singular 706 completion_nodes 1716 classes 38 seconds 0.110135 counts 38"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.1142150470004708,
+            "enumeration_seconds": 0.104386,
+            "rows": 38,
+            "duplicates": 0,
+            "sorted_sha256": "a9f401bec45c0524fb02dfd81ecd494985516462efa465786d5df13299e5f07e",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system8sd.txt",
+              "8",
+              "1",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 8 bound 1 complete 1 jobs 20 / 20 matrices 3529 singular 706 completion_nodes 1716 classes 38 seconds 0.104386 counts 38"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.1644886400008545,
+            "enumeration_seconds": 0.119554,
+            "rows": 38,
+            "duplicates": 0,
+            "sorted_sha256": "a9f401bec45c0524fb02dfd81ecd494985516462efa465786d5df13299e5f07e",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_selfdual",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system8sd.txt",
+              "8",
+              "1",
+              "60.0",
+              "4"
+            ],
+            "final": "FINAL rank 8 bound 1 complete 1 jobs 20 / 20 matrices 3529 singular 706 completion_nodes 1716 classes 38 seconds 0.119554 counts 38"
+          }
+        ]
+      },
+      "all_complete": true,
+      "completed_outputs_equal": true,
+      "medians": {
+        "original": 0.254568,
+        "previous": 0.160512,
+        "new": 0.110135
+      },
+      "speedups_vs_new": {
+        "original": 2.3114178054206205,
+        "previous": 1.4574113587869433
+      },
+      "released_rows": 38,
+      "released_outputs_equal": true
+    },
+    {
+      "case": "ns8p1m1",
+      "runs": {
+        "original": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.3150058569990506,
+            "enumeration_seconds": 0.265556,
+            "rows": 30,
+            "duplicates": 0,
+            "sorted_sha256": "36ca30d937be3afa5df7571a09bd105c120f9235c8ff0120bb79b01456e7b14c",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs1.txt",
+              "1",
+              "60.0",
+              "4",
+              "6"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 64 / 64 nodes 123956 classes 30 seconds 0.265556 counts 30"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.26479151300009107,
+            "enumeration_seconds": 0.25721,
+            "rows": 30,
+            "duplicates": 0,
+            "sorted_sha256": "36ca30d937be3afa5df7571a09bd105c120f9235c8ff0120bb79b01456e7b14c",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs1.txt",
+              "1",
+              "60.0",
+              "4",
+              "6"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 64 / 64 nodes 123956 classes 30 seconds 0.25721 counts 30"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.3147390430003725,
+            "enumeration_seconds": 0.272294,
+            "rows": 30,
+            "duplicates": 0,
+            "sorted_sha256": "36ca30d937be3afa5df7571a09bd105c120f9235c8ff0120bb79b01456e7b14c",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs1.txt",
+              "1",
+              "60.0",
+              "4",
+              "6"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 64 / 64 nodes 123956 classes 30 seconds 0.272294 counts 30"
+          }
+        ],
+        "previous": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11429344099997252,
+            "enumeration_seconds": 0.10764,
+            "rows": 30,
+            "duplicates": 0,
+            "sorted_sha256": "36ca30d937be3afa5df7571a09bd105c120f9235c8ff0120bb79b01456e7b14c",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs1.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 30 / 30 nodes 30 frontier_nodes 2345 classes 30 seconds 0.10764 counts 30"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11419572300110303,
+            "enumeration_seconds": 0.104839,
+            "rows": 30,
+            "duplicates": 0,
+            "sorted_sha256": "36ca30d937be3afa5df7571a09bd105c120f9235c8ff0120bb79b01456e7b14c",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs1.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 30 / 30 nodes 30 frontier_nodes 2345 classes 30 seconds 0.104839 counts 30"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11418619899995974,
+            "enumeration_seconds": 0.100915,
+            "rows": 30,
+            "duplicates": 0,
+            "sorted_sha256": "36ca30d937be3afa5df7571a09bd105c120f9235c8ff0120bb79b01456e7b14c",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs1.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 30 / 30 nodes 30 frontier_nodes 2345 classes 30 seconds 0.100915 counts 30"
+          }
+        ],
+        "new": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11418401999981143,
+            "enumeration_seconds": 0.109884,
+            "rows": 30,
+            "duplicates": 0,
+            "sorted_sha256": "36ca30d937be3afa5df7571a09bd105c120f9235c8ff0120bb79b01456e7b14c",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs1.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 30 / 30 nodes 30 frontier_nodes 1697 classes 30 seconds 0.109884 counts 30"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11411477099863987,
+            "enumeration_seconds": 0.107975,
+            "rows": 30,
+            "duplicates": 0,
+            "sorted_sha256": "36ca30d937be3afa5df7571a09bd105c120f9235c8ff0120bb79b01456e7b14c",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs1.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 30 / 30 nodes 30 frontier_nodes 1697 classes 30 seconds 0.107975 counts 30"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11420078000082867,
+            "enumeration_seconds": 0.104694,
+            "rows": 30,
+            "duplicates": 0,
+            "sorted_sha256": "36ca30d937be3afa5df7571a09bd105c120f9235c8ff0120bb79b01456e7b14c",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs1.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 30 / 30 nodes 30 frontier_nodes 1697 classes 30 seconds 0.104694 counts 30"
+          }
+        ]
+      },
+      "all_complete": true,
+      "completed_outputs_equal": true,
+      "medians": {
+        "original": 0.265556,
+        "previous": 0.104839,
+        "new": 0.107975
+      },
+      "speedups_vs_new": {
+        "original": 2.4594211623060893,
+        "previous": 0.9709562398703404
+      },
+      "released_rows": 30,
+      "released_outputs_equal": true
+    },
+    {
+      "case": "ns8p2m1",
+      "runs": {
+        "original": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.5654845819990442,
+            "enumeration_seconds": 0.513269,
+            "rows": 18,
+            "duplicates": 0,
+            "sorted_sha256": "051904ae60071cfb12f34a533c33e65356161e1e679f0f3a80669d18983573b9",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_general",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs2.txt",
+              "1",
+              "60.0"
+            ],
+            "final": "rank 8 pairs 2 bound 1 complete 1 nodes 84167 classes 18 seconds 0.513269 counts 18"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.5154933889989479,
+            "enumeration_seconds": 0.494425,
+            "rows": 18,
+            "duplicates": 0,
+            "sorted_sha256": "051904ae60071cfb12f34a533c33e65356161e1e679f0f3a80669d18983573b9",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_general",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs2.txt",
+              "1",
+              "60.0"
+            ],
+            "final": "rank 8 pairs 2 bound 1 complete 1 nodes 84167 classes 18 seconds 0.494425 counts 18"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.46534045100088406,
+            "enumeration_seconds": 0.444563,
+            "rows": 18,
+            "duplicates": 0,
+            "sorted_sha256": "051904ae60071cfb12f34a533c33e65356161e1e679f0f3a80669d18983573b9",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_general",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs2.txt",
+              "1",
+              "60.0"
+            ],
+            "final": "rank 8 pairs 2 bound 1 complete 1 nodes 84167 classes 18 seconds 0.444563 counts 18"
+          }
+        ],
+        "previous": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.16438195599948813,
+            "enumeration_seconds": 0.125848,
+            "rows": 18,
+            "duplicates": 0,
+            "sorted_sha256": "051904ae60071cfb12f34a533c33e65356161e1e679f0f3a80669d18983573b9",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs2.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 18 / 18 nodes 18 frontier_nodes 2523 classes 18 seconds 0.125848 counts 18"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.16437543100073526,
+            "enumeration_seconds": 0.123199,
+            "rows": 18,
+            "duplicates": 0,
+            "sorted_sha256": "051904ae60071cfb12f34a533c33e65356161e1e679f0f3a80669d18983573b9",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs2.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 18 / 18 nodes 18 frontier_nodes 2523 classes 18 seconds 0.123199 counts 18"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.16452328599916655,
+            "enumeration_seconds": 0.112837,
+            "rows": 18,
+            "duplicates": 0,
+            "sorted_sha256": "051904ae60071cfb12f34a533c33e65356161e1e679f0f3a80669d18983573b9",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs2.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 18 / 18 nodes 18 frontier_nodes 2523 classes 18 seconds 0.112837 counts 18"
+          }
+        ],
+        "new": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.16445219100023678,
+            "enumeration_seconds": 0.115317,
+            "rows": 18,
+            "duplicates": 0,
+            "sorted_sha256": "051904ae60071cfb12f34a533c33e65356161e1e679f0f3a80669d18983573b9",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs2.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 18 / 18 nodes 18 frontier_nodes 1751 classes 18 seconds 0.115317 counts 18"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.1645391229994857,
+            "enumeration_seconds": 0.111961,
+            "rows": 18,
+            "duplicates": 0,
+            "sorted_sha256": "051904ae60071cfb12f34a533c33e65356161e1e679f0f3a80669d18983573b9",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs2.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 18 / 18 nodes 18 frontier_nodes 1751 classes 18 seconds 0.111961 counts 18"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.1644740939991607,
+            "enumeration_seconds": 0.112539,
+            "rows": 18,
+            "duplicates": 0,
+            "sorted_sha256": "051904ae60071cfb12f34a533c33e65356161e1e679f0f3a80669d18983573b9",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs2.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 18 / 18 nodes 18 frontier_nodes 1751 classes 18 seconds 0.112539 counts 18"
+          }
+        ]
+      },
+      "all_complete": true,
+      "completed_outputs_equal": true,
+      "medians": {
+        "original": 0.494425,
+        "previous": 0.123199,
+        "new": 0.112539
+      },
+      "speedups_vs_new": {
+        "original": 4.393365855392353,
+        "previous": 1.0947227183465287
+      },
+      "released_rows": 18,
+      "released_outputs_equal": true
+    },
+    {
+      "case": "ns8p3m1",
+      "runs": {
+        "original": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11436251399936737,
+            "enumeration_seconds": 0.0765059,
+            "rows": 10,
+            "duplicates": 0,
+            "sorted_sha256": "2dca700cfdfd956fce645b6ee8eaa497449d548c3bb856e3414303869b0d7f52",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_general",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs3.txt",
+              "1",
+              "60.0"
+            ],
+            "final": "rank 8 pairs 3 bound 1 complete 1 nodes 9159 classes 10 seconds 0.0765059 counts 10"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11444903800111206,
+            "enumeration_seconds": 0.0726512,
+            "rows": 10,
+            "duplicates": 0,
+            "sorted_sha256": "2dca700cfdfd956fce645b6ee8eaa497449d548c3bb856e3414303869b0d7f52",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_general",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs3.txt",
+              "1",
+              "60.0"
+            ],
+            "final": "rank 8 pairs 3 bound 1 complete 1 nodes 9159 classes 10 seconds 0.0726512 counts 10"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.11422957399918232,
+            "enumeration_seconds": 0.0767765,
+            "rows": 10,
+            "duplicates": 0,
+            "sorted_sha256": "2dca700cfdfd956fce645b6ee8eaa497449d548c3bb856e3414303869b0d7f52",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/original_general",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs3.txt",
+              "1",
+              "60.0"
+            ],
+            "final": "rank 8 pairs 3 bound 1 complete 1 nodes 9159 classes 10 seconds 0.0767765 counts 10"
+          }
+        ],
+        "previous": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.06407545399997616,
+            "enumeration_seconds": 0.0448892,
+            "rows": 10,
+            "duplicates": 0,
+            "sorted_sha256": "2dca700cfdfd956fce645b6ee8eaa497449d548c3bb856e3414303869b0d7f52",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs3.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 10 / 10 nodes 10 frontier_nodes 1001 classes 10 seconds 0.0448892 counts 10"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.0642189549998875,
+            "enumeration_seconds": 0.0502291,
+            "rows": 10,
+            "duplicates": 0,
+            "sorted_sha256": "2dca700cfdfd956fce645b6ee8eaa497449d548c3bb856e3414303869b0d7f52",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs3.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 10 / 10 nodes 10 frontier_nodes 1001 classes 10 seconds 0.0502291 counts 10"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.06430767700112483,
+            "enumeration_seconds": 0.0498145,
+            "rows": 10,
+            "duplicates": 0,
+            "sorted_sha256": "2dca700cfdfd956fce645b6ee8eaa497449d548c3bb856e3414303869b0d7f52",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/previous_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs3.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 10 / 10 nodes 10 frontier_nodes 1001 classes 10 seconds 0.0498145 counts 10"
+          }
+        ],
+        "new": [
+          {
+            "returncode": 0,
+            "wall_seconds": 0.06414234600015334,
+            "enumeration_seconds": 0.0442093,
+            "rows": 10,
+            "duplicates": 0,
+            "sorted_sha256": "2dca700cfdfd956fce645b6ee8eaa497449d548c3bb856e3414303869b0d7f52",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs3.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 10 / 10 nodes 10 frontier_nodes 729 classes 10 seconds 0.0442093 counts 10"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.06433746299990162,
+            "enumeration_seconds": 0.0482596,
+            "rows": 10,
+            "duplicates": 0,
+            "sorted_sha256": "2dca700cfdfd956fce645b6ee8eaa497449d548c3bb856e3414303869b0d7f52",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs3.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 10 / 10 nodes 10 frontier_nodes 729 classes 10 seconds 0.0482596 counts 10"
+          },
+          {
+            "returncode": 0,
+            "wall_seconds": 0.06417810400125745,
+            "enumeration_seconds": 0.0445894,
+            "rows": 10,
+            "duplicates": 0,
+            "sorted_sha256": "2dca700cfdfd956fce645b6ee8eaa497449d548c3bb856e3414303869b0d7f52",
+            "command": [
+              "/workspace/scratch/17929c6a8155/deep_final_bench_t4/new_parallel",
+              "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank8_pairs3.txt",
+              "1",
+              "60.0",
+              "4",
+              "256"
+            ],
+            "final": "FINAL bound 1 complete 1 jobs 10 / 10 nodes 10 frontier_nodes 729 classes 10 seconds 0.0445894 counts 10"
+          }
+        ]
+      },
+      "all_complete": true,
+      "completed_outputs_equal": true,
+      "medians": {
+        "original": 0.0765059,
+        "previous": 0.0498145,
+        "new": 0.0445894
+      },
+      "speedups_vs_new": {
+        "original": 1.715786711639986,
+        "previous": 1.117182559083549
+      },
+      "released_rows": 10,
+      "released_outputs_equal": true
+    }
+  ],
+  "source_hashes": {
+    "original": {
+      "enumerate_bounded.cpp": "688f02a4ca5139e97ef51f8e53fa399a25ce2f73267a13fbef3284aed9f1017e",
+      "completion_solver.hpp": "1649f3c60dc6105a3c5598691ef92f7d829e7305966860ec5c8aca0fc4fe8d14",
+      "enumerate_parallel.cpp": "08742e3bff0c5593ff390259973f4ed9fb7d504b91e6e8604f3e2bc2d034b0f9",
+      "enumerate_selfdual_fast.cpp": "a05b9694f23e9135e87036ae77cd093d5ec0ad66fbb7a5eb87dbd02775406503"
+    },
+    "previous": {
+      "enumerate_parallel.cpp": "f63564cf3ae9dc892919019577500ab30e6025f3250490b851693d7667bed842",
+      "completion_solver.hpp": "8e59840ab7e74f482bf2c7e1d44241fec4a70f441b34a6c6e3af482695de18d1",
+      "enumerate_selfdual_fast.cpp": "6e5e13b2f38ad81637d495cb79269500735b600d70cd98b8989986ae48bb80bc"
+    },
+    "new": {
+      "enumerate_parallel.cpp": "f63564cf3ae9dc892919019577500ab30e6025f3250490b851693d7667bed842",
+      "completion_solver.hpp": "9cc88c01a5d50953bb39b6977dfbb6ace206447cc528aa86e7d78b1ffe93dc86",
+      "enumerate_selfdual_fast.cpp": "c78c177ff03f472cbdd86d65ffb114abb77788c2a4ef7c8fd8c778856f6d5a57"
+    }
+  }
+}

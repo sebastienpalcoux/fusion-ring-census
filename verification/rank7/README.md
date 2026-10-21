@@ -29,8 +29,10 @@ producer's laptop. Those timings are not timings from this independent check.
 
 The [source receipt](source.json) and [laptop provenance](laptop_provenance.json)
 identify modified local optimized enumeration sources based on commit
-`d4c36cc2ee5eb5f0e5291de18d2bb433ffb7ce8b`. The archive includes source
-hashes but **does not bundle the modified enumeration source files**.
+`d4c36cc2ee5eb5f0e5291de18d2bb433ffb7ce8b`. The original data archive includes source hashes. On 21 October 2026 the
+complete optimized source package was supplied separately; its aggregate code
+hash exactly matches the producer record. The numerical C++ sources have been
+integrated unchanged, with separate finite audits.
 Consequently completeness is **producer-reported**, and has not been
 independently reproduced in this release. Output verification proves tensor
 validity and uniqueness; it cannot detect a class omitted by enumeration.

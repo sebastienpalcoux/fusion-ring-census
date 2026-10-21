@@ -36,7 +36,7 @@
   },
   {
     "rank": 8,
-    "bound": 2,
+    "bound": 3,
     "entry": null,
     "file": "fixed_rank_8.txt",
     "submission_status": "not submitted"
@@ -60,7 +60,7 @@
   {
     "multiplicity": 3,
     "entry": "A354476",
-    "through_rank": 7,
+    "through_rank": 8,
     "file": "b354476.txt",
     "rank9_reference_only": false,
     "submission_status": "not submitted"

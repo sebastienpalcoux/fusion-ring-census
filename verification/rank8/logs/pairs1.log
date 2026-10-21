@@ -1,1 +1,2 @@
-FINAL bound 2 complete 1 jobs 729 / 729 nodes 1047169634 classes 306 seconds 684.334 counts 30 276
+frontier jobs 770 preparation_nodes 1489 seconds 0.0754683
+FINAL bound 3 complete 1 jobs 770 / 770 nodes 14124948 frontier_nodes 1489 classes 1278 seconds 184.037 counts 30 276 972

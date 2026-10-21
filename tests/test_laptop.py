@@ -55,12 +55,6 @@ class LaptopTests(unittest.TestCase):
             counts['1']+=1
             with self.assertRaisesRegex(ValueError,'prefix mismatch'):runner.check_local_prefix(rank,bound,counts)
 
-    def test_parallel_partition_stays_within_job_cap(self):
-        for bound in range(1,16):
-            depth=runner.parallel_depth(bound)
-            self.assertLessEqual((bound+1)**depth,2000000)
-            self.assertEqual(depth,6 if bound<=10 else 5)
-
     def test_launcher_all_ranks_pass_correct_bound_and_verification(self):
         for rank in range(3,9):
             with self.subTest(rank=rank), tempfile.TemporaryDirectory() as td:

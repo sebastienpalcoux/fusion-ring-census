@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "date": "2026-10-21",
+  "stable_recovery_checkpoint": {
+    "commit": "9d6c172a4072dca3204359cd9824722bdd527a4d",
+    "tree": "12dabc39fafddd8e4e53de62a067fb5d0d4bd48a",
+    "branch": "codex/rank8-m3-recovery-20261021"
+  },
+  "manifest_total": 1430809,
+  "rank8_classes": 4500,
+  "rank8_exact_m3": 3527,
+  "independent_full_enumeration_repeated": false,
+  "license_notice_unchanged": true,
+  "tests": "30 Python regression tests, six finite audits, forced-cap comparisons, eight baseline strata, six end-to-end censuses, fresh rank8 full tensor verification and parameter export, all release hashes, clean-checkpoint standalone-package smoke all pass.",
+  "crosslink_files": [
+    "README.md",
+    "scripts/build_site.py",
+    "docs/index.html",
+    "scripts/build_manuscripts.py",
+    "manuscripts/rank8.tex",
+    "manuscripts/rank8.pdf"
+  ],
+  "companion_ledger_digest": "0e680a7e7647bb205558d781aac2b30751a89c2daa0fbba835379c46562dc2ed",
+  "classification_counts": {
+    "exact_m3": {
+      "excluded_general": 3479,
+      "unitary_models": 14,
+      "unresolved_general": 34
+    },
+    "through_m3": {
+      "excluded_general": 4375,
+      "unitary_models": 91,
+      "unresolved_general": 34
+    }
+  },
+  "companion_frozen_checkpoint": {
+    "commit": "f9dab770ceebc989de308933b58fb51717939fb5",
+    "tree": "0df869b64cd64d9c401f2ec3cb20c407f8bc84df"
+  },
+  "scope": "Census code/data integration and companion count crosslinks; mathematical categorification replay remains a separate companion-project obligation.",
+  "publication_gate": "Release only after matching canonical normal and optimized companion replay receipts accept the frozen ledger digest recorded here."
+}

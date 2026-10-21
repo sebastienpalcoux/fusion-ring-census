@@ -1,0 +1,3 @@
+PASS propagation: 30000 systems, 422833 assignments, 52840 exact solutions retained
+PASS moments: 100000 random symmetric matrices, ranks 4--8, both primes, weights 1 and 2
+PASS reachable masks: 10000 random domains compared with exhaustive tail and square sums

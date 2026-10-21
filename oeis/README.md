@@ -13,7 +13,7 @@ from `results/census.json`.
 | A354473 | Rank 5; multiplicity varies | 1–20 | [b-file](b354473.txt) |
 | A348305 | Multiplicity 1; rank varies | 1–9¹ | [b-file](b348305.txt) |
 | A354475 | Multiplicity 2; rank varies | 1–8 | [b-file](b354475.txt) |
-| A354476 | Multiplicity 3; rank varies | 1–7 | [b-file](b354476.txt) |
+| A354476 | Multiplicity 3; rank varies | 1–8 | [b-file](b354476.txt) |
 | A354477 | Multiplicity 4; rank varies | 1–7 | [b-file](b354477.txt) |
 
 ¹ The rank-nine value 142 is retained from the reference census; it is not an
@@ -34,13 +34,14 @@ Suggested comment:
 The independent census extends the rank-5 draft through 20, with **a(20)=6866**.
 The multiplicity-2 draft includes **A354475: a(8)=877**; the multiplicity-4 draft
 includes **A354477: a(7)=2780**. The multiplicity-3 draft includes
-**A354476: a(7)=1059**. Fixed-rank files include
+**A354476: a(7)=1059 and a(8)=3527**. Fixed-rank files include
 **c₆(9)=8809**,
 **c₇(5)=5805** and
-**c₈(2)=877**.
+**c₈(3)=3527**.
 Tensor validity and uniqueness have been independently checked. The new rank-7
 term **c₇(5)=5805** relies on producer-reported enumeration completeness;
-the modified enumeration source was not supplied and the search was not rerun.
+the complete optimized source was subsequently supplied and hash-matched,
+but the full search was not rerun. This also applies to c₈(3)=3527.
 Retain [this qualification](../verification/rank7/README.md) in any submission.
 
 ## Before submitting

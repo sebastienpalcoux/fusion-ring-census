@@ -21,3 +21,8 @@ manuscripts/*.build.txt
 
 # Execution provenance is intentionally versioned.
 !verification/**/*.log
+
+# Supplied audit transcripts are retained as provenance.
+!audits/evidence/*.log
+!benchmarks/evidence/**/*.log
+build_cache/

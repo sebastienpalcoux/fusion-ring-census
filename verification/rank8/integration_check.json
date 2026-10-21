@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "archives": {
+    "Fusion_Census_Deep_Optimized_2026-10-19.zip": {
+      "sha256": "b5ed28b3423c923e0eb8186f6039baaabdf3fe5049cad5207689eab3841490ff",
+      "manifest_files_verified": 448
+    },
+    "rank8_multiplicity3_verified.zip": {
+      "sha256": "59d97a19bb34088f995c53b2a92e6116e32346494bbdfee275a6b0e9a7b8b9db",
+      "manifest_files_verified": 15
+    }
+  },
+  "prefix_through": 2,
+  "prefix_classes": 973,
+  "literal_tensor_set_equality": true,
+  "prefix_sequence_equal": true,
+  "parameter_prefix_equal": true,
+  "exact_counts": {
+    "1": 96,
+    "2": 877,
+    "3": 3527
+  },
+  "duality_pair_counts": {
+    "0": 2621,
+    "1": 1278,
+    "2": 516,
+    "3": 85
+  },
+  "exact_multiplicity_3_duality_pair_counts": {
+    "0": 2152,
+    "1": 972,
+    "2": 362,
+    "3": 41
+  },
+  "noncommutative_by_multiplicity": {
+    "1": 19,
+    "2": 40,
+    "3": 85
+  },
+  "enumeration_rerun": false,
+  "parameter_reexport_byte_equal": true
+}

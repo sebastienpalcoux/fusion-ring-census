@@ -1,12 +1,12 @@
 {
   "rank": 8,
-  "bound": 2,
+  "bound": 3,
   "threads": 12,
   "enumeration_budget_seconds": null,
   "time_limit": "none (local laptop)",
   "environment": {
-    "python": "3.12.3",
-    "system": "Linux 6.8.0-40-generic x86_64",
+    "python": "3.14.4",
+    "system": "Linux 7.0.0-38-generic x86_64",
     "cpu_count": 12,
     "threads": 12
   },
@@ -16,53 +16,57 @@
     {
       "name": "pairs1",
       "command": [
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/parallel_general",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/systems/rank8_pairs1.txt",
-        "2",
+        "/home/sebastien/.cache/fusion-ring-census/7af1916133431713/laptop-v2/parallel_general",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Deep_Optimized_2026-10-18/Fusion_Census_Deep_Optimized/systems/rank8_pairs1.txt",
+        "3",
         "inf",
         "12",
-        "6"
+        "768"
       ],
       "allowance_seconds": null,
-      "elapsed_seconds": 684.3370184730011,
+      "elapsed_seconds": 184.0398148309905,
       "returncode": 0
     },
     {
       "name": "pairs2",
       "command": [
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/general",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/systems/rank8_pairs2.txt",
-        "2",
-        "inf"
+        "/home/sebastien/.cache/fusion-ring-census/7af1916133431713/laptop-v2/parallel_general",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Deep_Optimized_2026-10-18/Fusion_Census_Deep_Optimized/systems/rank8_pairs2.txt",
+        "3",
+        "inf",
+        "12",
+        "768"
       ],
       "allowance_seconds": null,
-      "elapsed_seconds": 816.5087621179991,
+      "elapsed_seconds": 165.63616281491704,
       "returncode": 0
     },
     {
       "name": "pairs3",
       "command": [
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/general",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/systems/rank8_pairs3.txt",
-        "2",
-        "inf"
+        "/home/sebastien/.cache/fusion-ring-census/7af1916133431713/laptop-v2/parallel_general",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Deep_Optimized_2026-10-18/Fusion_Census_Deep_Optimized/systems/rank8_pairs3.txt",
+        "3",
+        "inf",
+        "12",
+        "768"
       ],
       "allowance_seconds": null,
-      "elapsed_seconds": 7.49052586700418,
+      "elapsed_seconds": 31.47779797995463,
       "returncode": 0
     },
     {
       "name": "selfdual",
       "command": [
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/selfdual_fast",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/systems/system8sd.txt",
+        "/home/sebastien/.cache/fusion-ring-census/7af1916133431713/laptop-v2/selfdual_fast",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Deep_Optimized_2026-10-18/Fusion_Census_Deep_Optimized/systems/system8sd.txt",
         "8",
-        "2",
+        "3",
         "inf",
         "12"
       ],
       "allowance_seconds": null,
-      "elapsed_seconds": 545.5136898519995,
+      "elapsed_seconds": 61907.69820111804,
       "returncode": 0
     }
   ],
@@ -72,128 +76,70 @@
   "phase": "complete",
   "commands": [
     {
-      "phase": "compilation:general",
-      "command": [
-        "g++",
-        "-O3",
-        "-std=c++17",
-        "-fopenmp",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/code/enumerate_bounded.cpp",
-        "-o",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/general"
-      ],
-      "started_elapsed_seconds": 0.0012603229988599196,
-      "returncode": 0,
-      "elapsed_seconds": 0.8198536970012356
-    },
-    {
-      "phase": "compilation:selfdual_fast",
-      "command": [
-        "g++",
-        "-O3",
-        "-std=c++17",
-        "-fopenmp",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/code/enumerate_selfdual_fast.cpp",
-        "-o",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/selfdual_fast"
-      ],
-      "started_elapsed_seconds": 0.8217803340085084,
-      "returncode": 0,
-      "elapsed_seconds": 7.15169773400703
-    },
-    {
-      "phase": "compilation:parallel_general",
-      "command": [
-        "g++",
-        "-O3",
-        "-std=c++17",
-        "-fopenmp",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/code/enumerate_parallel.cpp",
-        "-o",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/parallel_general"
-      ],
-      "started_elapsed_seconds": 7.9739933789969655,
-      "returncode": 0,
-      "elapsed_seconds": 0.9734244719875278
-    },
-    {
       "phase": "sort_and_export",
       "command": [
         "/usr/bin/python3",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/code/export_tables.py",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Deep_Optimized_2026-10-18/Fusion_Census_Deep_Optimized/code/export_tables.py",
         "--rank",
         "8",
         "--input",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/parameters.txt",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Deep_Optimized_2026-10-18/Fusion_Census_Deep_Optimized/runs/rank8_M3/parameters.txt",
         "--systems",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/systems",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Deep_Optimized_2026-10-18/Fusion_Census_Deep_Optimized/systems",
         "--output",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/FusionRingMultiplicationTables.txt"
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Deep_Optimized_2026-10-18/Fusion_Census_Deep_Optimized/runs/rank8_M3/FusionRingMultiplicationTables.txt"
       ],
-      "started_elapsed_seconds": 2062.815895783002,
+      "started_elapsed_seconds": 62288.95697458717,
       "returncode": 0,
-      "elapsed_seconds": 0.12873211099940818
-    },
-    {
-      "phase": "compilation:verify_tables",
-      "command": [
-        "g++",
-        "-O3",
-        "-std=c++17",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/code/verify_tables.cpp",
-        "-o",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/verify_tables"
-      ],
-      "started_elapsed_seconds": 2062.9453577130043,
-      "returncode": 0,
-      "elapsed_seconds": 1.4317731539922534
+      "elapsed_seconds": 0.33521699206903577
     },
     {
       "phase": "independent_verification",
       "command": [
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/build/verify_tables",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/FusionRingMultiplicationTables.txt",
-        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Laptop/runs/rank8_M2/independent_check",
+        "/home/sebastien/.cache/fusion-ring-census/7af1916133431713/laptop-v2/verify_tables",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Deep_Optimized_2026-10-18/Fusion_Census_Deep_Optimized/runs/rank8_M3/FusionRingMultiplicationTables.txt",
+        "/home/sebastien/Nutstore Files/Works/LaTex/FusionFrontier/FusionRings/Fusion_Census_Deep_Optimized_2026-10-18/Fusion_Census_Deep_Optimized/runs/rank8_M3/independent_check",
         "--exhaustive"
       ],
-      "started_elapsed_seconds": 2064.378432493002,
+      "started_elapsed_seconds": 62289.295190083096,
       "returncode": 0,
-      "elapsed_seconds": 0.32006180699681863
+      "elapsed_seconds": 1.4241073720622808
     }
   ],
-  "code_sha256": "0f7690b2c58d7c300d3ab24a2751d1859f676f0db72958d91ad8c4b0ff0a3753",
-  "elapsed_seconds": 2064.9747374069993,
-  "compilation_seconds": 8.947903232998215,
+  "code_sha256": "9177263413f1e4c775e5a81aa802a683d119de5af1123a8b9991b23daa1b0658",
+  "compilation_seconds": 0.0006199839990586042,
   "expected_strata": [
     "pairs1",
     "pairs2",
     "pairs3",
     "selfdual"
   ],
-  "enumeration_seconds": 2053.8517117910087,
+  "elapsed_seconds": 62292.136534994,
+  "enumeration_seconds": 62288.853194522904,
   "counts": {
     "1": 96,
-    "2": 877
+    "2": 877,
+    "3": 3527
   },
-  "classes": 973,
-  "sort_export_seconds": 0.14529833500273526,
-  "verifier_compilation_seconds": 1.4324290459917393,
-  "independent_verification_seconds": 0.3214715840003919,
+  "classes": 4500,
+  "sort_export_seconds": 0.3739642589353025,
+  "verifier_compilation_seconds": 0.0023085030261427164,
+  "independent_verification_seconds": 1.4251488249283284,
   "independent_verification": {
-    "input_records": 973,
-    "input_physical_lines": 973,
-    "distinct_rings": 973,
+    "input_records": 4500,
+    "input_physical_lines": 4500,
+    "distinct_rings": 4500,
     "duplicates": 0,
     "literal_repeats": 0,
     "new_labellings": 0,
     "associativity_checked": true,
     "canonical_mode": "all unit-fixing permutations",
-    "permutations_examined": 4903920,
-    "elapsed_seconds": 0.317856112
+    "permutations_examined": 22680000,
+    "elapsed_seconds": 1.418652361
   },
-  "existing_prefix_checked_through": 1,
-  "parameters.txt_sha256": "cb9d84fb05ef00f572d59a3a5df4609a83ec00a793d8afed4f74c405469d09b7",
-  "FusionRingMultiplicationTables.txt_sha256": "97b86d2de8ca0352c5c6e14686cd1d43dbd52180dc53b2ff1ccf7a61788c9600",
-  "compression_seconds": 0.27530505500908475,
+  "existing_prefix_checked_through": 2,
+  "parameters.txt_sha256": "0c72c617e14fecaa0d4fd0fe7d4513b24d6c7187838c003a7542002f568d1c46",
+  "FusionRingMultiplicationTables.txt_sha256": "7baaa0a2018e11a0464c3f19da9030195421f04a73806c22363cf9d5eeb92a84",
+  "compression_seconds": 1.4159213150851429,
   "outcome": "verified_complete"
 }

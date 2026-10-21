@@ -1,0 +1,54 @@
+{
+  "all_passed": true,
+  "elapsed_seconds": 24.61769943299987,
+  "runs": [
+    {
+      "rank": 3,
+      "bound": 2,
+      "classes": 7,
+      "complete": true,
+      "verified": true,
+      "enumeration_seconds": 0.004248318999998446
+    },
+    {
+      "rank": 4,
+      "bound": 2,
+      "classes": 27,
+      "complete": true,
+      "verified": true,
+      "enumeration_seconds": 0.00432424400059972
+    },
+    {
+      "rank": 5,
+      "bound": 2,
+      "classes": 53,
+      "complete": true,
+      "verified": true,
+      "enumeration_seconds": 0.012503216999903088
+    },
+    {
+      "rank": 6,
+      "bound": 2,
+      "classes": 193,
+      "complete": true,
+      "verified": true,
+      "enumeration_seconds": 0.06602075299997523
+    },
+    {
+      "rank": 7,
+      "bound": 1,
+      "classes": 43,
+      "complete": true,
+      "verified": true,
+      "enumeration_seconds": 0.0910845190001055
+    },
+    {
+      "rank": 8,
+      "bound": 1,
+      "classes": 96,
+      "complete": true,
+      "verified": true,
+      "enumeration_seconds": 0.5096735580000313
+    }
+  ]
+}

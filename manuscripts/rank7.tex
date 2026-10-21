@@ -22,9 +22,9 @@
 {\sffamily\Huge\bfseries\color{ink} Rank-7 fusion rings\par}
 \vspace{0.35cm}
 {\sffamily\Large A verified dataset through multiplicity 5\par}
-\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 19 October 2026}\par\vspace{0.8cm}
+\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 21 October 2026}\par\vspace{0.8cm}
 \begin{abstract}
-We document 10,006 verified based-isomorphism classes of fusion rings of rank 7 through multiplicity 5, including 5,805 at multiplicity five. The producer reports a complete enumeration, but the modified enumeration sources were not supplied and completeness has not been independently reproduced. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
+We document 10,006 verified based-isomorphism classes of fusion rings of rank 7 through multiplicity 5, including 5,805 at the maximum multiplicity. The producer reports a complete enumeration. The complete optimized source is supplied and hash-matched, but full enumeration has not been independently reproduced. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
 \end{abstract}\vspace{0.4cm}\noindent\textbf{AI-generated research \textperiodcentered\ independent verification pending.} This manuscript, its code and data were developed with AI assistance. Independent human verification and Lean formalization are pending. Treat the results with caution: exact computational checks establish only their stated scope.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage
 
 \section{Objects, equivalence and the counting convention}
@@ -100,13 +100,12 @@ $p=0,1,2,3$, its stratum counts are respectively $4,654$, $1,012$, $138$ and $1$
 nine tensors are noncommutative. The supplied producer record reports normal
 completion of all four strata in $77,046$ seconds (about $21.4$ hours).
 
-The producer used modified local enumeration sources based on repository
-commit \texttt{d4c36cc2ee5eb5f0e5291de18d2bb433ffb7ce8b}. Their hashes and logs
-are retained, but the modified source files were not included in the supplied
-archive. Consequently completeness of this extension is producer-reported;
-this release does not independently reproduce or certify coverage of that
-modified search. The conditional coverage arguments below apply to the
-documented algorithms, and do not by themselves audit an unavailable variant.
+The producer used modified local enumeration sources. The source commit,
+hashes and logs are retained in \path{verification/rank7/}. The complete optimized source archive was supplied separately
+on 21 October 2026; its aggregate code hash matches the producer run. Numerical
+C++ sources are integrated unchanged and finite pruning audits are available.
+Completeness nevertheless remains producer-reported: this release does not
+independently repeat the full search.
 
 The fresh checks do establish the fusion-ring axioms and uniqueness of all
 $10,006$ supplied tensors under every unit-fixing permutation. Re-exporting
@@ -134,9 +133,9 @@ branches with 2,126 exact leaves; its complete source and branch coverage is
 replayed independently. No new categorical model is claimed.
 These categorification decisions do not alter the census tensors or the
 enumeration-completeness qualification above. The companion project retains
-the proof manuscripts, source identifiers and full decision ledger. Its only
-remaining general cases are the earlier rank-six rings
-\texttt{R6\_4\_155} and \texttt{R6\_8\_1660}.
+the proof manuscripts, source identifiers and full decision ledger. The earlier
+rank-six rings \texttt{R6\_4\_155} and \texttt{R6\_8\_1660} remain open;
+the companion project's rank-eight frontier is recorded separately there.
 
 \section{An exhaustive finite-domain model}
 \subsection{Coordinates directly from reciprocity}
@@ -199,9 +198,10 @@ lexicographic minimality proves uniqueness. Finally, duality types are disjoint
 and exhaust all possibilities.
 \end{proof}
 
-A parallel run partitions a fixed coordinate prefix into all bounded assignments.
-The resulting subtrees are disjoint and their union is the original tree. A run
-is marked complete only after every prefix finishes. A time limit is not a
+A parallel run adaptively splits prefix subtrees into every bounded value of
+the next unfixed coordinate. The resulting frontier subtrees are disjoint and
+their union is the original tree. A run is marked complete only after every
+frontier subtree finishes. A time limit is not a
 mathematical rejection rule: a timeout leaves the larger census uncertified.
 
 \section{Self-dual reconstruction from one multiplication matrix}

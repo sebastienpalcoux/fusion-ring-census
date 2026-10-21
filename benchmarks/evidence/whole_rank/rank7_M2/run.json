@@ -1,0 +1,188 @@
+{
+  "rank": 7,
+  "bound": 2,
+  "threads": 4,
+  "enumeration_budget_seconds": null,
+  "time_limit": "none (local laptop)",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux 6.18.55 x86_64",
+    "cpu_count": 9,
+    "threads": 4
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "pairs1",
+      "command": [
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/build_cache/parallel_general",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs1.txt",
+        "2",
+        "inf",
+        "4",
+        "256"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 0.10583930000029795,
+      "returncode": 0
+    },
+    {
+      "name": "pairs2",
+      "command": [
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/build_cache/parallel_general",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs2.txt",
+        "2",
+        "inf",
+        "4",
+        "256"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 0.09009738000168,
+      "returncode": 0
+    },
+    {
+      "name": "pairs3",
+      "command": [
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/build_cache/parallel_general",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/rank7_pairs3.txt",
+        "2",
+        "inf",
+        "4",
+        "256"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 0.045418207000693656,
+      "returncode": 0
+    },
+    {
+      "name": "selfdual",
+      "command": [
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/build_cache/selfdual_fast",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems/system7sd.txt",
+        "7",
+        "2",
+        "inf",
+        "4"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 0.27152577899869357,
+      "returncode": 0
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "compilation:selfdual_fast",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/code/enumerate_selfdual_fast.cpp",
+        "-o",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/build_cache/selfdual_fast"
+      ],
+      "started_elapsed_seconds": 0.0017142429987870855,
+      "returncode": 0,
+      "elapsed_seconds": 12.86128003399972
+    },
+    {
+      "phase": "compilation:parallel_general",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/code/enumerate_parallel.cpp",
+        "-o",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/build_cache/parallel_general"
+      ],
+      "started_elapsed_seconds": 12.86394958100027,
+      "returncode": 0,
+      "elapsed_seconds": 1.920091328000126
+    },
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/code/export_tables.py",
+        "--rank",
+        "7",
+        "--input",
+        "/workspace/scratch/17929c6a8155/deep_package_validation/census/rank7_M2/parameters.txt",
+        "--systems",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/systems",
+        "--output",
+        "/workspace/scratch/17929c6a8155/deep_package_validation/census/rank7_M2/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 15.304512830000021,
+      "returncode": 0,
+      "elapsed_seconds": 0.0725112869986333
+    },
+    {
+      "phase": "compilation:verify_tables",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/code/verify_tables.cpp",
+        "-o",
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/build_cache/verify_tables"
+      ],
+      "started_elapsed_seconds": 15.378487432999464,
+      "returncode": 0,
+      "elapsed_seconds": 2.6045253529991896
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/workspace/scratch/17929c6a8155/Fusion_Census_Deep_Optimized/build_cache/verify_tables",
+        "/workspace/scratch/17929c6a8155/deep_package_validation/census/rank7_M2/FusionRingMultiplicationTables.txt",
+        "/workspace/scratch/17929c6a8155/deep_package_validation/census/rank7_M2/independent_check",
+        "--exhaustive"
+      ],
+      "started_elapsed_seconds": 17.98425917699933,
+      "returncode": 0,
+      "elapsed_seconds": 0.037862937000681995
+    }
+  ],
+  "code_sha256": "9177263413f1e4c775e5a81aa802a683d119de5af1123a8b9991b23daa1b0658",
+  "elapsed_seconds": 18.13105379999979,
+  "compilation_seconds": 14.784748691999994,
+  "expected_strata": [
+    "pairs1",
+    "pairs2",
+    "pairs3",
+    "selfdual"
+  ],
+  "enumeration_seconds": 0.514791924999372,
+  "counts": {
+    "1": 43,
+    "2": 319
+  },
+  "classes": 362,
+  "sort_export_seconds": 0.07820393099973444,
+  "verifier_compilation_seconds": 2.6058209470011207,
+  "independent_verification_seconds": 0.039056448000337696,
+  "independent_verification": {
+    "input_records": 362,
+    "input_physical_lines": 362,
+    "distinct_rings": 362,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "all unit-fixing permutations",
+    "permutations_examined": 260640,
+    "elapsed_seconds": 0.035703184
+  },
+  "existing_prefix_checked_through": 2,
+  "parameters.txt_sha256": "23c90153eaade048e505cecefc8dadc828232f896bdbfdd090293fa2233efdcc",
+  "FusionRingMultiplicationTables.txt_sha256": "7176d68e644d7efbe8ce1b1999298780156dedfe1e00a8520167b91e15ab262d",
+  "compression_seconds": 0.10756380299972079,
+  "outcome": "verified_complete"
+}

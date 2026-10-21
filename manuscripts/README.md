@@ -9,8 +9,8 @@ Each companion gives definitions, a rank-specific coverage argument, exact count
 | 5 | 20 | 40,999 | [PDF](rank5.pdf) · [LaTeX](rank5.tex) |
 | 6 | 9 | 25,421 | [PDF](rank6.pdf) · [LaTeX](rank6.tex) |
 | 7 | 5 | 10,006 | [PDF](rank7.pdf) · [LaTeX](rank7.tex) |
-| 8 | 2 | 973 | [PDF](rank8.pdf) · [LaTeX](rank8.tex) |
+| 8 | 3 | 4,500 | [PDF](rank8.pdf) · [LaTeX](rank8.tex) |
 
-Rank-7 completeness through multiplicity 5 is producer-reported; the new tensors and their uniqueness were independently verified. The supplied archive omits the modified enumeration source. See [the qualification](../verification/rank7/README.md).
+Rank-7 completeness through multiplicity 5 is producer-reported; the new tensors and their uniqueness were independently verified. The complete optimized source is now supplied and hash-matched; full searches at rank 7 through 5 and rank 8 through 3 were not independently rerun. See [the qualification](../verification/rank7/README.md).
 
 Rebuild with `python3 scripts/build_manuscripts.py --compile`, or select one companion with `--ranks 6 --compile`. Counts and the displayed release date are read from the same manifest as the repository front page.

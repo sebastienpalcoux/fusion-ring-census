@@ -4,7 +4,7 @@
 
 [Data](#complete-datasets) · [Manuscripts](manuscripts/README.md) · [Run & verify](docs/REPRODUCIBILITY.md) · [OEIS](oeis/README.md) · [Evidence](verification/README.md)
 
-1,427,282 distinct classes in the released datasets. Every duality
+1,430,809 distinct classes in the released datasets. Every duality
 type is included, including noncommutative rings. No categorifiability filter.
 
 **Companion repository:** [Grothendieck Ring Classification](https://github.com/sebastienpalcoux/grothendieck-ring-classification)
@@ -24,11 +24,15 @@ a theoretical dimension bound followed by exact finite certification. For the
 pivotal case, see Jingcheng Dong, Sébastien Palcoux and Arnaud Plessis,
 [*Classifying Grothendieck rings of pivotal fusion categories of rank four*](https://arxiv.org/abs/2609.33272).
 
-At rank eight, the classification through multiplicity two comprises **896
-exclusions and 77 unitary models**. The inner-square rigidity argument excludes
-`R8_2_24` over the complex numbers. The general questions `R6_4_155` and
-`R6_8_1660` remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
-for the precise proof scope and necessary constraints.
+At rank eight, the new exact-multiplicity-three band has **3,479 general
+exclusions, 14 unitary models and 34 unresolved categorification candidates**
+among its 3,527 supplied rings. Together with the earlier 896 exclusions and
+77 unitary models through multiplicity two, this gives **4,375 general
+exclusions, 91 unitary models and 34 unresolved rings** among 4,500 supplied
+rank-eight rings. The candidates are not asserted fusion categories or
+established exotic examples. The general questions `R6_4_155` and
+`R6_8_1660` also remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
+for the precise proof scope and individual attempt records.
 
 At rank seven through multiplicity five, the companion classification resolves
 all **10,006 supplied tensors: 9,976 general exclusions, 30 known unitary models
@@ -64,7 +68,7 @@ m**. A dash means *not yet completely enumerated*, never zero.
 |---:|---:|---:|---:|---:|---:|---:|
 | 1 | 4 | 10 | 16 | 39 | 43 | 96 |
 | 2 | 3 | 17 | 37 | 154 | 319 | 877 |
-| 3 | 4 | 24 | 82 | 384 | 1,059 | — |
+| 3 | 4 | 24 | 82 | 384 | 1,059 | 3,527 |
 | 4 | 6 | 45 | 134 | 872 | 2,780 | — |
 | 5 | 5 | 55 | 209 | 1,582 | 5,805 | — |
 | 6 | 9 | 81 | 336 | 2,768 | — | — |
@@ -209,8 +213,10 @@ Bounds and totals below are cumulative: all rings of multiplicity **at most M**.
 
 **Rank 7 through 5:** the producer reports a completed exhaustive run. Fresh
 checks certify all 10,006 tensors and their uniqueness, including 5,805 new
-exact-multiplicity-5 classes. The modified enumeration source was not included
-in the supplied archive, so completeness has not been independently reproduced.
+exact-multiplicity-5 classes. The complete optimized source was subsequently
+supplied and its hash matches the producer run; full enumeration has not been
+independently reproduced. Rank 8 through 3 contains 4,500 checked tensors,
+including 3,527 new exact-multiplicity-3 classes, with the same qualification.
 See [the source qualification](verification/rank7/README.md).
 
 | Rank | Complete through | Classes in total | Data | Companion |
@@ -220,7 +226,7 @@ See [the source qualification](verification/rank7/README.md).
 | 5 | 20 | 40,999 | [Tensors](results/rank5/tables.txt.gz) · [Counts](results/rank5/counts.csv) | [PDF](manuscripts/rank5.pdf) · [TeX](manuscripts/rank5.tex) |
 | 6 | 9 | 25,421 | [Tensors](results/rank6/tables.txt.gz) · [Counts](results/rank6/counts.csv) | [PDF](manuscripts/rank6.pdf) · [TeX](manuscripts/rank6.tex) |
 | 7 | 5 | 10,006 | [Tensors](results/rank7/tables.txt.gz) · [Counts](results/rank7/counts.csv) | [PDF](manuscripts/rank7.pdf) · [TeX](manuscripts/rank7.tex) |
-| 8 | 2 | 973 | [Tensors](results/rank8/tables.txt.gz) · [Counts](results/rank8/counts.csv) | [PDF](manuscripts/rank8.pdf) · [TeX](manuscripts/rank8.tex) |
+| 8 | 3 | 4,500 | [Tensors](results/rank8/tables.txt.gz) · [Counts](results/rank8/counts.csv) | [PDF](manuscripts/rank8.pdf) · [TeX](manuscripts/rank8.tex) |
 
 Each tensor uses basis unit 0 and ordered coefficients `N[i][j][k]`. Data are
 gzip-compressed, with one full tensor per line. The [manifest](results/census.json)

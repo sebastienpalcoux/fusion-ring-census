@@ -1,6 +1,6 @@
 {
-  "version": "0.2.3",
-  "release_date": "2026-10-19",
+  "version": "0.2.4",
+  "release_date": "2026-10-21",
   "scope": "All fusion rings in the stated complete whole-rank regions; all duality types; no categorifiability filter.",
   "publication_status": "Public GitHub repository.",
   "ranks": {
@@ -1242,28 +1242,36 @@
       "parameters": "results/rank7/parameters.txt.gz",
       "parameters_gz_sha256": "ae746f708cfa349e76ea528ef5b600447e108a0e5dd384bd20ba5827edcd032d",
       "parameters_uncompressed_sha256": "7ddbed80fe2287ef5e2ac74c2aa662fe0d8ed84664e3ce77ebdcfa4b7fab9732",
-      "completeness_basis": "Producer-reported completed exhaustive enumeration; optimized enumeration source not bundled in supplied archive.",
+      "completeness_basis": "Producer-reported completed exhaustive enumeration; complete optimized enumeration source supplied and audited, but full search not independently rerun.",
       "independent_enumeration_rerun": false,
-      "independent_verification_scope": "Tensor axioms, all unit-fixing relabellings, parameter export, exact old tensor-set prefix, hashes and counts."
+      "independent_verification_scope": "Tensor axioms, all unit-fixing relabellings, parameter export, exact old tensor-set prefix, hashes and counts.",
+      "enumeration_source_bundled": true,
+      "enumeration_source_available": true
     },
     "8": {
       "rank": 8,
-      "bound": 2,
+      "bound": 3,
       "complete": true,
       "verified": true,
-      "classes": 973,
+      "classes": 4500,
       "counts": {
         "1": 96,
-        "2": 877
+        "2": 877,
+        "3": 3527
       },
       "verification_reports": "verification/rank8/",
       "tables": "results/rank8/tables.txt.gz",
-      "tables_gz_sha256": "35a8d69e9af8c873b3003890218a35b38b792abb89c19066f6705bf9c1c1d1ed",
-      "tables_uncompressed_sha256": "97b86d2de8ca0352c5c6e14686cd1d43dbd52180dc53b2ff1ccf7a61788c9600",
+      "tables_gz_sha256": "1003a7684ec62797e63885eeb5af42fd094adc9ff3fec6caf049620b3afd0952",
+      "tables_uncompressed_sha256": "7baaa0a2018e11a0464c3f19da9030195421f04a73806c22363cf9d5eeb92a84",
       "parameters": "results/rank8/parameters.txt.gz",
-      "parameters_gz_sha256": "8d36556d0c350fbae174dbb7f693eaedff8b328fb56d89a422a6c22391aad1ee",
-      "parameters_uncompressed_sha256": "cb9d84fb05ef00f572d59a3a5df4609a83ec00a793d8afed4f74c405469d09b7"
+      "parameters_gz_sha256": "7b7e6d34963672e9a4d177ae8ba66d4b822863d736da350f870f0a5e95649935",
+      "parameters_uncompressed_sha256": "0c72c617e14fecaa0d4fd0fe7d4513b24d6c7187838c003a7542002f568d1c46",
+      "completeness_basis": "Producer-reported completed exhaustive enumeration; complete optimized enumeration source supplied and audited, but full search not independently rerun.",
+      "enumeration_source_bundled": true,
+      "independent_enumeration_rerun": false,
+      "independent_verification_scope": "Tensor axioms, all unit-fixing relabellings, parameter export, exact previous tensor and parameter sequence, hashes and counts.",
+      "enumeration_source_available": true
     }
   },
-  "total_classes": 1427282
+  "total_classes": 1430809
 }

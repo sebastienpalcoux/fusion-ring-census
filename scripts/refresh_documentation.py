@@ -62,8 +62,10 @@ Bounds and totals below are cumulative: all rings of multiplicity **at most M**.
 
 **Rank 7 through 5:** the producer reports a completed exhaustive run. Fresh
 checks certify all 10,006 tensors and their uniqueness, including 5,805 new
-exact-multiplicity-5 classes. The modified enumeration source was not included
-in the supplied archive, so completeness has not been independently reproduced.
+exact-multiplicity-5 classes. The complete optimized source was subsequently
+supplied and its hash matches the producer run; full enumeration has not been
+independently reproduced. Rank 8 through 3 contains 4,500 checked tensors,
+including 3,527 new exact-multiplicity-3 classes, with the same qualification.
 See [the source qualification](verification/rank7/README.md).
 
 {chr(10).join(coverage)}
@@ -120,14 +122,15 @@ Parameter files contain generator coordinates, not additional classes.
 
 Each released list has independently verified valid, distinct tensors.
 Rank-7 completeness through multiplicity 5 is producer-reported: the supplied
-archive omits the modified enumeration source, and enumeration was not rerun.
+complete optimized source is now supplied and hash-matched, but enumeration
+was not rerun. The same qualification applies to rank 8 through multiplicity 3.
 See [the rank-7 qualification](../verification/rank7/README.md).
 See [verification](../verification/README.md)
 and [reproduction](../docs/REPRODUCIBILITY.md).
 ''')
  index=['# Mathematical companions','','Each companion gives definitions, a rank-specific coverage argument, exact counts, independent verification and reproduction commands. They are computational research notes, not claims of journal publication.','','| Rank | Complete through | Classes | Read |','|---:|---:|---:|---|']
  for r,v in ranks.items():index.append(f'| {r} | {v["bound"]} | {v["classes"]:,} | [PDF](rank{r}.pdf) · [LaTeX](rank{r}.tex) |')
- index+=['','Rank-7 completeness through multiplicity 5 is producer-reported; the new tensors and their uniqueness were independently verified. The supplied archive omits the modified enumeration source. See [the qualification](../verification/rank7/README.md).','','Rebuild with `python3 scripts/build_manuscripts.py --compile`, or select one companion with `--ranks 6 --compile`. Counts and the displayed release date are read from the same manifest as the repository front page.','']
+ index+=['','Rank-7 completeness through multiplicity 5 is producer-reported; the new tensors and their uniqueness were independently verified. The complete optimized source is now supplied and hash-matched; full searches at rank 7 through 5 and rank 8 through 3 were not independently rerun. See [the qualification](../verification/rank7/README.md).','','Rebuild with `python3 scripts/build_manuscripts.py --compile`, or select one companion with `--ranks 6 --compile`. Counts and the displayed release date are read from the same manifest as the repository front page.','']
  (ROOT/'manuscripts/README.md').write_text('\n'.join(index))
  assigned={3:'A354471',4:'A354472',5:'A354473'};impact=[]
  for r,v in ranks.items():
@@ -158,7 +161,7 @@ from `results/census.json`.
 | A354473 | Rank 5; multiplicity varies | 1–{ranks['5']['bound']} | [b-file](b354473.txt) |
 | A348305 | Multiplicity 1; rank varies | 1–9¹ | [b-file](b348305.txt) |
 | A354475 | Multiplicity 2; rank varies | 1–8 | [b-file](b354475.txt) |
-| A354476 | Multiplicity 3; rank varies | 1–7 | [b-file](b354476.txt) |
+| A354476 | Multiplicity 3; rank varies | 1–8 | [b-file](b354476.txt) |
 | A354477 | Multiplicity 4; rank varies | 1–7 | [b-file](b354477.txt) |
 
 ¹ The rank-nine value 142 is retained from the reference census; it is not an
@@ -179,13 +182,14 @@ Suggested comment:
 The independent census extends the rank-5 draft through 20, with **a(20)=6866**.
 The multiplicity-2 draft includes **A354475: a(8)=877**; the multiplicity-4 draft
 includes **A354477: a(7)=2780**. The multiplicity-3 draft includes
-**A354476: a(7)=1059**. Fixed-rank files include
+**A354476: a(7)=1059 and a(8)=3527**. Fixed-rank files include
 **c₆({ranks['6']['bound']})={ranks['6']['counts'][str(ranks['6']['bound'])]}**,
 **c₇({ranks['7']['bound']})={ranks['7']['counts'][str(ranks['7']['bound'])]}** and
 **c₈({ranks['8']['bound']})={ranks['8']['counts'][str(ranks['8']['bound'])]}**.
 Tensor validity and uniqueness have been independently checked. The new rank-7
 term **c₇(5)=5805** relies on producer-reported enumeration completeness;
-the modified enumeration source was not supplied and the search was not rerun.
+the complete optimized source was subsequently supplied and hash-matched,
+but the full search was not rerun. This also applies to c₈(3)=3527.
 Retain [this qualification](../verification/rank7/README.md) in any submission.
 
 ## Before submitting
@@ -225,8 +229,9 @@ def write_release_evidence(data):
 Every released census covers the entire rank, including every duality type.
 Completeness uses the exhaustive search argument and normally completed enumeration;
 independent tensor checks establish validity and uniqueness. At rank 7 through
-multiplicity 5, completion is producer-reported, and the modified enumeration
-source was not supplied. See [the rank-7 qualification](rank7/README.md).
+multiplicity 5 and rank 8 through multiplicity 3, completion is producer-reported.
+The complete optimized sources are now supplied and hash-matched, but the full
+searches have not been independently rerun. See [the rank-7 qualification](rank7/README.md).
 
 {chr(10).join(rows)}
 
@@ -313,14 +318,23 @@ tensor axioms, 7,204,320 unit-fixing permutations, zero duplicate classes,
 byte-identical parameter re-export, and exact tensor-set agreement with the
 previous 4,201-class prefix. These checks did not rerun enumeration.
 
-The producer used an optimized local source package based on commit
-`d4c36cc2ee5eb5f0e5291de18d2bb433ffb7ce8b`. The archive contains source hashes
-and logs, but omits the modified enumeration sources. Therefore enumeration
-completeness remains **producer-reported**, not independently reproduced in
-this release. The original receipt, logs and previous audit are retained under
-[rank7](../verification/rank7/README.md). The available repository enumerator
-can attempt an independent rerun; matching its source to the producer's modified
-implementation is not claimed.
+The complete optimized package was supplied on 21 October 2026. Its aggregate
+code hash `9177263413f1e4c775e5a81aa802a683d119de5af1123a8b9991b23daa1b0658`
+exactly matches both producer run records. Numerical C++ sources are integrated
+unchanged, with the launcher adjusted to use a local executable cache. Finite
+pruning audits and bounded baseline comparisons are separate from a full rerun.
+Completeness remains **producer-reported**, not independently reproduced.
+
+### Rank-8 multiplicity-3 extension
+
+The new release contains 4,500 classes: 96, 877 and 3,527 at exact
+multiplicities 1, 2 and 3. The producer reports normal completion of all four
+strata in 62,292 seconds. Fresh local verification checks all tensor axioms
+and 22,680,000 unit-fixing permutations, with no duplicates. Parameter export
+is byte-identical. Filtering to multiplicity at most two recovers all 973
+previous tensors and parameter records in their original order. The full
+search was not independently rerun. See [rank8](../verification/rank8/README.md)
+and [the optimization integration](../verification/optimization_20261021/README.md).
 
 ## Mathematical sources
 

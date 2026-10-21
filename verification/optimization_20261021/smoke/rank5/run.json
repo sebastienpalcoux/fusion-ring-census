@@ -1,0 +1,135 @@
+{
+  "rank": 5,
+  "bound": 2,
+  "threads": 2,
+  "enumeration_budget_seconds": 90.0,
+  "time_limit": "bounded",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux 6.18.55 x86_64",
+    "cpu_count": 9,
+    "threads": 2
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "nonselfdual",
+      "command": [
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/rank5_ns",
+        "2"
+      ],
+      "allowance_seconds": 89.99999957100044,
+      "elapsed_seconds": 0.003968657999394054,
+      "returncode": 0
+    },
+    {
+      "name": "selfdual",
+      "command": [
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/rank5_sd",
+        "2"
+      ],
+      "allowance_seconds": 89.99579409099988,
+      "elapsed_seconds": 0.008097447999716678,
+      "returncode": 0
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "compilation:rank5_ns",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/code/rank5/enumerate_nonselfdual.cpp",
+        "-o",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/rank5_ns"
+      ],
+      "started_elapsed_seconds": 0.0019008369999937713,
+      "returncode": 0,
+      "elapsed_seconds": 1.4977616589994796
+    },
+    {
+      "phase": "compilation:rank5_sd",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/code/rank5/enumerate_selfdual.cpp",
+        "-o",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/rank5_sd"
+      ],
+      "started_elapsed_seconds": 1.5004929509996145,
+      "returncode": 0,
+      "elapsed_seconds": 2.335068634999516
+    },
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/code/export_tables.py",
+        "--rank",
+        "5",
+        "--input",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank5/parameters.txt",
+        "--systems",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/systems",
+        "--output",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank5/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 3.849238623999554,
+      "returncode": 0,
+      "elapsed_seconds": 0.03613459799998964
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/verify_tables",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank5/FusionRingMultiplicationTables.txt",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank5/independent_check",
+        "--exhaustive"
+      ],
+      "started_elapsed_seconds": 3.8864355869991414,
+      "returncode": 0,
+      "elapsed_seconds": 0.0031671560000177124
+    }
+  ],
+  "code_sha256": "13c244e3eb7988c1cc32f9494a9a23c84c4fdd16661cb351d99d021c76bf7dcb",
+  "elapsed_seconds": 3.8929001869992135,
+  "compilation_seconds": 3.8361191709991544,
+  "expected_strata": [
+    "nonselfdual",
+    "selfdual"
+  ],
+  "enumeration_seconds": 0.012503216999903088,
+  "counts": {
+    "1": 16,
+    "2": 37
+  },
+  "classes": 53,
+  "sort_export_seconds": 0.037103026999830035,
+  "verifier_compilation_seconds": 8.076199992501643e-05,
+  "independent_verification_seconds": 0.004211741999824881,
+  "independent_verification": {
+    "input_records": 53,
+    "input_physical_lines": 53,
+    "distinct_rings": 53,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "all unit-fixing permutations",
+    "permutations_examined": 1272,
+    "elapsed_seconds": 0.001310855
+  },
+  "parameters.txt_sha256": "a50c842126fd78177f50c05f41eac5eaf08798a8d8e7b7f2caf38fe60bf25150",
+  "FusionRingMultiplicationTables.txt_sha256": "e780e284dabc46d134303efc342b3107b8c236c7045c8588c98522af4f724493",
+  "compression_seconds": 0.0026607700001477497,
+  "outcome": "verified_complete"
+}

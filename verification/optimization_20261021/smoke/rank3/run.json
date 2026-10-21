@@ -1,0 +1,123 @@
+{
+  "rank": 3,
+  "bound": 2,
+  "threads": 2,
+  "enumeration_budget_seconds": 90.0,
+  "time_limit": "bounded",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux 6.18.55 x86_64",
+    "cpu_count": 9,
+    "threads": 2
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "all",
+      "command": [
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/rank3",
+        "2",
+        "--emit"
+      ],
+      "allowance_seconds": 89.99999955399926,
+      "elapsed_seconds": 0.004044401000101061,
+      "returncode": 0
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "compilation:rank3",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/code/rank3_census.cpp",
+        "-o",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/rank3"
+      ],
+      "started_elapsed_seconds": 0.001187822999781929,
+      "returncode": 0,
+      "elapsed_seconds": 0.4211972439998135
+    },
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/code/export_tables.py",
+        "--rank",
+        "3",
+        "--input",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank3/parameters.txt",
+        "--systems",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/systems",
+        "--output",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank3/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 0.42754846299976634,
+      "returncode": 0,
+      "elapsed_seconds": 0.029767950999485038
+    },
+    {
+      "phase": "compilation:verify_tables",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "/workspace/scratch/c6bc6c0ab2e1/fusion-ring-census/code/verify_tables.cpp",
+        "-o",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/verify_tables"
+      ],
+      "started_elapsed_seconds": 0.4583307570001125,
+      "returncode": 0,
+      "elapsed_seconds": 2.0087283230004687
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/build-cache/verify_tables",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank3/FusionRingMultiplicationTables.txt",
+        "/workspace/scratch/c6bc6c0ab2e1/census-checks/smoke/rank3/independent_check",
+        "--exhaustive"
+      ],
+      "started_elapsed_seconds": 2.4680548460000864,
+      "returncode": 0,
+      "elapsed_seconds": 0.002716619999773684
+    }
+  ],
+  "code_sha256": "13c244e3eb7988c1cc32f9494a9a23c84c4fdd16661cb351d99d021c76bf7dcb",
+  "elapsed_seconds": 2.472160325999539,
+  "compilation_seconds": 0.42294364999997924,
+  "expected_strata": [
+    "all"
+  ],
+  "enumeration_seconds": 0.004248318999998446,
+  "counts": {
+    "1": 4,
+    "2": 3
+  },
+  "classes": 7,
+  "sort_export_seconds": 0.0304582560002018,
+  "verifier_compilation_seconds": 2.0100225810001575,
+  "independent_verification_seconds": 0.003532773000188172,
+  "independent_verification": {
+    "input_records": 7,
+    "input_physical_lines": 7,
+    "distinct_rings": 7,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "all unit-fixing permutations",
+    "permutations_examined": 14,
+    "elapsed_seconds": 0.000511128
+  },
+  "parameters.txt_sha256": "07cad0bc6a688cda11d91bdedb81fb0b2e558271380b526b78883f1a907c3d2e",
+  "FusionRingMultiplicationTables.txt_sha256": "daac220698776d522a28d16fe086545f8c348c70638c2b673682ad025edc6880",
+  "compression_seconds": 0.000721053000233951,
+  "outcome": "verified_complete"
+}

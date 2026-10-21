@@ -1,0 +1,23 @@
+{
+  "archive": "rank8_multiplicity2_verified.zip",
+  "archive_sha256": "cce78e3f1c698ee674629ba405750e260dd6b1e2f059657d30f6bd022ad243fe",
+  "received_date": "2026-09-21",
+  "source": {
+    "repository": "https://github.com/sebastienpalcoux/fusion-ring-census",
+    "commit": "942dbd9c4f4149479e51acb1224f3c71ca47a64b",
+    "scope": "unmodified code, systems and methods from this revision; no tensor datasets bundled"
+  },
+  "previous_baseline": {
+    "rank": 8,
+    "bound": 1,
+    "classes": 96,
+    "counts": {
+      "1": 96
+    },
+    "tables_uncompressed_sha256": "4ddf6402afff4f19ae4513ae63422cf73c327c605aa50cdcae731941de272ee7",
+    "parameters_uncompressed_sha256": "51417e64cb301b32508266e59ed81ea4144b76b4c2a5403de7369ad3e1dcbca1"
+  },
+  "verification_run_url": "https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35553424461",
+  "raw_archive_contents_commit": "b5e15383c75f46e1d00679a3815dc56e638f4a56",
+  "raw_archive_contents_path": "verification/candidates/rank8"
+}

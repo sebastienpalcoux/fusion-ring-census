@@ -6,7 +6,7 @@
 \definecolor{ink}{HTML}{163348}\definecolor{accent}{HTML}{147D83}
 \hypersetup{colorlinks=true,linkcolor=ink,urlcolor=accent,citecolor=accent,pdfauthor={Sébastien Palcoux}}
 \pagestyle{fancy}\fancyhf{}\fancyhead[L]{\sffamily\small FUSION RING CENSUS}
-\fancyhead[R]{\sffamily\small Rank \Rank}\fancyfoot[L]{\sffamily\footnotesize Computational companion \textbullet\ September 2026}
+\fancyhead[R]{\sffamily\small Rank \Rank}\fancyfoot[L]{\sffamily\footnotesize Computational companion \textbullet\ October 2026}
 \fancyfoot[R]{\sffamily\small\thepage}\renewcommand{\headrulewidth}{0.4pt}
 \newtheorem{theorem}{Theorem}[section]\newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}\newtheorem{corollary}[theorem]{Corollary}
@@ -21,10 +21,10 @@
 \thispagestyle{empty}{\sffamily\small\color{accent} EXACT ENUMERATION / DATA / VERIFICATION}\par\vspace{1cm}
 {\sffamily\Huge\bfseries\color{ink} Rank-8 fusion rings\par}
 \vspace{0.35cm}
-{\sffamily\Large A reproducible census through multiplicity 2\par}
-\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 23 September 2026}\par\vspace{0.8cm}
+{\sffamily\Large A verified dataset through multiplicity 3\par}
+\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 21 October 2026}\par\vspace{0.8cm}
 \begin{abstract}
-We explain the exact enumeration of all based fusion rings of rank 8 through multiplicity 2, comprising 973 isomorphism classes. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
+We document 4,500 verified based-isomorphism classes of fusion rings of rank 8 through multiplicity 3, including 3,527 at the maximum multiplicity. The producer reports a complete enumeration. The complete optimized source is supplied and hash-matched, but full enumeration has not been independently reproduced. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
 \end{abstract}\vspace{0.4cm}\noindent\textbf{AI-generated research \textperiodcentered\ independent verification pending.} This manuscript, its code and data were developed with AI assistance. Independent human verification and Lean formalization are pending. Treat the results with caution: exact computational checks establish only their stated scope.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage
 
 \section{Objects, equivalence and the counting convention}
@@ -73,7 +73,7 @@ Different $p$ cannot be isomorphic. Therefore a whole-rank census is complete
 exactly when every required stratum has been searched exhaustively. Finishing
 only the non-self-dual strata does not certify a whole-rank counting term.
 \section{The certified release at rank 8}
-The released bound is $M=2$ and the cumulative number of classes is $C_{8}(2)=973$. Every duality type is included. The accompanying full tensor file has one record per based-isomorphism class.
+The released bound is $M=3$ and the cumulative number of classes is $C_{8}(3)=4,500$. Every duality type is included. The accompanying full tensor file has one record per based-isomorphism class.
 
 The rank-eight implementation extends the general solver, not the commutative rank-five specialization. Its self-dual system has 84 variables and 231 equations. The inherited fixed-size arrays were therefore replaced by dynamically sized linear-algebra workspaces before this rank was enabled. All four duality types are included in the release.
 
@@ -87,9 +87,53 @@ The rank-eight implementation extends the general solver, not the commutative ra
 \begin{center}\begin{tabular}{rr}\toprule Exact multiplicity $m$ & $c_{\Rank}(m)$\\\midrule
 1 & 96\\
 2 & 877\\
+3 & 3,527\\
 \bottomrule\end{tabular}\end{center}
 
 The data and their checksums are recorded in \path{results/census.json}. The corresponding completed-run evidence and independent audit are under \path{verification/rank8/}.
+
+The fresh audit for this dataset ran locally, checking 22,680,000 unit-fixing permutations across all 4,500 tensors. It found no duplicate classes and confirmed every exact-multiplicity count. This audit did not rerun enumeration, and no hosted audit is claimed for this dataset.
+
+\subsection{Source qualification and optimized enumeration}
+The new multiplicity-three band consists of $3,527$ tensors. By number of
+nontrivial dual pairs $p=0,1,2,3$, its counts are $2,152$, $972$, $362$ and
+$41$; $85$ are noncommutative. The producer reports normal completion in
+$62,292$ seconds, including $61,908$ seconds for the self-dual stratum.
+These are producer timings, not timings from the independent check.
+
+The complete optimized enumeration source was supplied. Its aggregate code
+hash matches the producer records for both rank seven through five and rank
+eight through three. Numerical C++ sources are integrated unchanged; only
+launcher executable-cache handling was adjusted. Necessary finite-domain
+support projections and self-dual moment identities are documented in
+\path{methods/OPTIMIZATIONS.md}, \path{methods/SELFDUAL_PROOF.md} and
+\path{methods/GAUSSIAN_AUDIT.md}. Witness resource caps disable pruning
+for the branch; truncated witness lists cannot reject a solution.
+
+Fresh independent checks establish the fusion axioms and uniqueness of all
+$4,500$ tensors under $22,680,000$ unit-fixing permutations. Parameter re-export
+is byte-identical. Filtering to multiplicity at most two recovers all $973$
+previous tensors and parameter records in their original order. Full exhaustive
+enumeration was not independently rerun; completeness remains producer-reported.
+The fresh and producer checks are preserved separately under
+\path{verification/rank8/}.
+
+\paragraph{Categorification in the companion project.}
+As of 21 October 2026, the
+\href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md}{companion classification}
+records 3,479 general complex exclusions, 14 unitary constructions and 34
+unresolved categorification candidates among the 3,527 supplied rings of
+exact multiplicity three. The earlier classification through multiplicity
+two retains its 896 exclusions and 77 unitary models. Thus the cumulative
+inventory of 4,500 supplied rank-eight rings consists of 4,375 general
+exclusions, 91 unitary models and 34 unresolved cases.
+Each remaining tensor has an individual attempt record. These candidates
+are not asserted fusion categories or established exotic examples;
+a unitary-only exclusion leaves the general complex question unresolved.
+The companion project records full model tensors, exact certificates and
+the hypotheses of the categorical reductions. These categorification
+decisions do not alter the census or its enumeration-completeness
+qualification above.
 
 \section{An exhaustive finite-domain model}
 \subsection{Coordinates directly from reciprocity}
@@ -152,9 +196,10 @@ lexicographic minimality proves uniqueness. Finally, duality types are disjoint
 and exhaust all possibilities.
 \end{proof}
 
-A parallel run partitions a fixed coordinate prefix into all bounded assignments.
-The resulting subtrees are disjoint and their union is the original tree. A run
-is marked complete only after every prefix finishes. A time limit is not a
+A parallel run adaptively splits prefix subtrees into every bounded value of
+the next unfixed coordinate. The resulting frontier subtrees are disjoint and
+their union is the original tree. A run is marked complete only after every
+frontier subtree finishes. A time limit is not a
 mathematical rejection rule: a timeout leaves the larger census uncertified.
 
 \section{Self-dual reconstruction from one multiplication matrix}
@@ -278,11 +323,11 @@ retains the completed enumeration, commands, environment, phase timings and
 nonempty subprocess logs. Every required duality stratum completed normally;
 independent canonicalization found zero duplicate classes.
 
-The independent checks of ranks five through eight ran on GitHub using the
-supplied tensors. They did not rerun enumeration. The per-rank reports identify
-the exact verification revision and run, and certify agreement with the established
-exact-multiplicity count prefix. See \path{verification/README.md} for the evidence
-index and \path{docs/PROVENANCE.md} for attribution.
+Independent checks use the supplied tensors; they do not rerun enumeration.
+The per-rank reports identify the verification environment and source revision,
+and certify agreement with the established exact-multiplicity count prefix.
+Hosted audits and local checks are identified separately in
+\path{verification/README.md}; see \path{docs/PROVENANCE.md} for attribution.
 
 The local launcher has no clock limit, while the manual hosted workflow uses a
 finite shared deadline covering every computational phase. A timeout never
@@ -303,12 +348,14 @@ mathematical coverage arguments and independent integer checks. These checks
 are not a formal proof in a proof assistant. The present text is an explanatory
 computational companion, not a claim of journal acceptance or external peer review.
 
+For this rank-seven extension, the completed-search and source qualification in Section 2 applies throughout: independent output checks do not establish completeness of the unavailable modified enumeration code.
+
 \par\noindent\begin{minipage}{\linewidth}
 \section{Reproduction commands}
 From the repository root on a local computer, request a complete run with no clock limit. An interruption does not certify a smaller census.
 \par\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}
-python3 scripts/run_laptop.py --rank 8 --bound 2
+python3 scripts/run_laptop.py --rank 8 --bound 3
 \end{lstlisting}
 \end{minipage}\par
 To verify the supplied release without recomputing it:
