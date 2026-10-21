@@ -33,7 +33,7 @@ rank-eight rings. The candidates are not asserted fusion categories or
 established exotic examples. The general questions `R6_4_155` and
 `R6_8_1660` also remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
 for the precise proof scope and individual attempt records.
-These counts are bound to the [reviewed research checkpoint `fe94da2a`](https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/fe94da2af3c611279a4b98f874eb860e8289a39d). Aggregate release verification is pending.
+These counts are bound to the [classification main snapshot `95f38175`](https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/95f38175256ba852b6634f88a055b674e920f941). The 108-check canonical normal replay passed; all 8 center checks passed in normal and optimized Python. Optimized core and extracted-package full replays are pending.
 
 At rank seven through multiplicity five, the companion classification resolves
 all **10,006 supplied tensors: 9,976 general exclusions, 30 known unitary models

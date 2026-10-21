@@ -421,8 +421,8 @@ RANK8_CLASSIFICATION_SNAPSHOT = {'date': '2026-10-21',
  'exact': {'excluded': 3504, 'unitarily_realized': 14, 'unresolved': 9},
  'earlier': {'excluded': 896, 'unitarily_realized': 77, 'unresolved': 0},
  'ledger_sha256': 'bc63a1083e72b8ebf2a1a33b53b6046c0a2920a79b9f11c783b230c7cf5d7d83',
- 'classification_commit': 'fe94da2af3c611279a4b98f874eb860e8289a39d',
- 'classification_stage': 'reviewed_research_checkpoint'}
+ 'classification_commit': '95f38175256ba852b6634f88a055b674e920f941',
+ 'classification_stage': 'published_main_normal_verified'}
 
 def rank8_classification(ledger=None):
     """Read an explicit companion ledger, or the last published snapshot.
@@ -479,15 +479,21 @@ def rank8_classification_provenance(summary,markup='markdown'):
     if re.fullmatch(r'[0-9a-f]{40}',commit) is None:
         raise ValueError('Invalid classification provenance commit')
     stage=summary.get('classification_stage')
-    if stage not in {'reviewed_research_checkpoint','certified_release'}:
+    if stage not in {'reviewed_research_checkpoint','published_main_normal_verified','certified_release'}:
         raise ValueError('Invalid classification provenance stage')
-    label='reviewed research checkpoint' if stage=='reviewed_research_checkpoint' else 'classification release'
+    label={'reviewed_research_checkpoint':'reviewed research checkpoint',
+           'published_main_normal_verified':'classification main snapshot',
+           'certified_release':'classification release'}[stage]
     url='https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/'+commit
     if markup=='markdown':link=f'[{label} `{commit[:8]}`]({url})'
     elif markup=='html':link=f'<a href="{url}">{label} <code>{commit[:8]}</code></a>'
     elif markup=='tex':link=r'\href{'+url+'}{'+label+r' \texttt{'+commit[:8]+'}}'
     else:raise ValueError('Unsupported provenance markup')
-    suffix=' Aggregate release verification is pending.' if stage=='reviewed_research_checkpoint' else ''
+    suffix={'reviewed_research_checkpoint':' Aggregate release verification is pending.',
+            'published_main_normal_verified':
+                ' The 108-check canonical normal replay passed; all 8 center checks passed in normal and optimized Python.'
+                ' Optimized core and extracted-package full replays are pending.',
+            'certified_release':''}[stage]
     return 'These counts are bound to the '+link+'.'+suffix
 
 def rank8_classification_readme(summary):
