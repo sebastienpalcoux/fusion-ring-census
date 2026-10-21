@@ -1,0 +1,24 @@
+{
+  "status": "PASS_WITH_CLASSIFICATION_CROSSLINKS_PENDING",
+  "date": "2026-10-21",
+  "stable_recovery_checkpoint": {
+    "commit": "d404c6bba44df197218bbf0d1bf39266e490d72a",
+    "tree": "291e83f23f5cd8d9244268c7258e574fbba903a3",
+    "branch": "codex/rank8-m3-recovery-20261021"
+  },
+  "manifest_total": 1430809,
+  "rank8_classes": 4500,
+  "rank8_exact_m3": 3527,
+  "pending_files": [
+    "README.md",
+    "scripts/build_site.py",
+    "docs/index.html",
+    "scripts/build_manuscripts.py",
+    "manuscripts/rank8.tex",
+    "manuscripts/rank8.pdf"
+  ],
+  "pending_reason": "Companion classification criteria still running; do not freeze final rank8 exclusion/model/residual counts yet.",
+  "independent_full_enumeration_repeated": false,
+  "license_notice_unchanged": true,
+  "tests": "30 Python regression tests, six finite audits, forced-cap comparisons, eight baseline strata, six end-to-end censuses, fresh rank8 full tensor verification and parameter export, all release hashes, clean-checkpoint standalone-package smoke all pass."
+}

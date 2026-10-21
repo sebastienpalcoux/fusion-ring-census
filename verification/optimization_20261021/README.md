@@ -26,6 +26,8 @@ rerun. No missing receipt has been recreated from remembered outcomes.
 - End-to-end small censuses at all six supported ranks, each independently
   verified and checked against the released counts: [summary](fresh_smoke.json)
   and the source-bound `smoke/rank*/run.json` receipts.
+- Fresh extraction of the standalone package built from the durable recovery
+  checkpoint, with verified rank8 M1 launcher execution: [receipt](package_smoke.json).
 - All released compressed and decompressed tensor/parameter hashes:
   [manifest check](manifest_check.json).
 - Fresh rank-8 replay: all 4,500 tensors, 22,680,000 unit-fixing permutations,

@@ -1,0 +1,197 @@
+{
+  "status": "PASS",
+  "package_source": {
+    "repository": "https://github.com/sebastienpalcoux/fusion-ring-census",
+    "commit": "d404c6bba44df197218bbf0d1bf39266e490d72a",
+    "scope": "unmodified code, systems and methods from this revision; no tensor datasets bundled"
+  },
+  "scope": "Clean worktree package built from recovery checkpoint, freshly extracted; checksum-checked launcher completed rank8 M1 with96 independently verified classes. Final publication package should identify its final commit.",
+  "archive_sha256": "951b30c1bad47580e1e13c1f49c268dbaafe4ef932317f878134e6ff286dcb56",
+  "run": {
+    "rank": 8,
+    "bound": 1,
+    "threads": 2,
+    "enumeration_budget_seconds": null,
+    "time_limit": "none (local laptop)",
+    "environment": {
+      "python": "3.12.14",
+      "system": "Linux 6.18.55 x86_64",
+      "cpu_count": 9,
+      "threads": 2
+    },
+    "complete": true,
+    "verified": true,
+    "runs": [
+      {
+        "name": "pairs1",
+        "command": [
+          "/tmp/census-package-local-cache/parallel_general",
+          "/workspace/scratch/c6bc6c0ab2e1/census-checks/package-extraction/Fusion_Census_Laptop/systems/rank8_pairs1.txt",
+          "1",
+          "inf",
+          "2",
+          "128"
+        ],
+        "allowance_seconds": null,
+        "elapsed_seconds": 0.11609704900001816,
+        "returncode": 0
+      },
+      {
+        "name": "pairs2",
+        "command": [
+          "/tmp/census-package-local-cache/parallel_general",
+          "/workspace/scratch/c6bc6c0ab2e1/census-checks/package-extraction/Fusion_Census_Laptop/systems/rank8_pairs2.txt",
+          "1",
+          "inf",
+          "2",
+          "128"
+        ],
+        "allowance_seconds": null,
+        "elapsed_seconds": 0.11560331399959978,
+        "returncode": 0
+      },
+      {
+        "name": "pairs3",
+        "command": [
+          "/tmp/census-package-local-cache/parallel_general",
+          "/workspace/scratch/c6bc6c0ab2e1/census-checks/package-extraction/Fusion_Census_Laptop/systems/rank8_pairs3.txt",
+          "1",
+          "inf",
+          "2",
+          "128"
+        ],
+        "allowance_seconds": null,
+        "elapsed_seconds": 0.05198126199957187,
+        "returncode": 0
+      },
+      {
+        "name": "selfdual",
+        "command": [
+          "/tmp/census-package-local-cache/selfdual_fast",
+          "/workspace/scratch/c6bc6c0ab2e1/census-checks/package-extraction/Fusion_Census_Laptop/systems/system8sd.txt",
+          "8",
+          "1",
+          "inf",
+          "2"
+        ],
+        "allowance_seconds": null,
+        "elapsed_seconds": 0.11792355699981272,
+        "returncode": 0
+      }
+    ],
+    "github_sha": null,
+    "github_run_id": null,
+    "deadline_monotonic": null,
+    "phase": "complete",
+    "commands": [
+      {
+        "phase": "compilation:selfdual_fast",
+        "command": [
+          "g++",
+          "-O3",
+          "-std=c++17",
+          "-fopenmp",
+          "/workspace/scratch/c6bc6c0ab2e1/census-checks/package-extraction/Fusion_Census_Laptop/code/enumerate_selfdual_fast.cpp",
+          "-o",
+          "/tmp/census-package-local-cache/selfdual_fast"
+        ],
+        "started_elapsed_seconds": 0.0019778809992203605,
+        "returncode": 0,
+        "elapsed_seconds": 12.238000947000728
+      },
+      {
+        "phase": "compilation:parallel_general",
+        "command": [
+          "g++",
+          "-O3",
+          "-std=c++17",
+          "-fopenmp",
+          "/workspace/scratch/c6bc6c0ab2e1/census-checks/package-extraction/Fusion_Census_Laptop/code/enumerate_parallel.cpp",
+          "-o",
+          "/tmp/census-package-local-cache/parallel_general"
+        ],
+        "started_elapsed_seconds": 12.241643846999978,
+        "returncode": 0,
+        "elapsed_seconds": 1.8161684800006697
+      },
+      {
+        "phase": "sort_and_export",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "/workspace/scratch/c6bc6c0ab2e1/census-checks/package-extraction/Fusion_Census_Laptop/code/export_tables.py",
+          "--rank",
+          "8",
+          "--input",
+          "/workspace/scratch/c6bc6c0ab2e1/census-checks/package-smoke/rank8_M1/parameters.txt",
+          "--systems",
+          "/workspace/scratch/c6bc6c0ab2e1/census-checks/package-extraction/Fusion_Census_Laptop/systems",
+          "--output",
+          "/workspace/scratch/c6bc6c0ab2e1/census-checks/package-smoke/rank8_M1/FusionRingMultiplicationTables.txt"
+        ],
+        "started_elapsed_seconds": 14.464923958999861,
+        "returncode": 0,
+        "elapsed_seconds": 0.06903703900024993
+      },
+      {
+        "phase": "compilation:verify_tables",
+        "command": [
+          "g++",
+          "-O3",
+          "-std=c++17",
+          "/workspace/scratch/c6bc6c0ab2e1/census-checks/package-extraction/Fusion_Census_Laptop/code/verify_tables.cpp",
+          "-o",
+          "/tmp/census-package-local-cache/verify_tables"
+        ],
+        "started_elapsed_seconds": 14.535147859999597,
+        "returncode": 0,
+        "elapsed_seconds": 2.057179096999789
+      },
+      {
+        "phase": "independent_verification",
+        "command": [
+          "/tmp/census-package-local-cache/verify_tables",
+          "/workspace/scratch/c6bc6c0ab2e1/census-checks/package-smoke/rank8_M1/FusionRingMultiplicationTables.txt",
+          "/workspace/scratch/c6bc6c0ab2e1/census-checks/package-smoke/rank8_M1/independent_check",
+          "--exhaustive"
+        ],
+        "started_elapsed_seconds": 16.593542214999616,
+        "returncode": 0,
+        "elapsed_seconds": 0.04833051199966576
+      }
+    ],
+    "code_sha256": "13c244e3eb7988c1cc32f9494a9a23c84c4fdd16661cb351d99d021c76bf7dcb",
+    "elapsed_seconds": 16.696923182999853,
+    "compilation_seconds": 14.058687990999715,
+    "expected_strata": [
+      "pairs1",
+      "pairs2",
+      "pairs3",
+      "selfdual"
+    ],
+    "enumeration_seconds": 0.4031931409999743,
+    "counts": {
+      "1": 96
+    },
+    "classes": 96,
+    "sort_export_seconds": 0.07248681999953988,
+    "verifier_compilation_seconds": 2.0585811060000196,
+    "independent_verification_seconds": 0.049763988999984576,
+    "independent_verification": {
+      "input_records": 96,
+      "input_physical_lines": 96,
+      "distinct_rings": 96,
+      "duplicates": 0,
+      "literal_repeats": 0,
+      "new_labellings": 0,
+      "associativity_checked": true,
+      "canonical_mode": "all unit-fixing permutations",
+      "permutations_examined": 483840,
+      "elapsed_seconds": 0.046071768
+    },
+    "existing_prefix_checked_through": 1,
+    "parameters.txt_sha256": "51417e64cb301b32508266e59ed81ea4144b76b4c2a5403de7369ad3e1dcbca1",
+    "FusionRingMultiplicationTables.txt_sha256": "4ddf6402afff4f19ae4513ae63422cf73c327c605aa50cdcae731941de272ee7",
+    "compression_seconds": 0.05322921400056657,
+    "outcome": "verified_complete"
+  }
+}

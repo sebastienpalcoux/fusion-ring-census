@@ -74,5 +74,6 @@
     "parameter_reexport_byte_equal": true
   },
   "tables_sha256": "7baaa0a2018e11a0464c3f19da9030195421f04a73806c22363cf9d5eeb92a84",
-  "parameters_sha256": "0c72c617e14fecaa0d4fd0fe7d4513b24d6c7187838c003a7542002f568d1c46"
+  "parameters_sha256": "0c72c617e14fecaa0d4fd0fe7d4513b24d6c7187838c003a7542002f568d1c46",
+  "enumeration_source_available": true
 }

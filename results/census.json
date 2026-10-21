@@ -1245,7 +1245,8 @@
       "completeness_basis": "Producer-reported completed exhaustive enumeration; complete optimized enumeration source supplied and audited, but full search not independently rerun.",
       "independent_enumeration_rerun": false,
       "independent_verification_scope": "Tensor axioms, all unit-fixing relabellings, parameter export, exact old tensor-set prefix, hashes and counts.",
-      "enumeration_source_bundled": true
+      "enumeration_source_bundled": true,
+      "enumeration_source_available": true
     },
     "8": {
       "rank": 8,
@@ -1268,7 +1269,8 @@
       "completeness_basis": "Producer-reported completed exhaustive enumeration; complete optimized enumeration source supplied and audited, but full search not independently rerun.",
       "enumeration_source_bundled": true,
       "independent_enumeration_rerun": false,
-      "independent_verification_scope": "Tensor axioms, all unit-fixing relabellings, parameter export, exact previous tensor and parameter sequence, hashes and counts."
+      "independent_verification_scope": "Tensor axioms, all unit-fixing relabellings, parameter export, exact previous tensor and parameter sequence, hashes and counts.",
+      "enumeration_source_available": true
     }
   },
   "total_classes": 1430809
