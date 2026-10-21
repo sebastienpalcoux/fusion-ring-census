@@ -24,15 +24,16 @@ a theoretical dimension bound followed by exact finite certification. For the
 pivotal case, see Jingcheng Dong, Sébastien Palcoux and Arnaud Plessis,
 [*Classifying Grothendieck rings of pivotal fusion categories of rank four*](https://arxiv.org/abs/2609.33272).
 
-At rank eight, the new exact-multiplicity-three band has **3,479 general
-exclusions, 14 unitary models and 34 unresolved categorification candidates**
+At rank eight, the exact-multiplicity-three band has **3,504 general
+exclusions, 14 unitary models and 9 unresolved categorification candidates**
 among its 3,527 supplied rings. Together with the earlier 896 exclusions and
-77 unitary models through multiplicity two, this gives **4,375 general
-exclusions, 91 unitary models and 34 unresolved rings** among 4,500 supplied
+77 unitary models through multiplicity two, this gives **4,400 general
+exclusions, 91 unitary models and 9 unresolved rings** among 4,500 supplied
 rank-eight rings. The candidates are not asserted fusion categories or
 established exotic examples. The general questions `R6_4_155` and
 `R6_8_1660` also remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
 for the precise proof scope and individual attempt records.
+These counts are bound to the [reviewed research checkpoint `fe94da2a`](https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/fe94da2af3c611279a4b98f874eb860e8289a39d). Aggregate release verification is pending.
 
 At rank seven through multiplicity five, the companion classification resolves
 all **10,006 supplied tensors: 9,976 general exclusions, 30 known unitary models

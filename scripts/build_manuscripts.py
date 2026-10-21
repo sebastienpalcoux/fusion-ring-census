@@ -5,7 +5,8 @@ Run with --compile to build PDFs. Sources and the retained rank-specific
 mathematical derivations remain editable. No new census is performed here.
 """
 from __future__ import annotations
-import argparse,json,shutil,subprocess,tempfile
+import argparse,hashlib,json,re,shutil,subprocess,tempfile
+from collections import Counter
 from datetime import date
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
@@ -416,16 +417,109 @@ rank-six rings \texttt{R6\_4\_155} and \texttt{R6\_8\_1660} remain open;
 the companion project's rank-eight frontier is recorded separately there.
 '''
 
+RANK8_CLASSIFICATION_SNAPSHOT = {'date': '2026-10-21',
+ 'exact': {'excluded': 3504, 'unitarily_realized': 14, 'unresolved': 9},
+ 'earlier': {'excluded': 896, 'unitarily_realized': 77, 'unresolved': 0},
+ 'ledger_sha256': 'bc63a1083e72b8ebf2a1a33b53b6046c0a2920a79b9f11c783b230c7cf5d7d83',
+ 'classification_commit': 'fe94da2af3c611279a4b98f874eb860e8289a39d',
+ 'classification_stage': 'reviewed_research_checkpoint'}
+
+def rank8_classification(ledger=None):
+    """Read an explicit companion ledger, or the last published snapshot.
+
+    This describes categorification only. It never changes census counts.
+    A supplied ledger must cover every released rank-eight tensor exactly once.
+    """
+    summary=json.loads(json.dumps(RANK8_CLASSIFICATION_SNAPSHOT))
+    if ledger is not None:
+        raw=Path(ledger).read_bytes();rows=json.loads(raw)
+        if not isinstance(rows,list):
+            raise ValueError('The companion classification ledger must be a list')
+        census=json.loads((ROOT/'results/census.json').read_text())['ranks']['8']
+        expected={int(m):n for m,n in census['counts'].items()}
+        ids=set();counts=Counter();by_band={m:Counter() for m in expected}
+        for row in rows:
+            match=re.fullmatch(r'R8_(\d+)_(\d+)',row.get('id',''))
+            if match is None or row['id'] in ids:
+                raise ValueError('Invalid or repeated rank-eight ledger identity')
+            m,index=map(int,match.groups())
+            if (m not in expected or not 1<=index<=expected[m] or
+                    row.get('rank',8)!=8 or row.get('multiplicity')!=m):
+                raise ValueError('Ledger identity disagrees with the census band')
+            status=row.get('status')
+            if status not in {'excluded','unitarily_realized','unresolved'}:
+                raise ValueError('Unsupported companion classification status')
+            ids.add(row['id']);counts[m]+=1;by_band[m][status]+=1
+        if dict(counts)!=expected or len(rows)!=census['classes']:
+            raise ValueError('Companion ledger does not cover the released census')
+        summary['exact']={k:by_band[3][k] for k in summary['exact']}
+        summary['earlier']={k:sum(by_band[m][k] for m in expected if m<3)
+                            for k in summary['earlier']}
+        ledger_sha256=hashlib.sha256(raw).hexdigest()
+        if summary.get('ledger_sha256') not in (None,ledger_sha256):
+            summary.pop('classification_commit',None)
+            summary.pop('classification_stage',None)
+        summary['ledger_sha256']=ledger_sha256
+    summary['cumulative']={k:summary['exact'][k]+summary['earlier'][k]
+                           for k in summary['exact']}
+    for scope,total in (('exact',3527),('earlier',973),('cumulative',4500)):
+        if (set(summary[scope])!={'excluded','unitarily_realized','unresolved'} or
+                any(type(v) is not int or v<0 for v in summary[scope].values()) or
+                sum(summary[scope].values())!=total):
+            raise ValueError('Invalid companion classification snapshot')
+    return summary
+
+def rank8_classification_values(summary):
+    return {f'{scope}_{key}':f'{value:,}' for scope in ('exact','earlier','cumulative')
+            for key,value in summary[scope].items()}
+
+def rank8_classification_provenance(summary,markup='markdown'):
+    commit=summary.get('classification_commit')
+    if commit is None:return ''
+    if re.fullmatch(r'[0-9a-f]{40}',commit) is None:
+        raise ValueError('Invalid classification provenance commit')
+    stage=summary.get('classification_stage')
+    if stage not in {'reviewed_research_checkpoint','certified_release'}:
+        raise ValueError('Invalid classification provenance stage')
+    label='reviewed research checkpoint' if stage=='reviewed_research_checkpoint' else 'classification release'
+    url='https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/'+commit
+    if markup=='markdown':link=f'[{label} `{commit[:8]}`]({url})'
+    elif markup=='html':link=f'<a href="{url}">{label} <code>{commit[:8]}</code></a>'
+    elif markup=='tex':link=r'\href{'+url+'}{'+label+r' \texttt{'+commit[:8]+'}}'
+    else:raise ValueError('Unsupported provenance markup')
+    suffix=' Aggregate release verification is pending.' if stage=='reviewed_research_checkpoint' else ''
+    return 'These counts are bound to the '+link+'.'+suffix
+
+def rank8_classification_readme(summary):
+    v=rank8_classification_values(summary)
+    return f'''At rank eight, the exact-multiplicity-three band has **{v['exact_excluded']} general
+exclusions, {v['exact_unitarily_realized']} unitary models and {v['exact_unresolved']} unresolved categorification candidates**
+among its 3,527 supplied rings. Together with the earlier {v['earlier_excluded']} exclusions and
+{v['earlier_unitarily_realized']} unitary models through multiplicity two, this gives **{v['cumulative_excluded']} general
+exclusions, {v['cumulative_unitarily_realized']} unitary models and {v['cumulative_unresolved']} unresolved rings** among 4,500 supplied
+rank-eight rings. The candidates are not asserted fusion categories or
+established exotic examples. The general questions `R6_4_155` and
+`R6_8_1660` also remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
+for the precise proof scope and individual attempt records.
+{rank8_classification_provenance(summary)}'''
+
+def sync_rank8_readme(summary):
+    path=ROOT/'README.md';text=path.read_text()
+    pattern=r'At rank eight,.*?(?=\n\nAt rank seven)'
+    if len(re.findall(pattern,text,flags=re.S))!=1:
+        raise ValueError('Expected exactly one rank-eight README paragraph')
+    path.write_text(re.sub(pattern,lambda _:rank8_classification_readme(summary),text,flags=re.S))
+
 RANK8_CLASSIFICATION_CONTEXT=r'''
 \paragraph{Categorification in the companion project.}
 As of 21 October 2026, the
 \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md}{companion classification}
-records 3,479 general complex exclusions, 14 unitary constructions and 34
+records @@exact_excluded@@ general complex exclusions, @@exact_unitarily_realized@@ unitary constructions and @@exact_unresolved@@
 unresolved categorification candidates among the 3,527 supplied rings of
 exact multiplicity three. The earlier classification through multiplicity
-two retains its 896 exclusions and 77 unitary models. Thus the cumulative
-inventory of 4,500 supplied rank-eight rings consists of 4,375 general
-exclusions, 91 unitary models and 34 unresolved cases.
+two retains its @@earlier_excluded@@ exclusions and @@earlier_unitarily_realized@@ unitary models. Thus the cumulative
+inventory of 4,500 supplied rank-eight rings consists of @@cumulative_excluded@@ general
+exclusions, @@cumulative_unitarily_realized@@ unitary models and @@cumulative_unresolved@@ unresolved cases.
 Each remaining tensor has an individual attempt record. These candidates
 are not asserted fusion categories or established exotic examples;
 a unitary-only exclusion leaves the general complex question unresolved.
@@ -434,6 +528,14 @@ the hypotheses of the categorical reductions. These categorification
 decisions do not alter the census or its enumeration-completeness
 qualification above.
 '''
+
+def rank8_classification_context(summary):
+    text=RANK8_CLASSIFICATION_CONTEXT
+    for key,value in rank8_classification_values(summary).items():
+        text=text.replace('@@'+key+'@@',value)
+    if '@@' in text:
+        raise ValueError('Unexpanded companion classification field')
+    return text+'\n'+rank8_classification_provenance(summary,'tex')+'\n'
 
 def results_section(r,item):
     text=f"\\section{{The certified release at rank {r}}}\n"
@@ -513,7 +615,8 @@ The fresh and producer checks are preserved separately under
 '''
     return text
 
-def build_sources(ranks=range(3,9)):
+def build_sources(ranks=range(3,9),classification=None):
+    classification=rank8_classification() if classification is None else classification
     data=json.loads((ROOT/'results/census.json').read_text());M.mkdir(exist_ok=True)
     release_date=date.fromisoformat(data['release_date']).strftime('%d %B %Y')
     for r in ranks:
@@ -534,7 +637,7 @@ def build_sources(ranks=range(3,9)):
         body+=DEFINITIONS+results_section(r,item)
         if r==6:body+=EH_CONTEXT
         if r==7:body+=RANK7_CLASSIFICATION_CONTEXT
-        if r==8:body+=RANK8_CLASSIFICATION_CONTEXT
+        if r==8:body+=rank8_classification_context(classification)
         if r==3:body+=RANK3
         elif r==4:
             s=(ROOT/'methods/rank4_completeness.tex').read_text()
@@ -560,7 +663,7 @@ a generic determinant is nonzero.
         else:body+=GENERAL+FAST
         body+=AUDIT
         if item.get('independent_enumeration_rerun') is False:
-            body+='\nFor this rank-seven extension, the completed-search and source qualification in Section 2 applies throughout: independent output checks do not establish completeness of the unavailable modified enumeration code.\n'
+            body+='\nThe completed-search and source qualification in Section 2 applies throughout: the complete optimized source is supplied and hash-matched, but independent output checks do not replace a fresh exhaustive enumeration.\n'
         body+='\n\\par\\noindent\\begin{minipage}{\\linewidth}\n\\section{Reproduction commands}\nFrom the repository root on a local computer, request a complete run with no clock limit. An interruption does not certify a smaller census.\n'
         body+='\\begin{lstlisting}\n'+f'python3 scripts/run_laptop.py --rank {r} --bound {item["bound"]}\n'+'\\end{lstlisting}\n'
         body+='To verify the supplied release without recomputing it:\n\\begin{lstlisting}\npython3 scripts/check_release.py --full\n\\end{lstlisting}\n'
@@ -583,8 +686,12 @@ a generic determinant is nonzero.
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--compile',action='store_true')
     ap.add_argument('--ranks',type=int,nargs='+',choices=range(3,9),default=list(range(3,9)),help='Regenerate only these ranks (default: all).')
+    ap.add_argument('--classification-ledger',type=Path,help='Validate and use this explicit companion rank-eight classification ledger.')
+    ap.add_argument('--sync-readme',action='store_true',help='Also synchronize the rank-eight companion classification paragraph in README.md.')
     a=ap.parse_args();selected=sorted(set(a.ranks))
-    build_sources(selected)
+    classification=rank8_classification(a.classification_ledger)
+    build_sources(selected,classification)
+    if a.sync_readme:sync_rank8_readme(classification)
     if a.compile:
         # Build away from released PDFs, then replace only completed output.
         for r in selected:
