@@ -57,6 +57,21 @@ previous tensors and parameter records in their original order. The full
 search was not independently rerun. See [rank8](../verification/rank8/README.md)
 and [the optimization integration](../verification/optimization_20261021/README.md).
 
+### R8_3_3472 classification exclusion
+
+The [updated research addendum](R3472_RESEARCH_ADDENDUM.md) records the general
+complex exclusion established on 22 October 2026. The
+[canonical proof evidence](https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/r3472_exclusion_20261022)
+combines exhaustive center-frame coverage with an exact integer indicator
+contradiction. The exact-multiplicity-three classification now has 3,507
+general exclusions, 16 unitary models and four open cases; cumulatively the
+rank-eight totals are 4,403, 93 and four. Six cases remain open across the
+classification project. Earlier Morita restrictions, candidate based rings,
+construction obstructions and feasible partial relaxations are preserved as
+research history. Census counts, tensor hashes and enumeration provenance
+remain unchanged; the generated overview pins the current classification
+publication separately.
+
 ## Mathematical sources
 
 Gert Vercleyen and Joost K. Slingerland, *On Low Rank Fusion Rings*, Journal of

@@ -419,18 +419,20 @@ the companion project's rank-eight frontier is recorded separately there.
 
 # Fill this immutable pin after the classification publication, then regenerate
 # rank8.tex, README.md and docs/index.html before publishing this repository.
-CLASSIFICATION_PUBLICATION_COMMIT = '7b98ab97ac2391997f41d4a05f3b70e9d792fd48'
+CLASSIFICATION_PUBLICATION_COMMIT = '25ad4cb3a39d9e22d6dcad60ce37e3764620b628'
 
 RANK8_CLASSIFICATION_SNAPSHOT = {'date': '2026-10-22',
- 'exact': {'excluded': 3506, 'unitarily_realized': 16, 'unresolved': 5},
+ 'exact': {'excluded': 3507, 'unitarily_realized': 16, 'unresolved': 4},
  'earlier': {'excluded': 896, 'unitarily_realized': 77, 'unresolved': 0},
- 'ledger_sha256': 'edac9d5685ed86acfff16d620598d76324430559cab58d9bf24d59074927d067',
+ 'ledger_sha256': '85c61eb2ebf7e6f82600a0e19dc274f1da068aefc807395b2fd46873b64f1c01',
+ 'ledger_path': 'supplements/rank8/output/exclusion_20261022/ledger.json',
  'classification_commit': CLASSIFICATION_PUBLICATION_COMMIT,
  'classification_stage': 'published_main_research_update',
  'r721_model': True,
  'r982_model': True,
  'r65_excluded': True,
- 'r1795_excluded': True}
+ 'r1795_excluded': True,
+ 'r3472_excluded': True}
 
 def rank8_classification(ledger=None):
     """Read an explicit companion ledger, or the last published snapshot.
@@ -470,6 +472,8 @@ def rank8_classification(ledger=None):
         summary['r65_excluded']=any(row['id']=='R8_3_65' and
                                    row['status']=='excluded' for row in rows)
         summary['r1795_excluded']=any(row['id']=='R8_3_1795' and
+                                     row['status']=='excluded' for row in rows)
+        summary['r3472_excluded']=any(row['id']=='R8_3_3472' and
                                      row['status']=='excluded' for row in rows)
         ledger_sha256=hashlib.sha256(raw).hexdigest()
         if summary.get('ledger_sha256') not in (None,ledger_sha256):
@@ -513,7 +517,36 @@ def rank8_classification_provenance(summary,markup='markdown'):
                 ' Optimized core and extracted-package full replays are pending.',
             'published_main_research_update':'',
             'certified_release':''}[stage]
+    ledger_path=summary.get('ledger_path')
+    if ledger_path:
+        ledger_url='https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/'+commit+'/'+ledger_path
+        if markup=='markdown':ledger_link=f'[decision ledger]({ledger_url})'
+        elif markup=='html':ledger_link=f'<a href="{ledger_url}">decision ledger</a>'
+        else:ledger_link=r'\href{'+ledger_url+'}{decision ledger}'
+        link+=' and its '+ledger_link
     return 'These counts are bound to the '+link+'.'+suffix
+
+def rank8_r3472_focus_addendum(markup='markdown',ref='main'):
+    """General complex exclusion superseding the earlier focused restrictions."""
+    url='https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/'+ref+'/evidence/r3472_exclusion_20261022'
+    if markup=='markdown':
+        case='`R8_3_3472`'
+        evidence=f'[complete proof and exact certificates]({url})'
+    elif markup=='html':
+        case='<code>R8_3_3472</code>'
+        evidence=f'<a href="{url}">complete proof and exact certificates</a>'
+    elif markup=='tex':
+        case=r'\texttt{R8\_3\_3472}'
+        evidence=r'\href{'+url+'}{complete proof and exact certificates}'
+    else:raise ValueError('Unsupported focused research markup')
+    return (f'The general complex exclusion of {case}, established on 22 October 2026, supersedes the earlier focused research restrictions. '
+            'Sphericalization and Galois transport reduce any hypothetical complex categorification to the pseudo-unitary case. '
+            'Exact center induction and modular identities exclude all but one orbit of low center frames. '
+            'For that orbit, complete Galois twist orbits and cyclic-rotation indicator identities force a system of 628 equations in 572 integer variables. '
+            'A certificate of 1,648 exact integer-bound deductions followed by a rational separating inequality proves this system impossible. '
+            f'The {evidence} include two portable exact checkers and an independently checked VIPR infeasibility certificate. '
+            'Earlier feasible center relaxations imposed fewer conditions and therefore do not contradict this exclusion. '
+            'The census tensors, enumeration results and completeness qualifications are unchanged.')
 
 def rank8_research_addendum(summary,markup='markdown'):
     """Reviewed constructions and separately scoped necessary restrictions."""
@@ -547,9 +580,17 @@ def rank8_research_addendum(summary,markup='markdown'):
                  f'Further {research} restrict module actions and distinguish possible centers. The {followup} force the nontrivial pointed associator for {case("R8_3_1768")} and constrain additional twist-one central simples. These necessary restrictions alone supply no categorification.')
     if summary.get('r982_model'):
         creative=link('new unified restrictions','/manuscripts/rank8/paper/m3_creative_20261022.tex')
-        parts.append(f'The {creative} control twists by saturated dimension characters, restrict the irrational dimension-ratio sector of {case("R8_3_1768")}, reconstruct a forced four-object semionic packet for {case("R8_3_1154")}, and narrow conditional Morita-dual spectra for {case("R8_3_3472")}. '
+        parts.append(f'The {creative} control twists by saturated dimension characters, restrict the irrational dimension-ratio sector of {case("R8_3_1768")}, reconstruct a forced four-object semionic packet for {case("R8_3_1154")}, and record earlier conditional Morita-dual restrictions for {case("R8_3_3472")}. '
                      f'For {case("R8_3_928")}, exact integer phase multiplicities and binary-branch Farkas certificates reduce ten rationally feasible phase patterns to four with integer phase witnesses; the rotation auxiliaries and spectral-mixture parameters remain relaxed. '
-                     'They also give a cyclic-stabilizer divisibility obstruction to two direct near-group quotient constructions. The five cases '+', '.join(case('R8_3_'+str(i)) for i in (928,941,1154,1768,3472))+' remain unresolved; the feasible necessary data are not category models.')
+                     'They also give a cyclic-stabilizer divisibility obstruction to two direct near-group quotient constructions.')
+    if summary.get('r3472_excluded'):
+        parts.append(rank8_r3472_focus_addendum(markup,ref))
+        open_ids=(928,941,1154,1768);number='four'
+    else:
+        open_ids=(928,941,1154,1768,3472);number='five'
+    parts.append(f'The {number} rank-eight cases '+', '.join(case('R8_3_'+str(i)) for i in open_ids)+' remain unresolved; the feasible necessary data are not category models.')
+    if summary.get('r3472_excluded'):
+        parts.append('Together with '+case('R6_4_155')+' and '+case('R6_8_1660')+', six cases remain open in the classification project.')
     return ' '.join(parts)
 
 def rank8_classification_addendum(summary,markup='markdown'):
