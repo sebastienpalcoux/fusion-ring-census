@@ -419,15 +419,16 @@ the companion project's rank-eight frontier is recorded separately there.
 
 # Fill this immutable pin after the classification publication, then regenerate
 # rank8.tex, README.md and docs/index.html before publishing this repository.
-CLASSIFICATION_PUBLICATION_COMMIT = '822e84ec02e9a18d0fca0eb7c05f4ac6206788b5'
+CLASSIFICATION_PUBLICATION_COMMIT = '7b98ab97ac2391997f41d4a05f3b70e9d792fd48'
 
 RANK8_CLASSIFICATION_SNAPSHOT = {'date': '2026-10-22',
- 'exact': {'excluded': 3506, 'unitarily_realized': 15, 'unresolved': 6},
+ 'exact': {'excluded': 3506, 'unitarily_realized': 16, 'unresolved': 5},
  'earlier': {'excluded': 896, 'unitarily_realized': 77, 'unresolved': 0},
- 'ledger_sha256': '521b9b9fb16a86c7c4ba491b8c2c0ebad05de1e41aafb5bc225d6342c9477e4e',
+ 'ledger_sha256': 'edac9d5685ed86acfff16d620598d76324430559cab58d9bf24d59074927d067',
  'classification_commit': CLASSIFICATION_PUBLICATION_COMMIT,
  'classification_stage': 'published_main_research_update',
  'r721_model': True,
+ 'r982_model': True,
  'r65_excluded': True,
  'r1795_excluded': True}
 
@@ -463,6 +464,8 @@ def rank8_classification(ledger=None):
         summary['earlier']={k:sum(by_band[m][k] for m in expected if m<3)
                             for k in summary['earlier']}
         summary['r721_model']=any(row['id']=='R8_3_721' and
+                                 row['status']=='unitarily_realized' for row in rows)
+        summary['r982_model']=any(row['id']=='R8_3_982' and
                                  row['status']=='unitarily_realized' for row in rows)
         summary['r65_excluded']=any(row['id']=='R8_3_65' and
                                    row['status']=='excluded' for row in rows)
@@ -513,7 +516,7 @@ def rank8_classification_provenance(summary,markup='markdown'):
     return 'These counts are bound to the '+link+'.'+suffix
 
 def rank8_research_addendum(summary,markup='markdown'):
-    """Reviewed research consequences; no additional model is asserted."""
+    """Reviewed constructions and separately scoped necessary restrictions."""
     if not (summary.get('r65_excluded') or summary.get('r1795_excluded')):return ''
     ref=summary.get('classification_commit') or 'main'
     base='https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/'+ref
@@ -529,25 +532,24 @@ def rank8_research_addendum(summary,markup='markdown'):
         if markup=='tex':return r'\href{'+url+'}{'+label+'}'
         raise ValueError('Unsupported research markup')
     parts=[]
+    if summary.get('r982_model'):
+        proof=link('exact model proof','/evidence/rank8_creative_20261022/r982/E21_MODEL.md')
+        parts.append(f'The known unitary construction {case("R8_3_982")} is the triality-zero component of the exceptional E21 chiral fusion category from the conformal embedding SU(3) at level 21 into E7 at level 1. The {proof} reconstructs the known 24-object fusion category from its fundamental graph and matches all 512 neutral fusion coefficients exactly. It also realizes both previously necessary nonregular based-module types. This is a known construction with a new exact census identification.')
     if summary.get('r65_excluded'):
         proof=link('six exact certificates','/evidence/rank8_research_20261022/r65/PROOF.md')
-        parts.append(f'The general exclusion of {case("R8_3_65")} uses pointed-induction '
-                     f'phases and integral Fourier fibers; {proof} cover every pointed '
-                     'associator class.')
+        parts.append(f'The general exclusion of {case("R8_3_65")} uses pointed-induction phases and integral Fourier fibers; {proof} cover every pointed associator class.')
     if summary.get('r1795_excluded'):
         proof=link('sixteen exact indicator branches','/evidence/rank8_research_20261022/pointed_followup/PROOF.md')
-        parts.append(f'The new general exclusion of {case("R8_3_1795")} uses finite '
-                     f'integer packing of the two pointed twist fibers; {proof} '
-                     'exclude both pointed associator classes.')
+        parts.append(f'The new general exclusion of {case("R8_3_1795")} uses finite integer packing of the two pointed twist fibers; {proof} exclude both pointed associator classes.')
     research=link('structural results','/manuscripts/rank8/paper/m3_research_20261022.tex')
     followup=link('followup restrictions','/manuscripts/rank8/paper/m3_pointed_followup.tex')
-    parts.append('Every categorification of a remaining rank-eight case admits a '
-                 'spherical structure and has a pseudo-unitary Galois conjugate, '
-                 'and none is Morita equivalent to a braided category. '
-                 f'Further {research} restrict module actions and distinguish '
-                 f'possible centers. The {followup} force the nontrivial pointed '
-                 f'associator for {case("R8_3_1768")} and constrain additional '
-                 'twist-one central simples; no new categorification is supplied.')
+    parts.append('Every categorification of a remaining rank-eight case admits a spherical structure and has a pseudo-unitary Galois conjugate, and none is Morita equivalent to a braided category. '
+                 f'Further {research} restrict module actions and distinguish possible centers. The {followup} force the nontrivial pointed associator for {case("R8_3_1768")} and constrain additional twist-one central simples. These necessary restrictions alone supply no categorification.')
+    if summary.get('r982_model'):
+        creative=link('new unified restrictions','/manuscripts/rank8/paper/m3_creative_20261022.tex')
+        parts.append(f'The {creative} control twists by saturated dimension characters, restrict the irrational dimension-ratio sector of {case("R8_3_1768")}, reconstruct a forced four-object semionic packet for {case("R8_3_1154")}, and narrow conditional Morita-dual spectra for {case("R8_3_3472")}. '
+                     f'For {case("R8_3_928")}, exact integer phase multiplicities and binary-branch Farkas certificates reduce ten rationally feasible phase patterns to four with integer phase witnesses; the rotation auxiliaries and spectral-mixture parameters remain relaxed. '
+                     'They also give a cyclic-stabilizer divisibility obstruction to two direct near-group quotient constructions. The five cases '+', '.join(case('R8_3_'+str(i)) for i in (928,941,1154,1768,3472))+' remain unresolved; the feasible necessary data are not category models.')
     return ' '.join(parts)
 
 def rank8_classification_addendum(summary,markup='markdown'):
@@ -624,7 +626,8 @@ def rank8_classification_context(summary):
         raise ValueError('Unexpanded companion classification field')
     addendum=rank8_classification_addendum(summary,'tex')
     if addendum:
-        addendum='\\par\\noindent\\begin{minipage}{\\linewidth}\n'+addendum+'\n\\end{minipage}\\par\n'
+        # Let the growing research account break naturally across pages.
+        addendum='\\par\\noindent\n'+addendum+'\n\\par\n'
     return text+'\n'+rank8_classification_provenance(summary,'tex')+'\n'+addendum
 
 def results_section(r,item):
