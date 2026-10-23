@@ -15,7 +15,7 @@ PREAMBLE=r'''\documentclass[11pt,a4paper]{article}
 \usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
 \usepackage[margin=23mm,headheight=15pt]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,longtable,array,microtype,xcolor}
-\usepackage{hyperref,fancyhdr,listings,enumitem}
+\usepackage{hyperref,bookmark,fancyhdr,listings,enumitem}
 \definecolor{ink}{HTML}{163348}\definecolor{accent}{HTML}{147D83}
 \hypersetup{colorlinks=true,linkcolor=ink,urlcolor=accent,citecolor=accent,pdfauthor={Sébastien Palcoux}}
 \pagestyle{fancy}\fancyhf{}\fancyhead[L]{\sffamily\small FUSION RING CENSUS}
@@ -749,7 +749,7 @@ The fresh and producer checks are preserved separately under
 '''
     return text
 
-def build_sources(ranks=range(3,9),classification=None):
+def build_sources(ranks=range(3,12),classification=None):
     classification=rank8_classification() if classification is None else classification
     data=json.loads((ROOT/'results/census.json').read_text());M.mkdir(exist_ok=True)
     release_date=date.fromisoformat(data['release_date']).strftime('%d %B %Y')
@@ -772,6 +772,35 @@ def build_sources(ranks=range(3,9),classification=None):
         if r==6:body+=EH_CONTEXT
         if r==7:body+=RANK7_CLASSIFICATION_CONTEXT
         if r==8:body+=rank8_classification_context(classification)
+        if r>=9:
+            body+=r'''\section{Supplied high-rank source and independent checks}
+The complete optimized enumeration source and completed producer-run records
+are retained under \path{verification/engine_20261023/} and the rank-specific
+verification directory. The run completed every duality stratum without a
+clock limit. The supplied tensors preserve their original physical line
+order; a categorical label never changes that input identifier.
+
+Fresh independent integration checks establish all tensor axioms, exact
+based-isomorphism uniqueness, the counts and both compressed and uncompressed
+checksums. The optimized uniqueness checker uses exact individualization and
+refinement and checks every returned isomorphism witness against the complete
+tensor. Exhaustive permutation mode remains available. Parameter re-export is
+byte-identical. These checks establish soundness and uniqueness of the supplied
+output; they do not replace independent repetition of the entire search.
+'''
+        if r==11:
+            body+=r'''\paragraph{Categorification in the companion project.}
+The separate
+\href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/publications/rank11}{rank-eleven classification manuscript}
+resolves these 182 supplied rings: 155 general complex exclusions and 27
+unitary realizations, with no unresolved cases. There are 153 commutative
+inputs (127 excluded, 26 realized) and 29 noncommutative inputs (28 excluded,
+one realized). The classification ledger binds each decision to both original
+tensor hashes. Its proofs and all 25 accepted replay stages are retained in
+the companion repository. This mathematical classification of the supplied
+rings does not change the enumeration-completeness qualification above and
+does not classify all possible associators.
+'''
         if r==3:body+=RANK3
         elif r==4:
             s=(ROOT/'methods/rank4_completeness.tex').read_text()
@@ -801,7 +830,10 @@ a generic determinant is nonzero.
         body+='\n\\par\\noindent\\begin{minipage}{\\linewidth}\n\\section{Reproduction commands}\nFrom the repository root on a local computer, request a complete run with no clock limit. An interruption does not certify a smaller census.\n'
         body+='\\begin{lstlisting}\n'+f'python3 scripts/run_laptop.py --rank {r} --bound {item["bound"]}\n'+'\\end{lstlisting}\n'
         body+='To verify the supplied release without recomputing it:\n\\begin{lstlisting}\npython3 scripts/check_release.py --full\n\\end{lstlisting}\n'
-        body+='For a shared-budget frontier search, use \\path{scripts/extend_census.py}. For ranks five through eight it starts at the released bound plus one and restarts the unfinished bound without claiming checkpoint resumption. The local command above verifies all tensors and the old count prefix before packaging a result. The separate timed frontier wrapper bounds every phase. Rank three is instead capped at 1000.\n'
+        if r<=8:
+            body+='For a shared-budget frontier search, use \\path{scripts/extend_census.py}. For ranks five through eight it starts at the released bound plus one and restarts the unfinished bound without claiming checkpoint resumption. The local command above verifies all tensors and the old count prefix before packaging a result. The separate timed frontier wrapper bounds every phase. Rank three is instead capped at 1000.\n'
+        else:
+            body+=f'To verify only this released rank, use \\texttt{{python3 scripts/check\\_release.py --ranks {r} --full}}. Reproduction and tensor verification are distinct operations.\n'
         body+='\n\\end{minipage}\\par\n'
         if r==4:
             body+='\\clearpage\\appendix\n\\section{All exact-multiplicity rank-four counts}\n\\begin{longtable}{rr@{\\hspace{1.1cm}}rr@{\\hspace{1.1cm}}rr@{\\hspace{1.1cm}}rr}\n\\toprule $m$ & $c_4(m)$ & $m$ & $c_4(m)$ & $m$ & $c_4(m)$ & $m$ & $c_4(m)$\\\\\\midrule\\endhead\n'
@@ -819,7 +851,7 @@ a generic determinant is nonzero.
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--compile',action='store_true')
-    ap.add_argument('--ranks',type=int,nargs='+',choices=range(3,9),default=list(range(3,9)),help='Regenerate only these ranks (default: all).')
+    ap.add_argument('--ranks',type=int,nargs='+',choices=range(3,12),default=list(range(3,12)),help='Regenerate only these ranks (default: all).')
     ap.add_argument('--classification-ledger',type=Path,help='Validate and use this explicit companion rank-eight classification ledger.')
     ap.add_argument('--sync-readme',action='store_true',help='Also synchronize the rank-eight companion classification paragraph in README.md.')
     a=ap.parse_args();selected=sorted(set(a.ranks))

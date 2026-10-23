@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-23",
+  "rank": 11,
+  "multiplicity": 1,
+  "rings": 182,
+  "excluded_general": 155,
+  "realized_unitary": 27,
+  "unresolved_general": 0,
+  "commutative": {
+    "rings": 153,
+    "excluded_general": 127,
+    "realized_unitary": 26
+  },
+  "noncommutative": {
+    "rings": 29,
+    "excluded_general": 28,
+    "realized_unitary": 1
+  },
+  "classification_repository": "https://github.com/sebastienpalcoux/grothendieck-ring-classification",
+  "ledger_path": "evidence/rank11_m1_20261023/work/rank11/ledger.json",
+  "ledger_sha256": "2e6f3513a373fafdbdfad36c9eab75b946d3fc557d070660f73c78315cf67a29",
+  "input_uncompressed_sha256": "3186c410888e0bc7f30c9e423e0184a15618246bc9f4d0ef503e708c4081eff8",
+  "scope": "Classification of every supplied based ring over C; one unitary model per positive ring; associators not classified.",
+  "enumeration_qualification": "Producer-reported completeness; independent tensor validity and uniqueness verified; full enumeration not independently rerun."
+}

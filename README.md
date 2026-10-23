@@ -8,7 +8,7 @@
 
 > **AI-generated research · independent verification pending.** Automated checks establish only their stated scope. [Provenance and verification](docs/PROVENANCE.md).
 
-**23 October 2026:** multiplicity-one datasets now include ranks 9, 10 and 11, with **142, 194 and 182** classes. The supplied optimized engine supports ranks 3–11. [Source update and checks](verification/engine_20261023/README.md).
+**23 October 2026:** multiplicity-one datasets include ranks 9, 10 and 11, with **142, 194 and 182** classes and current rank-specific manuscripts. Rank-11 categorification is complete for the supplied dataset: **155 exclusions, 27 unitary models, 0 unresolved**. [Classification and scope](verification/rank11/categorification.json) · [Enumeration source and checks](verification/engine_20261023/README.md).
 
 <a id="complete-datasets"></a>
 
@@ -24,9 +24,9 @@ Bounds are cumulative: all rings of multiplicity **at most M**.
 | 6 | 9 | 25,421 | [Tensors](results/rank6/tables.txt.gz) · [Counts](results/rank6/counts.csv) | [PDF](manuscripts/rank6.pdf) · [TeX](manuscripts/rank6.tex) |
 | 7 | 5 | 10,006 | [Tensors](results/rank7/tables.txt.gz) · [Counts](results/rank7/counts.csv) | [PDF](manuscripts/rank7.pdf) · [TeX](manuscripts/rank7.tex) |
 | 8 | 3 | 4,500 | [Tensors](results/rank8/tables.txt.gz) · [Counts](results/rank8/counts.csv) | [PDF](manuscripts/rank8.pdf) · [TeX](manuscripts/rank8.tex) |
-| 9 | 1 | 142 | [Tensors](results/rank9/tables.txt.gz) · [Counts](results/rank9/counts.csv) | [Verification](verification/rank9/README.md) |
-| 10 | 1 | 194 | [Tensors](results/rank10/tables.txt.gz) · [Counts](results/rank10/counts.csv) | [Verification](verification/rank10/README.md) |
-| 11 | 1 | 182 | [Tensors](results/rank11/tables.txt.gz) · [Counts](results/rank11/counts.csv) | [Verification](verification/rank11/README.md) |
+| 9 | 1 | 142 | [Tensors](results/rank9/tables.txt.gz) · [Counts](results/rank9/counts.csv) | [PDF](manuscripts/rank9.pdf) · [TeX](manuscripts/rank9.tex) |
+| 10 | 1 | 194 | [Tensors](results/rank10/tables.txt.gz) · [Counts](results/rank10/counts.csv) | [PDF](manuscripts/rank10.pdf) · [TeX](manuscripts/rank10.tex) |
+| 11 | 1 | 182 | [Tensors](results/rank11/tables.txt.gz) · [Counts](results/rank11/counts.csv) | [PDF](manuscripts/rank11.pdf) · [TeX](manuscripts/rank11.tex) |
 
 The newly supplied ranks 9–11 passed fresh exact tensor and uniqueness checks. Enumeration completeness is producer-reported, with all strata completed and the complete source supplied; the full searches were not independently rerun. The same qualification applies to rank 7 through 5 and rank 8 through 3. [Verification by rank](verification/README.md).
 
@@ -53,7 +53,7 @@ The local launcher has no clock limit. [Installation, supported bounds and verif
 
 | Resource | Contents |
 |---|---|
-| Mathematics | [Six rank-specific companions](manuscripts/README.md) · [High-rank methods](methods/COMPACT_SYMMETRY.md) |
+| Mathematics | [Nine rank-specific companions](manuscripts/README.md) · [High-rank methods](methods/COMPACT_SYMMETRY.md) |
 | Evidence | [Verification records](verification/README.md) · [Source update](verification/engine_20261023/README.md) |
 | Categorification | [Current classification and open cases](https://github.com/sebastienpalcoux/grothendieck-ring-classification) |
 | Project details | [Historical research and definitions](docs/PROJECT_GUIDE.md) |

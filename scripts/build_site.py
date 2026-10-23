@@ -10,7 +10,7 @@ def main():
  args=parser.parse_args()
  classification=rank8_classification(args.classification_ledger)
  d=json.loads((ROOT/'results/census.json').read_text())
- cards=''.join(f'<a class="rank" href="'+(f'../manuscripts/rank{r}.pdf' if int(r)<=8 else f'../verification/rank{r}/README.md')+f'"><span>Rank {r}</span><strong>{v["bound"]:,}</strong><small>complete multiplicity bound</small><b>{v["classes"]:,} classes</b><em>'+('Read companion ↗' if int(r)<=8 else 'Data and verification ↗')+'</em></a>' for r,v in d['ranks'].items())
+ cards=''.join(f'<a class="rank" href="'+(f'../manuscripts/rank{r}.pdf' if (ROOT/f'manuscripts/rank{r}.pdf').is_file() else f'../verification/rank{r}/README.md')+f'"><span>Rank {r}</span><strong>{v["bound"]:,}</strong><small>complete multiplicity bound</small><b>{v["classes"]:,} classes</b><em>'+('Read companion ↗' if (ROOT/f'manuscripts/rank{r}.pdf').is_file() else 'Data and verification ↗')+'</em></a>' for r,v in d['ranks'].items())
  initial=''.join('<tr><th scope="row">'+str(m)+'</th>'+''.join('<td>'+ (f'{v["counts"][str(m)]:,}' if str(m) in v['counts'] else '<span class="missing" aria-label="Not completely enumerated">—</span>')+'</td>' for v in d['ranks'].values())+'</tr>' for m in range(1,21))
  template='''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Complete bounded counts of based fusion rings at ranks 3–11, with computational verification records."><title>Fusion Ring Census</title>
@@ -36,7 +36,7 @@ form.addEventListener('submit',event=>{event.preventDefault();const first=Number
  # Preserve earlier research notes behind one expandable historical block.
  historical=re.findall(r'<section class="note" aria-label="[^"]+">.*?</section>',template,re.S)
  for note in historical:template=template.replace(note,'',1)
- latest='<section class="note" aria-label="Current census update"><strong>23 October 2026 · multiplicity one.</strong> Ranks 9, 10 and 11 contain <strong>142, 194 and 182</strong> verified fusion rings. All duality strata completed on the producer’s laptop. Fresh checks verify tensor axioms, exact uniqueness and parameter export; full enumeration was not repeated. <a href="../verification/engine_20261023/README.md">Source update and evidence →</a> Rank-11 categorification has not been assessed.</section>'
+ latest='<section class="note" aria-label="Current census update"><strong>23 October 2026 · multiplicity one.</strong> Ranks 9, 10 and 11 contain <strong>142, 194 and 182</strong> verified fusion rings. All duality strata completed on the producer’s laptop. Fresh checks verify tensor axioms, exact uniqueness and parameter export; full enumeration was not repeated. <a href="../verification/engine_20261023/README.md">Source update and evidence →</a> Rank-11 categorification is complete for the supplied dataset: <strong>155 general exclusions, 27 unitary models, 0 unresolved</strong>. <a href="https://sebastienpalcoux.github.io/grothendieck-ring-classification/rank11.html">Browse the classification →</a> <a href="../manuscripts/rank11.pdf">Read the census companion →</a></section>'
  history='<details class="note"><summary>Earlier research and classification notes</summary>'+''.join(historical)+'</details>'
  template=template.replace('</aside>','</aside>'+latest+history,1)
  template=template.replace('@@HEADERS@@',''.join(f'<th scope="col">Rank {rank}</th>' for rank in d['ranks']))

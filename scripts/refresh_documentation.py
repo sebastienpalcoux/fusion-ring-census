@@ -24,7 +24,7 @@ def main():
         rows = [(int(r), int(m), count) for m, count in item['counts'].items()]; all_rows += rows
         with (ROOT / f'results/rank{r}/counts.csv').open('w', newline='') as f:
             writer = csv.writer(f, lineterminator='\n'); writer.writerow(['rank', 'multiplicity', 'classes']); writer.writerows(rows)
-        evidence = f'[PDF](manuscripts/rank{r}.pdf) · [TeX](manuscripts/rank{r}.tex)' if int(r) <= 8 else f'[Verification](verification/rank{r}/README.md)'
+        evidence = f'[PDF](manuscripts/rank{r}.pdf) · [TeX](manuscripts/rank{r}.tex)' if (ROOT / f'manuscripts/rank{r}.pdf').is_file() else f'[Verification](verification/rank{r}/README.md)'
         coverage.append(f'| {r} | {item["bound"]:,} | {item["classes"]:,} | [Tensors]({item["tables"]}) · [Counts](results/rank{r}/counts.csv) | {evidence} |')
     assert sum(item['classes'] for item in ranks.values()) == data['total_classes']
     with (ROOT / 'results/counts.csv').open('w', newline='') as f:
@@ -40,7 +40,7 @@ def main():
 
 > **AI-generated research · independent verification pending.** Automated checks establish only their stated scope. [Provenance and verification](docs/PROVENANCE.md).
 
-**23 October 2026:** multiplicity-one datasets now include ranks 9, 10 and 11, with **142, 194 and 182** classes. The supplied optimized engine supports ranks 3–11. [Source update and checks](verification/engine_20261023/README.md).
+**23 October 2026:** multiplicity-one datasets include ranks 9, 10 and 11, with **142, 194 and 182** classes and current rank-specific manuscripts. Rank-11 categorification is complete for the supplied dataset: **155 exclusions, 27 unitary models, 0 unresolved**. [Classification and scope](verification/rank11/categorification.json) · [Enumeration source and checks](verification/engine_20261023/README.md).
 
 <a id="complete-datasets"></a>
 
@@ -75,7 +75,7 @@ The local launcher has no clock limit. [Installation, supported bounds and verif
 
 | Resource | Contents |
 |---|---|
-| Mathematics | [Six rank-specific companions](manuscripts/README.md) · [High-rank methods](methods/COMPACT_SYMMETRY.md) |
+| Mathematics | [Nine rank-specific companions](manuscripts/README.md) · [High-rank methods](methods/COMPACT_SYMMETRY.md) |
 | Evidence | [Verification records](verification/README.md) · [Source update](verification/engine_20261023/README.md) |
 | Categorification | [Current classification and open cases](https://github.com/sebastienpalcoux/grothendieck-ring-classification) |
 | Project details | [Historical research and definitions](docs/PROJECT_GUIDE.md) |

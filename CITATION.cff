@@ -3,15 +3,17 @@ message: "Please cite the exact revision and the relevant mathematical companion
 title: "Fusion Ring Census: exact whole-rank enumeration and verification"
 type: software
 repository-code: "https://github.com/sebastienpalcoux/fusion-ring-census"
-version: "0.2.4"
-date-released: "2026-10-21"
+version: "0.2.5"
+date-released: "2026-10-23"
 authors:
   - family-names: "Palcoux"
     given-names: "Sébastien"
 abstract: >-
-  Reproducible complete bounded censuses of based fusion rings at ranks 3 through
-  8, with full multiplication tensors, independent integer verification,
-  mathematical companions and OEIS projections. No categorifiability filtering.
+  Released bounded datasets of based fusion rings at ranks 3 through 11, with
+  full multiplication tensors, independent exact output verification,
+  rank-specific mathematical companions and OEIS projections. Complete source
+  and producer completion records accompany the high-rank datasets; the full
+  searches were not independently repeated. No categorifiability filtering.
 keywords:
   - fusion rings
   - exact enumeration
