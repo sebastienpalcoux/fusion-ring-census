@@ -1,6 +1,4 @@
-> Supplied package report, retained unchanged below. Its timings refer to the
-> producer of that package. Fresh integration checks are recorded separately in
-> `verification/optimization_20261021/`.
+> Supplied audit report retained below. Timings refer to the package producer. Previous integration checks remain under `verification/optimization_20261021/`; the current source and high-rank data checks are under `verification/engine_20261023/`.
 
 # Independent checks of the self-dual pruning
 

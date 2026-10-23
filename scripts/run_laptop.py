@@ -10,23 +10,26 @@ import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-CAP = {3: 1000, 4: 1000, 5: 32, 6: 15, 7: 15, 8: 15}
+CAP = {3: 1000, 4: 1000, 5: 32, 6: 15, 7: 15, 8: 15, 9: 15, 10: 15, 11: 15}
 
 
 def default_build_dir():
     """Keep executables outside synced project folders that strip execute bits."""
     cache = Path(os.environ.get('XDG_CACHE_HOME', str(Path.home()/'.cache')))
     identity = hashlib.sha256(str(ROOT.resolve()).encode()).hexdigest()[:16]
-    return cache/'fusion-ring-census'/identity/'laptop-v2'
+    return cache/'fusion-ring-census'/identity/'laptop-v3'
 
 
 def package_result(out, archive, rank, bound, baseline):
+    if baseline is None and rank not in (9,10,11):
+        raise ValueError('released baseline is missing')
+    prefix_bound = min(bound, baseline['bound']) if baseline is not None else 0
     state = json.loads((out/'run.json').read_text())
     required = (['all'] if rank <= 4 else ['nonselfdual', 'selfdual'] if rank == 5
                 else [f'pairs{p}' for p in range(1, (rank-1)//2+1)] + ['selfdual'])
     if not (state.get('complete') is True and state.get('verified') is True
             and state.get('rank') == rank and state.get('bound') == bound
-            and state.get('existing_prefix_checked_through') == min(bound, baseline['bound'])
+            and state.get('existing_prefix_checked_through') == prefix_bound
             and [r['name'] for r in state['runs']] == required
             and all(r.get('returncode') == 0 for r in state['runs'])):
         raise ValueError('driver did not certify a complete whole-rank result')
@@ -34,9 +37,11 @@ def package_result(out, archive, rank, bound, baseline):
     if (set(counts) != set(map(str, range(1, bound+1)))
             or any(type(v) is not int or v < 0 for v in counts.values())
             or sum(counts.values()) != state['classes']
-            or any(counts[str(m)] != baseline['counts'][str(m)] for m in range(1, min(bound, baseline['bound'])+1))):
+            or any(counts[str(m)] != baseline['counts'][str(m)] for m in range(1, prefix_bound+1))):
         raise ValueError('counts or released prefix mismatch')
-    evidence = {'baseline': baseline, 'source': json.loads((ROOT/'SOURCE.json').read_text())
+    evidence = {'baseline': baseline,
+                'baseline_status': 'released prefix compared' if baseline is not None else f'no released rank-{rank} baseline',
+                'source': json.loads((ROOT/'SOURCE.json').read_text())
                 if (ROOT/'SOURCE.json').exists() else {'code_sha256': state['code_sha256']}}
     (out/'laptop_provenance.json').write_text(json.dumps(evidence, indent=2, allow_nan=False)+'\n')
     # Explicit allowlist excludes partial outputs, compiler products and duplicate tensors.
@@ -57,7 +62,7 @@ def package_result(out, archive, rank, bound, baseline):
 def main():
     available = len(os.sched_getaffinity(0)) if hasattr(os, 'sched_getaffinity') else os.cpu_count() or 1
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--rank', type=int, choices=range(3,9), required=True)
+    ap.add_argument('--rank', type=int, choices=range(3,12), required=True)
     ap.add_argument('--bound', '--mult', type=int, required=True)
     ap.add_argument('--threads', type=int, default=min(64, available))
     ap.add_argument('--output-dir', type=Path, default=ROOT/'runs')
@@ -68,8 +73,10 @@ def main():
         ap.error('unlimited execution is for your laptop, not GitHub Actions')
     if not 1 <= a.bound <= CAP[a.rank] or not 1 <= a.threads <= 64:
         ap.error(f'rank {a.rank} bound must be 1..{CAP[a.rank]}; threads must be 1..64')
-    baseline = json.loads((ROOT/'results/census.json').read_text())['ranks'][str(a.rank)]
-    if not (baseline.get('complete') is True and baseline.get('verified') is True):
+    baseline = json.loads((ROOT/'results/census.json').read_text())['ranks'].get(str(a.rank))
+    if baseline is None and a.rank not in (9,10,11):
+        ap.error('released baseline is missing')
+    if baseline is not None and not (baseline.get('complete') is True and baseline.get('verified') is True):
         ap.error('baseline is not certified')
     out = a.output_dir.resolve()/f'rank{a.rank}_M{a.bound}'
     archive = a.output_dir.resolve()/f'rank{a.rank}_multiplicity{a.bound}_verified.zip'
@@ -86,6 +93,8 @@ def main():
                '--verify', '--out', str(out), '--build-dir', str(a.build_dir.resolve())]
     print(f'Rank {a.rank} through {a.bound}; {a.threads} threads; NO clock limit. Keep the laptop awake.', flush=True)
     print(f'Progress and logs: {out}', flush=True)
+    if baseline is None:
+        print(f'No released rank-{a.rank} baseline; all {(a.rank-1)//2+1} duality types and independent tensor verification are required.', flush=True)
     try:
         result = subprocess.run(command, cwd=ROOT)
     except KeyboardInterrupt:

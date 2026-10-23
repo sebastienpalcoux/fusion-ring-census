@@ -11,6 +11,9 @@ static Clock::time_point began;
 static double allowance;
 static std::string system_dir;
 static int single_job=-1;
+#ifndef CENSUS_SELFDUAL_RANK
+#define CENSUS_SELFDUAL_RANK 0
+#endif
 
 template<int P> struct FieldFilter {
  int inv[P]{}; uint32_t mask[P][P]{};
@@ -28,8 +31,9 @@ template<int N> struct Worker {
  int edge_index[N][N]{};
  std::vector<std::array<int,E>> stabilizers;
  std::vector<int> stabilizer_starts;
+ bool compact_stabilizers=false;
  int norm_length,dot_length;
- std::vector<uint32_t> row_masks,dot_masks;
+ std::vector<uint32_t> row_masks,dot_masks,dot_interval_masks;
  const uint32_t* row_ptr[N]{};
  CompletionSolver csp;
  FieldFilter<17> f17; FieldFilter<257> f257;
@@ -208,6 +212,19 @@ template<int N> struct Worker {
     dot_masks[(e*(M+1)+q)*dot_length+c]=keep;
    }
   }
+  // With multiplicity one, a completed row contracts a partially known row
+  // to an exact interval: every unknown summand has coefficient zero or one.
+  // Cache unions of masks on these short intervals for early pair pruning.
+  if(M==1){
+   dot_interval_masks.resize(E*2*dot_length*dot_length);
+   for(int e=0;e<E;++e)for(int q=0;q<2;++q)for(int lo=0;lo<dot_length;++lo){
+    uint32_t mask=0;
+    for(int hi=lo;hi<dot_length;++hi){
+     mask|=dot_masks[(e*2+q)*dot_length+hi];
+     dot_interval_masks[((e*2+q)*dot_length+lo)*dot_length+hi]=mask;
+    }
+   }
+  }
  }
  uint32_t row_filter(int i,uint32_t mask)const{
   return mask & row_ptr[i][missing[i]*norm_length+norm[i]];
@@ -215,6 +232,54 @@ template<int N> struct Worker {
  uint32_t dot_filter(int i,int j,uint32_t mask)const{
   int c=u[i]*u[j];for(int k=0;k<N;++k)c+=Q[i][k]*Q[k][j];
   return mask & dot_masks[(edge_index[i][j]*(M+1)+Q[i][j])*dot_length+c];
+ }
+ uint32_t partial_dot_filter(int i,int j,int filled,uint32_t mask)const{
+  // Row i is complete; only Q_kj with unvisited off-diagonal indices vary.
+  int lo=u[i]*u[j],unknown=0;
+  for(int k=0;k<N;++k){
+   if(k!=j&&edge_index[k][j]>=filled)unknown+=Q[i][k];
+   else lo+=Q[i][k]*Q[k][j];
+  }
+  int e=edge_index[i][j],hi=lo+unknown;
+  return mask & dot_interval_masks[((e*2+Q[i][j])*dot_length+lo)*dot_length+hi];
+ }
+ // Exact colored-graph canonicality without storing the factorial stabilizer.
+ // Earlier rows partition the unused vertices into ordered cells. Within
+ // each cell, sorting adjacency to the next chosen vertex minimizes that
+ // next row; only equal rows require further branching.
+ bool canonical_matrix()const{
+  using Cells=std::vector<std::vector<int>>;
+  Cells initial;
+  for(int i=0;i<N;++i){
+   if(!i||u[i]!=u[i-1]||Q[i][i]!=Q[i-1][i-1])initial.emplace_back();
+   initial.back().push_back(i);
+  }
+  auto visit=[&](auto&&self,int row,const Cells&cells)->bool{
+   if(cells.empty())return true;
+   const auto&first=cells.front();
+   for(size_t choice=0;choice<first.size();++choice){
+    int x=first[choice];bool redundant=false;
+    for(size_t prev=0;prev<choice&&!redundant;++prev){
+     int y=first[prev];bool twins=true;
+     for(int v=0;v<N;++v)if(v!=x&&v!=y&&Q[x][v]!=Q[y][v]){twins=false;break;}
+     redundant=twins;
+    }
+    if(redundant)continue;
+    Cells refined;int column=row+1,comparison=0;
+    for(const auto&cell:cells){
+     std::array<std::vector<int>,16> bins;
+     for(int v:cell)if(v!=x)bins[Q[x][v]].push_back(v);
+     for(int value=0;value<=M;++value)if(!bins[value].empty()){
+      for(int v:bins[value]){(void)v;if(!comparison&&value!=Q[row][column])comparison=value<Q[row][column]?-1:1;++column;}
+      refined.push_back(std::move(bins[value]));
+     }
+    }
+    if(comparison<0)return false;
+    if(!comparison&&!self(self,row+1,refined))return false;
+   }
+   return true;
+  };
+  return visit(visit,0,initial);
  }
  bool canonical_edges(int filled)const{
   for(size_t h=0;h<stabilizers.size();++h){
@@ -224,7 +289,9 @@ template<int N> struct Worker {
     auto [a,b]=edge[k];auto[c,d]=edge[j];
     if(Q[a][b]>Q[c][d])return false;if(Q[a][b]<Q[c][d])break;
    }
-  }return true;
+  }
+  if(compact_stabilizers&&filled==E)return canonical_matrix();
+  return true;
  }
 
  template<int P> bool firstrow_filter(uint32_t &possible,const FieldFilter<P>&f){
@@ -334,8 +401,7 @@ template<int N> struct Worker {
      for(int i=0;i<N-1;++i)for(int j=i;j<N-1;++j)
       v.push_back(i==j?wv[N-1+i]:wv[2*(N-1)+sub.edge_index[i][j]]);
      v.insert(v.end(),wv.begin()+Worker<N-1>::TOP,wv.end());
-     std::vector<int> best=v,t(v.size());
-     for(const auto&p:csp.perms){for(size_t k=0;k<v.size();++k)t[k]=v[p[k]];if(t<best)best=t;}
+     std::vector<int> best=csp.canonicalize(v);
      if(!csp.accept(best))throw std::logic_error("weighted unfolding failed exact verification");
     };
     std::array<int,N-1> u2{};
@@ -373,8 +439,19 @@ template<int N> struct Worker {
     else{auto[l,h]=edge[E-2];a&=pair_masks[Q[l][h]][z];}}
    else if(witness_active&&k==E-1&&k>=N-1)a&=last_masks[z];
    a=row_filter(i,a);if(a)a=row_filter(j,a);
-   if(a&&!missing[i])for(int l=0;l<N&&a;++l)if(l!=i&&!missing[l])a=dot_filter(i,l,a);
-   if(a&&!missing[j])for(int l=0;l<N&&a;++l)if(l!=j&&l!=i&&!missing[l])a=dot_filter(j,l,a);
+   if(M==1&&N>=8){
+    // A changed edge affects contractions of its endpoints with every
+    // completed row. When a row becomes complete, inspect all its partners.
+    if(a&&!missing[i])for(int l=0;l<N&&a;++l)if(l!=i)a=partial_dot_filter(i,l,k+1,a);
+    if(a&&!missing[j])for(int l=0;l<N&&a;++l)if(l!=j&&l!=i)a=partial_dot_filter(j,l,k+1,a);
+    if(a)for(int l=0;l<N&&a;++l)if(l!=i&&l!=j&&!missing[l]){
+     if(missing[i])a=partial_dot_filter(l,i,k+1,a);
+     if(a&&missing[j])a=partial_dot_filter(l,j,k+1,a);
+    }
+   }else{
+    if(a&&!missing[i])for(int l=0;l<N&&a;++l)if(l!=i&&!missing[l])a=dot_filter(i,l,a);
+    if(a&&!missing[j])for(int l=0;l<N&&a;++l)if(l!=j&&l!=i&&!missing[l])a=dot_filter(j,l,a);
+   }
    if(a&&canonical_edges(k+1)){
     if(k==N-2){build_witnesses(a);if(witness_active){a=0;for(int wi:supported[N-1])a|=1u<<witnesses[wi].a;}if(a)offdiagonal(k+1,a);}
     else if(pair||!witness_active||(k==E-1&&k>=N-1))offdiagonal(k+1,a);
@@ -387,6 +464,27 @@ template<int N> struct Worker {
  void prepare_stabilizers(){
   stabilizers.clear();stabilizer_starts.clear();
   std::array<int,N> p;std::iota(p.begin(),p.end(),0);
+  size_t group_order=1;
+  for(int lo=0;lo<N;){int hi=lo+1;while(hi<N&&u[hi]==u[lo]&&Q[hi][hi]==Q[lo][lo])++hi;
+   for(int k=2;k<=hi-lo&&group_order<=4096;++k)group_order*=k;lo=hi;
+  }
+  compact_stabilizers=group_order>4096;
+  if(compact_stabilizers){
+   // Swaps and products of two swaps give cheap necessary partial tests.
+   // The exact full-matrix test above handles the rest of the group.
+   std::vector<std::pair<int,int>> swaps;
+   for(int i=0;i<N;++i)for(int j=i+1;j<N;++j)if(u[i]==u[j]&&Q[i][i]==Q[j][j])swaps.emplace_back(i,j);
+   auto add=[&](){
+    std::array<int,E> map;int first=E;
+    for(int k=0;k<E;++k){auto[i,j]=edge[k];map[k]=edge_index[p[i]][p[j]];if(first==E&&map[k]!=k)first=k;}
+    if(first<E){stabilizers.push_back(map);stabilizer_starts.push_back(first);}
+   };
+   for(size_t a=0;a<swaps.size();++a){auto[i,j]=swaps[a];std::swap(p[i],p[j]);add();
+    for(size_t b=a+1;b<swaps.size();++b){auto[k,l]=swaps[b];std::swap(p[k],p[l]);add();std::swap(p[k],p[l]);}
+    std::swap(p[i],p[j]);
+   }
+   return;
+  }
   // (u_i,Q_ii) is already sorted. Generate its stabilizer directly,
   // without visiting all N! permutations for every diagonal.
   auto blocks=[&](auto&&self,int lo)->void{
@@ -464,14 +562,33 @@ template<int N> int run_all(const char*system,int M,int threads){
 int main(int argc,char**argv){
  if(argc!=6&&argc!=7){std::cerr<<"usage: selfdual_fast SYSTEM RANK M SECONDS THREADS [SINGLE_JOB]\n";return 2;}
  int r=std::stoi(argv[2]),M=std::stoi(argv[3]),threads=std::stoi(argv[5]);allowance=std::stod(argv[4]);
- if(r<4||r>8||M<1||M>15||threads<1||allowance<=0)return 2;
+ if(r<4||r>11||M<1||M>15||threads<1||allowance<=0)return 2;
  system_dir=std::filesystem::path(argv[1]).parent_path().string();
  if(argc==7)single_job=std::stoi(argv[6]);
  began=Clock::now();int rc=2;
+#if CENSUS_SELFDUAL_RANK==0 || CENSUS_SELFDUAL_RANK==4
  if(r==4)rc=run_all<2>(argv[1],M,threads);
+#endif
+#if CENSUS_SELFDUAL_RANK==0 || CENSUS_SELFDUAL_RANK==5
  if(r==5)rc=run_all<3>(argv[1],M,threads);
+#endif
+#if CENSUS_SELFDUAL_RANK==0 || CENSUS_SELFDUAL_RANK==6
  if(r==6)rc=run_all<4>(argv[1],M,threads);
+#endif
+#if CENSUS_SELFDUAL_RANK==0 || CENSUS_SELFDUAL_RANK==7
  if(r==7)rc=run_all<5>(argv[1],M,threads);
+#endif
+#if CENSUS_SELFDUAL_RANK==0 || CENSUS_SELFDUAL_RANK==8
  if(r==8)rc=run_all<6>(argv[1],M,threads);
- if(!std::cout)return 2;return rc;
+#endif
+#if CENSUS_SELFDUAL_RANK==0 || CENSUS_SELFDUAL_RANK==9
+ if(r==9)rc=run_all<7>(argv[1],M,threads);
+#endif
+#if CENSUS_SELFDUAL_RANK==0 || CENSUS_SELFDUAL_RANK==10
+ if(r==10)rc=run_all<8>(argv[1],M,threads);
+#endif
+#if CENSUS_SELFDUAL_RANK==0 || CENSUS_SELFDUAL_RANK==11
+ if(r==11)rc=run_all<9>(argv[1],M,threads);
+#endif
+ std::cout.flush();if(!std::cout)return 2;return rc;
 }

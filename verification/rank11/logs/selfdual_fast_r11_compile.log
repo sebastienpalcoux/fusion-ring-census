@@ -1,0 +1,19 @@
+/home/sebastien/Library/Fusion_Census_Deep_Optimized_rank11_2026-10-23/Fusion_Census_Deep_Optimized/code/enumerate_selfdual_fast.cpp: In lambda function:
+/home/sebastien/Library/Fusion_Census_Deep_Optimized_rank11_2026-10-23/Fusion_Census_Deep_Optimized/code/enumerate_selfdual_fast.cpp:108:11: warning: captured structured bindings are a C++20 extension [-Wc++20-extensions]
+  108 |    if((i==l&&j==h)||(i==h&&j==l)||(i==m&&j==h)||(i==h&&j==m))return 0;
+      |           ^
+/home/sebastien/Library/Fusion_Census_Deep_Optimized_rank11_2026-10-23/Fusion_Census_Deep_Optimized/code/enumerate_selfdual_fast.cpp:102:8: note: declared here
+  102 |   auto[l,h]=edge[E-2];auto[m,h2]=edge[E-1];
+      |        ^
+/home/sebastien/Library/Fusion_Census_Deep_Optimized_rank11_2026-10-23/Fusion_Census_Deep_Optimized/code/enumerate_selfdual_fast.cpp:108:17: warning: captured structured bindings are a C++20 extension [-Wc++20-extensions]
+  108 |    if((i==l&&j==h)||(i==h&&j==l)||(i==m&&j==h)||(i==h&&j==m))return 0;
+      |                 ^
+/home/sebastien/Library/Fusion_Census_Deep_Optimized_rank11_2026-10-23/Fusion_Census_Deep_Optimized/code/enumerate_selfdual_fast.cpp:102:10: note: declared here
+  102 |   auto[l,h]=edge[E-2];auto[m,h2]=edge[E-1];
+      |          ^
+/home/sebastien/Library/Fusion_Census_Deep_Optimized_rank11_2026-10-23/Fusion_Census_Deep_Optimized/code/enumerate_selfdual_fast.cpp:108:39: warning: captured structured bindings are a C++20 extension [-Wc++20-extensions]
+  108 |    if((i==l&&j==h)||(i==h&&j==l)||(i==m&&j==h)||(i==h&&j==m))return 0;
+      |                                       ^
+/home/sebastien/Library/Fusion_Census_Deep_Optimized_rank11_2026-10-23/Fusion_Census_Deep_Optimized/code/enumerate_selfdual_fast.cpp:102:28: note: declared here
+  102 |   auto[l,h]=edge[E-2];auto[m,h2]=edge[E-1];
+      |                            ^

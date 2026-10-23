@@ -1,0 +1,37 @@
+{
+  "description": "Full independently verified rank-nine multiplicity-one census plus deterministic unit-fixing relabellings and literal repeats; class partitions and source representatives match exhaustive verification.",
+  "date": "2026-10-23",
+  "compiler_flags": "g++ -O3 -std=c++17",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "fixture_sha256": "015c1b2d4f49f0e7b9cb87626e9447c0ce4d11db5bce16d33822fd68d2a438a2",
+  "verifier_source_sha256": "5898c16b7c04d8238ff13d769fb50b734ba9ff2a54d17674fda4aef4d0a5a021",
+  "records": 305,
+  "expected_classes": 142,
+  "outcomes": {
+    "refined": {
+      "input_records": 305,
+      "input_physical_lines": 305,
+      "distinct_rings": 142,
+      "duplicates": 163,
+      "literal_repeats": 21,
+      "new_labellings": 142,
+      "associativity_checked": true,
+      "canonical_mode": "individualization-refinement (exact)",
+      "permutations_examined": 1745,
+      "elapsed_seconds": 0.168235112
+    },
+    "exhaustive": {
+      "input_records": 305,
+      "input_physical_lines": 305,
+      "distinct_rings": 142,
+      "duplicates": 163,
+      "literal_repeats": 21,
+      "new_labellings": 142,
+      "associativity_checked": true,
+      "canonical_mode": "all unit-fixing permutations",
+      "permutations_examined": 12297600,
+      "elapsed_seconds": 1.892226874
+    }
+  },
+  "speedup": 11.247514573533259
+}

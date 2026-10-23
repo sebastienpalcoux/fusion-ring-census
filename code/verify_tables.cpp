@@ -120,17 +120,43 @@ V signature(const Ring& r,int i) {
     for(const auto& p:pairs) s.insert(s.end(),p.begin(),p.end());
     return s;
 }
+// Ordered individualization/refinement. Every split key is invariant under
+// isomorphisms preserving the current cells. Branching visits every possible
+// image of a chosen vertex, except branches related by a directly checked
+// transposition automorphism. Thus equal canonical tensors are equivalent to
+// based-ring isomorphism; the key need not be the unrestricted lexicographic
+// minimum. --exhaustive remains an independent factorial reference algorithm.
+using Partition = std::vector<V>;
+Partition refine(const Ring& r,Partition cells) {
+    const int n=r.n;
+    for(;;) {
+        V color(n);
+        for(size_t c=0;c<cells.size();++c)for(int i:cells[c])color[i]=int(c);
+        Partition next;
+        for(const V& cell:cells) {
+            if(cell.size()==1) {next.push_back(cell);continue;}
+            std::map<V,V> groups;
+            for(int i:cell) {
+                V key={color[r.dual[i]]};
+                std::vector<std::array<int,5>> records;
+                records.reserve(n*n);
+                for(int j=0;j<n;++j)for(int k=0;k<n;++k)
+                    records.push_back({color[j],color[k],r(i,j,k),r(j,i,k),r(j,k,i)});
+                std::sort(records.begin(),records.end());
+                key.reserve(1+5*n*n);
+                for(const auto& record:records)key.insert(key.end(),record.begin(),record.end());
+                groups[std::move(key)].push_back(i);
+            }
+            for(auto& group:groups)next.push_back(std::move(group.second));
+        }
+        if(next.size()==cells.size())return next;
+        cells=std::move(next);
+    }
+}
 struct Canon { V tensor, perm; uint64_t leaves=0; };
 Canon canonical(const Ring& r,bool exhaustive) {
-    int n=r.n; std::vector<V> cells;
-    if(exhaustive) { V c(n-1); std::iota(c.begin(),c.end(),1); if(!c.empty()) cells.push_back(c); }
-    else {
-        std::map<V,V> groups;
-        for(int i=1;i<n;++i) groups[signature(r,i)].push_back(i);
-        for(auto& g:groups) cells.push_back(std::move(g.second));
-    }
-    V p(n); p[0]=0; Canon best;
-    auto consider=[&]() {
+    const int n=r.n; Canon best;
+    auto consider=[&](const V& p) {
         ++best.leaves;
         if(!best.tensor.empty()) {
             size_t t=0; int cmp=0;
@@ -143,13 +169,51 @@ Canon canonical(const Ring& r,bool exhaustive) {
         best.perm=p; best.tensor.clear(); best.tensor.reserve(r.a.size());
         for(int i:p) for(int j:p) for(int k:p) best.tensor.push_back(r(i,j,k));
     };
-    std::function<void(size_t,int)> visit=[&](size_t c,int offset) {
-        if(c==cells.size()) {consider(); return;}
-        V& cell=cells[c]; // initially sorted; next_permutation restores sorting on false
-        do {std::copy(cell.begin(),cell.end(),p.begin()+offset); visit(c+1,offset+int(cell.size()));}
-        while(std::next_permutation(cell.begin(),cell.end()));
+    if(exhaustive) {
+        V p(n);std::iota(p.begin(),p.end(),0);
+        do {consider(p);} while(std::next_permutation(p.begin()+1,p.end()));
+        return best;
+    }
+    std::map<V,V> groups;
+    for(int i=1;i<n;++i)groups[signature(r,i)].push_back(i);
+    Partition initial={{0}};
+    for(auto& group:groups)initial.push_back(std::move(group.second));
+    // A twin swap fixes every other vertex, in particular all earlier choices.
+    // Its validity is checked on all original tensor entries, never inferred
+    // from a signature collision. Cache -1/0/1 for unknown/false/true.
+    std::vector<signed char> twins(n*n,-1);
+    auto twin=[&](int a,int b) {
+        signed char& cache=twins[a*n+b];
+        if(cache>=0)return cache!=0;
+        auto swap=[&](int i){return i==a?b:i==b?a:i;};
+        bool equal=true;
+        for(int i=0;i<n&&equal;++i)for(int j=0;j<n&&equal;++j)for(int k=0;k<n;++k)
+            if(r(i,j,k)!=r(swap(i),swap(j),swap(k))) {equal=false;break;}
+        twins[b*n+a]=cache=equal?1:0;
+        return equal;
     };
-    visit(0,1); return best;
+    std::function<void(Partition)> visit=[&](Partition cells) {
+        cells=refine(r,std::move(cells));
+        if(cells.size()==size_t(n)) {
+            V p; p.reserve(n);for(const V& cell:cells)p.push_back(cell[0]);
+            consider(p);return;
+        }
+        size_t chosen=cells.size();
+        for(size_t c=0;c<cells.size();++c)
+            if(cells[c].size()>1 && (chosen==cells.size()||cells[c].size()<cells[chosen].size()))chosen=c;
+        V tried;
+        for(int vertex:cells[chosen]) {
+            bool redundant=false;
+            for(int previous:tried)if(twin(vertex,previous)) {redundant=true;break;}
+            if(redundant)continue;
+            tried.push_back(vertex);
+            Partition child=cells; V remainder;
+            for(int other:cells[chosen])if(other!=vertex)remainder.push_back(other);
+            child[chosen]=V{vertex};child.insert(child.begin()+chosen+1,std::move(remainder));
+            visit(std::move(child));
+        }
+    };
+    visit(std::move(initial));return best;
 }
 struct Rep { size_t line,clean_line; Ring r; V perm; };
 struct Count { size_t records=0,distinct=0,literal=0,relabelled=0,commutative=0,noncommutative=0; };
@@ -229,7 +293,7 @@ int main(int argc,char** argv) {
           <<",\n  \"distinct_rings\": "<<reps.size()<<",\n  \"duplicates\": "<<records-reps.size()
           <<",\n  \"literal_repeats\": "<<literal_dups<<",\n  \"new_labellings\": "<<relab_dups
           <<",\n  \"associativity_checked\": "<<(full?"true":"false")
-          <<",\n  \"canonical_mode\": \""<<(exhaustive?"all unit-fixing permutations":"invariant-cell permutations")
+          <<",\n  \"canonical_mode\": \""<<(exhaustive?"all unit-fixing permutations":"individualization-refinement (exact)")
           <<"\",\n  \"permutations_examined\": "<<leaves<<",\n  \"elapsed_seconds\": "<<sec<<"\n}\n";
         js.close();if(!js)throw std::runtime_error("summary write error");
         std::cout<<records<<" source records; "<<reps.size()<<" distinct rings; "<<records-reps.size()<<" duplicates ("<<literal_dups<<" literal repeats, "<<relab_dups<<" additional labellings).\n"

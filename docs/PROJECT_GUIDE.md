@@ -1,5 +1,7 @@
 # Fusion Ring Census · project guide
 
+Current datasets extend through rank 11 at multiplicity one. See the [current manifest](../results/census.json), [count table](../results/table.md) and [source update](../verification/engine_20261023/README.md). The detailed historical notes below are retained.
+
 [Repository front page](../README.md) · [Interactive atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/)
 
 **Exact enumeration of based fusion rings, at ranks 3–8.**

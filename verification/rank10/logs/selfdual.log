@@ -1,0 +1,27 @@
+job 1 / 26 done 1 u 0 0 0 0 0 0 0 0 matrices 0 rings 0 seconds 0.00035202
+job 5 / 26 done 1 u 0 0 0 0 0 0 0 1 matrices 26 rings 0 seconds 0.00699854
+job 4 / 26 done 1 u 0 0 0 0 0 0 0 1 matrices 67 rings 0 seconds 0.0476483
+job 8 / 26 done 1 u 0 0 0 0 0 0 1 1 matrices 1246 rings 0 seconds 0.18208
+job 3 / 26 done 1 u 0 0 0 0 0 0 0 1 matrices 601 rings 1 seconds 0.198732
+job 7 / 26 done 1 u 0 0 0 0 0 0 1 1 matrices 6853 rings 0 seconds 0.365107
+job 2 / 26 done 1 u 0 0 0 0 0 0 0 0 matrices 1 rings 1 seconds 1.27582
+job 11 / 26 done 1 u 0 0 0 0 0 1 1 1 matrices 33871 rings 0 seconds 1.34869
+job 18 / 26 done 1 u 0 0 1 1 1 1 1 1 matrices 952 rings 0 seconds 0.239334
+job 6 / 26 done 1 u 0 0 0 0 0 0 1 1 matrices 37841 rings 0 seconds 2.45794
+job 21 / 26 done 1 u 0 1 1 1 1 1 1 1 matrices 0 rings 0 seconds 8.7513e-05
+job 22 / 26 done 1 u 0 1 1 1 1 1 1 1 matrices 0 rings 0 seconds 3.9277e-05
+job 19 / 26 done 1 u 0 0 1 1 1 1 1 1 matrices 10760 rings 0 seconds 1.28088
+job 24 / 26 done 1 u 0 1 1 1 1 1 1 1 matrices 77 rings 0 seconds 0.0378012
+job 25 / 26 done 1 u 1 1 1 1 1 1 1 1 matrices 0 rings 0 seconds 0.000148668
+job 10 / 26 done 1 u 0 0 0 0 0 1 1 1 matrices 131465 rings 0 seconds 2.70281
+job 23 / 26 done 1 u 0 1 1 1 1 1 1 1 matrices 352 rings 0 seconds 0.249942
+job 20 / 26 done 1 u 0 0 1 1 1 1 1 1 matrices 14810 rings 1 seconds 1.35507
+job 15 / 26 done 1 u 0 0 0 1 1 1 1 1 matrices 126060 rings 0 seconds 4.00372
+job 14 / 26 done 1 u 0 0 0 0 1 1 1 1 matrices 204581 rings 0 seconds 5.07886
+job 0 / 26 done 1 u 0 0 0 0 0 0 0 0 matrices 5 rings 50 seconds 5.3366
+job 16 / 26 done 1 u 0 0 0 1 1 1 1 1 matrices 294420 rings 0 seconds 5.33829
+job 13 / 26 done 1 u 0 0 0 0 1 1 1 1 matrices 564333 rings 0 seconds 6.57373
+job 9 / 26 done 1 u 0 0 0 0 0 1 1 1 matrices 346462 rings 0 seconds 6.8358
+job 12 / 26 done 1 u 0 0 0 0 1 1 1 1 matrices 746694 rings 0 seconds 7.85351
+job 17 / 26 done 1 u 0 0 0 1 1 1 1 1 matrices 282482 rings 0 seconds 9.10698
+FINAL rank 10 bound 1 complete 1 jobs 26 / 26 matrices 2803959 singular 84435 completion_nodes 107386 classes 53 seconds 9.4819 counts 53

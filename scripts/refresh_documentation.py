@@ -1,382 +1,99 @@
 #!/usr/bin/env python3
-"""Generate every public count projection and index from the certified manifest."""
-import csv,json
+"""Refresh current count projections while preserving historical research notes."""
+import csv
+import json
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[1]
 
-def table(ranks, first, last, columns=range(3,9)):
- columns=list(columns)
- lines=['| Multiplicity | '+' | '.join(f'Rank {r}' for r in columns)+' |','|---:|'+'---:|'*len(columns)]
- for m in range(first,last+1):
-  values=[f"{ranks[str(r)]['counts'][str(m)]:,}" if str(m) in ranks[str(r)]['counts'] else '—' for r in columns]
-  lines.append('| '+str(m)+' | '+' | '.join(values)+' |')
- return '\n'.join(lines)
+def table(ranks, first, last, columns=None):
+    columns = list(columns or sorted(map(int, ranks)))
+    lines = ['| Multiplicity | ' + ' | '.join(f'Rank {r}' for r in columns) + ' |', '|---:|' + '---:|' * len(columns)]
+    for m in range(first, last + 1):
+        values = [f"{ranks[str(r)]['counts'][str(m)]:,}" if str(m) in ranks[str(r)]['counts'] else '—' for r in columns]
+        lines.append('| ' + str(m) + ' | ' + ' | '.join(values) + ' |')
+    return '\n'.join(lines)
 
 def main():
- d=json.loads((ROOT/'results/census.json').read_text());ranks=d['ranks'];oeis=ROOT/'oeis'
- # Preserve maintained introductory cross-links when regenerating count tables.
- existing=(ROOT/'README.md').read_text() if (ROOT/'README.md').exists() else ''
- before_counts=existing.partition('## Counts by rank and multiplicity')[0]
- readme_intro=before_counts.partition('No categorifiability filter.')[2].strip()
- readme_intro=(readme_intro+'\n\n') if readme_intro else ''
- for r,v in ranks.items():
-  assert v.get('complete') is True and v.get('verified') is True
-  assert sorted(map(int,v['counts']))==list(range(1,v['bound']+1)) and sum(v['counts'].values())==v['classes']
-  folder=ROOT/f'results/rank{r}';folder.mkdir(exist_ok=True)
-  with (folder/'counts.csv').open('w',newline='') as f:
-   w=csv.writer(f,lineterminator='\n');w.writerow(['rank','multiplicity','classes']);w.writerows((r,m,n) for m,n in v['counts'].items())
- with (ROOT/'results/counts.csv').open('w',newline='') as f:
-  w=csv.writer(f,lineterminator='\n');w.writerow(['rank','multiplicity','classes']);w.writerows((r,m,n) for r,v in ranks.items() for m,n in v['counts'].items())
- coverage=['| Rank | Complete through | Classes in total | Data | Companion |','|---:|---:|---:|---|---|']
- for r,v in ranks.items():coverage.append(f'| {r} | {v["bound"]:,} | {v["classes"]:,} | [Tensors]({v["tables"]}) · [Counts](results/rank{r}/counts.csv) | [PDF](manuscripts/rank{r}.pdf) · [TeX](manuscripts/rank{r}.tex) |')
- readme=f'''# Fusion Ring Census
+    data = json.loads((ROOT / 'results/census.json').read_text()); ranks = data['ranks']
+    all_rows = []
+    coverage = ['| Rank | Complete through | Classes in total | Data | Companion / evidence |', '|---:|---:|---:|---|---|']
+    for r, item in ranks.items():
+        assert item['complete'] is True and item['verified'] is True
+        assert sorted(map(int, item['counts'])) == list(range(1, item['bound'] + 1))
+        assert sum(item['counts'].values()) == item['classes']
+        rows = [(int(r), int(m), count) for m, count in item['counts'].items()]; all_rows += rows
+        with (ROOT / f'results/rank{r}/counts.csv').open('w', newline='') as f:
+            writer = csv.writer(f, lineterminator='\n'); writer.writerow(['rank', 'multiplicity', 'classes']); writer.writerows(rows)
+        evidence = f'[PDF](manuscripts/rank{r}.pdf) · [TeX](manuscripts/rank{r}.tex)' if int(r) <= 8 else f'[Verification](verification/rank{r}/README.md)'
+        coverage.append(f'| {r} | {item["bound"]:,} | {item["classes"]:,} | [Tensors]({item["tables"]}) · [Counts](results/rank{r}/counts.csv) | {evidence} |')
+    assert sum(item['classes'] for item in ranks.values()) == data['total_classes']
+    with (ROOT / 'results/counts.csv').open('w', newline='') as f:
+        writer = csv.writer(f, lineterminator='\n'); writer.writerow(['rank', 'multiplicity', 'classes']); writer.writerows(all_rows)
+    (ROOT / 'results/table.md').write_text('# Exact-multiplicity census\n\n[Overview](../README.md) · [CSV](counts.csv) · [Manifest](census.json)\n\nCounts are at exact multiplicity. A dash is unavailable, not zero.\n\n' + table(ranks, 1, 1000) + '\n')
+    (ROOT / 'README.md').write_text(f'''# Fusion Ring Census
 
-**Exact enumeration of based fusion rings, at ranks 3–8.**
+**Exact enumeration of based fusion rings at ranks 3–11.**
 
-[Data](#complete-datasets) · [Manuscripts](manuscripts/README.md) · [Run & verify](docs/REPRODUCIBILITY.md) · [OEIS](oeis/README.md) · [Evidence](verification/README.md)
+[**Browse the counts →**](results/table.md) · [Datasets](#datasets) · [Run & verify](docs/REPRODUCIBILITY.md) · [Methods](methods/completeness.md)
 
-{d['total_classes']:,} distinct classes in the released datasets. Every duality
-type is included, including noncommutative rings. No categorifiability filter.
+**{data['total_classes']:,} based-isomorphism classes** in the released datasets, including every duality type and noncommutative rings. Categorifiability is recorded separately in the companion [Grothendieck Ring Classification](https://github.com/sebastienpalcoux/grothendieck-ring-classification) and its [interactive atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/).
 
-{readme_intro}## Counts by rank and multiplicity
+> **AI-generated research · independent verification pending.** Automated checks establish only their stated scope. [Provenance and verification](docs/PROVENANCE.md).
 
-Each entry is **the number of based-isomorphism classes at exactly multiplicity
-m**. A dash means *not yet completely enumerated*, never zero.
+**23 October 2026:** multiplicity-one datasets now include ranks 9, 10 and 11, with **142, 194 and 182** classes. The supplied optimized engine supports ranks 3–11. [Source update and checks](verification/engine_20261023/README.md).
 
-{table(ranks,1,20)}
+<a id="complete-datasets"></a>
 
-<details>
-<summary><strong>Multiplicities 21–128 · ranks 3 and 4</strong></summary>
+## Datasets
 
-{table(ranks,21,128,[3,4])}
+Bounds are cumulative: all rings of multiplicity **at most M**.
+
+{chr(10).join(coverage)}
+
+The newly supplied ranks 9–11 passed fresh exact tensor and uniqueness checks. Enumeration completeness is producer-reported, with all strata completed and the complete source supplied; the full searches were not independently rerun. The same qualification applies to rank 7 through 5 and rank 8 through 3. [Verification by rank](verification/README.md).
+
+<details id="counts-by-rank-and-multiplicity">
+<summary><strong>Counts at each exact multiplicity</strong></summary>
+
+Each entry counts classes at **exactly** the stated multiplicity. A dash means not completely enumerated.
+
+[Full count table](results/table.md) · [CSV](results/counts.csv) · [Interactive table](docs/index.html) · [Definitions and historical details](docs/PROJECT_GUIDE.md#counts-by-rank-and-multiplicity)
 
 </details>
 
-[Full table through multiplicity 1000](results/table.md) · [Download CSV](results/counts.csv) · [Offline interactive table](docs/index.html)
+<a id="reproduce-a-census"></a>
 
-Download `docs/index.html` and open it in a browser to filter the interactive table.
-
-## Complete datasets
-
-Bounds and totals below are cumulative: all rings of multiplicity **at most M**.
-
-**Rank 7 through 5:** the producer reports a completed exhaustive run. Fresh
-checks certify all 10,006 tensors and their uniqueness, including 5,805 new
-exact-multiplicity-5 classes. The complete optimized source was subsequently
-supplied and its hash matches the producer run; full enumeration has not been
-independently reproduced. Rank 8 through 3 contains 4,500 checked tensors,
-including 3,527 new exact-multiplicity-3 classes, with the same qualification.
-See [the source qualification](verification/rank7/README.md).
-
-{chr(10).join(coverage)}
-
-Each tensor uses basis unit 0 and ordered coefficients `N[i][j][k]`. Data are
-gzip-compressed, with one full tensor per line. The [manifest](results/census.json)
-records exact counts, checksums and evidence links. Rank 3 stops at 1000.
-
-## Reproduce a census
-
-Python 3.9+ and GNU g++ with C++17/OpenMP are sufficient. On your own computer:
+## Reproduce and explore
 
 ```bash
-python3 scripts/run_laptop.py --rank 7 --bound 5
+python3 scripts/run_laptop.py --rank 11 --bound 1
 ```
 
-The local launcher has no clock limit. It includes every duality type and creates
-a result ZIP only after independent tensor verification, isomorphism checking and
-agreement with the released count prefix. [Installation and all rank limits →](docs/REPRODUCIBILITY.md)
+The local launcher has no clock limit. [Installation, supported bounds and verification](docs/REPRODUCIBILITY.md). A census is complete only after every stratum finishes and the output passes verification.
 
-A search is complete only when every stratum finishes. The verifier establishes
-validity and uniqueness; [coverage arguments](methods/completeness.md) establish
-why the search is exhaustive. Interrupted output never supplies census terms.
+<a id="read-and-reuse"></a>
 
-## Read and reuse
+| Resource | Contents |
+|---|---|
+| Mathematics | [Six rank-specific companions](manuscripts/README.md) · [High-rank methods](methods/COMPACT_SYMMETRY.md) |
+| Evidence | [Verification records](verification/README.md) · [Source update](verification/engine_20261023/README.md) |
+| Categorification | [Current classification and open cases](https://github.com/sebastienpalcoux/grothendieck-ring-classification) |
+| Project details | [Historical research and definitions](docs/PROJECT_GUIDE.md) |
+| Reuse | [Cite](CITATION.cff) · [Licensing](NOTICE.md) · [OEIS drafts](oeis/README.md) |
 
-The six [mathematical companions](manuscripts/README.md) explain the definitions,
-rank-specific methods and complete counts. These are censuses of **based rings**;
-they do not classify their categorifications.
-
-The [source audit](audit/README.md) corrects 3,313 redundant records in the
-Vercleyen–Slingerland ancillary database. Its attribution and deletion witnesses
-are retained. The [OEIS folder](oeis/README.md) contains proposed data and edits;
-no online submission is implied.
-
-Sébastien Palcoux · BIMSA · [Cite](CITATION.cff) · [Attribution & licensing](NOTICE.md) · [Contribute](CONTRIBUTING.md)
-
-Repository access is public. [Provenance and verification](docs/PROVENANCE.md)
-explain the current release, AI assistance and the limits of computational evidence.
-'''
- (ROOT/'README.md').write_text(readme)
- (ROOT/'results/table.md').write_text('# Exact-multiplicity census\n\n[Overview](../README.md) · [CSV](counts.csv) · [Manifest](census.json)\n\nCounts are at exact multiplicity. A dash is unavailable, not zero.\n\n'+table(ranks,1,1000)+'\n')
- (ROOT/'results/README.md').write_text('''# Census data
-
-`census.json` is the authoritative manifest. `counts.csv` and [the full table](table.md)
-are generated from it. Each `rankR/` directory contains the current complete
-`tables.txt.gz`, `counts.csv`, and, where available, `parameters.txt.gz`.
-
-A tensor is a nested array of nonnegative integers: `N[i][j][k]` is the
-coefficient of basis element k in the ordered product i·j; basis element 0 is
-the unit. Each line represents one based-isomorphism class. Multiplicity is
-the maximum entry of the full tensor, so even group rings have multiplicity 1.
-Parameter files contain generator coordinates, not additional classes.
-
-Each released list has independently verified valid, distinct tensors.
-Rank-7 completeness through multiplicity 5 is producer-reported: the supplied
-complete optimized source is now supplied and hash-matched, but enumeration
-was not rerun. The same qualification applies to rank 8 through multiplicity 3.
-See [the rank-7 qualification](../verification/rank7/README.md).
-See [verification](../verification/README.md)
-and [reproduction](../docs/REPRODUCIBILITY.md).
+Sébastien Palcoux · BIMSA · [Project announcement](https://hexagonmath.org/2610.00300?version=1)
 ''')
- index=['# Mathematical companions','','Each companion gives definitions, a rank-specific coverage argument, exact counts, independent verification and reproduction commands. They are computational research notes, not claims of journal publication.','','| Rank | Complete through | Classes | Read |','|---:|---:|---:|---|']
- for r,v in ranks.items():index.append(f'| {r} | {v["bound"]} | {v["classes"]:,} | [PDF](rank{r}.pdf) · [LaTeX](rank{r}.tex) |')
- index+=['','Rank-7 completeness through multiplicity 5 is producer-reported; the new tensors and their uniqueness were independently verified. The complete optimized source is now supplied and hash-matched; full searches at rank 7 through 5 and rank 8 through 3 were not independently rerun. See [the qualification](../verification/rank7/README.md).','','Rebuild with `python3 scripts/build_manuscripts.py --compile`, or select one companion with `--ranks 6 --compile`. Counts and the displayed release date are read from the same manifest as the repository front page.','']
- (ROOT/'manuscripts/README.md').write_text('\n'.join(index))
- assigned={3:'A354471',4:'A354472',5:'A354473'};impact=[]
- for r,v in ranks.items():
-  entry=assigned.get(int(r));name='b'+entry[1:]+'.txt' if entry else f'fixed_rank_{r}.txt'
-  (oeis/name).write_text(''.join(f'{m} {n}\n' for m,n in v['counts'].items()))
-  impact.append({'rank':int(r),'bound':v['bound'],'entry':entry,'file':name,'submission_status':'not submitted'})
- for m,entry in [(1,'A348305'),(2,'A354475'),(3,'A354476'),(4,'A354477')]:
-  rows=[(1,1 if m==1 else 0),(2,2 if m==1 else 1)]
-  for r in range(3,9):
-   if str(m) not in ranks[str(r)]['counts']:break
-   rows.append((r,ranks[str(r)]['counts'][str(m)]))
-  if m==1:rows.append((9,142))
-  name='b'+entry[1:]+'.txt';(oeis/name).write_text(''.join(f'{r} {n}\n' for r,n in rows))
-  impact.append({'multiplicity':m,'entry':entry,'through_rank':rows[-1][0],'file':name,'rank9_reference_only':m==1,'submission_status':'not submitted'})
- (oeis/'impact_map.json').write_text(json.dumps(impact,indent=2)+'\n')
- (oeis/'README.md').write_text(f'''# OEIS drafts
+    assigned = {3: '354471', 4: '354472', 5: '354473'}
+    for r, item in ranks.items():
+        filename = f'b{assigned[int(r)]}.txt' if int(r) in assigned else f'fixed_rank_{r}.txt'
+        (ROOT / 'oeis' / filename).write_text(''.join(f'{m} {n}\n' for m, n in item['counts'].items()))
+    for m, number in [(1, '348305'), (2, '354475'), (3, '354476'), (4, '354477')]:
+        rows = [(1, 1 if m == 1 else 0), (2, 2 if m == 1 else 1)]
+        for r in sorted(map(int, ranks)):
+            if str(m) not in ranks[str(r)]['counts']: break
+            rows.append((r, ranks[str(r)]['counts'][str(m)]))
+        (ROOT / f'oeis/b{number}.txt').write_text(''.join(f'{r} {n}\n' for r, n in rows))
+    print('Updated current count projections and clean overview; historical notes preserved.')
 
-[Counting table](../results/table.md) · [Verification](../verification/README.md) · [Source audit](../audit/README.md)
-
-All files are **proposed data or edits, not submitted changes**. Terms count based
-fusion rings at exact multiplicity. Only complete whole-rank counts are exported
-from `results/census.json`.
-
-| Sequence | Direction | Prepared coverage | File |
-|---|---|---|---|
-| A354471 | Rank 3; multiplicity varies | 1–{ranks['3']['bound']} | [b-file](b354471.txt) |
-| A354472 | Rank 4; multiplicity varies | 1–{ranks['4']['bound']} | [b-file](b354472.txt) |
-| A354473 | Rank 5; multiplicity varies | 1–{ranks['5']['bound']} | [b-file](b354473.txt) |
-| A348305 | Multiplicity 1; rank varies | 1–9¹ | [b-file](b348305.txt) |
-| A354475 | Multiplicity 2; rank varies | 1–8 | [b-file](b354475.txt) |
-| A354476 | Multiplicity 3; rank varies | 1–8 | [b-file](b354476.txt) |
-| A354477 | Multiplicity 4; rank varies | 1–7 | [b-file](b354477.txt) |
-
-¹ The rank-nine value 142 is retained from the reference census; it is not an
-independently recomputed rank-nine result. This repository's computation scope
-ends at rank 8. Rank-1 and rank-2 terms follow symbolically.
-
-Fixed-rank data files: [rank 6](fixed_rank_6.txt), [rank 7](fixed_rank_7.txt),
-[rank 8](fixed_rank_8.txt). No A-number is assigned to these files in this repository.
-
-## Correction and extensions
-
-The source audit replaces A354473 terms 9–12:
-**1463 → 863, 1794 → 1082, 2283 → 1383, 3049 → 1948**.
-Suggested comment:
-
-> Terms a(9)–a(12) were corrected by removing repeated isomorphism classes from the ancillary database of Vercleyen and Slingerland (arXiv:2205.15637v4).
-
-The independent census extends the rank-5 draft through 20, with **a(20)=6866**.
-The multiplicity-2 draft includes **A354475: a(8)=877**; the multiplicity-4 draft
-includes **A354477: a(7)=2780**. The multiplicity-3 draft includes
-**A354476: a(7)=1059 and a(8)=3527**. Fixed-rank files include
-**c₆({ranks['6']['bound']})={ranks['6']['counts'][str(ranks['6']['bound'])]}**,
-**c₇({ranks['7']['bound']})={ranks['7']['counts'][str(ranks['7']['bound'])]}** and
-**c₈({ranks['8']['bound']})={ranks['8']['counts'][str(ranks['8']['bound'])]}**.
-Tensor validity and uniqueness have been independently checked. The new rank-7
-term **c₇(5)=5805** relies on producer-reported enumeration completeness;
-the complete optimized source was subsequently supplied and hash-matched,
-but the full search was not rerun. This also applies to c₈(3)=3527.
-Retain [this qualification](../verification/rank7/README.md) in any submission.
-
-## Before submitting
-
-Check the live entry, indexing and b-file; the retained source snapshot is dated
-18 September 2026. Preserve attribution to Vercleyen and Slingerland and credit
-the independent census separately. Supply a public, stable reference to the exact
-revision and verification evidence. Use a permanent commit link to this public
-repository and the corresponding audit records. Search for existing entries before
-proposing new fixed-rank sequences. Check other projections of a changed cell using `impact_map.json`.
-The source correction and newly appended terms are different changes.
-
-OEIS text retains its [attribution and licensing terms](../NOTICE.md).
-''')
- write_release_evidence(d)
- print('Generated census tables, documentation, evidence index and OEIS drafts.')
-
-def write_release_evidence(data):
- ranks=data['ranks']
- rows=['| Rank | Complete through | Classes | Evidence |','|---:|---:|---:|---|']
- for r,v in ranks.items():
-  links=f'[Audit](rank{r}/audit.json) · [Source](rank{r}/source.json)'
-  if (ROOT/f'verification/rank{r}/run.json').exists():links+=f' · [Completed run](rank{r}/run.json)'
-  rows.append(f'| {r} | {v["bound"]} | {v["classes"]:,} | {links} |')
- checks={r:json.loads((ROOT/f'verification/rank{r}/audit.json').read_text()) for r in ['5','6','7','8']}
- for r,a in checks.items():
-  assert all(a[k]==ranks[r][k] for k in ('rank','bound','classes','counts','complete','verified')), f'rank {r}: audit and manifest disagree'
- executions={}
- for r,a in checks.items():
-  if a.get('verification_run_id'):executions.setdefault(a['verification_run_id'],[]).append(r)
- runs='\n'.join(f'- {"Rank" if len(rs)==1 else "Ranks"} {", ".join(rs)}: [audit {run}](https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/{run}).' for run,rs in executions.items())
- local='\n'.join(f'- Rank {r}: [local audit](rank{r}/audit.json), [fresh check](rank{r}/fresh_verification/summary.json) and [retained log](rank{r}/logs/fresh_verification.log).' for r,a in checks.items() if not a.get('verification_run_id'))
- (ROOT/'verification/README.md').write_text(f'''# Verification evidence
-
-[Data](../results/README.md) · [Coverage arguments](../methods/completeness.md) · [Provenance](../docs/PROVENANCE.md)
-
-Every released census covers the entire rank, including every duality type.
-Completeness uses the exhaustive search argument and normally completed enumeration;
-independent tensor checks establish validity and uniqueness. At rank 7 through
-multiplicity 5 and rank 8 through multiplicity 3, completion is producer-reported.
-The complete optimized sources are now supplied and hash-matched, but the full
-searches have not been independently rerun. See [the rank-7 qualification](rank7/README.md).
-
-{chr(10).join(rows)}
-
-## Independent checks
-
-Every released tensor is checked for nonnegative integer coefficients, both unit
-laws, duality, reciprocity and all integer associativity identities. Canonicalization
-uses every unit-fixing basis permutation, with exact tensor comparison. All released
-lists have zero duplicate based-isomorphism classes.
-
-The supplied laptop datasets at ranks 5–8 passed independent checks of their
-tensors, counts and established count prefixes. At rank 7, the verifier,
-exporter and equation-system hashes were checked against available sources;
-the modified enumeration sources were not available. Hosted audits:
-
-{runs}
-
-Local checks (no hosted audit is claimed for these current datasets):
-
-{local or 'None.'}
-
-The rank-6 audit checked **{ranks['6']['classes']:,} tensors** and
-**{checks['6']['independent_verification']['permutations_examined']:,} permutations**.
-These checks performed verification only; they did not rerun enumeration.
-[Runner environments](environments.json) are indexed by audit run.
-
-The rank-4 audit jointly checked {ranks['4']['classes']:,} released tensors and 2,787
-reference records. The raw comparison consequently has 2,787 repetitions in the
-reference suffix; the released enumeration itself has zero duplicates. Its raw
-comparison and containment witnesses are in
-[rank4/reference_comparison](rank4/reference_comparison/).
-
-## Reproducibility records
-
-Each rank directory contains the audit and source receipt for its current dataset.
-Laptop run records retain the exact commands, environment, per-phase timings and
-nonempty subprocess logs. Absolute laptop paths in these records document the
-computation; use the portable [reproduction commands](../docs/REPRODUCIBILITY.md)
-on another computer. Archive hashes identify the supplied payloads, and the
-[manifest](../results/census.json) identifies the released compressed data.
-
-Only one current tensor file and parameter file per rank are retained. Verification
-reports do not contain duplicate tensor collections. Supporting
-[optimization regressions](regressions/) test the indicated small bounds and strata;
-they do not substitute for the full independent audits.
-
-[Repository checks](checks/) cover file integrity, count projections, documentation
-and lightweight unit tests. They are separate from the mathematical checks above.
-''')
- origins={3:'Completed project census',4:'Completed project census',5:'Completed laptop census',6:'Completed laptop census',7:'Completed laptop census',8:'Completed laptop census'}
- coverage=['| Rank | Bound | Classes | Origin |','|---:|---:|---:|---|']
- for r,v in ranks.items():coverage.append(f'| {r} | {v["bound"]} | {v["classes"]:,} | {origins[int(r)]} |')
- (ROOT/'docs/PROVENANCE.md').write_text(f'''# Provenance and attribution
-
-[Overview](../README.md) · [Verification](../verification/README.md) · [Licensing](../NOTICE.md)
-
-## Certified data
-
-Release {data['version']}, dated {data['release_date']}, contains **{data['total_classes']:,}**
-distinct based-ring classes across six bounded regions. The
-[manifest](../results/census.json) fixes every bound, exact-multiplicity count,
-tensor checksum and verification location.
-
-{chr(10).join(coverage)}
-
-Each [rank's evidence](../verification/README.md) identifies its enumeration source,
-completed computation and independent audit. Laptop source receipts record the
-archive checksum and exact code revision; run records retain commands, environment
-and timings. Archive inventories, decompressed hashes and established count prefixes
-are checked before integration. Every required duality stratum must finish normally.
-
-The supplied rank-5–8 tensors were independently checked under every unit-fixing
-basis permutation, with no duplicate classes. The evidence index distinguishes
-hosted audits from local checks. These checks ran verification only; laptop
-enumeration times remain attributed to the laptop.
-No incomplete search contributes an exhaustive count.
-
-### Rank-7 multiplicity-5 qualification
-
-The supplied archive reports normal completion of all four duality strata in
-77,046 seconds on the producer's laptop. Its new exact-multiplicity-5 band has
-5,805 classes; the cumulative list has 10,006. Fresh local checks verify all
-tensor axioms, 7,204,320 unit-fixing permutations, zero duplicate classes,
-byte-identical parameter re-export, and exact tensor-set agreement with the
-previous 4,201-class prefix. These checks did not rerun enumeration.
-
-The complete optimized package was supplied on 21 October 2026. Its aggregate
-code hash `9177263413f1e4c775e5a81aa802a683d119de5af1123a8b9991b23daa1b0658`
-exactly matches both producer run records. Numerical C++ sources are integrated
-unchanged, with the launcher adjusted to use a local executable cache. Finite
-pruning audits and bounded baseline comparisons are separate from a full rerun.
-Completeness remains **producer-reported**, not independently reproduced.
-
-### Rank-8 multiplicity-3 extension
-
-The new release contains 4,500 classes: 96, 877 and 3,527 at exact
-multiplicities 1, 2 and 3. The producer reports normal completion of all four
-strata in 62,292 seconds. Fresh local verification checks all tensor axioms
-and 22,680,000 unit-fixing permutations, with no duplicates. Parameter export
-is byte-identical. Filtering to multiplicity at most two recovers all 973
-previous tensors and parameter records in their original order. The full
-search was not independently rerun. See [rank8](../verification/rank8/README.md)
-and [the optimization integration](../verification/optimization_20261021/README.md).
-
-## Mathematical sources
-
-Gert Vercleyen and Joost K. Slingerland, *On Low Rank Fusion Rings*, Journal of
-Mathematical Physics **64** (2023), 091703; arXiv:2205.15637v4. The retained ancillary
-`FusionRingMultiplicationTables` file has SHA-256
-`b587c3f683157369da7cc090f762bbff0e18dcf11acc3f5031d6bc0c643843f8`.
-Its 28,451 records represent 25,138 distinct classes. The 3,313 redundant records
-all occur at rank five and exact multiplicities 9–12; each deletion has a checked
-unit-fixing basis-permutation witness. The source identity is recorded in
-[audit/source.json](../audit/source.json).
-
-The [source audit](../audit/README.md) is a comparison and deduplication study.
-The source data do not feed the independent enumerators. Deduplication alone
-does not establish completeness of the source's partial-search cells.
-
-Rank-four and rank-five reductions come from the Dong–Palcoux census project
-and exact-certificate supplements. The [methods](../methods/completeness.md) include
-zero-coefficient and singular branches. The six
-[companions](../manuscripts/README.md) are computational research notes; no journal
-acceptance, DOI or arXiv identifier is asserted for them.
-
-## Code and computational evidence
-
-Rank-eight support uses dynamically sized linear-algebra workspaces: its self-dual
-system has 84 variables and 231 equations. The general solver includes all duality
-types and noncommutative cases. No categorifiability filter is applied.
-
-GPT-6 Astra Pro assisted with algorithm development, code, exposition and
-computational checks. Exact independent verification and exhaustive coverage
-arguments are separate evidence. Neither implies proof-assistant certification
-or external peer review. These counts classify based rings, not tensor categories.
-
-## Organization and access
-
-There is one dataset and evidence directory per rank, one manifest and one
-reproduction guide. The front-page table, CSV files, companions and OEIS data
-projections derive from the same manifest. Source attribution, licensing and
-verification evidence are retained alongside the data.
-
-The repository is public. [OEIS files](../oeis/README.md) are prepared data and
-edit text; the repository does not certify their acceptance by OEIS.
-''')
-
-if __name__=='__main__':main()
+if __name__ == '__main__':
+    main()

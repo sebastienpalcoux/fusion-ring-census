@@ -1,0 +1,29 @@
+{
+  "rank": 11,
+  "bound": 1,
+  "counts": {
+    "1": 182
+  },
+  "classes": 182,
+  "complete": true,
+  "verified": true,
+  "source_identity": "work/census_rank11_20261023/Fusion_Census_Deep_Optimized",
+  "independent_enumeration_rerun": false,
+  "independent_verification": {
+    "input_records": 182,
+    "input_physical_lines": 182,
+    "distinct_rings": 182,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "individualization-refinement (exact)",
+    "permutations_examined": 654,
+    "elapsed_seconds": 0.113178812
+  },
+  "parameter_export_matches_original": true,
+  "table_gz_sha256": "92097130950d4214ff8fdc852b36e94343c308911a029e497e59d3573c5a56e9",
+  "tables_uncompressed_sha256": "3186c410888e0bc7f30c9e423e0184a15618246bc9f4d0ef503e708c4081eff8",
+  "qualification": "All tensor axioms, exact based-isomorphism uniqueness and parameter export freshly checked. Enumeration completeness is producer-reported; all required strata completed.",
+  "producer_enumeration_seconds": 3769.41479660396
+}

@@ -13,7 +13,7 @@ def sha256(path: Path) -> str:
 
 def main() -> int:
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--full',action='store_true')
-    ap.add_argument('--ranks',type=int,nargs='+',choices=range(3,9),help='Verify only these ranks (default: all).')
+    ap.add_argument('--ranks',type=int,nargs='+',choices=range(3,12),help='Verify only these ranks (default: all).')
     ap.add_argument('--out',type=Path);a=ap.parse_args()
     data=json.loads((ROOT/'results/census.json').read_text());selected=set(map(str,a.ranks)) if a.ranks else set(data['ranks'])
     report={'full_axiom_check':a.full,'selected_ranks':sorted(map(int,selected)),'ranks':{}}
@@ -46,7 +46,7 @@ def main() -> int:
                 plain=tmp/f'rank{r}.txt'
                 with gzip.open(table,'rb') as src,plain.open('wb') as dst:shutil.copyfileobj(src,dst)
                 out=tmp/f'check{r}'
-                subprocess.run([str(exe),str(plain),str(out),'--exhaustive'],check=True,stdout=subprocess.DEVNULL)
+                subprocess.run([str(exe),str(plain),str(out)]+(['--exhaustive'] if int(r)<=8 else []),check=True,stdout=subprocess.DEVNULL)
                 check=json.loads((out/'summary.json').read_text())
                 assert check['duplicates']==0 and check['distinct_rings']==lines,(r,'bad independent audit')
                 counts={}

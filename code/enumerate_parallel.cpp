@@ -15,7 +15,7 @@ int main(int argc,char**argv){
  if(threads==1){
   seed.search();
   std::cerr<<"FINAL bound "<<M<<" complete "<<!seed.stopped<<" jobs "<<!seed.stopped<<" / 1 nodes "<<seed.nodes<<" classes "<<seed.sols<<" seconds "<<std::chrono::duration<double>(std::chrono::steady_clock::now()-began).count()<<" counts";
-  for(int m=1;m<=M;++m)std::cerr<<' '<<seed.counts[m];std::cerr<<'\n';return !std::cout?2:seed.stopped?3:0;
+  for(int m=1;m<=M;++m)std::cerr<<' '<<seed.counts[m];std::cerr<<'\n';std::cout.flush();return !std::cout?2:seed.stopped?3:0;
  }
  std::deque<std::vector<Mask>> queue;std::vector<std::vector<Mask>> jobs;
  uint64_t frontier_nodes=1;
@@ -38,7 +38,10 @@ int main(int argc,char**argv){
  std::vector<uint64_t> counts(M+1);omp_set_num_threads(threads);
  #pragma omp parallel
  {
-  CompletionSolver c(argv[1],M,secs,began);
+  // The frontier already parsed and validated this immutable equation system.
+  // Copy it once per worker rather than reparsing the same files in parallel.
+  CompletionSolver c=seed;c.nodes=0;c.sols=0;c.stopped=false;
+  std::fill(c.counts.begin(),c.counts.end(),0);c.trail.clear();
   #pragma omp for schedule(dynamic,1)
   for(uint64_t j=0;j<nj;++j){if(stopped.load(std::memory_order_relaxed))continue;
    c.dom=jobs[j];c.trail.clear();c.search();
@@ -52,6 +55,6 @@ int main(int argc,char**argv){
  }
  bool complete=!stopped&&done==nj;
  std::cerr<<"FINAL bound "<<M<<" complete "<<complete<<" jobs "<<done<<" / "<<nj<<" nodes "<<nodes<<" frontier_nodes "<<frontier_nodes<<" classes "<<sols<<" seconds "<<std::chrono::duration<double>(std::chrono::steady_clock::now()-began).count()<<" counts";
- for(int m=1;m<=M;++m)std::cerr<<' '<<counts[m];std::cerr<<'\n';if(!std::cout)return 2;return complete?0:3;
+ for(int m=1;m<=M;++m)std::cerr<<' '<<counts[m];std::cerr<<'\n';std::cout.flush();if(!std::cout)return 2;return complete?0:3;
  }catch(const std::exception&e){std::cerr<<e.what()<<'\n';return 2;}
 }

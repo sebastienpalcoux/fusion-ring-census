@@ -1,0 +1,12 @@
+{
+  "input_records": 194,
+  "input_physical_lines": 194,
+  "distinct_rings": 194,
+  "duplicates": 0,
+  "literal_repeats": 0,
+  "new_labellings": 0,
+  "associativity_checked": true,
+  "canonical_mode": "individualization-refinement (exact)",
+  "permutations_examined": 1039,
+  "elapsed_seconds": 0.07228758
+}

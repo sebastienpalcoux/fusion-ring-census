@@ -7,7 +7,7 @@ def module(name,path):
 build=module('builder','code/build_system.py');export=module('exporter','code/export_tables.py')
 class CoreTests(unittest.TestCase):
  def test_coverage(self):
-  data=json.loads((ROOT/'results/census.json').read_text());self.assertEqual(sorted(map(int,data['ranks'])),[3,4,5,6,7,8]);self.assertLessEqual(data['ranks']['3']['bound'],1000)
+  data=json.loads((ROOT/'results/census.json').read_text());self.assertEqual(sorted(map(int,data['ranks'])),list(range(3,12)));self.assertLessEqual(data['ranks']['3']['bound'],1000)
   for rank,item in data['ranks'].items():
    self.assertIs(item['complete'],True);self.assertIs(item['verified'],True)
    self.assertEqual(sorted(map(int,item['counts'])),list(range(1,item['bound']+1)));self.assertEqual(sum(item['counts'].values()),item['classes'])
@@ -20,7 +20,7 @@ class CoreTests(unittest.TestCase):
  def test_rank8_workspace(self):
   s=build.system(8,0);self.assertEqual((len(s['orbits']),len(s['equations'])),(84,231));self.assertGreater(len(build.system(8,3)['equations']),200)
  def test_system_scope(self):
-  for r,p in [(9,0),(3,0),(8,4),(6,-1)]:
+  for r,p in [(12,0),(3,0),(8,4),(6,-1)]:
    with self.assertRaises(ValueError):build.system(r,p)
  def test_cyclic_group_export(self):
   n=export.tensor(3,'C3',ROOT/'systems')

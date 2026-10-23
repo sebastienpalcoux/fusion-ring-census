@@ -1,0 +1,67 @@
+{
+  "full_axiom_check": true,
+  "selected_ranks": [
+    9,
+    10,
+    11
+  ],
+  "ranks": {
+    "9": {
+      "rank": 9,
+      "bound": 1,
+      "classes": 142,
+      "hashes_verified": true,
+      "independent_verification": {
+        "input_records": 142,
+        "input_physical_lines": 142,
+        "distinct_rings": 142,
+        "duplicates": 0,
+        "literal_repeats": 0,
+        "new_labellings": 0,
+        "associativity_checked": true,
+        "canonical_mode": "individualization-refinement (exact)",
+        "permutations_examined": 837,
+        "elapsed_seconds": 0.044684714
+      }
+    },
+    "10": {
+      "rank": 10,
+      "bound": 1,
+      "classes": 194,
+      "hashes_verified": true,
+      "independent_verification": {
+        "input_records": 194,
+        "input_physical_lines": 194,
+        "distinct_rings": 194,
+        "duplicates": 0,
+        "literal_repeats": 0,
+        "new_labellings": 0,
+        "associativity_checked": true,
+        "canonical_mode": "individualization-refinement (exact)",
+        "permutations_examined": 1039,
+        "elapsed_seconds": 0.092757757
+      }
+    },
+    "11": {
+      "rank": 11,
+      "bound": 1,
+      "classes": 182,
+      "hashes_verified": true,
+      "independent_verification": {
+        "input_records": 182,
+        "input_physical_lines": 182,
+        "distinct_rings": 182,
+        "duplicates": 0,
+        "literal_repeats": 0,
+        "new_labellings": 0,
+        "associativity_checked": true,
+        "canonical_mode": "individualization-refinement (exact)",
+        "permutations_examined": 654,
+        "elapsed_seconds": 0.113178812
+      }
+    }
+  },
+  "total_classes": 518,
+  "elapsed_seconds": 4.809839815992746,
+  "manifest_total_classes": 1431327
+}

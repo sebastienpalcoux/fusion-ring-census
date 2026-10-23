@@ -11,14 +11,12 @@ from `results/census.json`.
 | A354471 | Rank 3; multiplicity varies | 1–1000 | [b-file](b354471.txt) |
 | A354472 | Rank 4; multiplicity varies | 1–128 | [b-file](b354472.txt) |
 | A354473 | Rank 5; multiplicity varies | 1–20 | [b-file](b354473.txt) |
-| A348305 | Multiplicity 1; rank varies | 1–9¹ | [b-file](b348305.txt) |
+| A348305 | Multiplicity 1; rank varies | 1–11¹ | [b-file](b348305.txt) |
 | A354475 | Multiplicity 2; rank varies | 1–8 | [b-file](b354475.txt) |
 | A354476 | Multiplicity 3; rank varies | 1–8 | [b-file](b354476.txt) |
 | A354477 | Multiplicity 4; rank varies | 1–7 | [b-file](b354477.txt) |
 
-¹ The rank-nine value 142 is retained from the reference census; it is not an
-independently recomputed rank-nine result. This repository's computation scope
-ends at rank 8. Rank-1 and rank-2 terms follow symbolically.
+¹ Ranks 9–11 now use the supplied completed laptop runs, with 142, 194 and 182 classes. Fresh exact output verification passed; full enumeration was not independently rerun. See [the integration receipt](../verification/engine_20261023/README.md). Rank-1 and rank-2 terms follow symbolically.
 
 Fixed-rank data files: [rank 6](fixed_rank_6.txt), [rank 7](fixed_rank_7.txt),
 [rank 8](fixed_rank_8.txt). No A-number is assigned to these files in this repository.

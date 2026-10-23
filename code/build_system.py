@@ -1,8 +1,10 @@
 """Build exact associativity equations with unit and Frobenius reciprocity."""
-import itertools,collections,json,argparse
+import itertools,collections,json,argparse,math,os
+from pathlib import Path
 
-def system(r,pairs):
- if not 4<=r<=8 or not 0<=pairs<=(r-1)//2:raise ValueError("rank 4..8; valid number of dual pairs required")
+def system(r,pairs,compact=None):
+ if not 4<=r<=11 or not 0<=pairs<=(r-1)//2:raise ValueError("rank 4..11; valid number of dual pairs required")
+ if compact is None:compact=r>=9
  d=list(range(r))
  for i in range(1,2*pairs+1,2): d[i],d[i+1]=i+1,i
  triples=list(itertools.product(range(1,r),repeat=3))
@@ -40,17 +42,36 @@ def system(r,pairs):
    if t[0][2]<0:t=tuple((a,b,-c) for a,b,c in t)
    eqs.add(t)
  perms=[]
- for p in itertools.permutations(range(1,r)):
-  q=(0,)+p
-  if any(q[d[i]]!=d[q[i]] for i in range(r)):continue
-  perms.append([owner[q[o[0][0]],q[o[0][1]],q[o[0][2]]] for o in orbits])
- return {'rank':r,'pairs':pairs,'dual':d,'orbits':orbits,'equations':sorted(eqs),'perms':perms}
+ if not compact:
+  for p in itertools.permutations(range(1,r)):
+   q=(0,)+p
+   if any(q[d[i]]!=d[q[i]] for i in range(r)):continue
+   perms.append([owner[q[o[0][0]],q[o[0][1]],q[o[0][2]]] for o in orbits])
+ result={'rank':r,'pairs':pairs,'dual':d,'orbits':orbits,'equations':sorted(eqs),'perms':perms}
+ if compact:
+  result['symmetry_format']='duality-centralizer-v1'
+  result['symmetry_order']=2**pairs*math.factorial(pairs)*math.factorial(r-1-2*pairs)
+ return result
+
+def atomic_text(path,text):
+ path=Path(path);temporary=path.with_name(path.name+'.next')
+ with temporary.open('w') as f:
+  f.write(text);f.flush();os.fsync(f.fileno())
+ temporary.replace(path)
+
+def write_system(s,path):
+ np=-1 if s.get('symmetry_format')=='duality-centralizer-v1' else len(s['perms'])
+ lines=[' '.join(map(str,(s['rank'],s['pairs'],len(s['orbits']),len(s['equations']),np)))]
+ for e in s['equations']:lines.append(' '.join(map(str,[len(e)]+[v for term in e for v in term])))
+ if s.get('symmetry_format')=='duality-centralizer-v1':
+  lines.append(' '.join(map(str,s['dual'])))
+  lines.extend(' '.join(map(str,orbit[0])) for orbit in s['orbits'])
+ else:
+  lines.extend(' '.join(map(str,p)) for p in s['perms'])
+ atomic_text(path,'\n'.join(lines)+'\n')
+ atomic_text(str(path)+'.json',json.dumps(s,separators=(',',':'))+'\n')
 
 if __name__=='__main__':
  ap=argparse.ArgumentParser();ap.add_argument('rank',type=int);ap.add_argument('pairs',type=int);ap.add_argument('output');a=ap.parse_args();s=system(a.rank,a.pairs)
- with open(a.output,'w') as f:
-  print(a.rank,a.pairs,len(s['orbits']),len(s['equations']),len(s['perms']),file=f)
-  for e in s['equations']:print(len(e),*(v for term in e for v in term),file=f)
-  for p in s['perms']:print(*p,file=f)
- with open(a.output+'.json','w') as f:json.dump(s,f)
+ write_system(s,a.output)
  print('variables',len(s['orbits']),'equations',len(s['equations']),'permutations',len(s['perms']))

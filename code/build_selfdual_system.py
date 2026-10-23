@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Reorder the self-dual orbit system for first-matrix reconstruction."""
-from build_system import system
+from build_system import system,write_system
 import json,sys
 
-def reordered(r):
- s=system(r,0); old=s['orbits']; owner={tuple(t):i for i,o in enumerate(old) for t in o}
+def reordered(r,compact=None):
+ s=system(r,0,compact=compact); old=s['orbits']; owner={tuple(t):i for i,o in enumerate(old) for t in o}
  n=r-2
  first=[owner[1,1,i] for i in range(2,r)]
  first += [owner[1,i,i] for i in range(2,r)]
@@ -19,9 +19,5 @@ def reordered(r):
  return s
 
 def write(s,path):
- with open(path,'w') as f:
-  print(s['rank'],s['pairs'],len(s['orbits']),len(s['equations']),len(s['perms']),file=f)
-  for e in s['equations']: print(len(e),*(z for t in e for z in t),file=f)
-  for p in s['perms']: print(*p,file=f)
- with open(str(path)+'.json','w') as f:json.dump(s,f)
+ write_system(s,path)
 if __name__=='__main__':write(reordered(int(sys.argv[1])),sys.argv[2])

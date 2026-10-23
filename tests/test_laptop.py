@@ -21,7 +21,7 @@ launcher=load('local_launcher','scripts/run_laptop.py')
 
 class LaptopTests(unittest.TestCase):
     def test_all_ranks_without_python_or_cpp_clock_limits(self):
-        for rank in range(3,9):
+        for rank in range(3,12):
             with self.subTest(rank=rank), tempfile.TemporaryDirectory() as td:
                 commands=[]
                 def fake(cmd, **kw):
@@ -40,7 +40,7 @@ class LaptopTests(unittest.TestCase):
 
     def test_budget_combinations_caps_and_github_are_rejected(self):
         base=['driver','--rank','6','--bound','8','--local-unlimited','--verify','--out','unused']
-        for extra in (['--seconds','100'],['--deadline','100'],['--rank','3','--bound','1001'],['--rank','5','--bound','33'],['--rank','7','--bound','16']):
+        for extra in (['--seconds','100'],['--deadline','100'],['--rank','3','--bound','1001'],['--rank','5','--bound','33'],['--rank','7','--bound','16'],['--rank','11','--bound','16']):
             with self.subTest(extra=extra), patch.dict(os.environ,{},clear=True), patch.object(sys,'argv',base+extra), patch.object(runner.subprocess,'run') as run, contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):runner.main()
             run.assert_not_called()
         with patch.dict(os.environ,{'GITHUB_ACTIONS':'true'}), patch.object(sys,'argv',base), contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):runner.main()
@@ -56,7 +56,7 @@ class LaptopTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'prefix mismatch'):runner.check_local_prefix(rank,bound,counts)
 
     def test_launcher_all_ranks_pass_correct_bound_and_verification(self):
-        for rank in range(3,9):
+        for rank in range(3,12):
             with self.subTest(rank=rank), tempfile.TemporaryDirectory() as td:
                 args=['launcher','--rank',str(rank),'--mult','2','--threads','3','--output-dir',td]
                 with patch.dict(os.environ,{},clear=True),patch.object(sys,'argv',args),patch.object(launcher.subprocess,'run',return_value=subprocess.CompletedProcess([],3)) as run,contextlib.redirect_stdout(io.StringIO()),contextlib.redirect_stderr(io.StringIO()):

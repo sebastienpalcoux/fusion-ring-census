@@ -16,7 +16,7 @@ sudo apt-get install -y python3 g++ unzip
 ```
 
 Use a checkout of this repository, or extract the standalone laptop package and
-enter its `Fusion_Census_Laptop` directory. On macOS, install Python and GNU GCC,
+enter its `Fusion_Census_Deep_Optimized` directory. On macOS, install Python and GNU GCC,
 then set `CXX` to the installed versioned GNU compiler (for example `g++-15` if
 that is the installed executable). Apple's `g++` alias does not supply GNU OpenMP.
 Native Windows is not tested; use WSL Ubuntu.
@@ -36,9 +36,12 @@ independent verification. `--mult` is an alias for `--bound`.
 | 3 | 1000 | Supported ceiling reached | 1–1000 |
 | 4 | 128 | 129 | 1–1000 |
 | 5 | 20 | 21 | 1–32 |
-| 6 | 8 | 9 | 1–15 |
-| 7 | 4 | 5 | 1–15 |
-| 8 | 2 | 3 | 1–15 |
+| 6 | 9 | 10 | 1–15 |
+| 7 | 5 | 6 | 1–15 |
+| 8 | 3 | 4 | 1–15 |
+| 9 | 1 | 2 | 1–15 |
+| 10 | 1 | 2 | 1–15 |
+| 11 | 1 | 2 | 1–15 |
 
 Keep the computer awake and connected to power. These limits protect the
 implementation; they do not guarantee feasible runtime or memory at every bound.
@@ -62,7 +65,7 @@ A result ZIP such as `runs/rank7_multiplicity5_verified.zip` is created only whe
 
 1. Every required duality search finishes normally.
 2. Every tensor passes the independent full axiom checker.
-3. Canonicalization under every unit-fixing basis permutation finds no duplicates.
+3. Exact based-isomorphism checking finds no duplicates. Ranks 9–11 use exact invariant refinement, with exhaustive reference mode retained.
 4. All earlier exact-multiplicity counts agree with the certified release.
 
 The ZIP contains compressed tensors and parameters, exact counts, source and
@@ -73,7 +76,7 @@ extend the release. The laptop launcher never publishes results automatically.
 
 ## Optimized source and executable cache
 
-The supplied October 2026 optimization package is integrated with unchanged
+The supplied 23 October 2026 v3 package supports ranks 3–11 and is integrated with unchanged
 numerical C++ sources. The laptop launcher places compiler products in
 `$XDG_CACHE_HOME/fusion-ring-census` (or `~/.cache/fusion-ring-census`) so synced
 folders cannot strip their executable permission. Override with `--build-dir`.
@@ -86,13 +89,15 @@ Full rank-7 M5 and rank-8 M3 enumeration remains producer-reported; the supplied
 source hash matches both producer run records, but these full searches were
 not independently repeated.
 
+The high-rank source and data update is documented in [the integration receipt](../verification/engine_20261023/README.md). The original package’s historical rank-11 timeout predates the completed laptop run now released.
+
 ## Verify the released data
 
 ```bash
 # Lightweight checksums, record totals and manifest consistency
 python3 scripts/check_release.py
 
-# Every tensor and every unit-fixing permutation; no enumeration
+# Every tensor and exact uniqueness checking; no enumeration
 python3 scripts/check_release.py --full --out runs/verification.json
 
 # Small deterministic tests and separate compiled regression searches
@@ -104,9 +109,7 @@ The verifier proves validity and uniqueness of the emitted tensors. Completeness
 also relies on the [coverage arguments](../methods/completeness.md) and normally
 completed searches. An equality of counts alone is not an isomorphism proof.
 
-In the Work environment, use lightweight checks and mocked numerical subprocesses.
-Enumeration and full tensor verification belong on GitHub Actions or the user's
-own computer. PDF builds are document operations, not census searches.
+Full enumeration belongs on GitHub Actions or the user’s own computer. Output verification is separate from enumeration. PDF builds are document operations, not census searches.
 
 ## Bounded GitHub campaigns
 

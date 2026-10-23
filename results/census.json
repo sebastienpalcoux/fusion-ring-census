@@ -1,6 +1,6 @@
 {
-  "version": "0.2.4",
-  "release_date": "2026-10-21",
+  "version": "0.3.0",
+  "release_date": "2026-10-23",
   "scope": "All fusion rings in the stated complete whole-rank regions; all duality types; no categorifiability filter.",
   "publication_status": "Public GitHub repository.",
   "ranks": {
@@ -1271,7 +1271,73 @@
       "independent_enumeration_rerun": false,
       "independent_verification_scope": "Tensor axioms, all unit-fixing relabellings, parameter export, exact previous tensor and parameter sequence, hashes and counts.",
       "enumeration_source_available": true
+    },
+    "9": {
+      "rank": 9,
+      "bound": 1,
+      "complete": true,
+      "verified": true,
+      "classes": 142,
+      "counts": {
+        "1": 142
+      },
+      "verification_reports": "verification/rank9/",
+      "tables": "results/rank9/tables.txt.gz",
+      "parameters": "results/rank9/parameters.txt.gz",
+      "completeness_basis": "Producer-reported completed exhaustive enumeration, with all duality strata and complete source supplied. Full enumeration not independently rerun.",
+      "enumeration_source_bundled": true,
+      "enumeration_source_available": true,
+      "independent_enumeration_rerun": false,
+      "independent_verification_scope": "All tensor axioms, exact invariant-refinement based-isomorphism checking, counts, parameter export, source identity and checksums.",
+      "tables_gz_sha256": "60577ac43efee10ecc06de18b087d5ff557717c1a59e06bffff5a344ab920ff0",
+      "tables_uncompressed_sha256": "9e910eea2bead47ff861d7ec32483051127523d2d4461490f53c27e76c993b99",
+      "parameters_gz_sha256": "13e39bc8d71099e0a54a80e163bcf7ba966a259470a3f04fd39fe3db6eed1edc",
+      "parameters_uncompressed_sha256": "eab15143f9fbd2ba14fb123774900985f9504c49c8790efcd5ad439e0eddc3dd"
+    },
+    "10": {
+      "rank": 10,
+      "bound": 1,
+      "complete": true,
+      "verified": true,
+      "classes": 194,
+      "counts": {
+        "1": 194
+      },
+      "verification_reports": "verification/rank10/",
+      "tables": "results/rank10/tables.txt.gz",
+      "parameters": "results/rank10/parameters.txt.gz",
+      "completeness_basis": "Producer-reported completed exhaustive enumeration, with all duality strata and complete source supplied. Full enumeration not independently rerun.",
+      "enumeration_source_bundled": true,
+      "enumeration_source_available": true,
+      "independent_enumeration_rerun": false,
+      "independent_verification_scope": "All tensor axioms, exact invariant-refinement based-isomorphism checking, counts, parameter export, source identity and checksums.",
+      "tables_gz_sha256": "2a30cdeb857ea5d08c70c67e12fbb98887f93cda169e4a1afa2dd796b8c09606",
+      "tables_uncompressed_sha256": "9c31e12579334b118d27515c8a41426acf3ff01a592bebe2827518ad7d2400fe",
+      "parameters_gz_sha256": "1f0511879cf829122caa67979570e1e3cabead54080d7a3aa73df249c1bc070f",
+      "parameters_uncompressed_sha256": "300f03e34166542cddb60788b51fb356ec7c7974e53b890fb3ba7b38214d1b18"
+    },
+    "11": {
+      "rank": 11,
+      "bound": 1,
+      "complete": true,
+      "verified": true,
+      "classes": 182,
+      "counts": {
+        "1": 182
+      },
+      "verification_reports": "verification/rank11/",
+      "tables": "results/rank11/tables.txt.gz",
+      "parameters": "results/rank11/parameters.txt.gz",
+      "completeness_basis": "Producer-reported completed exhaustive enumeration, with all duality strata and complete source supplied. Full enumeration not independently rerun.",
+      "enumeration_source_bundled": true,
+      "enumeration_source_available": true,
+      "independent_enumeration_rerun": false,
+      "independent_verification_scope": "All tensor axioms, exact invariant-refinement based-isomorphism checking, counts, parameter export, source identity and checksums.",
+      "tables_gz_sha256": "92097130950d4214ff8fdc852b36e94343c308911a029e497e59d3573c5a56e9",
+      "tables_uncompressed_sha256": "3186c410888e0bc7f30c9e423e0184a15618246bc9f4d0ef503e708c4081eff8",
+      "parameters_gz_sha256": "d8558a74b451831e4b39c4ed08ab27b78cab3dc5fe918c9d0d2220b1406fcadf",
+      "parameters_uncompressed_sha256": "bfc54c6192c6d9d63c68c2c1a416fce44e14978f06d8efcb8fd121d7ea2a534f"
     }
   },
-  "total_classes": 1430809
+  "total_classes": 1431327
 }

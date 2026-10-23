@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Export complete rank-3--8 parameter runs as Vercleyen-style tensors.
+"""Export complete rank-3--11 parameter runs as Vercleyen-style tensors.
 
 Standard-library Python only. This lossless exporter is NOT the independent
-axiom verifier. For ranks 6/7/8, --systems contains systemRsd.txt.json and
+axiom verifier. For ranks 6--11, --systems contains systemRsd.txt.json and
 rankR_pairsP.txt.json. Rank-5 systems are census_system{0,2,4}.json.
 """
 from __future__ import annotations
@@ -93,7 +93,7 @@ def tensor(rank: int, line: str, systems: Path):
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--rank', type=int, choices=(3,4,5,6,7,8), required=True)
+    ap.add_argument('--rank', type=int, choices=range(3,12), required=True)
     ap.add_argument('--input', type=Path, nargs='+', required=True)
     ap.add_argument('--output', type=Path, required=True)
     ap.add_argument('--systems', type=Path, default=Path('.'))

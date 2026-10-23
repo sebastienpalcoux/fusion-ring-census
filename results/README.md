@@ -17,3 +17,5 @@ was not rerun. The same qualification applies to rank 8 through multiplicity 3.
 See [the rank-7 qualification](../verification/rank7/README.md).
 See [verification](../verification/README.md)
 and [reproduction](../docs/REPRODUCIBILITY.md).
+
+The current multiplicity-one release also includes ranks 9–11: 142, 194 and 182 classes, with [fresh exact verification and complete source](../verification/engine_20261023/README.md). Full enumeration remains producer-reported.

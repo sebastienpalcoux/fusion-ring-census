@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Recompute one complete rank-3--8 bounded census, independently of any database.
+"""Recompute one complete rank-3--11 bounded census, independently of any database.
 
 The shared --seconds allowance covers ALL enumeration strata of this rank.
 Compilation, sorting/export, and optional independent verification are timed
@@ -16,6 +16,7 @@ import json
 import math
 import os
 import platform
+import re
 import shutil
 import subprocess
 import sys
@@ -29,7 +30,11 @@ SYSTEMS = ROOT/'systems'
 
 
 def check_local_prefix(rank, bound, counts):
-    baseline = json.loads((ROOT/'results/census.json').read_text())['ranks'][str(rank)]
+    baseline = json.loads((ROOT/'results/census.json').read_text())['ranks'].get(str(rank))
+    if baseline is None:
+        if rank in (9,10,11):
+            return 0  # No released count for this rank to compare.
+        raise ValueError('released baseline is missing')
     if not (baseline.get('complete') is True and baseline.get('verified') is True):
         raise ValueError('released baseline is not certified')
     through = min(bound, baseline['bound'])
@@ -40,7 +45,7 @@ def check_local_prefix(rank, bound, counts):
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--rank', type=int, choices=(3,4,5,6,7,8), required=True)
+    ap.add_argument('--rank', type=int, choices=range(3,12), required=True)
     ap.add_argument('--bound', type=int, required=True)
     ap.add_argument('--seconds', type=float, default=None)
     ap.add_argument('--local-unlimited', action='store_true',
@@ -52,10 +57,10 @@ def main() -> int:
     ap.add_argument('--verify', action='store_true')
     ap.add_argument('--build-dir', type=Path, help='Content-keyed compilation cache; never used as census data')
     a = ap.parse_args()
-    cap={3:1000,4:1000,5:32,6:15,7:15,8:15}[a.rank]
+    cap={3:1000,4:1000,5:32,6:15,7:15,8:15,9:15,10:15,11:15}[a.rank]
     if not 1 <= a.bound <= cap or not 1 <= a.threads <= 64:
         ap.error(f'bound must be in [1,{cap}]; threads in [1,64]')
-    budget = a.seconds if a.seconds is not None else {3:60,4:1200,5:1200,6:1200,7:1200,8:1200}[a.rank]
+    budget = a.seconds if a.seconds is not None else (60 if a.rank == 3 else 1200)
     limit = 4200
     if a.local_unlimited:
         if os.environ.get('GITHUB_ACTIONS') or not a.verify or a.seconds is not None or a.deadline is not None:
@@ -120,10 +125,27 @@ def main() -> int:
         finally:
             item['elapsed_seconds']=time.monotonic()-st;persist()
 
-    def compile_one(source: str, name: str, openmp: bool=True) -> Path:
+    def compile_one(source: str, name: str, openmp: bool=True, defines=()) -> Path:
         dest=build/name
         stamp=build/(name+'.build.json')
-        signature={'code_sha256':source_hash.hexdigest(),'compiler':a.compiler,'source':source,'openmp':openmp}
+        # Python/export/documentation edits do not invalidate a C++ executable.
+        # Follow every local quoted include, including rank-five helper headers.
+        dependencies=set()
+        def include(path):
+            path=path.resolve()
+            if path in dependencies:return
+            dependencies.add(path)
+            for local in re.findall(r'^\s*#\s*include\s*"([^"]+)"',path.read_text(),re.MULTILINE):
+                include(path.parent/local)
+        include(CODE/source)
+        digest=hashlib.sha256()
+        for path in sorted(dependencies):
+            digest.update(str(path.relative_to(CODE)).encode());digest.update(path.read_bytes())
+        compiler_path=Path(shutil.which(a.compiler) or a.compiler).resolve()
+        compiler_stat=compiler_path.stat()
+        signature={'dependencies_sha256':digest.hexdigest(),'compiler':str(compiler_path),
+                   'compiler_mtime_ns':compiler_stat.st_mtime_ns,'compiler_size':compiler_stat.st_size,
+                   'source':source,'openmp':openmp,'defines':list(defines),'flags':['-O3','-std=c++17']}
         if dest.exists() and stamp.exists() and json.loads(stamp.read_text())==signature:
             if not os.access(dest, os.X_OK):
                 dest.chmod(dest.stat().st_mode | 0o111)
@@ -131,7 +153,7 @@ def main() -> int:
                 raise PermissionError('Compilation cache is not executable; choose --build-dir on a local executable filesystem')
             return dest
         phase('compilation:'+name)
-        cmd=[a.compiler,'-O3','-std=c++17']+(['-fopenmp'] if openmp else [])+[str(CODE/source),'-o',str(dest)]
+        cmd=[a.compiler,'-O3','-std=c++17']+(['-fopenmp'] if openmp else [])+['-D'+d for d in defines]+[str(CODE/source),'-o',str(dest)]
         with (logs/(name+'_compile.log')).open('w') as log:
             run_checked(cmd,stdout=log,stderr=subprocess.STDOUT)
         dest.chmod(dest.stat().st_mode | 0o111)
@@ -156,7 +178,7 @@ def main() -> int:
         else:
             # The adaptive frontier handles every nonselfdual involution type.
             general=None
-            fast=compile_one('enumerate_selfdual_fast.cpp','selfdual_fast')
+            fast=compile_one('enumerate_selfdual_fast.cpp',f'selfdual_fast_r{a.rank}',defines=(f'CENSUS_SELFDUAL_RANK={a.rank}',))
             parallel=compile_one('enumerate_parallel.cpp','parallel_general')
             for p in range(1,(a.rank-1)//2+1):
                 path=SYSTEMS/f'rank{a.rank}_pairs{p}.txt'
@@ -184,12 +206,23 @@ def main() -> int:
             try:
                 with output.open('w') as out,logpath.open('w') as log:
                     run=subprocess.run(cmd,stdout=out,stderr=log,env=env,timeout=None if a.local_unlimited else remaining)
+                    out.flush();os.fsync(out.fileno())
+                    log.flush();os.fsync(log.fileno())
                 elapsed=time.monotonic()-st
                 entry.update(elapsed_seconds=elapsed,returncode=run.returncode);persist()
                 if run.returncode==3:
                     raise TimeoutError(f'{name} did not finish')
                 if run.returncode:
                     raise RuntimeError(f'{name} failed: see {logpath}')
+                if a.rank >= 6:
+                    final=re.search(r'^FINAL\b.*\bcomplete 1\b.*\bclasses (\d+)\b.*\bcounts((?: \d+)+)\s*$',logpath.read_text(),re.MULTILINE)
+                    if final is None:
+                        raise ValueError(f'{name}: missing complete enumerator summary')
+                    totals=list(map(int,final.group(2).split()))
+                    if len(totals)!=a.bound or sum(totals)!=int(final.group(1)):
+                        raise ValueError(f'{name}: inconsistent enumerator summary')
+                    entry['reported_classes']=int(final.group(1))
+                    entry['reported_counts']={str(m):totals[m-1] for m in range(1,a.bound+1)}
             except subprocess.TimeoutExpired as exc:
                 entry.update(elapsed_seconds=time.monotonic()-st,timeout=True);persist()
                 raise TimeoutError(f'{name} exceeded the shared enumeration budget') from exc
@@ -198,7 +231,8 @@ def main() -> int:
         phase('sort_and_export')
         st=time.monotonic()
         rows=[];counts=collections.Counter()
-        for path in files:
+        for path,entry in zip(files,report['runs']):
+            stratum_counts=collections.Counter()
             for line in path.read_text().splitlines():
                 tag,*words=line.split();v=tuple(map(int,words))
                 if not v and a.rank==3 and tag=='C3':
@@ -206,6 +240,10 @@ def main() -> int:
                 if not v or min(v)<0 or max(v)>a.bound:
                     raise ValueError('invalid enumerator output')
                 rows.append((tag,v));counts[max(1,max(v))]+=1
+                stratum_counts[max(1,max(v))]+=1
+            if a.rank >= 6 and (sum(stratum_counts.values())!=entry['reported_classes'] or
+                    any(stratum_counts[m]!=entry['reported_counts'][str(m)] for m in range(1,a.bound+1))):
+                raise ValueError(f"{entry['name']}: output does not match enumerator totals")
         rows.sort()
         if len(rows)!=len(set(rows)):
             raise ValueError('literal parameter duplicate')
@@ -229,12 +267,12 @@ def main() -> int:
             st=time.monotonic()
             phase('independent_verification')
             with (logs/'verification.log').open('w') as log:
-                run_checked([str(verifier),str(table),str(a.out/'independent_check'),'--exhaustive'],stdout=log,stderr=subprocess.STDOUT)
+                run_checked([str(verifier),str(table),str(a.out/'independent_check')],stdout=log,stderr=subprocess.STDOUT)
             check=json.loads((a.out/'independent_check/summary.json').read_text())
             if (check['duplicates']!=0 or check['distinct_rings']!=len(rows)
                     or check.get('input_records')!=len(rows)
                     or check.get('associativity_checked') is not True
-                    or check.get('canonical_mode')!='all unit-fixing permutations'):
+                    or check.get('canonical_mode')!='individualization-refinement (exact)'):
                 raise ValueError('independent verification found duplicate or missing records')
             verified_counts={str(m):0 for m in range(1,a.bound+1)}
             with (a.out/'independent_check/counts.csv').open() as f:
@@ -248,6 +286,7 @@ def main() -> int:
             report['independent_verification']=check
             if a.local_unlimited:
                 report['existing_prefix_checked_through']=check_local_prefix(a.rank,a.bound,report['counts'])
+                report['released_baseline_available']=report['existing_prefix_checked_through'] > 0
             report['verified']=True
         st=time.monotonic()
         phase('compression')

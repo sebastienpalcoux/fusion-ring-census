@@ -2,10 +2,14 @@
 
 [Overview](../README.md) · [Verification](../verification/README.md) · [Licensing](../NOTICE.md)
 
+## Current source update
+
+The v3 engine and multiplicity-one datasets for ranks 9–11 are documented in [the 23 October integration receipt](../verification/engine_20261023/README.md). The exact supplied source archive and previous records are preserved.
+
 ## Certified data
 
-Release 0.2.4, dated 2026-10-21, contains **1,430,809**
-distinct based-ring classes across six bounded regions. The
+Release 0.3.0, dated 2026-10-23, contains **1,431,327**
+distinct based-ring classes across nine bounded regions. The
 [manifest](../results/census.json) fixes every bound, exact-multiplicity count,
 tensor checksum and verification location.
 

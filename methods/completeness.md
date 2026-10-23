@@ -297,3 +297,9 @@ account](OPTIMIZATIONS.md), [self-dual preservation proof](SELFDUAL_PROOF.md),
 Witness and visit caps disable the corresponding pruning entirely; a truncated
 witness list is never used to reject a branch. Finite audits and bounded baseline
 comparisons do not replace full enumeration of the released rank-7/8 extensions.
+
+## Ranks nine through eleven — compact exact symmetry
+
+The v3 extension includes every duality pattern at ranks 9–11. Compact system descriptors encode the full duality-centralizer action without storing factorially many permutations. Streamed canonicality remains exact. At multiplicity one, Boolean polynomial reduction and sparse modular elimination retain every integer solution. The higher-rank self-dual extension adds exact contraction and moment constraints with bounded-memory symmetry handling. See [compact symmetry](COMPACT_SYMMETRY.md), [rank-11 self-dual extension](RANK11_SELFDUAL_EXTENSION.md) and [exact verifier refinement](../audits/VERIFIER_REFINEMENT.md).
+
+The current data contain 142, 194 and 182 multiplicity-one rings at ranks 9, 10 and 11. Complete source and every producer stratum-completion record are supplied. Fresh tensor and uniqueness checks do not repeat full enumeration; see [the precise integration scope](../verification/engine_20261023/README.md).

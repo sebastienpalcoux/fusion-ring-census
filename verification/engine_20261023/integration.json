@@ -1,0 +1,25 @@
+{
+  "source_archive_sha256": "1bd65a28deb5f8db23525d909f1d296953e20178ec122f0f775daad0fa0e3a5f",
+  "original_source_inventory_verified": true,
+  "original_source_files": 19,
+  "intentional_integration_differences": [
+    "code/run_census.py"
+  ],
+  "numerical_cpp_sources_unchanged": true,
+  "data_ranks_checked": [
+    9,
+    10,
+    11
+  ],
+  "checks": "fresh_release_check.json",
+  "launcher_changes": [
+    "Default compilation cache remains under XDG_CACHE_HOME or ~/.cache, isolated by checkout identity.",
+    "Explicit --build-dir remains available.",
+    "Reused and newly compiled executables have execute permissions checked and repaired."
+  ],
+  "regression_suite": {
+    "tests": 43,
+    "status": "PASS",
+    "log": "unit_tests.log"
+  }
+}

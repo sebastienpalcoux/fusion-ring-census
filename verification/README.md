@@ -17,12 +17,19 @@ searches have not been independently rerun. See [the rank-7 qualification](rank7
 | 6 | 9 | 25,421 | [Audit](rank6/audit.json) · [Source](rank6/source.json) · [Completed run](rank6/run.json) |
 | 7 | 5 | 10,006 | [Audit](rank7/audit.json) · [Source](rank7/source.json) · [Completed run](rank7/run.json) |
 | 8 | 3 | 4,500 | [Audit](rank8/audit.json) · [Source](rank8/source.json) · [Completed run](rank8/run.json) |
+| 9 | 1 | 142 | [Audit](rank9/audit.json) · [Source](rank9/source.json) · [Completed run](rank9/run.json) |
+| 10 | 1 | 194 | [Audit](rank10/audit.json) · [Source](rank10/source.json) · [Completed run](rank10/run.json) |
+| 11 | 1 | 182 | [Audit](rank11/audit.json) · [Source](rank11/source.json) · [Completed run](rank11/run.json) |
+
+## Current high-rank release
+
+The 23 October 2026 datasets add **142**, **194**, and **182** multiplicity-one rings at ranks **9**, **10**, and **11**. All 518 tensors, exact uniqueness and full parameter export passed fresh checks. The supplied complete source and normally completed strata support producer-reported enumeration completeness; the full searches were not independently rerun. [Engine update and receipts](engine_20261023/README.md). No rank-11 categorification claim is made.
 
 ## Independent checks
 
 Every released tensor is checked for nonnegative integer coefficients, both unit
 laws, duality, reciprocity and all integer associativity identities. Canonicalization
-uses every unit-fixing basis permutation, with exact tensor comparison. All released
+uses exhaustive unit-fixing permutations at lower ranks and exact invariant refinement at ranks 9–11, with full tensor comparison of witnesses. All released
 lists have zero duplicate based-isomorphism classes.
 
 The supplied laptop datasets at ranks 5–8 passed independent checks of their

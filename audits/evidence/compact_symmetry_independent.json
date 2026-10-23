@@ -1,0 +1,65 @@
+[
+  {
+    "rank": 8,
+    "pairs": 0,
+    "returncode": 0,
+    "stdout": "PASS rank=8 pairs=0 group=5040 corpus=38 vectors=138 relabels=414 partials=114\n",
+    "stderr": ""
+  },
+  {
+    "rank": 8,
+    "pairs": 1,
+    "returncode": 0,
+    "stdout": "PASS rank=8 pairs=1 group=240 corpus=30 vectors=130 relabels=390 partials=90\n",
+    "stderr": ""
+  },
+  {
+    "rank": 8,
+    "pairs": 2,
+    "returncode": 0,
+    "stdout": "PASS rank=8 pairs=2 group=48 corpus=18 vectors=118 relabels=354 partials=54\n",
+    "stderr": ""
+  },
+  {
+    "rank": 8,
+    "pairs": 3,
+    "returncode": 0,
+    "stdout": "PASS rank=8 pairs=3 group=48 corpus=10 vectors=110 relabels=330 partials=30\n",
+    "stderr": ""
+  },
+  {
+    "rank": 9,
+    "pairs": 0,
+    "returncode": 0,
+    "stdout": "PASS rank=9 pairs=0 group=40320 corpus=46 vectors=146 relabels=438 partials=138\n",
+    "stderr": ""
+  },
+  {
+    "rank": 9,
+    "pairs": 1,
+    "returncode": 0,
+    "stdout": "PASS rank=9 pairs=1 group=1440 corpus=45 vectors=145 relabels=435 partials=135\n",
+    "stderr": ""
+  },
+  {
+    "rank": 9,
+    "pairs": 2,
+    "returncode": 0,
+    "stdout": "PASS rank=9 pairs=2 group=192 corpus=33 vectors=133 relabels=399 partials=99\n",
+    "stderr": ""
+  },
+  {
+    "rank": 9,
+    "pairs": 3,
+    "returncode": 0,
+    "stdout": "PASS rank=9 pairs=3 group=96 corpus=16 vectors=116 relabels=348 partials=48\n",
+    "stderr": ""
+  },
+  {
+    "rank": 9,
+    "pairs": 4,
+    "returncode": 0,
+    "stdout": "PASS rank=9 pairs=4 group=384 corpus=2 vectors=102 relabels=306 partials=6\n",
+    "stderr": ""
+  }
+]

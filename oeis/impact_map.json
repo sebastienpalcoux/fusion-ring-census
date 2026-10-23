@@ -44,9 +44,9 @@
   {
     "multiplicity": 1,
     "entry": "A348305",
-    "through_rank": 9,
+    "through_rank": 11,
     "file": "b348305.txt",
-    "rank9_reference_only": true,
+    "rank9_reference_only": false,
     "submission_status": "not submitted"
   },
   {
@@ -71,6 +71,27 @@
     "through_rank": 7,
     "file": "b354477.txt",
     "rank9_reference_only": false,
+    "submission_status": "not submitted"
+  },
+  {
+    "rank": 9,
+    "bound": 1,
+    "entry": null,
+    "file": "fixed_rank_9.txt",
+    "submission_status": "not submitted"
+  },
+  {
+    "rank": 10,
+    "bound": 1,
+    "entry": null,
+    "file": "fixed_rank_10.txt",
+    "submission_status": "not submitted"
+  },
+  {
+    "rank": 11,
+    "bound": 1,
+    "entry": null,
+    "file": "fixed_rank_11.txt",
     "submission_status": "not submitted"
   }
 ]

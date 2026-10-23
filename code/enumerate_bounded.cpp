@@ -10,6 +10,6 @@ int main(int argc,char**argv){
   double sec=std::chrono::duration<double>(std::chrono::steady_clock::now()-began).count();
   std::cerr<<"rank "<<c.rank_<<" pairs "<<c.pairs_<<" bound "<<M<<" complete "<<(!c.stopped)<<" nodes "<<c.nodes<<" classes "<<c.sols<<" seconds "<<sec<<" counts";
   for(int m=1;m<=M;m++)std::cerr<<' '<<c.counts[m];std::cerr<<'\n';
-  if(!std::cout){std::cerr<<"Output write failed\n";return 2;}return c.stopped?3:0;
+  std::cout.flush();if(!std::cout){std::cerr<<"Output write failed\n";return 2;}return c.stopped?3:0;
  }catch(const std::exception&e){std::cerr<<e.what()<<'\n';return 2;}
 }
