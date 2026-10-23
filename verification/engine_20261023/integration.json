@@ -21,5 +21,6 @@
     "tests": 43,
     "status": "PASS",
     "log": "unit_tests.log"
-  }
+  },
+  "retained_benchmark_reference": "benchmarks/reference/v2_rank9/code"
 }
