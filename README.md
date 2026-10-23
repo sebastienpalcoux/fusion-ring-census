@@ -12,6 +12,8 @@ and its [interactive atlas](https://sebastienpalcoux.github.io/grothendieck-ring
 > **AI-generated research · independent verification pending.** Automated
 > checks establish only their stated scope. [Provenance and verification](docs/PROVENANCE.md).
 
+<a id="complete-datasets"></a>
+
 ## Datasets
 
 Bounds are cumulative: all rings of multiplicity **at most M**.
@@ -29,7 +31,7 @@ Rank 7 through 5 and rank 8 through 3 have independent tensor and uniqueness
 checks. Enumeration completeness relies on the producer's completion record;
 the full searches have not been independently rerun. [Precise qualification](verification/rank7/README.md).
 
-<details>
+<details id="counts-by-rank-and-multiplicity">
 <summary><strong>Counts at each exact multiplicity</strong></summary>
 
 Each entry in the [full table](results/table.md) counts based-isomorphism
@@ -39,6 +41,8 @@ enumerated.
 [Full count table](results/table.md) · [CSV](results/counts.csv) · [Interactive table](docs/index.html) · [Detailed tables and definitions](docs/PROJECT_GUIDE.md#counts-by-rank-and-multiplicity)
 
 </details>
+
+<a id="reproduce-a-census"></a>
 
 ## Reproduce and explore
 
@@ -50,6 +54,8 @@ python3 scripts/run_laptop.py --rank 7 --bound 5
 
 [Installation, rank limits and verification](docs/REPRODUCIBILITY.md).
 A run is complete only after every stratum finishes.
+
+<a id="read-and-reuse"></a>
 
 | Resource | Contents |
 |---|---|
