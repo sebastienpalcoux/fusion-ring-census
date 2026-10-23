@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-23",
+  "rank": 10,
+  "multiplicity": 1,
+  "rings": 194,
+  "excluded_general": 136,
+  "realized_unitary": 57,
+  "unresolved_general": 1,
+  "remaining_ids": [
+    "R10_1_189"
+  ],
+  "classification_repository": "https://github.com/sebastienpalcoux/grothendieck-ring-classification",
+  "ledger_path": "evidence/rank10_m1_exclusions_20261023/accepted_ledger.json",
+  "ledger_sha256": "a4075e19d489ff9daaa405647c3be5aa8b8bed321e15d75f1ad53dbf9eb47ebe",
+  "proof_directory": "evidence/rank10_m1_exclusions_20261023",
+  "input_uncompressed_sha256": "9c31e12579334b118d27515c8a41426acf3ff01a592bebe2827518ad7d2400fe",
+  "scope": "General complex fusion categorifiability of the supplied based rings; at least one model per positive ring, not classification of all associators.",
+  "enumeration_qualification": "Producer-reported completeness; independent tensor validity and uniqueness verified; full enumeration not independently rerun.",
+  "classification_commit": "8f1a0b8184eb8d7bb44a666afd78552e33c02f42",
+  "ledger_url": "https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/8f1a0b8184eb8d7bb44a666afd78552e33c02f42/evidence/rank10_m1_exclusions_20261023/accepted_ledger.json"
+}

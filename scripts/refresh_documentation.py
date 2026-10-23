@@ -40,7 +40,7 @@ def main():
 
 > **AI-generated research · independent verification pending.** Automated checks establish only their stated scope. [Provenance and verification](docs/PROVENANCE.md).
 
-**23 October 2026:** multiplicity-one datasets include ranks 9, 10 and 11, with **142, 194 and 182** classes and current rank-specific manuscripts. Rank-11 categorification is complete for the supplied dataset: **155 exclusions, 27 unitary models, 0 unresolved**. [Classification and scope](verification/rank11/categorification.json) · [Enumeration source and checks](verification/engine_20261023/README.md).
+**23 October 2026:** multiplicity-one datasets include ranks 9, 10 and 11, with **142, 194 and 182** classes and current rank-specific manuscripts. Rank-10 categorification has **136 general complex exclusions, 57 unitary models and one unresolved ring, R10_1_189**. [Current decisions and proof scope](verification/rank10/categorification.json). Rank-11 categorification is complete for the supplied dataset: **155 exclusions, 27 unitary models, 0 unresolved**. [Classification and scope](verification/rank11/categorification.json) · [Enumeration source and checks](verification/engine_20261023/README.md).
 
 <a id="complete-datasets"></a>
 
