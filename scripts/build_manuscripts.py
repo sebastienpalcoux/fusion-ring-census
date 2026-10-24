@@ -419,13 +419,14 @@ the companion project's rank-eight frontier is recorded separately there.
 
 # Fill this immutable pin after the classification publication, then regenerate
 # rank8.tex, README.md and docs/index.html before publishing this repository.
-CLASSIFICATION_PUBLICATION_COMMIT = '25ad4cb3a39d9e22d6dcad60ce37e3764620b628'
+CLASSIFICATION_PUBLICATION_COMMIT = 'd22bdcf3f97b7d6991362a417e25172fda4c8a8a'
 
-RANK8_CLASSIFICATION_SNAPSHOT = {'date': '2026-10-22',
- 'exact': {'excluded': 3507, 'unitarily_realized': 16, 'unresolved': 4},
+RANK8_CLASSIFICATION_SNAPSHOT = {'date': '2026-10-24',
+ 'exact': {'excluded': 3506, 'unitarily_realized': 16, 'unresolved': 5},
  'earlier': {'excluded': 896, 'unitarily_realized': 77, 'unresolved': 0},
- 'ledger_sha256': '85c61eb2ebf7e6f82600a0e19dc274f1da068aefc807395b2fd46873b64f1c01',
- 'ledger_path': 'supplements/rank8/output/exclusion_20261022/ledger.json',
+ 'ledger_sha256': 'ee86e6dbc37754ea7ea7f8014ec0074dcb46521241a7f912109ff9fd7d4f5314',
+ 'ledger_path': 'supplements/rank8/output/audited_20261024/ledger.json',
+ 'ledger_payload_path': 'data/payloads/supplements__rank8__output__audited_20261024__ledger_json',
  'classification_commit': CLASSIFICATION_PUBLICATION_COMMIT,
  'classification_stage': 'published_main_research_update',
  'r721_model': True,
@@ -519,10 +520,11 @@ def rank8_classification_provenance(summary,markup='markdown'):
             'certified_release':''}[stage]
     ledger_path=summary.get('ledger_path')
     if ledger_path:
-        ledger_url='https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/'+commit+'/'+ledger_path
-        if markup=='markdown':ledger_link=f'[decision ledger]({ledger_url})'
-        elif markup=='html':ledger_link=f'<a href="{ledger_url}">decision ledger</a>'
-        else:ledger_link=r'\href{'+ledger_url+'}{decision ledger}'
+        ledger_url=('https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/'+commit+'/'+summary['ledger_payload_path'] if summary.get('ledger_payload_path') else 'https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/'+commit+'/'+ledger_path)
+        ledger_label='checksummed decision-ledger payload' if summary.get('ledger_payload_path') else 'decision ledger'
+        if markup=='markdown':ledger_link=f'[{ledger_label}]({ledger_url})'
+        elif markup=='html':ledger_link=f'<a href="{ledger_url}">{ledger_label}</a>'
+        else:ledger_link=r'\href{'+ledger_url+'}{'+ledger_label+'}'
         link+=' and its '+ledger_link
     return 'These counts are bound to the '+link+'.'+suffix
 
@@ -576,7 +578,7 @@ def rank8_research_addendum(summary,markup='markdown'):
         parts.append(f'The new general exclusion of {case("R8_3_1795")} uses finite integer packing of the two pointed twist fibers; {proof} exclude both pointed associator classes.')
     research=link('structural results','/manuscripts/rank8/paper/m3_research_20261022.tex')
     followup=link('followup restrictions','/manuscripts/rank8/paper/m3_pointed_followup.tex')
-    parts.append('Every categorification of a remaining rank-eight case admits a spherical structure and has a pseudo-unitary Galois conjugate, and none is Morita equivalent to a braided category. '
+    parts.append('For the four cases R928, R941, R1154 and R1768, every categorification admits a spherical structure and has a pseudo-unitary Galois conjugate, and no braided Morita representative exists. These reductions are not asserted for the additional general-open R436 case. '
                  f'Further {research} restrict module actions and distinguish possible centers. The {followup} force the nontrivial pointed associator for {case("R8_3_1768")} and constrain additional twist-one central simples. These necessary restrictions alone supply no categorification.')
     if summary.get('r982_model'):
         creative=link('new unified restrictions','/manuscripts/rank8/paper/m3_creative_20261022.tex')
@@ -585,13 +587,13 @@ def rank8_research_addendum(summary,markup='markdown'):
                      'They also give a cyclic-stabilizer divisibility obstruction to two direct near-group quotient constructions.')
     if summary.get('r3472_excluded'):
         parts.append(rank8_r3472_focus_addendum(markup,ref))
-        open_ids=(928,941,1154,1768);number='four'
+        open_ids=(436,928,941,1154,1768);number='five'
     else:
         open_ids=(928,941,1154,1768,3472);number='five'
     parts.append(f'The {number} rank-eight cases '+', '.join(case('R8_3_'+str(i)) for i in open_ids)+' remain unresolved; the feasible necessary data are not category models.')
     if summary.get('r3472_excluded'):
-        parts.append('Together with '+case('R6_4_155')+' and '+case('R6_8_1660')+', six cases remain open in the classification project.')
-    return ' '.join(parts)
+        parts.append('The general exclusion of '+case('R8_3_436')+' is withheld after a source-scope audit; its unitary exclusion remains supported. See '+link('audit correction','/evidence/audit_20261024/README.md')+'. Together with '+case('R6_4_155')+' and '+case('R6_8_1660')+', seven cases are open at ranks at most eight. Higher-rank questions are counted in the companion atlas; this is not a project-wide total.')
+    return ('</p><p>'.join(parts) if markup=='html' else '\n\n'.join(parts))
 
 def rank8_classification_addendum(summary,markup='markdown'):
     """Current research and separately labelled construction/replay history."""
@@ -633,11 +635,16 @@ for the precise proof scope and individual attempt records.
 {rank8_classification_addendum(summary)}'''
 
 def sync_rank8_readme(summary):
-    path=ROOT/'README.md';text=path.read_text()
+    # The concise front page links to the current detailed project guide.
     pattern=r'At rank eight,.*?(?=\n\nAt rank seven)'
-    if len(re.findall(pattern,text,flags=re.S))!=1:
-        raise ValueError('Expected exactly one rank-eight README paragraph')
-    path.write_text(re.sub(pattern,lambda _:rank8_classification_readme(summary),text,flags=re.S))
+    matched=0
+    for relative in ('README.md','docs/PROJECT_GUIDE.md'):
+        path=ROOT/relative;text=path.read_text()
+        n=len(re.findall(pattern,text,flags=re.S))
+        if n>1:raise ValueError('Duplicate rank-eight companion summary: '+relative)
+        if n:
+            path.write_text(re.sub(pattern,lambda _:rank8_classification_readme(summary),text,flags=re.S));matched+=1
+    if not matched:raise ValueError('Missing rank-eight companion summary')
 
 RANK8_CLASSIFICATION_CONTEXT=r'''
 \paragraph{Categorification in the companion project.}

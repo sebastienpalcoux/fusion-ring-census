@@ -247,7 +247,7 @@ and cross-checks of the new optimizations are supplied separately.
 
 ## 11. Arithmetic, timing, and reproducibility
 
-The general generator permits ranks 4--8 and M<=15. Its cached integer
+The general generator permits ranks 4--11 and M<=15. Its cached integer
 bounds and finite-field products fit signed 32-bit integers, and exact
 polynomial evaluations use 64-bit integers. Rank four permits M<=1000,
 uses 64-bit integer polynomials and 128-bit modular products. Rank five

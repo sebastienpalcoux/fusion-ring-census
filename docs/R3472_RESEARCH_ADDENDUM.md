@@ -24,7 +24,7 @@ classification totals; historical snapshot claims retain their original pins.
 
 The four unresolved rank-eight rings are `R8_3_928`, `R8_3_941`,
 `R8_3_1154`, and `R8_3_1768`. Together with `R6_4_155` and `R6_8_1660`,
-six cases remain open in the classification project. No census tensor,
+six cases remained open at ranks at most eight at this historical checkpoint. This excludes the later rank-ten and rank-nine continuations. The [24 October audit correction](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/audit_20261024/README.md) restores R8_3_436 to generally unresolved, giving seven open cases at ranks at most eight, with its unitary exclusion retained. No census tensor,
 enumeration result, completeness qualification, or manifest count changes.
 
 ## Completed exclusion

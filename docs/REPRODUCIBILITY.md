@@ -150,7 +150,7 @@ To regenerate presentation files from the manifest:
 make docs
 ```
 
-This updates the README, count tables, OEIS drafts, HTML viewer and all six PDFs.
+This updates the README, count tables, OEIS drafts, HTML viewer and all nine rank-specific PDFs.
 PDF compilation requires `latexmk`, pdfLaTeX, Latin Modern and standard TeX Live
 mathematics packages; shell escape is disabled. All numerical data remain unchanged.
 
@@ -164,13 +164,15 @@ It contains code, equation systems, proofs, manifest, attribution and tests, wit
 duplicating released tensor datasets. Checksums are checked before computation.
 Its baseline is the snapshot identified in `SOURCE.json`.
 
-## Rank-7 multiplicity-5 source qualification (19 October 2026)
+## Rank-seven source qualification
 
-The current rank-7 archive came from a modified local optimized source package.
-Its 10,006 tensors passed fresh output verification and exactly extend the old
-4,201-class tensor set, with 5,805 classes at exact multiplicity 5.
-All four enumeration strata report normal completion, but their modified source
-files were not bundled. The commands above use the repository implementation;
-no source identity with the producer's modified enumerator is asserted. A fresh
-full enumeration and comparison would independently test completeness. See
-[the retained receipt and verification scope](../verification/rank7/README.md).
+At the 19 October checkpoint, the modified producer source had not yet been
+bundled. It has since been supplied: the current optimized source is hash-matched
+to the producer records for the rank-seven M5 and rank-eight M3 runs. See the
+[rank-seven receipt](../verification/rank7/README.md) and
+[optimized-source provenance](../verification/optimization_20261021/).
+The 10,006 rank-seven tensors passed output verification and extend the earlier
+4,201-class set by 5,805 classes at exact multiplicity five. All four producer
+strata report normal completion. The full large enumeration has not been
+independently repeated; source identity and output validity are separate from
+an independent completeness reproduction.
