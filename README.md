@@ -8,7 +8,7 @@
 
 > **AI-generated research · independent verification pending.** Automated checks establish only their stated scope. [Provenance and verification](docs/PROVENANCE.md).
 
-**24 October 2026:** rank nine is released through multiplicity two: **2,225 fusion rings**, comprising 142 of multiplicity one and **2,083 of exact multiplicity two**. The companion classification records **2,033 general exclusions, 32 unitary models and 18 unresolved** in the new band. [Rank-nine source and checks](verification/rank9/README.md) · [Classification scope](verification/rank9/multiplicity2/categorification.json). Ranks ten and eleven retain their multiplicity-one datasets: 194 and 182 rings. [Current classification Atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/).
+**24 October 2026:** rank nine is released through multiplicity two: **2,225 fusion rings**, comprising 142 of multiplicity one and **2,083 of exact multiplicity two**. The companion classification records **2,043 general exclusions, 36 unitary models and four unresolved** in the new band. [Rank-nine source and checks](verification/rank9/README.md) · [Classification scope](verification/rank9/multiplicity2/categorification.json). Ranks ten and eleven retain their multiplicity-one datasets: 194 and 182 rings. [Current classification Atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/).
 
 <a id="complete-datasets"></a>
 

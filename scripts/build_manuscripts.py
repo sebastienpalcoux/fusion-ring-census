@@ -419,21 +419,22 @@ the companion project's rank-eight frontier is recorded separately there.
 
 # Fill this immutable pin after the classification publication, then regenerate
 # rank8.tex, README.md and docs/index.html before publishing this repository.
-CLASSIFICATION_PUBLICATION_COMMIT = 'd22bdcf3f97b7d6991362a417e25172fda4c8a8a'
+CLASSIFICATION_PUBLICATION_COMMIT = '323c4227ffb796a72eef506f1eb289437fbc95db'
 
 RANK8_CLASSIFICATION_SNAPSHOT = {'date': '2026-10-24',
- 'exact': {'excluded': 3506, 'unitarily_realized': 16, 'unresolved': 5},
+ 'exact': {'excluded': 3507, 'unitarily_realized': 16, 'unresolved': 4},
  'earlier': {'excluded': 896, 'unitarily_realized': 77, 'unresolved': 0},
- 'ledger_sha256': 'ee86e6dbc37754ea7ea7f8014ec0074dcb46521241a7f912109ff9fd7d4f5314',
- 'ledger_path': 'supplements/rank8/output/audited_20261024/ledger.json',
- 'ledger_payload_path': 'data/payloads/supplements__rank8__output__audited_20261024__ledger_json',
+ 'ledger_sha256': '16a4723f149222ba8cb4f91d07d8ef75176ba5e95b20ff7594ed17e8e4e033fe',
+ 'ledger_path': 'supplements/rank8/output/research_20261024/ledger.json',
+ 'ledger_payload_path': 'data/payloads/supplements__rank8__output__research_20261024__ledger_json',
  'classification_commit': CLASSIFICATION_PUBLICATION_COMMIT,
  'classification_stage': 'published_main_research_update',
  'r721_model': True,
  'r982_model': True,
  'r65_excluded': True,
  'r1795_excluded': True,
- 'r3472_excluded': True}
+ 'r3472_excluded': True,
+ 'r436_excluded': True}
 
 def rank8_classification(ledger=None):
     """Read an explicit companion ledger, or the last published snapshot.
@@ -476,6 +477,7 @@ def rank8_classification(ledger=None):
                                      row['status']=='excluded' for row in rows)
         summary['r3472_excluded']=any(row['id']=='R8_3_3472' and
                                      row['status']=='excluded' for row in rows)
+        summary['r436_excluded']=any(row['id']=='R8_3_436' and row['status']=='excluded' and row.get('criterion')=='spherical_equivariantization_formal_codegree_field' for row in rows)
         ledger_sha256=hashlib.sha256(raw).hexdigest()
         if summary.get('ledger_sha256') not in (None,ledger_sha256):
             summary.pop('classification_commit',None)
@@ -587,12 +589,15 @@ def rank8_research_addendum(summary,markup='markdown'):
                      'They also give a cyclic-stabilizer divisibility obstruction to two direct near-group quotient constructions.')
     if summary.get('r3472_excluded'):
         parts.append(rank8_r3472_focus_addendum(markup,ref))
-        open_ids=(436,928,941,1154,1768);number='five'
+        open_ids=(928,941,1154,1768) if summary.get('r436_excluded') else (436,928,941,1154,1768);number='four' if summary.get('r436_excluded') else 'five'
     else:
         open_ids=(928,941,1154,1768,3472);number='five'
     parts.append(f'The {number} rank-eight cases '+', '.join(case('R8_3_'+str(i)) for i in open_ids)+' remain unresolved; the feasible necessary data are not category models.')
-    if summary.get('r3472_excluded'):
+    if summary.get('r436_excluded'):
+        parts.append('The independent spherical-equivariantization and formal-codegree proof excludes '+case('R8_3_436')+' generally. The old TPE parameterization premise remains withdrawn. See '+link('replacement proof','/evidence/r436_repair_20261024/REPAIR.md')+'. Together with the two rank-six cases, six questions remain open at ranks at most eight; this is not a project-wide total.')
+    elif summary.get('r3472_excluded'):
         parts.append('The general exclusion of '+case('R8_3_436')+' is withheld after a source-scope audit; its unitary exclusion remains supported. See '+link('audit correction','/evidence/audit_20261024/README.md')+'. Together with '+case('R6_4_155')+' and '+case('R6_8_1660')+', seven cases are open at ranks at most eight. Higher-rank questions are counted in the companion atlas; this is not a project-wide total.')
+    if summary.get('r436_excluded'):parts=[x.replace('These reductions are not asserted for the additional general-open R436 case.','R436 is separately generally excluded by the independent replacement proof.')for x in parts]
     return ('</p><p>'.join(parts) if markup=='html' else '\n\n'.join(parts))
 
 def rank8_classification_addendum(summary,markup='markdown'):
@@ -796,13 +801,14 @@ byte-identical. These checks establish soundness and uniqueness of the supplied
 output; they do not replace independent repetition of the entire search.
 '''
         if r==9 and item['bound']>=2:
+            r9=json.loads((ROOT/'verification/rank9/multiplicity2/categorification.json').read_text())
             body+=r'''\paragraph{Categorification in the companion project.}
 The separate \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/publications/rank9-m2/paper/rank9-m2.pdf}{rank-nine multiplicity-two manuscript}
-records 2,033 general complex exclusions, 32 unitary models and 18 unresolved
+records @@R9E@@ general complex exclusions, @@R9M@@ unitary models and @@R9U@@ unresolved
 rings among the 2,083 exact-multiplicity-two inputs. The 142 multiplicity-one
 rings retain 102 exclusions and 40 models. Thus the cumulative rank-nine
-classification through multiplicity two has 2,135 exclusions, 72 models and
-18 unresolved cases. These mathematical decisions are separate from the
+classification through multiplicity two has @@R9CE@@ exclusions, @@R9CM@@ models and
+@@R9U@@ unresolved cases. These mathematical decisions are separate from the
 census-completeness qualification. The current subring criterion requires an
 explicit negative proof; omission from a positive model catalog is never an
 exclusion. The \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/rank9_m2_20261024}{accepted ledger, exact proofs and replay archive}
@@ -810,6 +816,7 @@ bind all model permutations and exclusion dependencies to the source tensors.
 The multiplicity-one source may use different bases: all earlier IDs are
 preserved through explicit based transports, with fourteen nonidentity maps.
 '''
+            for key,value in {'@@R9E@@':f"{r9['excluded_general']:,}",'@@R9M@@':r9['unitarily_realized'],'@@R9U@@':r9['unresolved'],'@@R9CE@@':f"{r9['excluded_general']+102:,}",'@@R9CM@@':r9['unitarily_realized']+40}.items():body=body.replace(key,str(value))
         if r==10:
             body+=r'''\paragraph{Categorification in the companion project.}
 The separate

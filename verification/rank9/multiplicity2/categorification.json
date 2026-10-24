@@ -3,13 +3,13 @@
   "rank": 9,
   "exact_multiplicity": 2,
   "rings": 2083,
-  "excluded_general": 2033,
-  "unitarily_realized": 32,
-  "unresolved": 18,
+  "excluded_general": 2043,
+  "unitarily_realized": 36,
+  "unresolved": 4,
   "unitary_models_are_existence_proofs": true,
   "classification_repository": "https://github.com/sebastienpalcoux/grothendieck-ring-classification",
-  "classification_ledger": "https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/267cc2413a9c47c0e3df0eb78b3a5b2729d1526f/evidence/rank9_m2_20261024/ledger.json",
-  "classification_revision": "267cc2413a9c47c0e3df0eb78b3a5b2729d1526f",
-  "qualification": "The classification and the enumeration have distinct proof scopes. Historical unsupported half-E6 exclusions were corrected before this publication.",
-  "classification_ledger_sha256": "95801aa035f53528a791cae0925593600eda5aeb08cd4eb9e6f32483dacc3aa2"
+  "classification_ledger": "https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/323c4227ffb796a72eef506f1eb289437fbc95db/evidence/rank9_m2_20261024/ledger.json",
+  "classification_revision": "323c4227ffb796a72eef506f1eb289437fbc95db",
+  "qualification": "Enumeration counts and completeness qualifications are unchanged. The companion incorporates the source-bound theoretical continuations and the independent R8_3_436 repair; the old TPE parameterization premise remains withdrawn.",
+  "classification_ledger_sha256": "0f8c9b45f328d084735eb2c514308a87bbf176c7fb0a7fcd99578f18d0d0097e"
 }
