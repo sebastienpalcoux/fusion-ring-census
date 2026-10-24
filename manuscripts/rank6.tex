@@ -2,7 +2,7 @@
 \usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
 \usepackage[margin=23mm,headheight=15pt]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,longtable,array,microtype,xcolor}
-\usepackage{hyperref,fancyhdr,listings,enumitem}
+\usepackage{hyperref,bookmark,fancyhdr,listings,enumitem}
 \definecolor{ink}{HTML}{163348}\definecolor{accent}{HTML}{147D83}
 \hypersetup{colorlinks=true,linkcolor=ink,urlcolor=accent,citecolor=accent,pdfauthor={Sébastien Palcoux}}
 \pagestyle{fancy}\fancyhf{}\fancyhead[L]{\sffamily\small FUSION RING CENSUS}
@@ -22,7 +22,7 @@
 {\sffamily\Huge\bfseries\color{ink} Rank-6 fusion rings\par}
 \vspace{0.35cm}
 {\sffamily\Large A reproducible census through multiplicity 9\par}
-\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 21 October 2026}\par\vspace{0.8cm}
+\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 24 October 2026}\par\vspace{0.8cm}
 \begin{abstract}
 We explain the exact enumeration of all based fusion rings of rank 6 through multiplicity 9, comprising 25,421 isomorphism classes. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
 \end{abstract}\vspace{0.4cm}\noindent\textbf{AI-generated research \textperiodcentered\ independent verification pending.} This manuscript, its code and data were developed with AI assistance. Independent human verification and Lean formalization are pending. Treat the results with caution: exact computational checks establish only their stated scope.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage
@@ -105,6 +105,15 @@ Penneys, Peters and Snyder~\cite{GMPPS}; the original planar-algebra
 construction is due to Bigelow, Morrison, Peters and Snyder~\cite{BMPS}.
 This identification is a categorical example within the census, not a
 categorifiability filter on its enumeration.
+\paragraph{Current open-case theory.}
+Both rank-six cases remain open. The companion classification extends the
+stabilizer criterion to even cyclic Clifford characters; all 1,144 tested
+R155 blocks pass exactly. Its R1660 rank-eight Morita alternative is exactly
+R8\_3\_941, conditional on the required nonpointed algebra. These statements
+supply neither a categorification nor a general exclusion. The
+\href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/unresolved_retry_20261024}{current proofs and portable certificates}
+retain the categorical hypotheses and distinguish exact replay from the
+incomplete numerical laptop campaign.
 
 \section{An exhaustive finite-domain model}
 \subsection{Coordinates directly from reciprocity}

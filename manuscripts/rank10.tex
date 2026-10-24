@@ -22,7 +22,7 @@
 {\sffamily\Huge\bfseries\color{ink} Rank-10 fusion rings\par}
 \vspace{0.35cm}
 {\sffamily\Large A verified dataset through multiplicity 1\par}
-\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 23 October 2026}\par\vspace{0.8cm}
+\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 24 October 2026}\par\vspace{0.8cm}
 \begin{abstract}
 We document 194 verified based-isomorphism classes of fusion rings of rank 10 through multiplicity 1, including 194 at the maximum multiplicity. The producer reports a complete enumeration. The complete optimized source is supplied and hash-matched, but full enumeration has not been independently reproduced. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
 \end{abstract}\vspace{0.4cm}\noindent\textbf{AI-generated research \textperiodcentered\ independent verification pending.} This manuscript, its code and data were developed with AI assistance. Independent human verification and Lean formalization are pending. Treat the results with caution: exact computational checks establish only their stated scope.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage
@@ -98,18 +98,20 @@ output; they do not replace independent repetition of the entire search.
 \paragraph{Categorification in the companion project.}
 The separate
 \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/publications/rank9-rank10/paper/rank9-rank10.pdf}{rank-nine/ten classification manuscript}
-records 136 general complex exclusions, 57 unitary realizations and one
-unresolved ring among these 194 inputs. In particular, the five rings
+records 136 general complex exclusions and 58 unitary realizations, with
+no unresolved ring among these 194 inputs. In particular, the five rings
 \texttt{R10\_1\_114}, \texttt{R10\_1\_115}, \texttt{R10\_1\_152},
 \texttt{R10\_1\_153} and \texttt{R10\_1\_179} are excluded by a uniform
 Morita and relative-factorization argument, followed by ordinary-factor
 descent or the specific published odd rank-two superfusion obstruction.
-The sole remaining ring is \texttt{R10\_1\_189}. Its pointed subcategory
-must be untwisted Vec$(C_5)$, its regular-algebra Morita dual has the same
-based ring, and a braided categorification is excluded. No general
-nonexistence proof or model is claimed for this last input. The
-\href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/rank10_m1_exclusions_20261023}{proofs, accepted ledger and exact certificates}
-retain the input hashes and distinguish the theoretical reductions from
+The cyclic ring \texttt{R10\_1\_189} is realized by the charge-zero
+component of modules over the actual conformal-inclusion algebra for
+$SU(4)_6\subset SU(10)_1$. All 1,000 source coefficients match exactly.
+This recognizes a classical construction, not a new tensor category.
+Its model is unbraided, consistently with the independent braided
+obstruction. The \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/unresolved_retry_20261024}{categorical proof and exact model certificate}
+complete the classification. The five exclusion arguments retain their
+separate proofs and distinguish the theoretical reductions from
 the imported finite superpentagon calculation. These categorification
 decisions do not alter the census or its enumeration qualification.
 

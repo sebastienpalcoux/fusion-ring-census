@@ -18,6 +18,6 @@ Rank-7 completeness through multiplicity 5 is producer-reported; the new tensors
 
 Rank nine through multiplicity two has 2,033 exclusions, 32 unitary models and 18 unresolved cases in its exact-M2 classification companion; the multiplicity-one conclusions are unchanged.
 
-Ranks 9–11 have complete supplied sources and producer completion records, with independent exact tensor and uniqueness checks. Full enumeration was not independently repeated. The rank-10 companion links the current 136 exclusions, 57 unitary models and sole unresolved ring R10_1_189, with exact proofs in the classification repository. The rank-11 companion links the separate classification of all 182 inputs: 155 exclusions and 27 unitary models.
+Ranks 9–11 have complete supplied sources and producer completion records, with independent exact tensor and uniqueness checks. Full enumeration was not independently repeated. The rank-10 companion links the current 136 exclusions and 58 unitary models, completing multiplicity one; R10_1_189 comes from a classical conformal embedding, with exact proofs in the classification repository. The rank-11 companion links the separate classification of all 182 inputs: 155 exclusions and 27 unitary models.
 
 Rebuild with `python3 scripts/build_manuscripts.py --compile`, or select one companion with `--ranks 6 --compile`. Counts and the displayed release date are read from the same manifest as the repository front page.

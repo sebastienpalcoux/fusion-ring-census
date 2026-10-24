@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-24",
+  "classification_repository": "https://github.com/sebastienpalcoux/grothendieck-ring-classification",
+  "classification_commit": "1bbcb8694c1570092c2efdd4460db83097322b8d",
+  "evidence": "evidence/unresolved_retry_20261024",
+  "proof_archive_sha256": "9200a405eed0e40aa1d6fd4387c485b9112f731fecfac3f3289bb7ee5fb5bb0a",
+  "current_open_cases": 10,
+  "sole_status_change": {
+    "id": "R10_1_189",
+    "before": "unresolved",
+    "after": "unitarily_realized"
+  },
+  "unresolved_research": {
+    "rank6": "Even cyclic Clifford theorem and exact positive witnesses; conditional R1660\u2013R941 identification.",
+    "rank8": "R928 categorical Morita rigidity; actual twisted GH(C6,2) precursor for R1768, with separable algebra1+sigma still unproved; specified construction-family obstructions for R1154.",
+    "rank9": "No central Tannakian subcategory; integral center pointed; source-local and Morita Clifford constraints, conditional cubic spectra and exponent restrictions. All four remain open."
+  },
+  "enumeration_changed": false,
+  "evidence_url": "https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/1bbcb8694c1570092c2efdd4460db83097322b8d/evidence/unresolved_retry_20261024"
+}

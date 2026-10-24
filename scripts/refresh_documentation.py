@@ -40,7 +40,9 @@ def main():
 
 > **AI-generated research · independent verification pending.** Automated checks establish only their stated scope. [Provenance and verification](docs/PROVENANCE.md).
 
-**24 October 2026:** rank nine is released through multiplicity two: **2,225 fusion rings**, comprising 142 of multiplicity one and **2,083 of exact multiplicity two**. The companion classification records **2,033 general exclusions, 32 unitary models and 18 unresolved** in the new band. [Rank-nine source and checks](verification/rank9/README.md) · [Classification scope](verification/rank9/multiplicity2/categorification.json). Ranks ten and eleven retain their multiplicity-one datasets: 194 and 182 rings. [Current classification Atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/).
+**24 October 2026:** rank nine is released through multiplicity two: **2,225 fusion rings**, comprising 142 of multiplicity one and **2,083 of exact multiplicity two**. The companion classification records **2,043 general exclusions, 36 unitary models and four unresolved** in the new band. [Rank-nine source and checks](verification/rank9/README.md) · [Classification scope](verification/rank9/multiplicity2/categorification.json). Ranks ten and eleven retain their multiplicity-one datasets: 194 and 182 rings. [Current classification Atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/).
+
+**Categorification update:** rank ten at multiplicity one is complete: **136 exclusions and 58 unitary models**. R10_1_189 is recognized inside a classical conformal-embedding module category. The project has ten open cases at ranks six, eight and nine; their new restrictions retain unresolved status. [Current proofs and precise scope](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/unresolved_retry_20261024/README.md).
 
 <a id="complete-datasets"></a>
 

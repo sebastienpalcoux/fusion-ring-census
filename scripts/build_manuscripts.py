@@ -781,9 +781,31 @@ def build_sources(ranks=range(3,12),classification=None):
         body+='All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.\n'
         body+=r'\end{abstract}\vspace{0.4cm}\noindent\textbf{AI-generated research \textperiodcentered\ independent verification pending.} This manuscript, its code and data were developed with AI assistance. Independent human verification and Lean formalization are pending. Treat the results with caution: exact computational checks establish only their stated scope.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage'+'\n'
         body+=DEFINITIONS+results_section(r,item)
-        if r==6:body+=EH_CONTEXT
+        if r==6:
+            body+=EH_CONTEXT
+            body+=r"""\paragraph{Current open-case theory.}
+Both rank-six cases remain open. The companion classification extends the
+stabilizer criterion to even cyclic Clifford characters; all 1,144 tested
+R155 blocks pass exactly. Its R1660 rank-eight Morita alternative is exactly
+R8\_3\_941, conditional on the required nonpointed algebra. These statements
+supply neither a categorification nor a general exclusion. The
+\href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/unresolved_retry_20261024}{current proofs and portable certificates}
+retain the categorical hypotheses and distinguish exact replay from the
+incomplete numerical laptop campaign.
+"""
         if r==7:body+=RANK7_CLASSIFICATION_CONTEXT
-        if r==8:body+=rank8_classification_context(classification)
+        if r==8:
+            body+=rank8_classification_context(classification)
+            body+=r"""\paragraph{Further theoretical restrictions.}
+All four rank-eight questions remain open. R928 has categorical Morita
+rigidity without a module-rank cutoff. For R1768 an actual complex twisted
+$GH(C_6,2)$ precursor now exists with the required pointed associator, but
+the connected separable algebra $1+\sigma$ remains unproved. The canonical
+inherited algebra is instead $\operatorname{End}(\sigma)$. Five specified
+families of pointed extensions and connected etale condensations are
+excluded as models for R1154; those route obstructions do not exclude the
+source ring. See the \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/unresolved_retry_20261024}{current categorical proofs and exact certificates}.
+"""
         if r>=9:
             body+=r'''\section{Supplied high-rank source and independent checks}
 The complete optimized enumeration source and completed producer-run records
@@ -817,22 +839,34 @@ The multiplicity-one source may use different bases: all earlier IDs are
 preserved through explicit based transports, with fourteen nonidentity maps.
 '''
             for key,value in {'@@R9E@@':f"{r9['excluded_general']:,}",'@@R9M@@':r9['unitarily_realized'],'@@R9U@@':r9['unresolved'],'@@R9CE@@':f"{r9['excluded_general']+102:,}",'@@R9CM@@':r9['unitarily_realized']+40}.items():body=body.replace(key,str(value))
+            body+=r"""\paragraph{The four remaining quadratic cases.}
+The centers have no nontrivial Tannakian subcategory and their integral
+simples are invertible. New module-functor and all-cochain Clifford
+arguments restrict the cubic indicators. Exact discrete certificates force
+projected third indicators $1/2$ in the positive-TY R137 and negative-TY
+R1976 branches, hence 9 divides their FS exponents. Exact feasible witnesses
+to the necessary systems remain and are not categorical models. See the
+\href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/unresolved_retry_20261024}{current theory and replay archive}.
+"""
+
         if r==10:
             body+=r'''\paragraph{Categorification in the companion project.}
 The separate
 \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/publications/rank9-rank10/paper/rank9-rank10.pdf}{rank-nine/ten classification manuscript}
-records 136 general complex exclusions, 57 unitary realizations and one
-unresolved ring among these 194 inputs. In particular, the five rings
+records 136 general complex exclusions and 58 unitary realizations, with
+no unresolved ring among these 194 inputs. In particular, the five rings
 \texttt{R10\_1\_114}, \texttt{R10\_1\_115}, \texttt{R10\_1\_152},
 \texttt{R10\_1\_153} and \texttt{R10\_1\_179} are excluded by a uniform
 Morita and relative-factorization argument, followed by ordinary-factor
 descent or the specific published odd rank-two superfusion obstruction.
-The sole remaining ring is \texttt{R10\_1\_189}. Its pointed subcategory
-must be untwisted Vec$(C_5)$, its regular-algebra Morita dual has the same
-based ring, and a braided categorification is excluded. No general
-nonexistence proof or model is claimed for this last input. The
-\href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/rank10_m1_exclusions_20261023}{proofs, accepted ledger and exact certificates}
-retain the input hashes and distinguish the theoretical reductions from
+The cyclic ring \texttt{R10\_1\_189} is realized by the charge-zero
+component of modules over the actual conformal-inclusion algebra for
+$SU(4)_6\subset SU(10)_1$. All 1,000 source coefficients match exactly.
+This recognizes a classical construction, not a new tensor category.
+Its model is unbraided, consistently with the independent braided
+obstruction. The \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/unresolved_retry_20261024}{categorical proof and exact model certificate}
+complete the classification. The five exclusion arguments retain their
+separate proofs and distinguish the theoretical reductions from
 the imported finite superpentagon calculation. These categorification
 decisions do not alter the census or its enumeration qualification.
 '''
