@@ -1,0 +1,8 @@
+{
+  "input": "rank9_multiplicity2_verified.zip",
+  "tables_sha256": "81a63a3ba152bdc00157427afcb83d8c13a81f4e0fb21ce8d0c975269cdc269f",
+  "run_code_sha256": "0ba8dea5025914560ab7d182a4e39340448cd94e1c978612dc0a94e6779ea483",
+  "engine": "verification/engine_20261023/",
+  "enumeration_rerun": false,
+  "qualification": "The supplied run completed all five duality strata. Fresh tensor, uniqueness and parameter-export checks are separate from independently repeating enumeration."
+}

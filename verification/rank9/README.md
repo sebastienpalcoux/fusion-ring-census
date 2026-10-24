@@ -1,11 +1,11 @@
-# Rank 9, multiplicity one
+# Rank nine through multiplicity two
 
-**142 distinct based fusion rings.** [Tensors](../../results/rank9/tables.txt.gz) · [Counts](../../results/rank9/counts.csv) · [Audit](audit.json) · [Completed producer run](run.json) · [Source receipt](source.json)
+**2,225 verified fusion rings: 142 of exact multiplicity one and 2,083 of exact multiplicity two.**
 
-The supplied laptop run completed every duality stratum, with no clock limit, and reports independent output verification. Fresh integration checks verify every tensor axiom, exact based-isomorphism uniqueness, counts, hashes and complete parameter re-export. No duplicate classes occur. The high-rank checker uses exact individualization and refinement, with every isomorphism witness checked against the full tensor; exhaustive reference mode remains available.
+[Tensors](../../results/rank9/tables.txt.gz) · [Counts](../../results/rank9/counts.csv) · [Current audit](multiplicity2/audit.json) · [Producer run](multiplicity2/run.json) · [Categorification](multiplicity2/categorification.json)
 
-Enumeration completeness is **producer-reported**, with complete source and all completion logs supplied. The full enumeration was not independently rerun. Source and data checks do not establish categorifiability.
+The complete producer run finished every duality stratum. Enumeration completeness is producer-reported; the complete optimized source is retained in [the engine archive](../engine_20261023/README.md). Full enumeration was not independently repeated. Exact tensor axioms, based-isomorphism uniqueness, counts, source checksums and parameter re-export are checked separately.
 
-The original `SHA256SUMS`, `run.json`, laptop provenance, producer verification and logs are preserved here. The two original compressed numerical payloads are stored once under `results/rank9/`: `FusionRingMultiplicationTables.txt.gz` is named `tables.txt.gz` there.
+The earlier multiplicity-one source and verification records remain in [multiplicity1/](multiplicity1/). The current input may use different bases: all 142 old case IDs are retained through explicit exact basis transports, including fourteen nonidentity maps. The [crosswalk audit](multiplicity2/categorical_id_crosswalk.json) records this distinction.
 
-The [engine update](../engine_20261023/README.md) retains the exact supplied source archive, its inventory and the local integration changes. No rank-11 categorification is asserted.
+The companion classification records **2,033 general exclusions, 32 unitary models and 18 unresolved rings at exact multiplicity two**. Its corrected subring rule requires an explicit exclusion proof; absence from a positive model catalog is not an obstruction. These mathematical decisions do not change census counts or enumeration scope.

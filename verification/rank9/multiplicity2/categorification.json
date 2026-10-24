@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-24",
+  "rank": 9,
+  "exact_multiplicity": 2,
+  "rings": 2083,
+  "excluded_general": 2033,
+  "unitarily_realized": 32,
+  "unresolved": 18,
+  "unitary_models_are_existence_proofs": true,
+  "classification_repository": "https://github.com/sebastienpalcoux/grothendieck-ring-classification",
+  "classification_ledger": "https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/267cc2413a9c47c0e3df0eb78b3a5b2729d1526f/evidence/rank9_m2_20261024/ledger.json",
+  "classification_revision": "267cc2413a9c47c0e3df0eb78b3a5b2729d1526f",
+  "qualification": "The classification and the enumeration have distinct proof scopes. Historical unsupported half-E6 exclusions were corrected before this publication.",
+  "classification_ledger_sha256": "95801aa035f53528a791cae0925593600eda5aeb08cd4eb9e6f32483dacc3aa2"
+}

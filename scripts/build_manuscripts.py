@@ -788,6 +788,21 @@ tensor. Exhaustive permutation mode remains available. Parameter re-export is
 byte-identical. These checks establish soundness and uniqueness of the supplied
 output; they do not replace independent repetition of the entire search.
 '''
+        if r==9 and item['bound']>=2:
+            body+=r'''\paragraph{Categorification in the companion project.}
+The separate \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/publications/rank9-m2/paper/rank9-m2.pdf}{rank-nine multiplicity-two manuscript}
+records 2,033 general complex exclusions, 32 unitary models and 18 unresolved
+rings among the 2,083 exact-multiplicity-two inputs. The 142 multiplicity-one
+rings retain 102 exclusions and 40 models. Thus the cumulative rank-nine
+classification through multiplicity two has 2,135 exclusions, 72 models and
+18 unresolved cases. These mathematical decisions are separate from the
+census-completeness qualification. The current subring criterion requires an
+explicit negative proof; omission from a positive model catalog is never an
+exclusion. The \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/rank9_m2_20261024}{accepted ledger, exact proofs and replay archive}
+bind all model permutations and exclusion dependencies to the source tensors.
+The multiplicity-one source may use different bases: all earlier IDs are
+preserved through explicit based transports, with fourteen nonidentity maps.
+'''
         if r==10:
             body+=r'''\paragraph{Categorification in the companion project.}
 The separate

@@ -4,11 +4,11 @@
 
 [**Browse the counts →**](results/table.md) · [Datasets](#datasets) · [Run & verify](docs/REPRODUCIBILITY.md) · [Methods](methods/completeness.md)
 
-**1,431,327 based-isomorphism classes** in the released datasets, including every duality type and noncommutative rings. Categorifiability is recorded separately in the companion [Grothendieck Ring Classification](https://github.com/sebastienpalcoux/grothendieck-ring-classification) and its [interactive atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/).
+**1,433,410 based-isomorphism classes** in the released datasets, including every duality type and noncommutative rings. Categorifiability is recorded separately in the companion [Grothendieck Ring Classification](https://github.com/sebastienpalcoux/grothendieck-ring-classification) and its [interactive atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/).
 
 > **AI-generated research · independent verification pending.** Automated checks establish only their stated scope. [Provenance and verification](docs/PROVENANCE.md).
 
-**23 October 2026:** multiplicity-one datasets include ranks 9, 10 and 11, with **142, 194 and 182** classes and current rank-specific manuscripts. Rank-10 categorification has **136 general complex exclusions, 57 unitary models and one unresolved ring, R10_1_189**. [Current decisions and proof scope](verification/rank10/categorification.json). Rank-11 categorification is complete for the supplied dataset: **155 exclusions, 27 unitary models, 0 unresolved**. [Classification and scope](verification/rank11/categorification.json) · [Enumeration source and checks](verification/engine_20261023/README.md).
+**24 October 2026:** rank nine is released through multiplicity two: **2,225 fusion rings**, comprising 142 of multiplicity one and **2,083 of exact multiplicity two**. The companion classification records **2,033 general exclusions, 32 unitary models and 18 unresolved** in the new band. [Rank-nine source and checks](verification/rank9/README.md) · [Classification scope](verification/rank9/multiplicity2/categorification.json). Ranks ten and eleven retain their multiplicity-one datasets: 194 and 182 rings. [Current classification Atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/).
 
 <a id="complete-datasets"></a>
 
@@ -24,7 +24,7 @@ Bounds are cumulative: all rings of multiplicity **at most M**.
 | 6 | 9 | 25,421 | [Tensors](results/rank6/tables.txt.gz) · [Counts](results/rank6/counts.csv) | [PDF](manuscripts/rank6.pdf) · [TeX](manuscripts/rank6.tex) |
 | 7 | 5 | 10,006 | [Tensors](results/rank7/tables.txt.gz) · [Counts](results/rank7/counts.csv) | [PDF](manuscripts/rank7.pdf) · [TeX](manuscripts/rank7.tex) |
 | 8 | 3 | 4,500 | [Tensors](results/rank8/tables.txt.gz) · [Counts](results/rank8/counts.csv) | [PDF](manuscripts/rank8.pdf) · [TeX](manuscripts/rank8.tex) |
-| 9 | 1 | 142 | [Tensors](results/rank9/tables.txt.gz) · [Counts](results/rank9/counts.csv) | [PDF](manuscripts/rank9.pdf) · [TeX](manuscripts/rank9.tex) |
+| 9 | 2 | 2,225 | [Tensors](results/rank9/tables.txt.gz) · [Counts](results/rank9/counts.csv) | [PDF](manuscripts/rank9.pdf) · [TeX](manuscripts/rank9.tex) |
 | 10 | 1 | 194 | [Tensors](results/rank10/tables.txt.gz) · [Counts](results/rank10/counts.csv) | [PDF](manuscripts/rank10.pdf) · [TeX](manuscripts/rank10.tex) |
 | 11 | 1 | 182 | [Tensors](results/rank11/tables.txt.gz) · [Counts](results/rank11/counts.csv) | [PDF](manuscripts/rank11.pdf) · [TeX](manuscripts/rank11.tex) |
 

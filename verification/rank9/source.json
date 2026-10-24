@@ -1,10 +1,8 @@
 {
-  "received_date": "2026-10-23",
-  "producer_code_sha256": "0ba8dea5025914560ab7d182a4e39340448cd94e1c978612dc0a94e6779ea483",
-  "enumeration_source": "packages/Fusion_Census_Deep_Optimized_rank11_2026-10-23.zip",
-  "enumeration_source_archive_sha256": "1bd65a28deb5f8db23525d909f1d296953e20178ec122f0f775daad0fa0e3a5f",
-  "complete": true,
-  "verified": true,
-  "independent_enumeration_rerun": false,
-  "producer_run": "verification/rank9/run.json"
+  "input": "rank9_multiplicity2_verified.zip",
+  "tables_sha256": "81a63a3ba152bdc00157427afcb83d8c13a81f4e0fb21ce8d0c975269cdc269f",
+  "run_code_sha256": "0ba8dea5025914560ab7d182a4e39340448cd94e1c978612dc0a94e6779ea483",
+  "engine": "verification/engine_20261023/",
+  "enumeration_rerun": false,
+  "qualification": "The supplied run completed all five duality strata. Fresh tensor, uniqueness and parameter-export checks are separate from independently repeating enumeration."
 }

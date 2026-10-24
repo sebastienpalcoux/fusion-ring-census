@@ -21,10 +21,10 @@
 \thispagestyle{empty}{\sffamily\small\color{accent} EXACT ENUMERATION / DATA / VERIFICATION}\par\vspace{1cm}
 {\sffamily\Huge\bfseries\color{ink} Rank-9 fusion rings\par}
 \vspace{0.35cm}
-{\sffamily\Large A verified dataset through multiplicity 1\par}
-\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 23 October 2026}\par\vspace{0.8cm}
+{\sffamily\Large A verified dataset through multiplicity 2\par}
+\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 24 October 2026}\par\vspace{0.8cm}
 \begin{abstract}
-We document 142 verified based-isomorphism classes of fusion rings of rank 9 through multiplicity 1, including 142 at the maximum multiplicity. The producer reports a complete enumeration. The complete optimized source is supplied and hash-matched, but full enumeration has not been independently reproduced. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
+We document 2,225 verified based-isomorphism classes of fusion rings of rank 9 through multiplicity 2, including 2,083 at the maximum multiplicity. The producer reports a complete enumeration. The complete optimized source is supplied and hash-matched, but full enumeration has not been independently reproduced. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
 \end{abstract}\vspace{0.4cm}\noindent\textbf{AI-generated research \textperiodcentered\ independent verification pending.} This manuscript, its code and data were developed with AI assistance. Independent human verification and Lean formalization are pending. Treat the results with caution: exact computational checks establish only their stated scope.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage
 
 \section{Objects, equivalence and the counting convention}
@@ -73,11 +73,12 @@ Different $p$ cannot be isomorphic. Therefore a whole-rank census is complete
 exactly when every required stratum has been searched exhaustively. Finishing
 only the non-self-dual strata does not certify a whole-rank counting term.
 \section{The certified release at rank 9}
-The released bound is $M=1$ and the cumulative number of classes is $C_{9}(1)=142$. Every duality type is included. The accompanying full tensor file has one record per based-isomorphism class.
+The released bound is $M=2$ and the cumulative number of classes is $C_{9}(2)=2,225$. Every duality type is included. The accompanying full tensor file has one record per based-isomorphism class.
 
 
 \begin{center}\begin{tabular}{rr}\toprule Exact multiplicity $m$ & $c_{\Rank}(m)$\\\midrule
 1 & 142\\
+2 & 2,083\\
 \bottomrule\end{tabular}\end{center}
 
 The data and their checksums are recorded in \path{results/census.json}. The corresponding completed-run evidence and independent audit are under \path{verification/rank9/}.
@@ -95,6 +96,19 @@ refinement and checks every returned isomorphism witness against the complete
 tensor. Exhaustive permutation mode remains available. Parameter re-export is
 byte-identical. These checks establish soundness and uniqueness of the supplied
 output; they do not replace independent repetition of the entire search.
+\paragraph{Categorification in the companion project.}
+The separate \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/publications/rank9-m2/paper/rank9-m2.pdf}{rank-nine multiplicity-two manuscript}
+records 2,033 general complex exclusions, 32 unitary models and 18 unresolved
+rings among the 2,083 exact-multiplicity-two inputs. The 142 multiplicity-one
+rings retain 102 exclusions and 40 models. Thus the cumulative rank-nine
+classification through multiplicity two has 2,135 exclusions, 72 models and
+18 unresolved cases. These mathematical decisions are separate from the
+census-completeness qualification. The current subring criterion requires an
+explicit negative proof; omission from a positive model catalog is never an
+exclusion. The \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/rank9_m2_20261024}{accepted ledger, exact proofs and replay archive}
+bind all model permutations and exclusion dependencies to the source tensors.
+The multiplicity-one source may use different bases: all earlier IDs are
+preserved through explicit based transports, with fourteen nonidentity maps.
 
 \section{An exhaustive finite-domain model}
 \subsection{Coordinates directly from reciprocity}
@@ -316,7 +330,7 @@ The completed-search and source qualification in Section 2 applies throughout: t
 From the repository root on a local computer, request a complete run with no clock limit. An interruption does not certify a smaller census.
 \par\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}
-python3 scripts/run_laptop.py --rank 9 --bound 1
+python3 scripts/run_laptop.py --rank 9 --bound 2
 \end{lstlisting}
 \end{minipage}\par
 To verify the supplied release without recomputing it:

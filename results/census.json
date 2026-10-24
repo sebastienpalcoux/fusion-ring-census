@@ -1,6 +1,6 @@
 {
   "version": "0.3.0",
-  "release_date": "2026-10-23",
+  "release_date": "2026-10-24",
   "scope": "All fusion rings in the stated complete whole-rank regions; all duality types; no categorifiability filter.",
   "publication_status": "Public GitHub repository.",
   "ranks": {
@@ -1274,12 +1274,13 @@
     },
     "9": {
       "rank": 9,
-      "bound": 1,
+      "bound": 2,
       "complete": true,
       "verified": true,
-      "classes": 142,
+      "classes": 2225,
       "counts": {
-        "1": 142
+        "1": 142,
+        "2": 2083
       },
       "verification_reports": "verification/rank9/",
       "tables": "results/rank9/tables.txt.gz",
@@ -1289,10 +1290,11 @@
       "enumeration_source_available": true,
       "independent_enumeration_rerun": false,
       "independent_verification_scope": "All tensor axioms, exact invariant-refinement based-isomorphism checking, counts, parameter export, source identity and checksums.",
-      "tables_gz_sha256": "60577ac43efee10ecc06de18b087d5ff557717c1a59e06bffff5a344ab920ff0",
-      "tables_uncompressed_sha256": "9e910eea2bead47ff861d7ec32483051127523d2d4461490f53c27e76c993b99",
-      "parameters_gz_sha256": "13e39bc8d71099e0a54a80e163bcf7ba966a259470a3f04fd39fe3db6eed1edc",
-      "parameters_uncompressed_sha256": "eab15143f9fbd2ba14fb123774900985f9504c49c8790efcd5ad439e0eddc3dd"
+      "tables_gz_sha256": "ff12e5f4c26fe9344b02dadd542bd12375d62cbde8b2023c7342fc43c0584532",
+      "tables_uncompressed_sha256": "81a63a3ba152bdc00157427afcb83d8c13a81f4e0fb21ce8d0c975269cdc269f",
+      "parameters_gz_sha256": "0f4f8c315c9a77a7461f25658b1704867fb27dc9db4fe4722d5c7d8b1a478e59",
+      "parameters_uncompressed_sha256": "15e0a84b9a28d9cac0db7d93cb357b087ead422f4f861e829ea62f3a6f8f2b97",
+      "source_run": "verification/rank9/multiplicity2/run.json"
     },
     "10": {
       "rank": 10,
@@ -1339,5 +1341,5 @@
       "parameters_uncompressed_sha256": "bfc54c6192c6d9d63c68c2c1a416fce44e14978f06d8efcb8fd121d7ea2a534f"
     }
   },
-  "total_classes": 1431327
+  "total_classes": 1433410
 }

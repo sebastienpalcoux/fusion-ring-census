@@ -1,29 +1,27 @@
 {
   "rank": 9,
-  "bound": 1,
+  "bound": 2,
   "counts": {
-    "1": 142
+    "1": 142,
+    "2": 2083
   },
-  "classes": 142,
+  "classes": 2225,
   "complete": true,
   "verified": true,
-  "source_identity": "work/census_rank11_20261023/Fusion_Census_Deep_Optimized",
   "independent_enumeration_rerun": false,
   "independent_verification": {
-    "input_records": 142,
-    "input_physical_lines": 142,
-    "distinct_rings": 142,
+    "input_records": 2225,
+    "input_physical_lines": 2225,
+    "distinct_rings": 2225,
     "duplicates": 0,
     "literal_repeats": 0,
     "new_labellings": 0,
     "associativity_checked": true,
     "canonical_mode": "individualization-refinement (exact)",
-    "permutations_examined": 837,
-    "elapsed_seconds": 0.044684714
+    "permutations_examined": 4156,
+    "elapsed_seconds": 0.79173752
   },
   "parameter_export_matches_original": true,
-  "table_gz_sha256": "60577ac43efee10ecc06de18b087d5ff557717c1a59e06bffff5a344ab920ff0",
-  "tables_uncompressed_sha256": "9e910eea2bead47ff861d7ec32483051127523d2d4461490f53c27e76c993b99",
-  "qualification": "All tensor axioms, exact based-isomorphism uniqueness and parameter export freshly checked. Enumeration completeness is producer-reported; all required strata completed.",
-  "producer_enumeration_seconds": 3.028761003864929
+  "tables_uncompressed_sha256": "81a63a3ba152bdc00157427afcb83d8c13a81f4e0fb21ce8d0c975269cdc269f",
+  "qualification": "Producer-reported complete enumeration; all five strata completed. Fresh exact tensor, uniqueness, counts and parameter-export checks passed."
 }
