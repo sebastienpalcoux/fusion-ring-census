@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-25",
+  "census_input_commit": "a69cd7e10047a7d86f3f03a7c43cb52dbc73c2f0",
+  "classification_input_commit": "8014c749c17ddd2ad3d1b99a4359d49a8be921c5",
+  "supplied_tensor_count": 1433410,
+  "fusion_axioms": "PASS_ALL",
+  "based_isomorphism_uniqueness": "PASS_ALL",
+  "duplicate_classes": 0,
+  "software_tests_passed": 43,
+  "upstream_search_regenerated": false,
+  "classification_counts_unchanged": {
+    "excluded": 1433022,
+    "realized": 378,
+    "unresolved": 10
+  },
+  "classification_corrections": "https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/correctness_20261025",
+  "qualification": "Input validation and complete based-isomorphism checking are distinct from regenerating the upstream search. External categorification theorems remain explicit dependencies; independent human verification and formalization remain pending."
+}

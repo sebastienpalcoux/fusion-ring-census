@@ -1,0 +1,17 @@
+{
+  "name": "census_all",
+  "cwd": "/workspace/scratch/90f37cc83103/fusion-census-audit",
+  "command": [
+    "python",
+    "code/verify_release.py",
+    "--out",
+    "/workspace/scratch/90f37cc83103/audit-20261025/census-replay"
+  ],
+  "start_unix": 1792900474.9870985,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "scope": "Execution record only; does not establish categorical premises.",
+  "exit_code": 0,
+  "seconds": 108.29896187782288,
+  "log_sha256": "1122fd28d725cbcb2843203e1ee65dacd65e48ad2cc21b97155e702f757bb70f"
+}

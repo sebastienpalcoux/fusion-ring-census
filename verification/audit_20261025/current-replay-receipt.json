@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "scope": "Post-revision census unit tests and independent complete small-bound searches; published census data and all enumeration code are unchanged by this documentation revision. The all-release input replay receipt is supplied separately.",
+  "unit_tests": 43,
+  "files_sha256": {
+    "tests.log": "67a3f85db88660b9ad8ae505e128a93e0bdd4b94eb20df203d9ae97915f5eb57",
+    "smoke.log": "c4746f478179d69de0c9e9d538c62c57a05cb4a27b41da4ec89d3c85e0fceb13",
+    "smoke-summary.json": "8eff4ade481f9bc4671e7a400bd739d27e6522835b98bdaac4d6dc0816c320a9"
+  },
+  "smoke_summary": {
+    "all_passed": true,
+    "elapsed_seconds": 48.747837785998854,
+    "runs": [
+      {
+        "rank": 3,
+        "bound": 2,
+        "classes": 7,
+        "complete": true,
+        "verified": true,
+        "enumeration_seconds": 0.00604997400114371
+      },
+      {
+        "rank": 4,
+        "bound": 2,
+        "classes": 27,
+        "complete": true,
+        "verified": true,
+        "enumeration_seconds": 0.008333031000802293
+      },
+      {
+        "rank": 5,
+        "bound": 2,
+        "classes": 53,
+        "complete": true,
+        "verified": true,
+        "enumeration_seconds": 0.036968604999856325
+      },
+      {
+        "rank": 6,
+        "bound": 2,
+        "classes": 193,
+        "complete": true,
+        "verified": true,
+        "enumeration_seconds": 0.054062557999714045
+      },
+      {
+        "rank": 7,
+        "bound": 1,
+        "classes": 43,
+        "complete": true,
+        "verified": true,
+        "enumeration_seconds": 0.06389399299951037
+      },
+      {
+        "rank": 8,
+        "bound": 1,
+        "classes": 96,
+        "complete": true,
+        "verified": true,
+        "enumeration_seconds": 0.4692237679992104
+      }
+    ]
+  },
+  "source_sha256": {
+    "scripts/audit_candidates.py": "81bedcd213b6438954a3f2853867c58d74f35ab3a3da6c4520108a0f9b6c4987",
+    "scripts/audit_reference.py": "fabfc6addbd63e70497cd0b1cd2c520fe79c10e44f8e9bc7b606f96b44320ff6",
+    "scripts/benchmark.py": "ee7cc3d01b9d2de47120000d7c385c4ba5d0bf7debedcd03c45d0ea1489a7f29",
+    "scripts/benchmark_v3.py": "06d7141009be9d03d57a8619143d629e2c753cd9603f3a5cdc010fb3e62e2d66",
+    "scripts/build_laptop_package.py": "69018473f55353529d6f97379c9055a6b0c6c418e18a185da6e44904a758b8b2",
+    "scripts/build_manuscripts.py": "26341abf6619b5902481d4ac25fc15aff8b438eb62ff638b1854e7fac8821af0",
+    "scripts/build_site.py": "4128a175c194a40cf1255dd8b99246afb539e700d966a3e22e697426897226a5",
+    "scripts/check_release.py": "307af5f039005f61d58092e1057663fbac8e8e3d0f98a0ff6b062562a5d9dabc",
+    "scripts/extend_census.py": "535f0ffe00774ee3d49860503a844d45b6b1bdda79db66b5d8c02d1da49efffd",
+    "scripts/refresh_documentation.py": "2f801e0fd769f725ef4d1a72aa87f84bd955ad4a95ec942329588aa4dd3495c5",
+    "scripts/run_laptop.py": "244aa791a220396fecea1bfa43ae04aaf838d4cf28ff6455208fdc1e4967b75e",
+    "scripts/smoke_test.py": "0a0d96cab46501d5e0f76dec5e94e1b3c9c41e7ebf64eebdcead2e87a57730f8"
+  }
+}

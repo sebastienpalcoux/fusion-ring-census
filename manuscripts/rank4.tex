@@ -2,11 +2,11 @@
 \usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
 \usepackage[margin=23mm,headheight=15pt]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,longtable,array,microtype,xcolor}
-\usepackage{hyperref,fancyhdr,listings,enumitem}
+\usepackage{hyperref,bookmark,fancyhdr,listings,enumitem}
 \definecolor{ink}{HTML}{163348}\definecolor{accent}{HTML}{147D83}
 \hypersetup{colorlinks=true,linkcolor=ink,urlcolor=accent,citecolor=accent,pdfauthor={Sébastien Palcoux}}
 \pagestyle{fancy}\fancyhf{}\fancyhead[L]{\sffamily\small FUSION RING CENSUS}
-\fancyhead[R]{\sffamily\small Rank \Rank}\fancyfoot[L]{\sffamily\footnotesize Computational companion \textbullet\ September 2026}
+\fancyhead[R]{\sffamily\small Rank \Rank}\fancyfoot[L]{\sffamily\footnotesize Computational companion \textbullet\ October 2026}
 \fancyfoot[R]{\sffamily\small\thepage}\renewcommand{\headrulewidth}{0.4pt}
 \newtheorem{theorem}{Theorem}[section]\newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}\newtheorem{corollary}[theorem]{Corollary}
@@ -22,7 +22,7 @@
 {\sffamily\Huge\bfseries\color{ink} Rank-4 fusion rings\par}
 \vspace{0.35cm}
 {\sffamily\Large A reproducible census through multiplicity 128\par}
-\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 23 September 2026}\par\vspace{0.8cm}
+\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 24 October 2026}\par\vspace{0.8cm}
 \begin{abstract}
 We explain the exact enumeration of all based fusion rings of rank 4 through multiplicity 128, comprising 889,530 isomorphism classes. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
 \end{abstract}\vspace{0.4cm}\noindent\textbf{AI-generated research \textperiodcentered\ independent verification pending.} This manuscript, its code and data were developed with AI assistance. Independent human verification and Lean formalization are pending. Treat the results with caution: exact computational checks establish only their stated scope.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage
@@ -312,11 +312,11 @@ retains the completed enumeration, commands, environment, phase timings and
 nonempty subprocess logs. Every required duality stratum completed normally;
 independent canonicalization found zero duplicate classes.
 
-The independent checks of ranks five through eight ran on GitHub using the
-supplied tensors. They did not rerun enumeration. The per-rank reports identify
-the exact verification revision and run, and certify agreement with the established
-exact-multiplicity count prefix. See \path{verification/README.md} for the evidence
-index and \path{docs/PROVENANCE.md} for attribution.
+Independent checks use the supplied tensors; they do not rerun enumeration.
+The per-rank reports identify the verification environment and source revision,
+and certify agreement with the established exact-multiplicity count prefix.
+Hosted audits and local checks are identified separately in
+\path{verification/README.md}; see \path{docs/PROVENANCE.md} for attribution.
 
 The local launcher has no clock limit, while the manual hosted workflow uses a
 finite shared deadline covering every computational phase. A timeout never
@@ -391,6 +391,21 @@ For a shared-budget frontier search, use \path{scripts/extend_census.py}. For ra
 121 & 16,103 & 122 & 15,670 & 123 & 17,292 & 124 & 19,682\\
 125 & 17,760 & 126 & 20,720 & 127 & 17,015 & 128 & 23,185\\
 \bottomrule\end{longtable}
+\section{Correctness audit and companion classification}
+
+The 25 October 2026 correctness audit checked all 1,433,410 supplied
+rank-three through rank-eleven tensors by exact fusion axioms and exhaustive
+based-isomorphism tests, finding no duplicate classes. It did not regenerate
+the complete upstream enumeration. The published input data and counting
+terms are unchanged. Its separate \href{https://github.com/sebastienpalcoux/fusion-ring-census/tree/main/verification/audit_20261025}{scope and evidence}
+retain these distinctions.
+The companion classification has 1,433,022 general exclusions, 378 realized
+rings and ten unresolved cases. Its \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/correctness_20261025}{current proof and replay corrections}
+repair three model identifications, remove the census-completeness premise
+for the R8\_3\_721 construction, and correct implementation/replay defects.
+No classification decision changes. These are AI-assisted mathematical
+arguments and exact checks; independent human verification and formalization
+remain pending.
 
 \begin{thebibliography}{9}\small\setlength{\itemsep}{2pt}
 \bibitem{EGNO} P. Etingof, S. Gelaki, D. Nikshych and V. Ostrik,

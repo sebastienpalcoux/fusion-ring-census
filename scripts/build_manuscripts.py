@@ -927,6 +927,22 @@ a generic determinant is nonzero.
                     else:fields += ['','']
                 body+=' & '.join(fields)+'\\\\\n'
             body+='\\bottomrule\\end{longtable}\n'
+        body+=r'\section{Correctness audit and companion classification}'+'\n'
+        body+=r'''
+The 25 October 2026 correctness audit checked all 1,433,410 supplied
+rank-three through rank-eleven tensors by exact fusion axioms and exhaustive
+based-isomorphism tests, finding no duplicate classes. It did not regenerate
+the complete upstream enumeration. The published input data and counting
+terms are unchanged. Its separate \href{https://github.com/sebastienpalcoux/fusion-ring-census/tree/main/verification/audit_20261025}{scope and evidence}
+retain these distinctions.
+The companion classification has 1,433,022 general exclusions, 378 realized
+rings and ten unresolved cases. Its \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/correctness_20261025}{current proof and replay corrections}
+repair three model identifications, remove the census-completeness premise
+for the R8\_3\_721 construction, and correct implementation/replay defects.
+No classification decision changes. These are AI-assisted mathematical
+arguments and exact checks; independent human verification and formalization
+remain pending.
+'''
         body+=(BIB.replace(r'\end{thebibliography}',EH_BIB+r'\end{thebibliography}') if r==6 else BIB)+'\\end{document}\n'
         body=body.replace('\\begin{lstlisting}', '\\par\\noindent\\begin{minipage}{\\linewidth}\n\\begin{lstlisting}').replace('\\end{lstlisting}', '\\end{lstlisting}\n\\end{minipage}\\par')
         (M/f'rank{r}.tex').write_text(body)

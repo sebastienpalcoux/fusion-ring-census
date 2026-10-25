@@ -1,0 +1,48 @@
+test_budget_validation_and_no_enumeration (test_campaign.CampaignTests.test_budget_validation_and_no_enumeration) ... ok
+test_cleanup_kills_descendants_after_parent_exit (test_campaign.CampaignTests.test_cleanup_kills_descendants_after_parent_exit) ... ok
+test_expired_small_budget_never_starts_child (test_campaign.CampaignTests.test_expired_small_budget_never_starts_child) ... ok
+test_full_long_budget_and_next_baseline_bound (test_campaign.CampaignTests.test_full_long_budget_and_next_baseline_bound) ... ok
+test_legitimate_stop_at_finite_bound_cap (test_campaign.CampaignTests.test_legitimate_stop_at_finite_bound_cap) ... ok
+test_missing_child_report_is_error (test_campaign.CampaignTests.test_missing_child_report_is_error) ... ok
+test_next_attempt_uses_only_remaining_budget_and_retains_best (test_campaign.CampaignTests.test_next_attempt_uses_only_remaining_budget_and_retains_best) ... ok
+test_no_automatic_retry_or_skipped_bound (test_campaign.CampaignTests.test_no_automatic_retry_or_skipped_bound) ... ok
+test_parent_deadline_terminates_process_group (test_campaign.CampaignTests.test_parent_deadline_terminates_process_group) ... ok
+test_prefix_mismatch_is_not_accepted (test_campaign.CampaignTests.test_prefix_mismatch_is_not_accepted) ... ok
+test_rank3_remains_capped_and_cannot_take_long_budget (test_campaign.CampaignTests.test_rank3_remains_capped_and_cannot_take_long_budget) ... ok
+test_real_error_fails_but_keeps_prior_candidate (test_campaign.CampaignTests.test_real_error_fails_but_keeps_prior_candidate) ... ok
+test_compile_error_is_distinct_from_timeout (test_campaign.RunnerFailureTests.test_compile_error_is_distinct_from_timeout) ... ok
+test_enumerator_timeout_is_normal_budget_exhaustion (test_campaign.RunnerFailureTests.test_enumerator_timeout_is_normal_budget_exhaustion) ... ok
+test_resource_kill_is_error (test_campaign.RunnerFailureTests.test_resource_kill_is_error) ... ok
+test_coverage (test_core.CoreTests.test_coverage) ... ok
+test_cyclic_group_export (test_core.CoreTests.test_cyclic_group_export) ... ok
+test_duality_orbits (test_core.CoreTests.test_duality_orbits) ... ok
+test_exporter_rejects_negative_and_bad_length (test_core.CoreTests.test_exporter_rejects_negative_and_bad_length) ... ok
+test_frontier_empty_budget (test_core.CoreTests.test_frontier_empty_budget) ... ok
+test_oeis_projection (test_core.CoreTests.test_oeis_projection) ... ok
+test_rank3_scope_guard (test_core.CoreTests.test_rank3_scope_guard) ... ok
+test_rank8_workspace (test_core.CoreTests.test_rank8_workspace) ... ok
+test_system_scope (test_core.CoreTests.test_system_scope) ... ok
+test_all_ranks_without_python_or_cpp_clock_limits (test_laptop.LaptopTests.test_all_ranks_without_python_or_cpp_clock_limits) ... ok
+test_budget_combinations_caps_and_github_are_rejected (test_laptop.LaptopTests.test_budget_combinations_caps_and_github_are_rejected) ... ok
+test_launcher_all_ranks_pass_correct_bound_and_verification (test_laptop.LaptopTests.test_launcher_all_ranks_pass_correct_bound_and_verification) ... ok
+test_packaging_rejects_incomplete_and_prefix_mismatch (test_laptop.LaptopTests.test_packaging_rejects_incomplete_and_prefix_mismatch) ... ok
+test_prefix_every_rank_and_shorter_reproduction (test_laptop.LaptopTests.test_prefix_every_rank_and_shorter_reproduction) ... ok
+test_success_archive_excludes_partial_and_compiler_files (test_laptop.LaptopTests.test_success_archive_excludes_partial_and_compiler_files) ... ok
+test_absent_baseline_is_allowed_only_for_new_supported_ranks (test_rank9.RankNineTests.test_absent_baseline_is_allowed_only_for_new_supported_ranks) ... ok
+test_all_systems_cover_the_tensor_and_fit_engine_limits (test_rank9.RankNineTests.test_all_systems_cover_the_tensor_and_fit_engine_limits) ... ok
+test_driver_plans_all_five_strata_and_timeout_is_incomplete (test_rank9.RankNineTests.test_driver_plans_all_five_strata_and_timeout_is_incomplete) ... ok
+test_known_rank9_rings_export_exactly_and_satisfy_generated_equations (test_rank9.RankNineTests.test_known_rank9_rings_export_exactly_and_satisfy_generated_equations) ... ok
+test_launcher_accepts_rank9_and_preserves_verification (test_rank9.RankNineTests.test_launcher_accepts_rank9_and_preserves_verification) ... ok
+test_packaging_records_no_baseline_without_inventing_counts (test_rank9.RankNineTests.test_packaging_records_no_baseline_without_inventing_counts) ... ok
+test_packaging_rejects_missing_stratum_failed_run_and_false_prefix (test_rank9.RankNineTests.test_packaging_rejects_missing_stratum_failed_run_and_false_prefix) ... ok
+test_rank10_and_11_launcher_and_driver_acceptance (test_rank9.RankNineTests.test_rank10_and_11_launcher_and_driver_acceptance) ... ok
+test_rank10_and_11_systems_and_cyclic_export (test_rank9.RankNineTests.test_rank10_and_11_systems_and_cyclic_export) ... ok
+test_rank9_bound16_is_rejected_by_both_entry_points (test_rank9.RankNineTests.test_rank9_bound16_is_rejected_by_both_entry_points) ... ok
+test_truncated_enumerator_output_cannot_be_certified (test_rank9.RankNineTests.test_truncated_enumerator_output_cannot_be_certified) ... ok
+test_exact_partition_matches_exhaustive_through_rank8 (test_verifier_refinement.VerifierRefinementTests.test_exact_partition_matches_exhaustive_through_rank8) ... ok
+test_rank9_to_11_relabellings_and_nonisomorphic_groups (test_verifier_refinement.VerifierRefinementTests.test_rank9_to_11_relabellings_and_nonisomorphic_groups) ... ok
+
+----------------------------------------------------------------------
+Ran 43 tests in 3.233s
+
+OK

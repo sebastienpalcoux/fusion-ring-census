@@ -1,0 +1,889 @@
+{
+  "rank": 3,
+  "bound": 2,
+  "threads": 2,
+  "enumeration_budget_seconds": 90.0,
+  "time_limit": "bounded",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux 6.18.55 x86_64",
+    "cpu_count": 9,
+    "threads": 2
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "all",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/rank3",
+        "2",
+        "--emit"
+      ],
+      "allowance_seconds": 89.99999966900032,
+      "elapsed_seconds": 0.005751745000452502,
+      "returncode": 0
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "compilation:rank3",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/rank3_census.cpp",
+        "-o",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/rank3"
+      ],
+      "started_elapsed_seconds": 0.0020704359994851984,
+      "returncode": 0,
+      "elapsed_seconds": 0.4537753339991468
+    },
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/export_tables.py",
+        "--rank",
+        "3",
+        "--input",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank3/parameters.txt",
+        "--systems",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems",
+        "--output",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank3/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 0.46308559399949445,
+      "returncode": 0,
+      "elapsed_seconds": 0.03232831099921896
+    },
+    {
+      "phase": "compilation:verify_tables",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/verify_tables.cpp",
+        "-o",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/verify_tables"
+      ],
+      "started_elapsed_seconds": 0.4967401109988714,
+      "returncode": 0,
+      "elapsed_seconds": 2.6411610030008887
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/verify_tables",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank3/FusionRingMultiplicationTables.txt",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank3/independent_check"
+      ],
+      "started_elapsed_seconds": 3.139170603999446,
+      "returncode": 0,
+      "elapsed_seconds": 0.0024636669986648485
+    }
+  ],
+  "code_sha256": "113770374c079d7ad18a998c742a98b3105bba4fc474680d2436ab1d5390d584",
+  "elapsed_seconds": 3.143223503000627,
+  "compilation_seconds": 0.4566120229992521,
+  "expected_strata": [
+    "all"
+  ],
+  "enumeration_seconds": 0.00604997400114371,
+  "counts": {
+    "1": 4,
+    "2": 3
+  },
+  "classes": 7,
+  "sort_export_seconds": 0.0331588909994025,
+  "verifier_compilation_seconds": 2.642826399000114,
+  "independent_verification_seconds": 0.00353965700014669,
+  "independent_verification": {
+    "input_records": 7,
+    "input_physical_lines": 7,
+    "distinct_rings": 7,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "individualization-refinement (exact)",
+    "permutations_examined": 7,
+    "elapsed_seconds": 0.000482236
+  },
+  "parameters.txt_sha256": "07cad0bc6a688cda11d91bdedb81fb0b2e558271380b526b78883f1a907c3d2e",
+  "FusionRingMultiplicationTables.txt_sha256": "daac220698776d522a28d16fe086545f8c348c70638c2b673682ad025edc6880",
+  "compression_seconds": 0.0007671339990338311,
+  "outcome": "verified_complete"
+}
+PASS rank 3: 7 classes
+{
+  "rank": 4,
+  "bound": 2,
+  "threads": 2,
+  "enumeration_budget_seconds": 90.0,
+  "time_limit": "bounded",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux 6.18.55 x86_64",
+    "cpu_count": 9,
+    "threads": 2
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "all",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/rank4",
+        "2"
+      ],
+      "allowance_seconds": 89.99999964000017,
+      "elapsed_seconds": 0.007951044999572332,
+      "returncode": 0
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "compilation:rank4",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/rank4_census.cpp",
+        "-o",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/rank4"
+      ],
+      "started_elapsed_seconds": 0.0015748609985166695,
+      "returncode": 0,
+      "elapsed_seconds": 1.150131398000667
+    },
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/export_tables.py",
+        "--rank",
+        "4",
+        "--input",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank4/parameters.txt",
+        "--systems",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems",
+        "--output",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank4/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 1.1615325469992968,
+      "returncode": 0,
+      "elapsed_seconds": 0.036107095000261324
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/verify_tables",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank4/FusionRingMultiplicationTables.txt",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank4/independent_check"
+      ],
+      "started_elapsed_seconds": 1.1992209519994503,
+      "returncode": 0,
+      "elapsed_seconds": 0.003964084999097395
+    }
+  ],
+  "code_sha256": "113770374c079d7ad18a998c742a98b3105bba4fc474680d2436ab1d5390d584",
+  "elapsed_seconds": 1.205229633998897,
+  "compilation_seconds": 1.1523272829999769,
+  "expected_strata": [
+    "all"
+  ],
+  "enumeration_seconds": 0.008333031000802293,
+  "counts": {
+    "1": 10,
+    "2": 17
+  },
+  "classes": 27,
+  "sort_export_seconds": 0.03711870700135478,
+  "verifier_compilation_seconds": 0.0005309690004651202,
+  "independent_verification_seconds": 0.004970190000676666,
+  "independent_verification": {
+    "input_records": 27,
+    "input_physical_lines": 27,
+    "distinct_rings": 27,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "individualization-refinement (exact)",
+    "permutations_examined": 27,
+    "elapsed_seconds": 0.000650689
+  },
+  "parameters.txt_sha256": "c3ab68415809415977c568f46916dcfdbd2c57c9bc49fc6cfdd43615b2d19914",
+  "FusionRingMultiplicationTables.txt_sha256": "619a3ba531591de09f9aa73f409d6b5eda654e7af4227f01e14ce1727c6ac8c9",
+  "compression_seconds": 0.0011741870002879295,
+  "outcome": "verified_complete"
+}
+PASS rank 4: 27 classes
+{
+  "rank": 5,
+  "bound": 2,
+  "threads": 2,
+  "enumeration_budget_seconds": 90.0,
+  "time_limit": "bounded",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux 6.18.55 x86_64",
+    "cpu_count": 9,
+    "threads": 2
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "nonselfdual",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/rank5_ns",
+        "2"
+      ],
+      "allowance_seconds": 89.99999960999958,
+      "elapsed_seconds": 0.01881554600004165,
+      "returncode": 0
+    },
+    {
+      "name": "selfdual",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/rank5_sd",
+        "2"
+      ],
+      "allowance_seconds": 89.98086358099863,
+      "elapsed_seconds": 0.01740026600054989,
+      "returncode": 0
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "compilation:rank5_ns",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/rank5/enumerate_nonselfdual.cpp",
+        "-o",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/rank5_ns"
+      ],
+      "started_elapsed_seconds": 0.0017188660003739642,
+      "returncode": 0,
+      "elapsed_seconds": 1.5987328360006359
+    },
+    {
+      "phase": "compilation:rank5_sd",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/rank5/enumerate_selfdual.cpp",
+        "-o",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/rank5_sd"
+      ],
+      "started_elapsed_seconds": 1.602492334000999,
+      "returncode": 0,
+      "elapsed_seconds": 2.5638808840012643
+    },
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/export_tables.py",
+        "--rank",
+        "5",
+        "--input",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank5/parameters.txt",
+        "--systems",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems",
+        "--output",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank5/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 4.2050208510008815,
+      "returncode": 0,
+      "elapsed_seconds": 0.036255969000194455
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/verify_tables",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank5/FusionRingMultiplicationTables.txt",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank5/independent_check"
+      ],
+      "started_elapsed_seconds": 4.244091595999635,
+      "returncode": 0,
+      "elapsed_seconds": 0.004039849000037066
+    }
+  ],
+  "code_sha256": "113770374c079d7ad18a998c742a98b3105bba4fc474680d2436ab1d5390d584",
+  "elapsed_seconds": 4.252326649000679,
+  "compilation_seconds": 4.167393453999466,
+  "expected_strata": [
+    "nonselfdual",
+    "selfdual"
+  ],
+  "enumeration_seconds": 0.036968604999856325,
+  "counts": {
+    "1": 16,
+    "2": 37
+  },
+  "classes": 53,
+  "sort_export_seconds": 0.03835156399873085,
+  "verifier_compilation_seconds": 0.0008339649994013598,
+  "independent_verification_seconds": 0.005367256999306846,
+  "independent_verification": {
+    "input_records": 53,
+    "input_physical_lines": 53,
+    "distinct_rings": 53,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "individualization-refinement (exact)",
+    "permutations_examined": 64,
+    "elapsed_seconds": 0.001482912
+  },
+  "parameters.txt_sha256": "a50c842126fd78177f50c05f41eac5eaf08798a8d8e7b7f2caf38fe60bf25150",
+  "FusionRingMultiplicationTables.txt_sha256": "e780e284dabc46d134303efc342b3107b8c236c7045c8588c98522af4f724493",
+  "compression_seconds": 0.0030940969991206657,
+  "outcome": "verified_complete"
+}
+PASS rank 5: 53 classes
+{
+  "rank": 6,
+  "bound": 2,
+  "threads": 2,
+  "enumeration_budget_seconds": 90.0,
+  "time_limit": "bounded",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux 6.18.55 x86_64",
+    "cpu_count": 9,
+    "threads": 2
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "pairs1",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/parallel_general",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems/rank6_pairs1.txt",
+        "2",
+        "89.94999969900091",
+        "2",
+        "128"
+      ],
+      "allowance_seconds": 89.99999969900091,
+      "elapsed_seconds": 0.018023498998445575,
+      "returncode": 0,
+      "reported_classes": 50,
+      "reported_counts": {
+        "1": 11,
+        "2": 39
+      }
+    },
+    {
+      "name": "pairs2",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/parallel_general",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems/rank6_pairs2.txt",
+        "2",
+        "89.93131787900093",
+        "2",
+        "128"
+      ],
+      "allowance_seconds": 89.98131787900093,
+      "elapsed_seconds": 0.017197215998749016,
+      "returncode": 0,
+      "reported_classes": 21,
+      "reported_counts": {
+        "1": 8,
+        "2": 13
+      }
+    },
+    {
+      "name": "selfdual",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/selfdual_fast_r6",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems/system6sd.txt",
+        "6",
+        "2",
+        "89.91368224300022",
+        "2"
+      ],
+      "allowance_seconds": 89.96368224300022,
+      "elapsed_seconds": 0.01736677099870576,
+      "returncode": 0,
+      "reported_classes": 122,
+      "reported_counts": {
+        "1": 20,
+        "2": 102
+      }
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "compilation:selfdual_fast_r6",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-DCENSUS_SELFDUAL_RANK=6",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/enumerate_selfdual_fast.cpp",
+        "-o",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/selfdual_fast_r6"
+      ],
+      "started_elapsed_seconds": 0.0029161489983380307,
+      "returncode": 0,
+      "elapsed_seconds": 9.679087861999506
+    },
+    {
+      "phase": "compilation:parallel_general",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/enumerate_parallel.cpp",
+        "-o",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/parallel_general"
+      ],
+      "started_elapsed_seconds": 9.683984720999433,
+      "returncode": 0,
+      "elapsed_seconds": 2.8382019459986623
+    },
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/export_tables.py",
+        "--rank",
+        "6",
+        "--input",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank6/parameters.txt",
+        "--systems",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems",
+        "--output",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank6/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 12.579164739998305,
+      "returncode": 0,
+      "elapsed_seconds": 0.03880362800009607
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/verify_tables",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank6/FusionRingMultiplicationTables.txt",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank6/independent_check"
+      ],
+      "started_elapsed_seconds": 12.619416077999631,
+      "returncode": 0,
+      "elapsed_seconds": 0.007527671001298586
+    }
+  ],
+  "code_sha256": "113770374c079d7ad18a998c742a98b3105bba4fc474680d2436ab1d5390d584",
+  "elapsed_seconds": 12.657778181999674,
+  "compilation_seconds": 12.523044244999255,
+  "expected_strata": [
+    "pairs1",
+    "pairs2",
+    "selfdual"
+  ],
+  "enumeration_seconds": 0.054062557999714045,
+  "counts": {
+    "1": 39,
+    "2": 154
+  },
+  "classes": 193,
+  "sort_export_seconds": 0.041381028000614606,
+  "verifier_compilation_seconds": 0.00048394800069218036,
+  "independent_verification_seconds": 0.008795478999672923,
+  "independent_verification": {
+    "input_records": 193,
+    "input_physical_lines": 193,
+    "distinct_rings": 193,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "individualization-refinement (exact)",
+    "permutations_examined": 257,
+    "elapsed_seconds": 0.005643765
+  },
+  "parameters.txt_sha256": "03b0283c1e27415a1cc8f8da73cca6fc8b641c1fa2ab8f94364149c7b62f0d18",
+  "FusionRingMultiplicationTables.txt_sha256": "e0e658738db271db73fa29ddf4e06b9ef2b10c873da2a9fcc0e30c4fab42a7c1",
+  "compression_seconds": 0.029689029001019662,
+  "outcome": "verified_complete"
+}
+PASS rank 6: 193 classes
+{
+  "rank": 7,
+  "bound": 1,
+  "threads": 2,
+  "enumeration_budget_seconds": 90.0,
+  "time_limit": "bounded",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux 6.18.55 x86_64",
+    "cpu_count": 9,
+    "threads": 2
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "pairs1",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/parallel_general",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems/rank7_pairs1.txt",
+        "1",
+        "89.94999969000055",
+        "2",
+        "128"
+      ],
+      "allowance_seconds": 89.99999969000055,
+      "elapsed_seconds": 0.017917678000230808,
+      "returncode": 0,
+      "reported_classes": 17,
+      "reported_counts": {
+        "1": 17
+      }
+    },
+    {
+      "name": "pairs2",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/parallel_general",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems/rank7_pairs2.txt",
+        "1",
+        "89.93154476200034",
+        "2",
+        "128"
+      ],
+      "allowance_seconds": 89.98154476200034,
+      "elapsed_seconds": 0.01737432799927774,
+      "returncode": 0,
+      "reported_classes": 7,
+      "reported_counts": {
+        "1": 7
+      }
+    },
+    {
+      "name": "pairs3",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/parallel_general",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems/rank7_pairs3.txt",
+        "1",
+        "89.91383700099978",
+        "2",
+        "128"
+      ],
+      "allowance_seconds": 89.96383700099977,
+      "elapsed_seconds": 0.009529037999527645,
+      "returncode": 0,
+      "reported_classes": 1,
+      "reported_counts": {
+        "1": 1
+      }
+    },
+    {
+      "name": "selfdual",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/selfdual_fast_r7",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems/system7sd.txt",
+        "7",
+        "1",
+        "89.90377645100052",
+        "2"
+      ],
+      "allowance_seconds": 89.95377645100052,
+      "elapsed_seconds": 0.017322990999673493,
+      "returncode": 0,
+      "reported_classes": 18,
+      "reported_counts": {
+        "1": 18
+      }
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "compilation:selfdual_fast_r7",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-DCENSUS_SELFDUAL_RANK=7",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/enumerate_selfdual_fast.cpp",
+        "-o",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/selfdual_fast_r7"
+      ],
+      "started_elapsed_seconds": 0.0019579569998313673,
+      "returncode": 0,
+      "elapsed_seconds": 11.306102417000147
+    },
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/export_tables.py",
+        "--rank",
+        "7",
+        "--input",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank7/parameters.txt",
+        "--systems",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems",
+        "--output",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank7/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 11.374363941999036,
+      "returncode": 0,
+      "elapsed_seconds": 0.039270665000003646
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/verify_tables",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank7/FusionRingMultiplicationTables.txt",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank7/independent_check"
+      ],
+      "started_elapsed_seconds": 11.415116160998878,
+      "returncode": 0,
+      "elapsed_seconds": 0.0050611820006452035
+    }
+  ],
+  "code_sha256": "113770374c079d7ad18a998c742a98b3105bba4fc474680d2436ab1d5390d584",
+  "elapsed_seconds": 11.432344908998857,
+  "compilation_seconds": 11.309565413999735,
+  "expected_strata": [
+    "pairs1",
+    "pairs2",
+    "pairs3",
+    "selfdual"
+  ],
+  "enumeration_seconds": 0.06389399299951037,
+  "counts": {
+    "1": 43
+  },
+  "classes": 43,
+  "sort_export_seconds": 0.04064607899999828,
+  "verifier_compilation_seconds": 0.0005247110002528643,
+  "independent_verification_seconds": 0.005996492000122089,
+  "independent_verification": {
+    "input_records": 43,
+    "input_physical_lines": 43,
+    "distinct_rings": 43,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "individualization-refinement (exact)",
+    "permutations_examined": 85,
+    "elapsed_seconds": 0.003000044
+  },
+  "parameters.txt_sha256": "a6d2964cfa180f33f7f13beb4194c164238ca81437936eec9211ca3a6efd85e6",
+  "FusionRingMultiplicationTables.txt_sha256": "adc948078ccc8166156cb2ab910a7c3311cd89020d3b814ce15a492a6685f87b",
+  "compression_seconds": 0.01139119599974947,
+  "outcome": "verified_complete"
+}
+PASS rank 7: 43 classes
+{
+  "rank": 8,
+  "bound": 1,
+  "threads": 2,
+  "enumeration_budget_seconds": 90.0,
+  "time_limit": "bounded",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux 6.18.55 x86_64",
+    "cpu_count": 9,
+    "threads": 2
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "pairs1",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/parallel_general",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems/rank8_pairs1.txt",
+        "1",
+        "89.9499996989991",
+        "2",
+        "128"
+      ],
+      "allowance_seconds": 89.99999969899909,
+      "elapsed_seconds": 0.11652407200017478,
+      "returncode": 0,
+      "reported_classes": 30,
+      "reported_counts": {
+        "1": 30
+      }
+    },
+    {
+      "name": "pairs2",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/parallel_general",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems/rank8_pairs2.txt",
+        "1",
+        "89.83276633500027",
+        "2",
+        "128"
+      ],
+      "allowance_seconds": 89.88276633500027,
+      "elapsed_seconds": 0.116249508000692,
+      "returncode": 0,
+      "reported_classes": 18,
+      "reported_counts": {
+        "1": 18
+      }
+    },
+    {
+      "name": "pairs3",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/parallel_general",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems/rank8_pairs3.txt",
+        "1",
+        "89.71595162299964",
+        "2",
+        "128"
+      ],
+      "allowance_seconds": 89.76595162299964,
+      "elapsed_seconds": 0.06786708800063934,
+      "returncode": 0,
+      "reported_classes": 10,
+      "reported_counts": {
+        "1": 10
+      }
+    },
+    {
+      "name": "selfdual",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/selfdual_fast_r8",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems/system8sd.txt",
+        "8",
+        "1",
+        "89.64757184099945",
+        "2"
+      ],
+      "allowance_seconds": 89.69757184099944,
+      "elapsed_seconds": 0.16626548400017782,
+      "returncode": 0,
+      "reported_classes": 38,
+      "reported_counts": {
+        "1": 38
+      }
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "compilation:selfdual_fast_r8",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-DCENSUS_SELFDUAL_RANK=8",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/enumerate_selfdual_fast.cpp",
+        "-o",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/selfdual_fast_r8"
+      ],
+      "started_elapsed_seconds": 0.0020073069990758086,
+      "returncode": 0,
+      "elapsed_seconds": 14.99116896600026
+    },
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/code/export_tables.py",
+        "--rank",
+        "8",
+        "--input",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank8/parameters.txt",
+        "--systems",
+        "/workspace/scratch/90f37cc83103/fusion-census-revision/systems",
+        "--output",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank8/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 15.465789533998759,
+      "returncode": 0,
+      "elapsed_seconds": 0.06969819000005373
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/build-cache/verify_tables",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank8/FusionRingMultiplicationTables.txt",
+        "/workspace/scratch/90f37cc83103/revision-20261025/census-smoke-final/rank8/independent_check"
+      ],
+      "started_elapsed_seconds": 15.537180592000368,
+      "returncode": 0,
+      "elapsed_seconds": 0.01620214500144357
+    }
+  ],
+  "code_sha256": "113770374c079d7ad18a998c742a98b3105bba4fc474680d2436ab1d5390d584",
+  "elapsed_seconds": 15.593395480000254,
+  "compilation_seconds": 14.994664310999724,
+  "expected_strata": [
+    "pairs1",
+    "pairs2",
+    "pairs3",
+    "selfdual"
+  ],
+  "enumeration_seconds": 0.4692237679992104,
+  "counts": {
+    "1": 96
+  },
+  "classes": 96,
+  "sort_export_seconds": 0.07208613299917488,
+  "verifier_compilation_seconds": 0.0006654600001638755,
+  "independent_verification_seconds": 0.01718525599972054,
+  "independent_verification": {
+    "input_records": 96,
+    "input_physical_lines": 96,
+    "distinct_rings": 96,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "individualization-refinement (exact)",
+    "permutations_examined": 495,
+    "elapsed_seconds": 0.014122004
+  },
+  "parameters.txt_sha256": "51417e64cb301b32508266e59ed81ea4144b76b4c2a5403de7369ad3e1dcbca1",
+  "FusionRingMultiplicationTables.txt_sha256": "4ddf6402afff4f19ae4513ae63422cf73c327c605aa50cdcae731941de272ee7",
+  "compression_seconds": 0.03917881800043688,
+  "outcome": "verified_complete"
+}
+PASS rank 8: 96 classes

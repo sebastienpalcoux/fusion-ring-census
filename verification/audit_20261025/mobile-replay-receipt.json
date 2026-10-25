@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "scope": "Post-mobile-revision unit tests and actual browser layout of the standalone census page. Earlier complete enumeration-input and small-bound replay receipts remain separate and unchanged.",
+  "unit_tests": 43,
+  "unit_test_log_sha256": "d7db965839e9bc73e60b9ed8a894517e6aa8e67bb9e7ecb87b46e78f47c69d68",
+  "browser": "Chromium 153.0.8010.0",
+  "layouts": [
+    {
+      "site": "census",
+      "width": 320,
+      "document": 320,
+      "inner": 320,
+      "passed": true
+    },
+    {
+      "site": "census",
+      "width": 390,
+      "document": 390,
+      "inner": 390,
+      "passed": true
+    },
+    {
+      "site": "census",
+      "width": 768,
+      "document": 768,
+      "inner": 768,
+      "passed": true
+    },
+    {
+      "site": "census",
+      "width": 1440,
+      "document": 1440,
+      "inner": 1440,
+      "passed": true
+    }
+  ],
+  "source_sha256": {
+    "scripts/build_site.py": "f8b11b322d4574184fd962a5e7277db7d1766a55e8652f05f7d2ad75a9f25331",
+    "docs/index.html": "20622f79089495a5fa1a41848d3261d2e0985b4f044c74aa8046f73c24c34c52"
+  },
+  "upstream_search_regenerated": false
+}

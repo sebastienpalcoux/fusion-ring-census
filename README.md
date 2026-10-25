@@ -12,6 +12,8 @@
 
 **Categorification update:** rank ten at multiplicity one is complete: **136 exclusions and 58 unitary models**. R10_1_189 is recognized inside a classical conformal-embedding module category. The project has ten open cases at ranks six, eight and nine; their new restrictions retain unresolved status. [Current proofs and precise scope](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/unresolved_retry_20261024/README.md).
 
+**Correctness revision · 25 October 2026.** All supplied tensors passed exact fusion-axiom and based-isomorphism checks. The companion incorporates proof and replay repairs; classification counts and the ten open cases are unchanged. [Audit scope and current proofs](verification/audit_20261025/README.md).
+
 <a id="complete-datasets"></a>
 
 ## Datasets

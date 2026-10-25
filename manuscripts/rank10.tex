@@ -347,6 +347,21 @@ python3 scripts/check_release.py --full
 To verify only this released rank, use \texttt{python3 scripts/check\_release.py --ranks 10 --full}. Reproduction and tensor verification are distinct operations.
 
 \end{minipage}\par
+\section{Correctness audit and companion classification}
+
+The 25 October 2026 correctness audit checked all 1,433,410 supplied
+rank-three through rank-eleven tensors by exact fusion axioms and exhaustive
+based-isomorphism tests, finding no duplicate classes. It did not regenerate
+the complete upstream enumeration. The published input data and counting
+terms are unchanged. Its separate \href{https://github.com/sebastienpalcoux/fusion-ring-census/tree/main/verification/audit_20261025}{scope and evidence}
+retain these distinctions.
+The companion classification has 1,433,022 general exclusions, 378 realized
+rings and ten unresolved cases. Its \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/correctness_20261025}{current proof and replay corrections}
+repair three model identifications, remove the census-completeness premise
+for the R8\_3\_721 construction, and correct implementation/replay defects.
+No classification decision changes. These are AI-assisted mathematical
+arguments and exact checks; independent human verification and formalization
+remain pending.
 
 \begin{thebibliography}{9}\small\setlength{\itemsep}{2pt}
 \bibitem{EGNO} P. Etingof, S. Gelaki, D. Nikshych and V. Ostrik,
