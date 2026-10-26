@@ -35,7 +35,10 @@ HEXAGON RECORD
 https://hexagonmath.org/2610.00300
 
 REVISION STATUS
-Compiled successfully in a private Hexagon preview. The compiled PDF's extracted text exactly matches the prepared reference PDF. Final submission awaits the contributor's renewed acceptance of Hexagon's current submission agreement. The revision is not yet submitted or public. The earlier public v1 remains preserved.
+Submitted on 26 October 2026 as hexagon:2610.00300v2, a revision of the existing record hexagon:2610.00300. The contributor authorized acceptance of the submission agreement. Automated screening has finished and PDF compilation succeeded. The submission is complete and awaits moderator review; v2 is not yet public. The earlier public v1 remains preserved.
+
+SUBMISSION AGREEMENT
+Accepted with the contributor's express confirmation on 26 October 2026. The existing CC BY 4.0 licence and provenance declarations were retained.
 
 SNAPSHOT
 Classification: 9891a7df86783eb577a801caa10e0b0f3f84c9be

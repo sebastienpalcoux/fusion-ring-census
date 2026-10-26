@@ -5,12 +5,12 @@
   "announcement_pages": 4,
   "classification_commit": "9891a7df86783eb577a801caa10e0b0f3f84c9be",
   "census_commit": "a35155aae3b190112d2679ad14d2097d13c4dda0",
-  "hexagon_identifier": "hexagon:2610.00300",
+  "hexagon_identifier": "hexagon:2610.00300v2",
   "hexagon_url": "https://hexagonmath.org/2610.00300",
   "public_version": 1,
-  "revision_submitted": false,
+  "revision_submitted": true,
   "revision_public": false,
-  "status": "Compiled revision ready; final agreement confirmation required",
+  "status": "Submitted for moderation",
   "license": "CC-BY-4.0",
   "human_understanding": "some",
   "ai_provenance": "primarily AI-generated",
@@ -58,12 +58,22 @@
       "sha256": "73e58145b19a9b19588d58c011241022c2da90a2edf8e49be5442275f4345793"
     },
     "submission_metadata.txt": {
-      "bytes": 3097,
-      "sha256": "e3754ae75c6d9cf08c7aab8aeb61687da6bff5063c7a3e969ec19a5308de7b28"
+      "bytes": 3304,
+      "sha256": "4692bddbbdc4eaae87359835fc435d41d952fe73f0ab2d88491d0d9f79d5542f"
     },
     "README.md": {
-      "bytes": 2485,
-      "sha256": "f32191092f427759d08342d15f7ca863b65c7330606cd04ce58e86ba0b566af5"
+      "bytes": 2499,
+      "sha256": "0083fe7a51e8d59e0a280e16597f17ad7a6e86fd3ac9573e22d9a336a098022e"
     }
-  }
+  },
+  "record_identifier": "hexagon:2610.00300",
+  "revision_number": 2,
+  "revision_of": "hexagon:2610.00300v1",
+  "submitted_date": "2026-10-26",
+  "automated_screening": "completed",
+  "pdf_compilation": "success",
+  "moderation": "pending",
+  "contributor_declarations_approved": true,
+  "deposit_agreement_accepted": true,
+  "agreement_acceptance_date": "2026-10-26"
 }
