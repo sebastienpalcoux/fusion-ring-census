@@ -1,0 +1,69 @@
+{
+  "schema": "hexagon-announcement-snapshot/v2",
+  "title": "Low-rank Grothendieck rings: an AI-assisted classification project, constructions, and open problems",
+  "prepared_date": "2026-10-26",
+  "announcement_pages": 4,
+  "classification_commit": "9891a7df86783eb577a801caa10e0b0f3f84c9be",
+  "census_commit": "a35155aae3b190112d2679ad14d2097d13c4dda0",
+  "hexagon_identifier": "hexagon:2610.00300",
+  "hexagon_url": "https://hexagonmath.org/2610.00300",
+  "public_version": 1,
+  "revision_submitted": false,
+  "revision_public": false,
+  "status": "Compiled revision ready; final agreement confirmation required",
+  "license": "CC-BY-4.0",
+  "human_understanding": "some",
+  "ai_provenance": "primarily AI-generated",
+  "open_cases": [
+    "R6_4_155",
+    "R6_8_1660",
+    "R8_3_928",
+    "R8_3_941",
+    "R8_3_1154",
+    "R8_3_1768",
+    "R9_2_137",
+    "R9_2_1607",
+    "R9_2_1975",
+    "R9_2_1976"
+  ],
+  "rank12": {
+    "rings": 632,
+    "excluded": 480,
+    "modeled": 152,
+    "unitary_models": 151,
+    "additional_pseudo_unitary_models_unitarity_unproved": 1,
+    "unresolved": 0
+  },
+  "preview": {
+    "compiled_successfully": true,
+    "pages": 4,
+    "text_matches_reference_pdf": true,
+    "sha256": "5ea32cf9303d3fb8b853e812382ca63fd672e54c4923c8508e7c221afa749c3d"
+  },
+  "files": {
+    "main.tex": {
+      "bytes": 17084,
+      "sha256": "4bbc13e9a328e575c3992d0dcee3cbf4cba3f8aca4fb5d9b05ab22e95aace2c1"
+    },
+    "Low_rank_Grothendieck_rings_announcement.pdf": {
+      "bytes": 356009,
+      "sha256": "93f32370a24b2c13318b27c53d290c823c599a0c10142e808cf3078c735a4711"
+    },
+    "Hexagon_Source.zip": {
+      "bytes": 6625,
+      "sha256": "4b766ce43b60a5dee91fd26347574bf16964891b57dd562da126d14835b7adf3"
+    },
+    "citation.bib": {
+      "bytes": 362,
+      "sha256": "73e58145b19a9b19588d58c011241022c2da90a2edf8e49be5442275f4345793"
+    },
+    "submission_metadata.txt": {
+      "bytes": 3097,
+      "sha256": "e3754ae75c6d9cf08c7aab8aeb61687da6bff5063c7a3e969ec19a5308de7b28"
+    },
+    "README.md": {
+      "bytes": 2485,
+      "sha256": "f32191092f427759d08342d15f7ca863b65c7330606cd04ce58e86ba0b566af5"
+    }
+  }
+}

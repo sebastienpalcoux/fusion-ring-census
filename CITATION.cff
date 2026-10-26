@@ -20,3 +20,17 @@ keywords:
   - based rings
   - tensor categories
   - OEIS
+
+preferred-citation:
+  type: article
+  title: "Low-rank Grothendieck rings: an AI-assisted classification project, constructions, and open problems"
+  authors:
+    - family-names: "Palcoux"
+      given-names: "Sébastien"
+      orcid: "https://orcid.org/0000-0002-0244-302X"
+  journal: "Hexagon"
+  year: 2026
+  url: "https://hexagonmath.org/2610.00300"
+  identifiers:
+    - type: other
+      value: "hexagon:2610.00300"

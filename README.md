@@ -63,4 +63,4 @@ The local launcher has no clock limit. [Installation, supported bounds and verif
 | Project details | [Historical research and definitions](docs/PROJECT_GUIDE.md) |
 | Reuse | [Cite](CITATION.cff) · [Licensing](NOTICE.md) · [OEIS drafts](oeis/README.md) |
 
-Sébastien Palcoux · BIMSA · [Project announcement](https://hexagonmath.org/2610.00300?version=1)
+Sébastien Palcoux · BIMSA · [Current project announcement · PDF](announcements/hexagon-2026-10/Low_rank_Grothendieck_rings_announcement.pdf) · [Hexagon](https://hexagonmath.org/2610.00300) · [How to cite](https://sebastienpalcoux.github.io/grothendieck-ring-classification/#cite)

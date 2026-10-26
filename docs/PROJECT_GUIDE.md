@@ -19,7 +19,7 @@ offers the same distinction interactively. Both are public. The census counts
 below include fusion rings that have been excluded from categorification or
 remain unresolved.
 
-**Project announcement:** [Hexagon · 2610.00300v1](https://hexagonmath.org/2610.00300?version=1).
+**Project announcement:** [Current four-page overview · revised 26 October 2026](../announcements/hexagon-2026-10/Low_rank_Grothendieck_rings_announcement.pdf) · [Hexagon · 2610.00300](https://hexagonmath.org/2610.00300) · [How to cite](https://sebastienpalcoux.github.io/grothendieck-ring-classification/#cite).
 
 The classification project proves that exactly **15 rank-four Grothendieck rings**
 are categorifiable over the complex numbers, with **no multiplicity restriction**;
