@@ -1,6 +1,6 @@
 {
-  "version": "0.3.0",
-  "release_date": "2026-10-24",
+  "version": "0.4.0",
+  "release_date": "2026-10-26",
   "scope": "All fusion rings in the stated complete whole-rank regions; all duality types; no categorifiability filter.",
   "publication_status": "Public GitHub repository.",
   "ranks": {
@@ -1339,7 +1339,28 @@
       "tables_uncompressed_sha256": "3186c410888e0bc7f30c9e423e0184a15618246bc9f4d0ef503e708c4081eff8",
       "parameters_gz_sha256": "d8558a74b451831e4b39c4ed08ab27b78cab3dc5fe918c9d0d2220b1406fcadf",
       "parameters_uncompressed_sha256": "bfc54c6192c6d9d63c68c2c1a416fce44e14978f06d8efcb8fd121d7ea2a534f"
+    },
+    "12": {
+      "rank": 12,
+      "bound": 1,
+      "complete": true,
+      "verified": true,
+      "classes": 632,
+      "counts": {
+        "1": 632
+      },
+      "tables": "results/rank12/tables.txt.gz",
+      "parameters": "results/rank12/parameters.txt.gz",
+      "tables_gz_sha256": "8e3c071c140e418251261ebcedd49d2db311d82b9ab2e3baf1031211d4a1bb9b",
+      "tables_uncompressed_sha256": "6949e6fb8afd23f80b54e5a546a0dd34257430fd26c26b7acd8ff8444252f4d7",
+      "parameters_gz_sha256": "0d42c683554c57ed8de4d3badd7979438cc0b855d86e706dda301b55017ef5b5",
+      "parameters_uncompressed_sha256": "ba57ce4b74573e4d6be34bcf6e4bd2206c44b6aaf0263f1685c7a49d13749c63",
+      "source": "verification/rank12/source.json",
+      "audit": "verification/rank12/audit.json",
+      "independent_enumeration_rerun": false,
+      "enumeration_source_available": true,
+      "completeness_basis": "Producer-reported normal completion of all six duality strata; exact tensor validity and based-isomorphism uniqueness independently checked; full enumeration not independently repeated."
     }
   },
-  "total_classes": 1433410
+  "total_classes": 1434042
 }

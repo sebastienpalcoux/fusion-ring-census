@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-26",
+  "rank": 12,
+  "multiplicity": 1,
+  "rings": 632,
+  "excluded_general": 480,
+  "realized_unitary": 151,
+  "realized_pseudo_unitary_unitarity_unproved": 1,
+  "realized_total": 152,
+  "unresolved_general": 0,
+  "classification_repository": "https://github.com/sebastienpalcoux/grothendieck-ring-classification",
+  "ledger_path": "evidence/rank12_m1_20261026/ledger.json",
+  "ledger_sha256": "d136adfd495b7c46f096143901dc917305e7c362be406e94673b17a015fa5102",
+  "input_uncompressed_sha256": "6949e6fb8afd23f80b54e5a546a0dd34257430fd26c26b7acd8ff8444252f4d7",
+  "scope": "General complex categorifiability of all supplied based rings. All positives have unitary models except R12_1_623, which has a complex/pseudo-unitary model with unitarity unproved. Associators are not classified.",
+  "enumeration_qualification": "Producer-reported normal completion of all six duality strata; exact tensor validity and based-isomorphism uniqueness independently checked; full enumeration not independently repeated.",
+  "commutative": {
+    "rings": 374,
+    "unitarily_realized": 102,
+    "excluded": 272
+  },
+  "noncommutative": {
+    "rings": 258,
+    "excluded": 208,
+    "unitarily_realized": 49,
+    "pseudo_unitarily_realized": 1
+  }
+}

@@ -29,7 +29,7 @@ The 23 October 2026 datasets add **142**, **194**, and **182** multiplicity-one 
 
 Every released tensor is checked for nonnegative integer coefficients, both unit
 laws, duality, reciprocity and all integer associativity identities. Canonicalization
-uses exhaustive unit-fixing permutations at lower ranks and exact invariant refinement at ranks 9–11, with full tensor comparison of witnesses. All released
+uses exhaustive unit-fixing permutations at lower ranks and exact invariant refinement at ranks 9–12, with full tensor comparison of witnesses. All released
 lists have zero duplicate based-isomorphism classes.
 
 The supplied laptop datasets at ranks 5–8 passed independent checks of their
@@ -72,3 +72,7 @@ they do not substitute for the full independent audits.
 
 [Repository checks](checks/) cover file integrity, count projections, documentation
 and lightweight unit tests. They are separate from the mathematical checks above.
+
+## Rank-twelve release
+
+The 632 supplied multiplicity-one rings are released with all exact checks and producer logs. [Verification](../verification/rank12/README.md) · [Matching complete rank-13 symmetry source and reproduction command](../verification/engine_rank13_20261023/README.md). The older root launcher remains the rank-3–11 driver; the separate source package reproduces rank twelve.

@@ -13,6 +13,7 @@ Each companion gives definitions, a rank-specific coverage argument, exact count
 | 9 | 2 | 2,225 | [PDF](rank9.pdf) · [LaTeX](rank9.tex) |
 | 10 | 1 | 194 | [PDF](rank10.pdf) · [LaTeX](rank10.tex) |
 | 11 | 1 | 182 | [PDF](rank11.pdf) · [LaTeX](rank11.tex) |
+| 12 | 1 | 632 | [PDF](rank12.pdf) · [LaTeX](rank12.tex) |
 
 Rank-7 completeness through multiplicity 5 is producer-reported; the new tensors and their uniqueness were independently verified. The complete optimized source is now supplied and hash-matched; full searches at rank 7 through 5 and rank 8 through 3 were not independently rerun. See [the qualification](../verification/rank7/README.md).
 
@@ -23,3 +24,5 @@ Ranks 9–11 have complete supplied sources and producer completion records, wit
 Rebuild with `python3 scripts/build_manuscripts.py --compile`, or select one companion with `--ranks 6 --compile`. Counts and the displayed release date are read from the same manifest as the repository front page.
 
 The [25 October correctness audit](../verification/audit_20261025/README.md) validates every supplied tensor and its based-isomorphism class. The companion incorporates proof and replay repairs without changing the classification.
+
+Rank twelve adds 632 rings, with 480 general exclusions and 152 categorical models in the companion. Exactly 151 models are known unitary; R12_1_623 is complex/pseudo-unitary with unitarity unproved. [Source, exact checks and qualification](../verification/rank12/README.md).

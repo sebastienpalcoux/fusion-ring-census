@@ -1,3 +1,7 @@
+# 26 October 2026: rank twelve
+
+Added all 632 multiplicity-one tensors with unchanged physical order, exact checks and matching producer source. The companion reports 480 general exclusions and 152 models; only 151 are known unitary. No previous dataset changed.
+
 # Reviewing and releasing census data
 
 A release is one complete dataset per rank, described by `results/census.json`.

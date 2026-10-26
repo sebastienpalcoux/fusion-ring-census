@@ -19,3 +19,5 @@ See [verification](../verification/README.md)
 and [reproduction](../docs/REPRODUCIBILITY.md).
 
 The current multiplicity-one release also includes ranks 9–11: 142, 194 and 182 classes, with [fresh exact verification and complete source](../verification/engine_20261023/README.md). Full enumeration remains producer-reported.
+
+Rank twelve through multiplicity one adds 632 classes. See [source and exact checks](../verification/rank12/README.md). No categorifiability filtering is applied.

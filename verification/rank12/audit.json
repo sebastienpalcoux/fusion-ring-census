@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-26",
+  "rank": 12,
+  "bound": 1,
+  "classes": 632,
+  "verification_environment": "local workspace",
+  "independent_enumeration_rerun": false,
+  "independent_verification": {
+    "input_records": 632,
+    "input_physical_lines": 632,
+    "distinct_rings": 632,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "individualization-refinement (exact)",
+    "permutations_examined": 5047,
+    "elapsed_seconds": 0.518582874
+  },
+  "verification_source": "code/verify_tables.cpp",
+  "verification_source_sha256": "5898c16b7c04d8238ff13d769fb50b734ba9ff2a54d17674fda4aef4d0a5a021",
+  "scope": "Fresh independent exact full-tensor axioms, refinement canonicalization with full tensor witness comparison, zero duplicates, physical order, exact counts and compressed/uncompressed source hashes; no whole enumeration rerun.",
+  "producer_source_hashes_match": true
+}

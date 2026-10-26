@@ -761,7 +761,7 @@ The fresh and producer checks are preserved separately under
 '''
     return text
 
-def build_sources(ranks=range(3,12),classification=None):
+def build_sources(ranks=range(3,13),classification=None):
     classification=rank8_classification() if classification is None else classification
     data=json.loads((ROOT/'results/census.json').read_text());M.mkdir(exist_ok=True)
     release_date=date.fromisoformat(data['release_date']).strftime('%d %B %Y')
@@ -809,7 +809,7 @@ source ring. See the \href{https://github.com/sebastienpalcoux/grothendieck-ring
         if r>=9:
             body+=r'''\section{Supplied high-rank source and independent checks}
 The complete optimized enumeration source and completed producer-run records
-are retained under \path{verification/engine_20261023/} and the rank-specific
+are retained in the appropriate source archive indexed by \path{verification/README.md} and the rank-specific
 verification directory. The run completed every duality stratum without a
 clock limit. The supplied tensors preserve their original physical line
 order; a categorical label never changes that input identifier.
@@ -870,6 +870,24 @@ separate proofs and distinguish the theoretical reductions from
 the imported finite superpentagon calculation. These categorification
 decisions do not alter the census or its enumeration qualification.
 '''
+        if r==12:
+            body+=r'''\paragraph{Categorification in the companion project.}
+The separate \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/publications/rank12}{rank-twelve classification manuscript}
+records 480 general complex exclusions and 152 modeled rings, with no
+unresolved case among these 632 inputs. Exactly 151 of the recorded models
+are unitary. The additional ring \texttt{R12\_1\_623} is realized by a central
+$C_6$ quotient of an algebraically constructed $C_{36}+36$ near-group
+category; complex and pseudo-unitary existence are proved, but unitarity
+remains unproved. The final two commutative exclusions use a common
+equality-case refinement of the dimension-block conductor bound.
+The exact rank-12 producer source is the unchanged rank-13 symmetry archive
+indexed by \path{verification/engine_rank13_20261023/}. Every recorded
+code-file hash matches. The producer completed all six duality strata;
+independent output verification does not repeat that approximately
+40-hour search. The original physical line order and all permanent IDs
+are retained. These categorification claims do not classify associators
+or strengthen the enumeration-completeness qualification.
+'''
         if r==11:
             body+=r'''\paragraph{Categorification in the companion project.}
 The separate
@@ -910,7 +928,11 @@ a generic determinant is nonzero.
         if item.get('independent_enumeration_rerun') is False:
             body+='\nThe completed-search and source qualification in Section 2 applies throughout: the complete optimized source is supplied and hash-matched, but independent output checks do not replace a fresh exhaustive enumeration.\n'
         body+='\n\\par\\noindent\\begin{minipage}{\\linewidth}\n\\section{Reproduction commands}\nFrom the repository root on a local computer, request a complete run with no clock limit. An interruption does not certify a smaller census.\n'
-        body+='\\begin{lstlisting}\n'+f'python3 scripts/run_laptop.py --rank {r} --bound {item["bound"]}\n'+'\\end{lstlisting}\n'
+        if r==12:
+            body+='\\begin{lstlisting}\n'+'unzip packages/Fusion_Census_rank13_symmetry.zip\ncd Fusion_Census_rank13_symmetry\npython3 scripts/run_laptop.py --rank 12 --bound 1\n'+'\\end{lstlisting}\n'
+        else:
+            body+='\\begin{lstlisting}\n'+f'python3 scripts/run_laptop.py --rank {r} --bound {item["bound"]}\n'+'\\end{lstlisting}\n'
+
         body+='To verify the supplied release without recomputing it:\n\\begin{lstlisting}\npython3 scripts/check_release.py --full\n\\end{lstlisting}\n'
         if r<=8:
             body+='For a shared-budget frontier search, use \\path{scripts/extend_census.py}. For ranks five through eight it starts at the released bound plus one and restarts the unfinished bound without claiming checkpoint resumption. The local command above verifies all tensors and the old count prefix before packaging a result. The separate timed frontier wrapper bounds every phase. Rank three is instead capped at 1000.\n'
@@ -943,13 +965,31 @@ No classification decision changes. These are AI-assisted mathematical
 arguments and exact checks; independent human verification and formalization
 remain pending.
 '''
-        body+=(BIB.replace(r'\end{thebibliography}',EH_BIB+r'\end{thebibliography}') if r==6 else BIB)+'\\end{document}\n'
+        if r==12:
+            start=body.rfind(r'\section{Correctness audit and companion classification}')
+            body=body[:start]+r'''\section{Correctness audit and companion classification}
+The preceding \href{https://github.com/sebastienpalcoux/fusion-ring-census/tree/main/verification/audit_20261025}{25 October audit}
+validated the 1,433,410 previously released tensors without repeating
+upstream enumeration. The present rank-twelve release adds 632 tensors,
+each independently checked exactly with zero duplicate classes; all
+recorded producer code-file hashes match the supplied source archive.
+The separate companion classifies these new rings as 480 general
+exclusions and 152 models, of which 151 are known unitary. The additional
+model is complex/pseudo-unitary, with unitarity unproved. The ten earlier
+open cases are unchanged. Independent human verification and formalization
+remain pending.
+'''
+        bibliography=BIB.replace(r'\end{thebibliography}',EH_BIB+r'\end{thebibliography}') if r==6 else BIB
+        if r==12:
+            bibliography=bibliography.replace(r'\small\setlength{\itemsep}{2pt}',
+                r'\footnotesize\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}')
+        body+=bibliography+'\\end{document}\n'
         body=body.replace('\\begin{lstlisting}', '\\par\\noindent\\begin{minipage}{\\linewidth}\n\\begin{lstlisting}').replace('\\end{lstlisting}', '\\end{lstlisting}\n\\end{minipage}\\par')
         (M/f'rank{r}.tex').write_text(body)
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--compile',action='store_true')
-    ap.add_argument('--ranks',type=int,nargs='+',choices=range(3,12),default=list(range(3,12)),help='Regenerate only these ranks (default: all).')
+    ap.add_argument('--ranks',type=int,nargs='+',choices=range(3,13),default=list(range(3,13)),help='Regenerate only these ranks (default: all).')
     ap.add_argument('--classification-ledger',type=Path,help='Validate and use this explicit companion rank-eight classification ledger.')
     ap.add_argument('--sync-readme',action='store_true',help='Also synchronize the rank-eight companion classification paragraph in README.md.')
     a=ap.parse_args();selected=sorted(set(a.ranks))

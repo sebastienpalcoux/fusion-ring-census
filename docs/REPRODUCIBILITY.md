@@ -39,9 +39,10 @@ independent verification. `--mult` is an alias for `--bound`.
 | 6 | 9 | 10 | 1–15 |
 | 7 | 5 | 6 | 1–15 |
 | 8 | 3 | 4 | 1–15 |
-| 9 | 1 | 2 | 1–15 |
+| 9 | 2 | 3 | 1–15 |
 | 10 | 1 | 2 | 1–15 |
 | 11 | 1 | 2 | 1–15 |
+| 12 | 1 | 2 | 1–15 in the explicit rank-13 source package |
 
 Keep the computer awake and connected to power. These limits protect the
 implementation; they do not guarantee feasible runtime or memory at every bound.
@@ -65,7 +66,7 @@ A result ZIP such as `runs/rank7_multiplicity5_verified.zip` is created only whe
 
 1. Every required duality search finishes normally.
 2. Every tensor passes the independent full axiom checker.
-3. Exact based-isomorphism checking finds no duplicates. Ranks 9–11 use exact invariant refinement, with exhaustive reference mode retained.
+3. Exact based-isomorphism checking finds no duplicates. Ranks 9–12 use exact invariant refinement, with exhaustive reference mode retained.
 4. All earlier exact-multiplicity counts agree with the certified release.
 
 The ZIP contains compressed tensors and parameters, exact counts, source and
@@ -176,3 +177,7 @@ The 10,006 rank-seven tensors passed output verification and extend the earlier
 strata report normal completion. The full large enumeration has not been
 independently repeated; source identity and output validity are separate from
 an independent completeness reproduction.
+
+## Rank-twelve release
+
+The 632 supplied multiplicity-one rings are released with all exact checks and producer logs. [Verification](../verification/rank12/README.md) · [Matching complete rank-13 symmetry source and reproduction command](../verification/engine_rank13_20261023/README.md). The older root launcher remains the rank-3–11 driver; the separate source package reproduces rank twelve.

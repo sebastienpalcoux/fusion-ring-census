@@ -7,7 +7,7 @@ def module(name,path):
 build=module('builder','code/build_system.py');export=module('exporter','code/export_tables.py')
 class CoreTests(unittest.TestCase):
  def test_coverage(self):
-  data=json.loads((ROOT/'results/census.json').read_text());self.assertEqual(sorted(map(int,data['ranks'])),list(range(3,12)));self.assertLessEqual(data['ranks']['3']['bound'],1000)
+  data=json.loads((ROOT/'results/census.json').read_text());self.assertEqual(sorted(map(int,data['ranks'])),list(range(3,13)));self.assertLessEqual(data['ranks']['3']['bound'],1000)
   for rank,item in data['ranks'].items():
    self.assertIs(item['complete'],True);self.assertIs(item['verified'],True)
    self.assertEqual(sorted(map(int,item['counts'])),list(range(1,item['bound']+1)));self.assertEqual(sum(item['counts'].values()),item['classes'])

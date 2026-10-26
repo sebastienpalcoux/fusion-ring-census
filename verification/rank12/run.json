@@ -1,0 +1,218 @@
+{
+  "rank": 12,
+  "bound": 1,
+  "threads": 12,
+  "symmetry_policy": "revised",
+  "symmetry_revision": true,
+  "symmetry_full_group_limit": 8192,
+  "enumeration_budget_seconds": null,
+  "time_limit": "none (local laptop)",
+  "environment": {
+    "python": "3.14.4",
+    "system": "Linux 7.0.0-38-generic x86_64",
+    "cpu_count": 12,
+    "threads": 12
+  },
+  "complete": true,
+  "verified": true,
+  "runs": [
+    {
+      "name": "pairs1",
+      "command": [
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/build_cache/parallel_general_revised",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/systems/rank12_pairs1.txt",
+        "1",
+        "inf",
+        "12",
+        "768"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 29311.35907680192,
+      "returncode": 0,
+      "reported_classes": 114,
+      "reported_counts": {
+        "1": 114
+      }
+    },
+    {
+      "name": "pairs2",
+      "command": [
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/build_cache/parallel_general_revised",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/systems/rank12_pairs2.txt",
+        "1",
+        "inf",
+        "12",
+        "768"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 950.8782602199353,
+      "returncode": 0,
+      "reported_classes": 141,
+      "reported_counts": {
+        "1": 141
+      }
+    },
+    {
+      "name": "pairs3",
+      "command": [
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/build_cache/parallel_general_revised",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/systems/rank12_pairs3.txt",
+        "1",
+        "inf",
+        "12",
+        "768"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 5051.881861725124,
+      "returncode": 0,
+      "reported_classes": 119,
+      "reported_counts": {
+        "1": 119
+      }
+    },
+    {
+      "name": "pairs4",
+      "command": [
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/build_cache/parallel_general_revised",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/systems/rank12_pairs4.txt",
+        "1",
+        "inf",
+        "12",
+        "768"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 6152.013816934079,
+      "returncode": 0,
+      "reported_classes": 104,
+      "reported_counts": {
+        "1": 104
+      }
+    },
+    {
+      "name": "pairs5",
+      "command": [
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/build_cache/parallel_general_revised",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/systems/rank12_pairs5.txt",
+        "1",
+        "inf",
+        "12",
+        "768"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 415.08202557987534,
+      "returncode": 0,
+      "reported_classes": 36,
+      "reported_counts": {
+        "1": 36
+      }
+    },
+    {
+      "name": "selfdual",
+      "command": [
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/build_cache/selfdual_fast_r12_revised",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/systems/system12sd.txt",
+        "12",
+        "1",
+        "inf",
+        "12"
+      ],
+      "allowance_seconds": null,
+      "elapsed_seconds": 102810.44440495106,
+      "returncode": 0,
+      "reported_classes": 118,
+      "reported_counts": {
+        "1": 118
+      }
+    }
+  ],
+  "github_sha": null,
+  "github_run_id": null,
+  "deadline_monotonic": null,
+  "phase": "complete",
+  "commands": [
+    {
+      "phase": "compilation:selfdual_fast_r12_revised",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-fopenmp",
+        "-DCENSUS_SYMMETRY_REVISION=1",
+        "-DCENSUS_SELFDUAL_RANK=12",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/code/enumerate_selfdual_fast.cpp",
+        "-o",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/build_cache/selfdual_fast_r12_revised"
+      ],
+      "started_elapsed_seconds": 0.0016304249875247478,
+      "returncode": 0,
+      "elapsed_seconds": 19.194277653936297
+    },
+    {
+      "phase": "sort_and_export",
+      "command": [
+        "/usr/bin/python3",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/code/export_tables.py",
+        "--rank",
+        "12",
+        "--input",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/runs/rank12_M1/parameters.txt",
+        "--systems",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/systems",
+        "--output",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/runs/rank12_M1/FusionRingMultiplicationTables.txt"
+      ],
+      "started_elapsed_seconds": 144710.87492363085,
+      "returncode": 0,
+      "elapsed_seconds": 0.18124663806520402
+    },
+    {
+      "phase": "independent_verification",
+      "command": [
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/build_cache/verify_tables_revised",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/runs/rank12_M1/FusionRingMultiplicationTables.txt",
+        "/home/sebastien/Library/Fusion_Census_rank13_symmetry/runs/rank12_M1/independent_check"
+      ],
+      "started_elapsed_seconds": 144711.05727595696,
+      "returncode": 0,
+      "elapsed_seconds": 0.3807759420014918
+    }
+  ],
+  "code_sha256": "e476d391164652cd3cbcee4ae8ba86cbe534c48a1aec6f594eb23a8d92169233",
+  "algorithm_sha256": "78b0bbd365a675af3c06107503d7fa39ffbbd748f679b07a8cffa78abe3417f2",
+  "elapsed_seconds": 144711.95511645684,
+  "compilation_seconds": 19.196874929824844,
+  "expected_strata": [
+    "pairs1",
+    "pairs2",
+    "pairs3",
+    "pairs4",
+    "pairs5",
+    "selfdual"
+  ],
+  "enumeration_seconds": 144691.66188988206,
+  "counts": {
+    "1": 632
+  },
+  "classes": 632,
+  "sort_export_seconds": 0.19792051590047777,
+  "verifier_compilation_seconds": 0.00034926203079521656,
+  "independent_verification_seconds": 0.3814969260711223,
+  "independent_verification": {
+    "input_records": 632,
+    "input_physical_lines": 632,
+    "distinct_rings": 632,
+    "duplicates": 0,
+    "literal_repeats": 0,
+    "new_labellings": 0,
+    "associativity_checked": true,
+    "canonical_mode": "individualization-refinement (exact)",
+    "permutations_examined": 5047,
+    "elapsed_seconds": 0.376864252
+  },
+  "existing_prefix_checked_through": 0,
+  "released_baseline_available": false,
+  "parameters.txt_sha256": "ba57ce4b74573e4d6be34bcf6e4bd2206c44b6aaf0263f1685c7a49d13749c63",
+  "FusionRingMultiplicationTables.txt_sha256": "6949e6fb8afd23f80b54e5a546a0dd34257430fd26c26b7acd8ff8444252f4d7",
+  "compression_seconds": 0.5137520257849246,
+  "outcome": "verified_complete"
+}

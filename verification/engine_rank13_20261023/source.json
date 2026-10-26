@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-26",
+  "archive": "packages/Fusion_Census_rank13_symmetry.zip",
+  "archive_sha256": "cd4b34838cc19996e0d1da43543152b616d3ef0dd262f0ee271e2652a2ea1acd",
+  "producer_code_files": {
+    "code/build_selfdual_system.py": "a45ba5316e585d81c3feed5acaa59fb1d7b1247a6953c5b236427364b0060f53",
+    "code/build_system.py": "dd09b3649a8bed124183e02f03e04923b2c668a49bc05fc64b453052388044ed",
+    "code/combine_tables.py": "13f5c3bb18803e3851c98673efe9caee612f3e8e5555707e46361b261d0a147d",
+    "code/completion_solver.hpp": "c2d3558c49874dae07b4f19604aae30a79ec748f23f02d39677cc562106a1e93",
+    "code/enumerate_bounded.cpp": "e02d9e720c2b34281f4e6dc981d2696a21a7dea60ccf9ab8058f53764cccfad9",
+    "code/enumerate_parallel.cpp": "78084e2e9c851bc0e1ce00ac548530b0ad9f99ba9dc38dba8d83995447757454",
+    "code/enumerate_selfdual_fast.cpp": "80d5c30a8fb41a015c06a23b43ea77e9f012ecaeca0d291bfb574ad887d69ad2",
+    "code/export_rank4.cpp": "88cc05029bdf518467f41867c0ba5a50a8be59b293e5f00a8cdb9bccd56db45a",
+    "code/export_tables.py": "663f7e5e690561bb384e7e18f6f3e9b5ce6c81881835d5aca9e3fdfdad915726",
+    "code/rank3_census.cpp": "c9dbeab7d97786ed6af3ffbb890e7dbaa2d6bc77646d3c4e4a6f8fe0ae314c20",
+    "code/rank4_census.cpp": "5054f8c3c6c60d7f2b15482def5237a5ff0da31b29fcf3a28e71f4a2dee7db59",
+    "code/rank5/census_integer.hpp": "3d27f69a821137e419426587f6d3324e6478af2c28411d0295d65a41ad948ff6",
+    "code/rank5/enumerate_nonselfdual.cpp": "a60c14f1c53a7264386ad5d900bb9ee669108e82cc3f29721b610a02e7a40b38",
+    "code/rank5/enumerate_selfdual.cpp": "08b9f81e29e6cd3b65ac6c6572b9a48ac9ad0dc1d6a7d0d9b27949451306635e",
+    "code/rank5/linear_completion.hpp": "79467480106e22c5bc17ec0bb2b61d6be4e6701c80526efd40b0b07c9ce2a47f",
+    "code/rank5/weighted.hpp": "1fad6cea6abddd01cdc852fdcfe1dc515b313c6b2608ecf60ad4e7e85a2d6043",
+    "code/run_census.py": "ca539c7b3eb008e127bb194ca0533bbfd23ee11e801ff0da080d2c8a72a7569c",
+    "code/symmetry_domains.hpp": "000185747054e2a6aafbbb7d07afacb89a9c1e2eeee42cf085bd216b53b65d41",
+    "code/symmetry_options.hpp": "1b6b63f7d6b619a3f764461445d66a20fa35f5c4d665ec2fbaa762c3b68c9df6",
+    "code/verify_release.py": "a2c7dd4e2bfe115ee8abb6ba9a3356864dc644cd76eaf4a189d6900af8f2af28",
+    "code/verify_tables.cpp": "5898c16b7c04d8238ff13d769fb50b734ba9ff2a54d17674fda4aef4d0a5a021"
+  },
+  "all_producer_code_files_match": true,
+  "source_package": "23 October controlled rank-13 symmetry variant; original archive retained unchanged",
+  "full_enumeration_independently_repeated": false
+}

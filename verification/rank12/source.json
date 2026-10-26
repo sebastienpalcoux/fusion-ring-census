@@ -1,0 +1,12 @@
+{
+  "received_date": "2026-10-25",
+  "published_date": "2026-10-26",
+  "producer_code_sha256": "e476d391164652cd3cbcee4ae8ba86cbe534c48a1aec6f594eb23a8d92169233",
+  "enumeration_source": "packages/Fusion_Census_rank13_symmetry.zip",
+  "enumeration_source_archive_sha256": "cd4b34838cc19996e0d1da43543152b616d3ef0dd262f0ee271e2652a2ea1acd",
+  "producer_source_hashes_verified": true,
+  "complete": true,
+  "verified": true,
+  "independent_enumeration_rerun": false,
+  "producer_run": "verification/rank12/run.json"
+}

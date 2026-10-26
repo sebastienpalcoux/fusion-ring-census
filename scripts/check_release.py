@@ -13,7 +13,7 @@ def sha256(path: Path) -> str:
 
 def main() -> int:
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--full',action='store_true')
-    ap.add_argument('--ranks',type=int,nargs='+',choices=range(3,12),help='Verify only these ranks (default: all).')
+    ap.add_argument('--ranks',type=int,nargs='+',choices=range(3,13),help='Verify only these ranks (default: all).')
     ap.add_argument('--out',type=Path);a=ap.parse_args()
     data=json.loads((ROOT/'results/census.json').read_text());selected=set(map(str,a.ranks)) if a.ranks else set(data['ranks'])
     report={'full_axiom_check':a.full,'selected_ranks':sorted(map(int,selected)),'ranks':{}}

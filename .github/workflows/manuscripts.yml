@@ -15,7 +15,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-fonts-recommended lmodern
-      - name: Rebuild the six companions without shell escape
+      - name: Rebuild rank-specific companions without shell escape
         run: python3 scripts/build_manuscripts.py --compile
       - name: Upload PDF companions
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
