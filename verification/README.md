@@ -76,3 +76,8 @@ and lightweight unit tests. They are separate from the mathematical checks above
 ## Rank-twelve release
 
 The 632 supplied multiplicity-one rings are released with all exact checks and producer logs. [Verification](../verification/rank12/README.md) · [Matching complete rank-13 symmetry source and reproduction command](../verification/engine_rank13_20261023/README.md). The older root launcher remains the rank-3–11 driver; the separate source package reproduces rank twelve.
+
+
+## Companion continuation · 27 October 2026
+
+Three rank-nine cases are excluded over the complex numbers; seven cases remain unresolved in the classification project. Exact M2 at rank nine has 2,046 exclusions, 36 models and one unresolved ring. This changes categorification status, not census tensors, counting terms or enumeration completeness. [Proofs, tensor-bound decisions and frozen replay](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier_20261027/README.md).

@@ -10,7 +10,7 @@
 
 **26 October 2026 · rank twelve, multiplicity one.** The new dataset contains **632 fusion rings**. The companion classifies them as **480 general exclusions and 152 modeled rings**, with none unresolved. Of the models, **151 are unitary**; R12_1_623 has a complex/pseudo-unitary realization whose unitarity is unproved. [Source and exact checks](verification/rank12/README.md) · [Classification scope](verification/rank12/categorification.json) · [Public Atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/?rank=12&m=1).
 
-The ten previously open cases at ranks six, eight and nine remain open. Earlier census data and classification decisions are unchanged. [Previous correctness audit](verification/audit_20261025/README.md).
+**27 October 2026 · companion classification.** Three rank-nine rings are now excluded over the complex numbers: R9_2_1607, R9_2_1975 and R9_2_1976. **Seven cases remain unresolved**: two at rank six, four at rank eight and one at rank nine. The rank-nine exact-M2 partition is 2,046 exclusions, 36 models and one unresolved ring. The conditional R1660–R941 construction does not prove existence, and every GH(C6,2) Morita route for R1768 is ruled out. Census data and counts are unchanged. [Audited proofs and exact replay](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier_20261027/README.md).
 
 
 <a id="complete-datasets"></a>
@@ -64,3 +64,4 @@ The local launcher has no clock limit. [Installation, supported bounds and verif
 | Reuse | [Cite](CITATION.cff) · [Licensing](NOTICE.md) · [OEIS drafts](oeis/README.md) |
 
 Sébastien Palcoux · BIMSA · [Current project announcement · PDF](announcements/hexagon-2026-10/Low_rank_Grothendieck_rings_announcement.pdf) · [Hexagon](https://hexagonmath.org/2610.00300) · [How to cite](https://sebastienpalcoux.github.io/grothendieck-ring-classification/#cite)
+

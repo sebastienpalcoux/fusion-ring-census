@@ -17,7 +17,7 @@ Each companion gives definitions, a rank-specific coverage argument, exact count
 
 Rank-7 completeness through multiplicity 5 is producer-reported; the new tensors and their uniqueness were independently verified. The complete optimized source is now supplied and hash-matched; full searches at rank 7 through 5 and rank 8 through 3 were not independently rerun. See [the qualification](../verification/rank7/README.md).
 
-Rank nine at exact multiplicity two has 2,043 general exclusions, 36 unitary models and four unresolved cases; its multiplicity-one conclusions are unchanged.
+Rank nine at exact multiplicity two has 2,046 general exclusions, 36 unitary models and one unresolved case; its multiplicity-one conclusions are unchanged.
 
 Ranks 9–11 have complete supplied sources and producer completion records, with independent exact tensor and uniqueness checks. Full enumeration was not independently repeated. The rank-10 companion links the current 136 exclusions and 58 unitary models, completing multiplicity one; R10_1_189 comes from a classical conformal embedding, with exact proofs in the classification repository. The rank-11 companion links the separate classification of all 182 inputs: 155 exclusions and 27 unitary models.
 
@@ -26,3 +26,5 @@ Rebuild with `python3 scripts/build_manuscripts.py --compile`, or select one com
 The [25 October correctness audit](../verification/audit_20261025/README.md) validates every supplied tensor and its based-isomorphism class. The companion incorporates proof and replay repairs without changing the classification.
 
 Rank twelve adds 632 rings, with 480 general exclusions and 152 categorical models in the companion. Exactly 151 models are known unitary; R12_1_623 is complex/pseudo-unitary with unitarity unproved. [Source, exact checks and qualification](../verification/rank12/README.md).
+
+The [27 October theoretical continuation](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier_20261027/README.md) adds three rank-nine general exclusions and leaves seven open cases in total. The conditional R1660–R941 construction and the GH(C6,2) Morita obstruction for R1768 are described in the current classification manuscripts. Census data and counting terms are unchanged.

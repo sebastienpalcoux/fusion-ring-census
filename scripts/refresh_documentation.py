@@ -42,7 +42,7 @@ def main():
 
 **26 October 2026 · rank twelve, multiplicity one.** The new dataset contains **632 fusion rings**. The companion classifies them as **480 general exclusions and 152 modeled rings**, with none unresolved. Of the models, **151 are unitary**; R12_1_623 has a complex/pseudo-unitary realization whose unitarity is unproved. [Source and exact checks](verification/rank12/README.md) · [Classification scope](verification/rank12/categorification.json) · [Public Atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/?rank=12&m=1).
 
-The ten previously open cases at ranks six, eight and nine remain open. Earlier census data and classification decisions are unchanged. [Previous correctness audit](verification/audit_20261025/README.md).
+The 27 October companion continuation excludes R9_2_1607, R9_2_1975 and R9_2_1976, leaving seven unresolved cases at ranks six, eight and nine. Census data and counts are unchanged. [Current classification proofs](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier_20261027/README.md). [Previous correctness audit](verification/audit_20261025/README.md).
 
 
 <a id="complete-datasets"></a>
@@ -100,3 +100,4 @@ Sébastien Palcoux · BIMSA · [Current project announcement · PDF](announcemen
 
 if __name__ == '__main__':
     main()
+

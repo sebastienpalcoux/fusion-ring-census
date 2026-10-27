@@ -1,0 +1,507 @@
+{
+  "date": "2026-10-27",
+  "classification_repository": "sebastienpalcoux/grothendieck-ring-classification",
+  "new_general_exclusions": [
+    "R9_2_1607",
+    "R9_2_1975",
+    "R9_2_1976"
+  ],
+  "remaining_unresolved": 7,
+  "new_models": 0,
+  "census_data_changed": false,
+  "proofs": "https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier_20261027/README.md",
+  "construction_scope": "R1660 plus a connected separable algebra 1+X would give R941; both remain unconstructed. No GH(C6,2) category can be Morita equivalent to R1768.",
+  "companions": {
+    "3": {
+      "pdf_sha256": "88881c3f82af85db7db645afc5ac7e26f9fd2d1447550f8425abce36a648abe5",
+      "tex_sha256": "198a3f9404ec5d90b7ff78339c8d0b322223ddde325fcf47bf509146b656a4f7",
+      "pages": [
+        {
+          "page": 1,
+          "text_characters": 1041,
+          "within_page": true
+        },
+        {
+          "page": 2,
+          "text_characters": 856,
+          "within_page": true
+        },
+        {
+          "page": 3,
+          "text_characters": 2525,
+          "within_page": true
+        },
+        {
+          "page": 4,
+          "text_characters": 2693,
+          "within_page": true
+        },
+        {
+          "page": 5,
+          "text_characters": 3263,
+          "within_page": true
+        },
+        {
+          "page": 6,
+          "text_characters": 2453,
+          "within_page": true
+        }
+      ],
+      "pdf_header_and_eof_valid": true
+    },
+    "4": {
+      "pdf_sha256": "15a10b766ed7c483551fa3f4a6344f5b0b939b9bb54e6e1efe218ee70ff6107d",
+      "tex_sha256": "3836d5aa1b8cf0ccbbed31a426095c6caba564a278d72eb9b94135eb731d84dc",
+      "pages": [
+        {
+          "page": 1,
+          "text_characters": 1039,
+          "within_page": true
+        },
+        {
+          "page": 2,
+          "text_characters": 1027,
+          "within_page": true
+        },
+        {
+          "page": 3,
+          "text_characters": 2217,
+          "within_page": true
+        },
+        {
+          "page": 4,
+          "text_characters": 1633,
+          "within_page": true
+        },
+        {
+          "page": 5,
+          "text_characters": 2259,
+          "within_page": true
+        },
+        {
+          "page": 6,
+          "text_characters": 3211,
+          "within_page": true
+        },
+        {
+          "page": 7,
+          "text_characters": 3223,
+          "within_page": true
+        },
+        {
+          "page": 8,
+          "text_characters": 2304,
+          "within_page": true
+        },
+        {
+          "page": 9,
+          "text_characters": 1992,
+          "within_page": true
+        },
+        {
+          "page": 10,
+          "text_characters": 913,
+          "within_page": true
+        }
+      ],
+      "pdf_header_and_eof_valid": true
+    },
+    "5": {
+      "pdf_sha256": "8713dfe018d2fd885ede90be6aaf06e19b8048791bfc3edf744f04233f0b5ec2",
+      "tex_sha256": "eac2d209da424e28280b1100f5e3b4db01109b4124d336360dbd0382ff85ef46",
+      "pages": [
+        {
+          "page": 1,
+          "text_characters": 1036,
+          "within_page": true
+        },
+        {
+          "page": 2,
+          "text_characters": 1107,
+          "within_page": true
+        },
+        {
+          "page": 3,
+          "text_characters": 2214,
+          "within_page": true
+        },
+        {
+          "page": 4,
+          "text_characters": 1682,
+          "within_page": true
+        },
+        {
+          "page": 5,
+          "text_characters": 2875,
+          "within_page": true
+        },
+        {
+          "page": 6,
+          "text_characters": 3426,
+          "within_page": true
+        },
+        {
+          "page": 7,
+          "text_characters": 3445,
+          "within_page": true
+        },
+        {
+          "page": 8,
+          "text_characters": 3102,
+          "within_page": true
+        }
+      ],
+      "pdf_header_and_eof_valid": true
+    },
+    "6": {
+      "pdf_sha256": "8f49ab8ed32cf1d495fe3502c7e20db7f4b34684390aa2910a058614ea7c574b",
+      "tex_sha256": "d05de7ba0f488d960b113e7847c06614c1f01f06654ddc2a674c7b35920f3e72",
+      "pages": [
+        {
+          "page": 1,
+          "text_characters": 1034,
+          "within_page": true
+        },
+        {
+          "page": 2,
+          "text_characters": 1186,
+          "within_page": true
+        },
+        {
+          "page": 3,
+          "text_characters": 2289,
+          "within_page": true
+        },
+        {
+          "page": 4,
+          "text_characters": 2746,
+          "within_page": true
+        },
+        {
+          "page": 5,
+          "text_characters": 3079,
+          "within_page": true
+        },
+        {
+          "page": 6,
+          "text_characters": 2769,
+          "within_page": true
+        },
+        {
+          "page": 7,
+          "text_characters": 3445,
+          "within_page": true
+        },
+        {
+          "page": 8,
+          "text_characters": 3101,
+          "within_page": true
+        },
+        {
+          "page": 9,
+          "text_characters": 480,
+          "within_page": true
+        }
+      ],
+      "pdf_header_and_eof_valid": true
+    },
+    "7": {
+      "pdf_sha256": "e34a41ecec357f3488eda84a9230dcfbebf4f8af6cff2c2039f904f3b043718f",
+      "tex_sha256": "e7954f6b1b311fadc226ec655ba75ad60e85b21fccc62113484e7bd1c889ce63",
+      "pages": [
+        {
+          "page": 1,
+          "text_characters": 1213,
+          "within_page": true
+        },
+        {
+          "page": 2,
+          "text_characters": 1281,
+          "within_page": true
+        },
+        {
+          "page": 3,
+          "text_characters": 2305,
+          "within_page": true
+        },
+        {
+          "page": 4,
+          "text_characters": 3056,
+          "within_page": true
+        },
+        {
+          "page": 5,
+          "text_characters": 3495,
+          "within_page": true
+        },
+        {
+          "page": 6,
+          "text_characters": 2457,
+          "within_page": true
+        },
+        {
+          "page": 7,
+          "text_characters": 3117,
+          "within_page": true
+        },
+        {
+          "page": 8,
+          "text_characters": 3244,
+          "within_page": true
+        },
+        {
+          "page": 9,
+          "text_characters": 1368,
+          "within_page": true
+        }
+      ],
+      "pdf_header_and_eof_valid": true
+    },
+    "8": {
+      "pdf_sha256": "f1e27eecdda435389547bf19630d7a2b7bc193de04ced1490463c929d7ebc4a5",
+      "tex_sha256": "976ed27f541f776c6d1a7cc4010d26f13e3cbb543c37239e4c7f645bf09d3cfe",
+      "pages": [
+        {
+          "page": 1,
+          "text_characters": 1212,
+          "within_page": true
+        },
+        {
+          "page": 2,
+          "text_characters": 1279,
+          "within_page": true
+        },
+        {
+          "page": 3,
+          "text_characters": 2559,
+          "within_page": true
+        },
+        {
+          "page": 4,
+          "text_characters": 3153,
+          "within_page": true
+        },
+        {
+          "page": 5,
+          "text_characters": 4462,
+          "within_page": true
+        },
+        {
+          "page": 6,
+          "text_characters": 3353,
+          "within_page": true
+        },
+        {
+          "page": 7,
+          "text_characters": 2814,
+          "within_page": true
+        },
+        {
+          "page": 8,
+          "text_characters": 3117,
+          "within_page": true
+        },
+        {
+          "page": 9,
+          "text_characters": 3244,
+          "within_page": true
+        },
+        {
+          "page": 10,
+          "text_characters": 1369,
+          "within_page": true
+        }
+      ],
+      "pdf_header_and_eof_valid": true
+    },
+    "9": {
+      "pdf_sha256": "8cfbcaf9c5a82777da69e3a064e8ee14406cfe433895606b3b2bd8564032858b",
+      "tex_sha256": "551213bb0b772137cc697d2ab2dc277943af85b2bdf6871af5b314271d70b14a",
+      "pages": [
+        {
+          "page": 1,
+          "text_characters": 1212,
+          "within_page": true
+        },
+        {
+          "page": 2,
+          "text_characters": 1239,
+          "within_page": true
+        },
+        {
+          "page": 3,
+          "text_characters": 2413,
+          "within_page": true
+        },
+        {
+          "page": 4,
+          "text_characters": 3470,
+          "within_page": true
+        },
+        {
+          "page": 5,
+          "text_characters": 3079,
+          "within_page": true
+        },
+        {
+          "page": 6,
+          "text_characters": 2769,
+          "within_page": true
+        },
+        {
+          "page": 7,
+          "text_characters": 3445,
+          "within_page": true
+        },
+        {
+          "page": 8,
+          "text_characters": 3065,
+          "within_page": true
+        }
+      ],
+      "pdf_header_and_eof_valid": true
+    },
+    "10": {
+      "pdf_sha256": "530a1300f5b0859a2194e9128f8c389d71cdc2573bc6f7d41a4106ab4b4b86b6",
+      "tex_sha256": "ad73e72eb15b7d08348fb0c27a47a17ebf9b030b2c2daee606484b366b84ace4",
+      "pages": [
+        {
+          "page": 1,
+          "text_characters": 1210,
+          "within_page": true
+        },
+        {
+          "page": 2,
+          "text_characters": 1241,
+          "within_page": true
+        },
+        {
+          "page": 3,
+          "text_characters": 2407,
+          "within_page": true
+        },
+        {
+          "page": 4,
+          "text_characters": 3436,
+          "within_page": true
+        },
+        {
+          "page": 5,
+          "text_characters": 3055,
+          "within_page": true
+        },
+        {
+          "page": 6,
+          "text_characters": 2924,
+          "within_page": true
+        },
+        {
+          "page": 7,
+          "text_characters": 3396,
+          "within_page": true
+        },
+        {
+          "page": 8,
+          "text_characters": 2732,
+          "within_page": true
+        }
+      ],
+      "pdf_header_and_eof_valid": true
+    },
+    "11": {
+      "pdf_sha256": "b7117d794df16df02b7174b162a1d9e6947fa3a6cdfe87c00698f605dedfaa7c",
+      "tex_sha256": "14f75a5316fc8a4ea8a1323fc47f10d956f6fda4b9b24d52c1203a93cb52df6b",
+      "pages": [
+        {
+          "page": 1,
+          "text_characters": 1210,
+          "within_page": true
+        },
+        {
+          "page": 2,
+          "text_characters": 1241,
+          "within_page": true
+        },
+        {
+          "page": 3,
+          "text_characters": 2407,
+          "within_page": true
+        },
+        {
+          "page": 4,
+          "text_characters": 3135,
+          "within_page": true
+        },
+        {
+          "page": 5,
+          "text_characters": 3339,
+          "within_page": true
+        },
+        {
+          "page": 6,
+          "text_characters": 3112,
+          "within_page": true
+        },
+        {
+          "page": 7,
+          "text_characters": 3209,
+          "within_page": true
+        },
+        {
+          "page": 8,
+          "text_characters": 2287,
+          "within_page": true
+        }
+      ],
+      "pdf_header_and_eof_valid": true
+    },
+    "12": {
+      "pdf_sha256": "3d713cffd89f3284d34143ac906e927903c8433bcb80efb3d1d147c41f627b6d",
+      "tex_sha256": "04abab379b86bf6799ef02f7e749288a2a21cfbb5fe82e0d0cb0257b29ddcef3",
+      "pages": [
+        {
+          "page": 1,
+          "text_characters": 1210,
+          "within_page": true
+        },
+        {
+          "page": 2,
+          "text_characters": 1241,
+          "within_page": true
+        },
+        {
+          "page": 3,
+          "text_characters": 2245,
+          "within_page": true
+        },
+        {
+          "page": 4,
+          "text_characters": 3407,
+          "within_page": true
+        },
+        {
+          "page": 5,
+          "text_characters": 3215,
+          "within_page": true
+        },
+        {
+          "page": 6,
+          "text_characters": 2770,
+          "within_page": true
+        },
+        {
+          "page": 7,
+          "text_characters": 3446,
+          "within_page": true
+        },
+        {
+          "page": 8,
+          "text_characters": 3217,
+          "within_page": true
+        }
+      ],
+      "pdf_header_and_eof_valid": true
+    }
+  },
+  "classification_revision": "5820e021f3887c1e5ae39d945b413c66f97c10ef"
+}

@@ -22,7 +22,7 @@
 {\sffamily\Huge\bfseries\color{ink} Rank-8 fusion rings\par}
 \vspace{0.35cm}
 {\sffamily\Large A verified dataset through multiplicity 3\par}
-\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 24 October 2026}\par\vspace{0.8cm}
+\vspace{0.65cm}{\large Sébastien Palcoux}\par{\small BIMSA}\par\vspace{0.35cm}{\small Computational companion, 26 October 2026}\par\vspace{0.8cm}
 \begin{abstract}
 We document 4,500 verified based-isomorphism classes of fusion rings of rank 8 through multiplicity 3, including 3,527 at the maximum multiplicity. The producer reports a complete enumeration. The complete optimized source is supplied and hash-matched, but full enumeration has not been independently reproduced. The account separates the mathematical coverage argument, the completed search, and independent verification of the emitted tensors. All duality types are included, and no categorifiability filter is applied. Code, machine-readable counts, full multiplication tensors and provenance records accompany the text.
 \end{abstract}\vspace{0.4cm}\noindent\textbf{AI-generated research \textperiodcentered\ independent verification pending.} This manuscript, its code and data were developed with AI assistance. Independent human verification and Lean formalization are pending. Treat the results with caution: exact computational checks establish only their stated scope.\vfill\noindent\textbf{Scope.} A census of based rings, not a classification of tensor categories. Only completed whole-rank results are released.\newpage\tableofcontents\newpage
@@ -155,13 +155,10 @@ The independent spherical-equivariantization and formal-codegree proof excludes 
 \par
 \paragraph{Further theoretical restrictions.}
 All four rank-eight questions remain open. R928 has categorical Morita
-rigidity without a module-rank cutoff. For R1768 an actual complex twisted
-$GH(C_6,2)$ precursor now exists with the required pointed associator, but
-the connected separable algebra $1+\sigma$ remains unproved. The canonical
-inherited algebra is instead $\operatorname{End}(\sigma)$. Five specified
+rigidity without a module-rank cutoff. For R1768, pairing parity and the complete module list rule out every $GH(C_6,2)$ Morita construction, regardless of associator or algebra. The realized twisted precursor is not a model of the source ring. For R1154 all six noninvertible trivalent rotations are identity; R928 and R941 have simple or s-simple centralizer restrictions. Five specified
 families of pointed extensions and connected etale condensations are
 excluded as models for R1154; those route obstructions do not exclude the
-source ring. See the \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/unresolved_retry_20261024}{current categorical proofs and exact certificates}.
+source ring. See the \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/frontier_20261027}{current categorical proofs and exact certificates}.
 
 \section{An exhaustive finite-domain model}
 \subsection{Coordinates directly from reciprocity}
@@ -397,19 +394,18 @@ For a shared-budget frontier search, use \path{scripts/extend_census.py}. For ra
 \end{minipage}\par
 \section{Correctness audit and companion classification}
 
-The 25 October 2026 correctness audit checked all 1,433,410 supplied
-rank-three through rank-eleven tensors by exact fusion axioms and exhaustive
-based-isomorphism tests, finding no duplicate classes. It did not regenerate
-the complete upstream enumeration. The published input data and counting
-terms are unchanged. Its separate \href{https://github.com/sebastienpalcoux/fusion-ring-census/tree/main/verification/audit_20261025}{scope and evidence}
-retain these distinctions.
-The companion classification has 1,433,022 general exclusions, 378 realized
-rings and ten unresolved cases. Its \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/correctness_20261025}{current proof and replay corrections}
-repair three model identifications, remove the census-completeness premise
-for the R8\_3\_721 construction, and correct implementation/replay defects.
-No classification decision changes. These are AI-assisted mathematical
-arguments and exact checks; independent human verification and formalization
-remain pending.
+The \href{https://github.com/sebastienpalcoux/fusion-ring-census/tree/main/verification/audit_20261025}{25 October 2026 audit}
+checked all 1,433,410 supplied rank-three through rank-eleven tensors by exact
+fusion axioms and exhaustive based-isomorphism tests, finding no duplicate
+classes. It did not rerun upstream enumeration. Census tensors and counting
+terms are unchanged. Separate \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/correctness_20261025}{proof and replay corrections}
+repair model identifications and computational defects.
+
+The \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/frontier_20261027}{27 October continuation}
+excludes R9\_2\_1607, R9\_2\_1975 and R9\_2\_1976 over the complex numbers.
+Seven cases remain unresolved: two at rank six, four at rank eight and one
+at rank nine. No new model is claimed. Independent human verification and
+formalization remain pending.
 
 \begin{thebibliography}{9}\small\setlength{\itemsep}{2pt}
 \bibitem{EGNO} P. Etingof, S. Gelaki, D. Nikshych and V. Ostrik,
