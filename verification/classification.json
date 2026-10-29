@@ -1,7 +1,7 @@
 {
   "date": "2026-10-29",
   "classification_repository": "sebastienpalcoux/grothendieck-ring-classification",
-  "classification_revision": "19ddd5ac68a0a356300af35f38743dba89966dd6",
+  "classification_revision": "8467705dea1bcd55c8608ee545d89cbd630c2d2b",
   "proofs": "https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md",
   "manuscript": "https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/manuscripts/frontier/Fusion_Ring_Frontier.pdf",
   "new_general_exclusions": [
@@ -36,61 +36,61 @@
   "companions": {
     "3": {
       "pages": 6,
-      "pdf_sha256": "d814a9da5ae4905705964edb9529465a63973f3068d1c763b45d79838537f02e",
+      "pdf_sha256": "17a3677797e4a627e2174ffde72570b2880887a5f139a1e5b18f4e94642264fa",
       "tex_sha256": "fbcb0f4d3861c029d5ea37ac0f33f78274012d7ea04ee79b6f108cdba251e4aa",
       "text_inside_pages": true
     },
     "4": {
       "pages": 10,
-      "pdf_sha256": "90df77c42bda6ab9e452f6b29e65deacfffcd7e3a23fbd141d94600d3cdf41b2",
+      "pdf_sha256": "d0b5533ff4d6d5d441278d9a949279edacccd23d42079d02e78775171a095e21",
       "tex_sha256": "6fb18a41a77bc31eb274f64cd2140e97c9e664fc2976f3e03c91dc984e849cb9",
       "text_inside_pages": true
     },
     "5": {
       "pages": 9,
-      "pdf_sha256": "c7054fcc6033fde494f599f97e3ab4ae4aff739363e169774266f2bca4cd166f",
+      "pdf_sha256": "b324dd17b018961b84e2b450aef8dbce8dc0db1f8e5ed525564095bc9d43686a",
       "tex_sha256": "b48b2adbdcf4722244f1719f89735393c21fb07724424a89416cad7e2cdd28a4",
       "text_inside_pages": true
     },
     "6": {
       "pages": 9,
-      "pdf_sha256": "6e2cc781bcd1c44c2242bb63e65a76aa4ab7081f875faacb953c88130af8ec63",
+      "pdf_sha256": "77e66a25b7d484e519b2216deff0410c03903d859b7c49d80db8068c8978185a",
       "tex_sha256": "06b79f48d2e6619511a562c6460aa3250754305d5abdf9790140eba82ff9fd14",
       "text_inside_pages": true
     },
     "7": {
       "pages": 9,
-      "pdf_sha256": "8e7b302ac5dac0937e8719e88a04a5f2ecb12540456ef0dc7fe41cb76ccdfe43",
+      "pdf_sha256": "b0c9026c35ccd3da1087a7c0a2c29fede28ba6f3a2f7dbeafcfff9af885cb72e",
       "tex_sha256": "33066b72b0772f89ca831bd0ceb7e0228c0216d9c6b5b0d12463b44eaf2682ad",
       "text_inside_pages": true
     },
     "8": {
       "pages": 9,
-      "pdf_sha256": "2931b85387ccd2b91b98724b2e38f4548a8c8c31b2f23ff5f80ee9fb4dbc8fef",
-      "tex_sha256": "b92edb24e8a5a21ffd8b176346823fa572426f997eb08c900aa28611fc3c893d",
+      "pdf_sha256": "744bf7126c1b161f21c0c0706b4e123ecdeb23d3041919d75bad6181b25acc74",
+      "tex_sha256": "fff9acf63fb9a3a11c11871d3e4483b6fd3d79e2b65183f6ae8a8ddb4314d533",
       "text_inside_pages": true
     },
     "9": {
       "pages": 9,
-      "pdf_sha256": "91497e31aebef33a873c81d7734c0b32f76d26f830c9e5d86d524f34736ba8d8",
+      "pdf_sha256": "c2534db20c958703cd6e180ab1516ab8e4c5c1789191c9d7baf26e8ae755c7ac",
       "tex_sha256": "7e6bdbfb74590554588165a66733063dfde8f84a18494e1cf4a724d7dce10657",
       "text_inside_pages": true
     },
     "10": {
       "pages": 8,
-      "pdf_sha256": "42c0247847db941572f2aed022366354bd86313fdabfcac369f77cc70a81ffc6",
+      "pdf_sha256": "42913465f99c11725c9dca30938e84033f1cf3a800cb385ffe3afc6ff7c7f627",
       "tex_sha256": "99292e4b025e12dab564fd7bfae44aaafe626a8e8b184c127e7dc7e2fee87160",
       "text_inside_pages": true
     },
     "11": {
       "pages": 8,
-      "pdf_sha256": "91bf3dcd96dbb2364f942978daabd883a49aa15b07309b36941aef07eb4fa02b",
+      "pdf_sha256": "d7a71cd3ebcd1625977db95fafadb6e08ebfc9ef61e3eeba618b904d5bb756a5",
       "tex_sha256": "96586de391d8f497ba0b4b1529900f83d7b3ff1d62012ec8917ba626c302e336",
       "text_inside_pages": true
     },
     "12": {
       "pages": 9,
-      "pdf_sha256": "60ee077ef27a1e49d7c486290baf6a07bc75b61e6443fb35c28ff4bd9b039b80",
+      "pdf_sha256": "e36cc70384f8fbdada8c80e020b141485bf3e96176acf4bb46f972a36be51f32",
       "tex_sha256": "2a606b609212aa186801889109ffd3de63c500ed52302f95d39301735beed4b6",
       "text_inside_pages": true
     }

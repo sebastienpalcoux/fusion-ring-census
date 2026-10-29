@@ -31,7 +31,7 @@ rank-eight rings. The candidates are not asserted fusion categories or
 established exotic examples. The general questions `R6_4_155` and
 `R6_8_1660` also remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
 for the precise proof scope and remaining categorical gaps.
-These counts are bound to the [classification main snapshot `19ddd5ac`](https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/19ddd5ac68a0a356300af35f38743dba89966dd6) and its [decision ledger](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/19ddd5ac68a0a356300af35f38743dba89966dd6/evidence/frontier/rank8_m3_ledger.json).
+These counts are bound to the [classification main snapshot `8467705d`](https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/8467705dea1bcd55c8608ee545d89cbd630c2d2b) and its [decision ledger](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/8467705dea1bcd55c8608ee545d89cbd630c2d2b/evidence/frontier/rank8_m3_ledger.json).
 The general-complex exclusion of `R8_3_1768` follows from a pivotal conjugation-pairing parity obstruction after the established sphericalization/Galois existence reduction. The complete two-sign domain is rejected by six exact rational separation certificates.
 
 The three unresolved rank-eight rings are `R8_3_928`, `R8_3_941`, `R8_3_1154`. Their stronger fusion-matrix, Galois and center restrictions are necessary conditions, not categorical models.
