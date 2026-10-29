@@ -23,8 +23,8 @@ Ranks 9–11 have complete supplied sources and producer completion records, wit
 
 Rebuild with `python3 scripts/build_manuscripts.py --compile`, or select one companion with `--ranks 6 --compile`. Counts and the displayed release date are read from the same manifest as the repository front page.
 
-The [25 October correctness audit](../verification/audit_20261025/README.md) validates every supplied tensor and its based-isomorphism class. The companion incorporates proof and replay repairs without changing the classification.
+The [verification index](../verification/README.md) separates exact output checks, source qualifications and the scope of the companion classification.
 
 Rank twelve adds 632 rings, with 480 general exclusions and 152 categorical models in the companion. Exactly 151 models are known unitary; R12_1_623 is complex/pseudo-unitary with unitarity unproved. [Source, exact checks and qualification](../verification/rank12/README.md).
 
-The [27 October theoretical continuation](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier_20261027/README.md) adds three rank-nine general exclusions and leaves seven open cases in total. The conditional R1660–R941 construction and the GH(C6,2) Morita obstruction for R1768 are described in the current classification manuscripts. Census data and counting terms are unchanged.
+The [unified current classification](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md) excludes R8_3_1768 by pivotal conjugation parity and leaves **six unresolved cases**: two at rank six, three at rank eight and one at rank nine. Its exact certificates and inherited categorical hypotheses are explicit. No new model is claimed; census data and counting terms are unchanged.

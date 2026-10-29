@@ -348,16 +348,25 @@ python3 scripts/check_release.py --full
 To verify only this released rank, use \texttt{python3 scripts/check\_release.py --ranks 12 --full}. Reproduction and tensor verification are distinct operations.
 
 \end{minipage}\par
-\section{Correctness audit and companion classification}
-The preceding \href{https://github.com/sebastienpalcoux/fusion-ring-census/tree/main/verification/audit_20261025}{25 October audit}
-validated the 1,433,410 previously released tensors without repeating
-upstream enumeration. The present rank-twelve release adds 632 tensors,
-each independently checked exactly with zero duplicate classes; all
-recorded producer code-file hashes match the supplied source archive.
-The separate companion classifies these new rings as 480 general
-exclusions and 152 models, of which 151 are known unitary. The additional
-model is complex/pseudo-unitary, with unitarity unproved. The 27 October continuation excludes three earlier rank-nine cases, leaving seven open cases at lower ranks. The census counts are unchanged. Independent human verification and formalization
-remain pending.
+\section{Verification and companion classification}
+
+Every released dataset is accompanied by exact tensor-axiom, uniqueness and
+checksum checks. The \href{https://github.com/sebastienpalcoux/fusion-ring-census/blob/main/verification/README.md}{verification index}
+records their scope separately from enumeration completeness. The producer's
+completed searches and supplied hash-matched source do not amount to an
+independent repetition of those full searches.
+
+The \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md}{current companion classification}
+excludes R8\_3\_1768 over the complex numbers by pivotal conjugation parity,
+using the established sphericalization/Galois reduction and six exact
+separation certificates. Six cases remain unresolved: two at rank six, three at rank eight and one at rank nine. No new model is claimed. Census
+tensors and counting terms are unchanged. Independent human verification
+and formalization remain pending.
+
+The rank-twelve multiplicity-one dataset contains 632 tensors, each checked
+exactly with zero duplicate classes. The companion records 480 general
+exclusions and 152 categorical models. Exactly 151 models are known unitary;
+R12\_1\_623 is complex/pseudo-unitary, with unitarity unproved.
 
 \begin{thebibliography}{9}\footnotesize\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
 \bibitem{EGNO} P. Etingof, S. Gelaki, D. Nikshych and V. Ostrik,

@@ -17,13 +17,14 @@ searches have not been independently rerun. See [the rank-7 qualification](rank7
 | 6 | 9 | 25,421 | [Audit](rank6/audit.json) · [Source](rank6/source.json) · [Completed run](rank6/run.json) |
 | 7 | 5 | 10,006 | [Audit](rank7/audit.json) · [Source](rank7/source.json) · [Completed run](rank7/run.json) |
 | 8 | 3 | 4,500 | [Audit](rank8/audit.json) · [Source](rank8/source.json) · [Completed run](rank8/run.json) |
-| 9 | 1 | 142 | [Audit](rank9/audit.json) · [Source](rank9/source.json) · [Completed run](rank9/run.json) |
+| 9 | 2 | 2,225 | [Current checks](rank9/README.md) · [Audit](rank9/multiplicity2/audit.json) · [Source](rank9/multiplicity2/source.json) |
 | 10 | 1 | 194 | [Audit](rank10/audit.json) · [Source](rank10/source.json) · [Completed run](rank10/run.json) |
 | 11 | 1 | 182 | [Audit](rank11/audit.json) · [Source](rank11/source.json) · [Completed run](rank11/run.json) |
+| 12 | 1 | 632 | [Checks and source](rank12/README.md) |
 
-## Current high-rank release
+## Supplied high-rank datasets
 
-The 23 October 2026 datasets add **142**, **194**, and **182** multiplicity-one rings at ranks **9**, **10**, and **11**. All 518 tensors, exact uniqueness and full parameter export passed fresh checks. The supplied complete source and normally completed strata support producer-reported enumeration completeness; the full searches were not independently rerun. [Engine update and receipts](engine_20261023/README.md). No rank-11 categorification claim is made.
+Ranks 9–12 are included in the current manifest, including rank nine through multiplicity two. All supplied tensors and exact based-isomorphism uniqueness passed fresh checks. The complete sources and normally completed strata support producer-reported enumeration completeness; full searches were not independently repeated. [High-rank source](engine_20261023/README.md) · [Rank-twelve source](engine_rank13_20261023/README.md).
 
 ## Independent checks
 
@@ -35,7 +36,7 @@ lists have zero duplicate based-isomorphism classes.
 The supplied laptop datasets at ranks 5–8 passed independent checks of their
 tensors, counts and established count prefixes. At rank 7, the verifier,
 exporter and equation-system hashes were checked against available sources;
-the modified enumeration sources were not available. Hosted audits:
+the complete optimized sources were subsequently supplied and hash-matched, as recorded above. Hosted audits:
 
 - Rank 5: [audit 35553424461](https://github.com/sebastienpalcoux/fusion-ring-census/actions/runs/35553424461).
 
@@ -78,6 +79,8 @@ and lightweight unit tests. They are separate from the mathematical checks above
 The 632 supplied multiplicity-one rings are released with all exact checks and producer logs. [Verification](../verification/rank12/README.md) · [Matching complete rank-13 symmetry source and reproduction command](../verification/engine_rank13_20261023/README.md). The older root launcher remains the rank-3–11 driver; the separate source package reproduces rank twelve.
 
 
-## Companion continuation · 27 October 2026
+## Companion classification
 
-Three rank-nine cases are excluded over the complex numbers; seven cases remain unresolved in the classification project. Exact M2 at rank nine has 2,046 exclusions, 36 models and one unresolved ring. This changes categorification status, not census tensors, counting terms or enumeration completeness. [Proofs, tensor-bound decisions and frozen replay](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier_20261027/README.md).
+R8_3_1768 is generally excluded by pivotal conjugation parity after the established sphericalization/Galois reduction. Six cases remain unresolved across ranks six, eight and nine. The rank-eight exact-M3 partition is 3,508 general exclusions, 16 unitary models and three unresolved rings; cumulative rank eight through three is 4,404/93/3. Rank nine exact-M2 remains 2,046/36/1.
+
+These are categorification decisions. Census tensors, count terms and enumeration-completeness qualifications are unchanged. [Current snapshot](classification.json) · [Unified proofs and exact certificates](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md).

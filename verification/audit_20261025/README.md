@@ -2,7 +2,7 @@
 
 All **1,433,410 supplied rank‑3–11 tensors** passed exact fusion axioms and exhaustive based-isomorphism checks, with no duplicate classes; 43 software tests passed. The entire upstream enumeration was not regenerated. [Scope and counts](summary.json).
 
-The companion classification retains **1,433,022 general exclusions, 378 realized rings and ten unresolved cases**. It incorporates exact replacement proofs for R6_2_143, R8_2_820 and R8_2_869, a direct exact identification of R8_3_721 without census completeness, and implementation/replay corrections. No tensor or classification status changes.
+The corresponding proof revision incorporates exact replacement proofs for R6_2_143, R8_2_820 and R8_2_869, a direct exact identification of R8_3_721 without census completeness, and implementation/replay corrections. That audit did not change tensor data or classification status. The current frontier is recorded separately in [classification.json](../classification.json).
 
 [Current proofs, correction details and exact commands](https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/correctness_20261025) · [Full original audit evidence](https://sebastienpalcoux.github.io/grothendieck-ring-classification/downloads/correctness-audit-2026-10-25.zip)
 

@@ -417,30 +417,34 @@ rank-six rings \texttt{R6\_4\_155} and \texttt{R6\_8\_1660} remain open;
 the companion project's rank-eight frontier is recorded separately there.
 '''
 
-# Fill this immutable pin after the classification publication, then regenerate
-# rank8.tex, README.md and docs/index.html before publishing this repository.
-CLASSIFICATION_PUBLICATION_COMMIT = '323c4227ffb796a72eef506f1eb289437fbc95db'
-
-RANK8_CLASSIFICATION_SNAPSHOT = {'date': '2026-10-24',
- 'exact': {'excluded': 3507, 'unitarily_realized': 16, 'unresolved': 4},
- 'earlier': {'excluded': 896, 'unitarily_realized': 77, 'unresolved': 0},
- 'ledger_sha256': '16a4723f149222ba8cb4f91d07d8ef75176ba5e95b20ff7594ed17e8e4e033fe',
- 'ledger_path': 'supplements/rank8/output/research_20261024/ledger.json',
- 'ledger_payload_path': 'data/payloads/supplements__rank8__output__research_20261024__ledger_json',
+# One current companion snapshot drives every generated classification count.
+CURRENT_CLASSIFICATION = json.loads((ROOT/'verification/classification.json').read_text())
+_r8 = CURRENT_CLASSIFICATION['rank8']
+CLASSIFICATION_PUBLICATION_COMMIT = CURRENT_CLASSIFICATION['classification_revision']
+RANK8_CLASSIFICATION_SNAPSHOT = {
+ 'date': CURRENT_CLASSIFICATION['date'],
+ 'exact': {'excluded': _r8['excluded_general_exact'], 'unitarily_realized': _r8['unitarily_realized_exact'], 'unresolved': _r8['unresolved_exact']},
+ 'earlier': {'excluded': _r8['excluded_general_cumulative']-_r8['excluded_general_exact'], 'unitarily_realized': _r8['unitarily_realized_cumulative']-_r8['unitarily_realized_exact'], 'unresolved': _r8['unresolved_cumulative']-_r8['unresolved_exact']},
+ 'ledger_sha256': _r8['classification_ledger_sha256'],
+ 'ledger_path': _r8['classification_ledger'],
  'classification_commit': CLASSIFICATION_PUBLICATION_COMMIT,
- 'classification_stage': 'published_main_research_update',
- 'r721_model': True,
- 'r982_model': True,
- 'r65_excluded': True,
- 'r1795_excluded': True,
- 'r3472_excluded': True,
- 'r436_excluded': True}
+ 'classification_stage': 'published_main_research_update'}
+
+def current_open_summary():
+    words={0:'zero',1:'one',2:'two',3:'three',4:'four',5:'five',6:'six',7:'seven',8:'eight',9:'nine',10:'ten',11:'eleven',12:'twelve'}
+    ids=CURRENT_CLASSIFICATION['remaining_unresolved']
+    if not ids:return 'No cases remain unresolved.'
+    counts=Counter(int(re.match(r'R(\d+)_',identifier)[1])for identifier in ids)
+    parts=[words[n]+' at rank '+words[r]for r,n in sorted(counts.items())]
+    details=(', '.join(parts[:-1])+' and '+parts[-1])if len(parts)>1 else parts[0]
+    return words[len(ids)].capitalize()+' cases remain unresolved: '+details+'.'
+
 
 def rank8_classification(ledger=None):
     """Read an explicit companion ledger, or the last published snapshot.
 
     This describes categorification only. It never changes census counts.
-    A supplied ledger must cover every released rank-eight tensor exactly once.
+    A supplied ledger must cover all exact-M3 tensors, or all released rank-eight tensors, exactly once.
     """
     summary=json.loads(json.dumps(RANK8_CLASSIFICATION_SNAPSHOT))
     if ledger is not None:
@@ -462,22 +466,12 @@ def rank8_classification(ledger=None):
             if status not in {'excluded','unitarily_realized','unresolved'}:
                 raise ValueError('Unsupported companion classification status')
             ids.add(row['id']);counts[m]+=1;by_band[m][status]+=1
-        if dict(counts)!=expected or len(rows)!=census['classes']:
-            raise ValueError('Companion ledger does not cover the released census')
+        if dict(counts) not in (expected,{3:expected[3]}):
+            raise ValueError('Companion ledger does not cover the complete exact-M3 band or released census')
         summary['exact']={k:by_band[3][k] for k in summary['exact']}
-        summary['earlier']={k:sum(by_band[m][k] for m in expected if m<3)
-                            for k in summary['earlier']}
-        summary['r721_model']=any(row['id']=='R8_3_721' and
-                                 row['status']=='unitarily_realized' for row in rows)
-        summary['r982_model']=any(row['id']=='R8_3_982' and
-                                 row['status']=='unitarily_realized' for row in rows)
-        summary['r65_excluded']=any(row['id']=='R8_3_65' and
-                                   row['status']=='excluded' for row in rows)
-        summary['r1795_excluded']=any(row['id']=='R8_3_1795' and
-                                     row['status']=='excluded' for row in rows)
-        summary['r3472_excluded']=any(row['id']=='R8_3_3472' and
-                                     row['status']=='excluded' for row in rows)
-        summary['r436_excluded']=any(row['id']=='R8_3_436' and row['status']=='excluded' and row.get('criterion')=='spherical_equivariantization_formal_codegree_field' for row in rows)
+        if len(rows)==census['classes']:
+            summary['earlier']={k:sum(by_band[m][k] for m in expected if m<3)
+                                for k in summary['earlier']}
         ledger_sha256=hashlib.sha256(raw).hexdigest()
         if summary.get('ledger_sha256') not in (None,ledger_sha256):
             summary.pop('classification_commit',None)
@@ -499,7 +493,9 @@ def rank8_classification_values(summary):
 def rank8_classification_provenance(summary,markup='markdown'):
     commit=summary.get('classification_commit')
     if commit is None:
-        return 'Classification publication commit pending for this prepared research snapshot.'
+        return {'markdown':'The current [classification ledger](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/rank8_m3_ledger.json) records these categorification decisions.',
+                'html':'The current <a href="https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/rank8_m3_ledger.json">classification ledger</a> records these categorification decisions.',
+                'tex':r'The current \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/rank8_m3_ledger.json}{classification ledger} records these categorification decisions.'}[markup]
     if re.fullmatch(r'[0-9a-f]{40}',commit) is None:
         raise ValueError('Invalid classification provenance commit')
     stage=summary.get('classification_stage')
@@ -530,100 +526,25 @@ def rank8_classification_provenance(summary,markup='markdown'):
         link+=' and its '+ledger_link
     return 'These counts are bound to the '+link+'.'+suffix
 
-def rank8_r3472_focus_addendum(markup='markdown',ref='main'):
-    """General complex exclusion superseding the earlier focused restrictions."""
-    url='https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/'+ref+'/evidence/r3472_exclusion_20261022'
-    if markup=='markdown':
-        case='`R8_3_3472`'
-        evidence=f'[complete proof and exact certificates]({url})'
-    elif markup=='html':
-        case='<code>R8_3_3472</code>'
-        evidence=f'<a href="{url}">complete proof and exact certificates</a>'
-    elif markup=='tex':
-        case=r'\texttt{R8\_3\_3472}'
-        evidence=r'\href{'+url+'}{complete proof and exact certificates}'
-    else:raise ValueError('Unsupported focused research markup')
-    return (f'The general complex exclusion of {case}, established on 22 October 2026, supersedes the earlier focused research restrictions. '
-            'Sphericalization and Galois transport reduce any hypothetical complex categorification to the pseudo-unitary case. '
-            'Exact center induction and modular identities exclude all but one orbit of low center frames. '
-            'For that orbit, complete Galois twist orbits and cyclic-rotation indicator identities force a system of 628 equations in 572 integer variables. '
-            'A certificate of 1,648 exact integer-bound deductions followed by a rational separating inequality proves this system impossible. '
-            f'The {evidence} include two portable exact checkers and an independently checked VIPR infeasibility certificate. '
-            'Earlier feasible center relaxations imposed fewer conditions and therefore do not contradict this exclusion. '
-            'The census tensors, enumeration results and completeness qualifications are unchanged.')
-
 def rank8_research_addendum(summary,markup='markdown'):
-    """Reviewed constructions and separately scoped necessary restrictions."""
-    if not (summary.get('r65_excluded') or summary.get('r1795_excluded')):return ''
-    ref=summary.get('classification_commit') or 'main'
-    base='https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/'+ref
+    """One current account of the companion's conclusions and remaining gaps."""
     def case(identifier):
         if markup=='markdown':return '`'+identifier+'`'
         if markup=='html':return '<code>'+identifier+'</code>'
         if markup=='tex':return r'\texttt{'+identifier.replace('_',r'\_')+'}'
         raise ValueError('Unsupported research markup')
-    def link(label,path):
-        url=base+path
-        if markup=='markdown':return f'[{label}]({url})'
-        if markup=='html':return f'<a href="{url}">{label}</a>'
-        if markup=='tex':return r'\href{'+url+'}{'+label+'}'
-        raise ValueError('Unsupported research markup')
-    parts=[]
-    if summary.get('r982_model'):
-        proof=link('exact model proof','/evidence/rank8_creative_20261022/r982/E21_MODEL.md')
-        parts.append(f'The known unitary construction {case("R8_3_982")} is the triality-zero component of the exceptional E21 chiral fusion category from the conformal embedding SU(3) at level 21 into E7 at level 1. The {proof} reconstructs the known 24-object fusion category from its fundamental graph and matches all 512 neutral fusion coefficients exactly. It also realizes both previously necessary nonregular based-module types. This is a known construction with a new exact census identification.')
-    if summary.get('r65_excluded'):
-        proof=link('six exact certificates','/evidence/rank8_research_20261022/r65/PROOF.md')
-        parts.append(f'The general exclusion of {case("R8_3_65")} uses pointed-induction phases and integral Fourier fibers; {proof} cover every pointed associator class.')
-    if summary.get('r1795_excluded'):
-        proof=link('sixteen exact indicator branches','/evidence/rank8_research_20261022/pointed_followup/PROOF.md')
-        parts.append(f'The new general exclusion of {case("R8_3_1795")} uses finite integer packing of the two pointed twist fibers; {proof} exclude both pointed associator classes.')
-    research=link('structural results','/manuscripts/rank8/paper/m3_research_20261022.tex')
-    followup=link('followup restrictions','/manuscripts/rank8/paper/m3_pointed_followup.tex')
-    parts.append('For the four cases R928, R941, R1154 and R1768, every categorification admits a spherical structure and has a pseudo-unitary Galois conjugate, and no braided Morita representative exists. These reductions are not asserted for the additional general-open R436 case. '
-                 f'Further {research} restrict module actions and distinguish possible centers. The {followup} force the nontrivial pointed associator for {case("R8_3_1768")} and constrain additional twist-one central simples. These necessary restrictions alone supply no categorification.')
-    if summary.get('r982_model'):
-        creative=link('new unified restrictions','/manuscripts/rank8/paper/m3_creative_20261022.tex')
-        parts.append(f'The {creative} control twists by saturated dimension characters, restrict the irrational dimension-ratio sector of {case("R8_3_1768")}, reconstruct a forced four-object semionic packet for {case("R8_3_1154")}, and record earlier conditional Morita-dual restrictions for {case("R8_3_3472")}. '
-                     f'For {case("R8_3_928")}, exact integer phase multiplicities and binary-branch Farkas certificates reduce ten rationally feasible phase patterns to four with integer phase witnesses; the rotation auxiliaries and spectral-mixture parameters remain relaxed. '
-                     'They also give a cyclic-stabilizer divisibility obstruction to two direct near-group quotient constructions.')
-    if summary.get('r3472_excluded'):
-        parts.append(rank8_r3472_focus_addendum(markup,ref))
-        open_ids=(928,941,1154,1768) if summary.get('r436_excluded') else (436,928,941,1154,1768);number='four' if summary.get('r436_excluded') else 'five'
-    else:
-        open_ids=(928,941,1154,1768,3472);number='five'
-    parts.append(f'The {number} rank-eight cases '+', '.join(case('R8_3_'+str(i)) for i in open_ids)+' remain unresolved; the feasible necessary data are not category models.')
-    if summary.get('r436_excluded'):
-        parts.append('The independent spherical-equivariantization and formal-codegree proof excludes '+case('R8_3_436')+' generally. The old TPE parameterization premise remains withdrawn. See '+link('replacement proof','/evidence/r436_repair_20261024/REPAIR.md')+'. Together with the two rank-six cases, six questions remain open at ranks at most eight; this is not a project-wide total.')
-    elif summary.get('r3472_excluded'):
-        parts.append('The general exclusion of '+case('R8_3_436')+' is withheld after a source-scope audit; its unitary exclusion remains supported. See '+link('audit correction','/evidence/audit_20261024/README.md')+'. Together with '+case('R6_4_155')+' and '+case('R6_8_1660')+', seven cases are open at ranks at most eight. Higher-rank questions are counted in the companion atlas; this is not a project-wide total.')
-    if summary.get('r436_excluded'):parts=[x.replace('These reductions are not asserted for the additional general-open R436 case.','R436 is separately generally excluded by the independent replacement proof.')for x in parts]
-    return ('</p><p>'.join(parts) if markup=='html' else '\n\n'.join(parts))
+    url='https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md'
+    if markup=='markdown':proof=f'[unified proofs and exact replay]({url})'
+    elif markup=='html':proof=f'<a href="{url}">unified proofs and exact replay</a>'
+    elif markup=='tex':proof=r'\href{'+url+'}{unified proofs and exact replay}'
+    else:raise ValueError('Unsupported research markup')
+    parts=[f'The general-complex exclusion of {case("R8_3_1768")} follows from a pivotal conjugation-pairing parity obstruction after the established sphericalization/Galois existence reduction. The complete two-sign domain is rejected by six exact rational separation certificates.']
+    parts.append('The three unresolved rank-eight rings are '+', '.join(case('R8_3_'+str(i))for i in (928,941,1154))+'. Their stronger fusion-matrix, Galois and center restrictions are necessary conditions, not categorical models.')
+    parts.append('No new model is claimed. The '+proof+' state the categorical hypotheses, exact certificate scope and remaining gaps. Census tensors, counting terms and enumeration-completeness qualifications are unchanged.')
+    return ('</p><p>'.join(parts)if markup=='html'else '\n\n'.join(parts))
 
 def rank8_classification_addendum(summary,markup='markdown'):
-    """Current research and separately labelled construction/replay history."""
-    research=rank8_research_addendum(summary,markup)
-    if not summary.get('r721_model'):return research
-    proof='https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/'+(summary.get('classification_commit') or 'main')+'/evidence/rank8_next_20261021/r721/r721_qsystem_model.tex'
-    historical='https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/95f38175256ba852b6634f88a055b674e920f941'
-    if markup=='markdown':
-        model='`R8_3_721`';algebra='`1 + rho`';groups=('`C2`','`C8`')
-        proof_link=f'[construction proof]({proof})';history_link=f'[snapshot `95f38175`]({historical})'
-    elif markup=='html':
-        model='<code>R8_3_721</code>';algebra='<code>1 + rho</code>';groups=('<code>C2</code>','<code>C8</code>')
-        proof_link=f'<a href="{proof}">construction proof</a>';history_link=f'<a href="{historical}">snapshot <code>95f38175</code></a>'
-    elif markup=='tex':
-        model=r'\texttt{R8\_3\_721}';algebra=r'$\mathbf 1\oplus\rho$';groups=('$C_2$','$C_8$')
-        proof_link=r'\href{'+proof+'}{construction proof}';history_link=r'\href{'+historical+r'}{snapshot \texttt{95f38175}}'
-    else:raise ValueError('Unsupported construction markup')
-    return ((research+' ') if research else '')+(f'The known model {model} is the Morita dual of the inherited Q-system '
-            f'{algebra} in the {groups[0]} de-equivariantization of the known unitary '
-            f'{groups[1]} generalized-Haagerup category. The {proof_link} includes '
-            'an exact fusion-coefficient bound and identification across all 4,500 '
-            'supplied rank-eight tensors. '
-            f'Historical verification at {history_link}: the 108-check canonical normal '
-            'replay passed; all 8 center checks passed in normal and optimized Python. '
-            'At that checkpoint, optimized core and extracted-package full replays were pending.')
+    return rank8_research_addendum(summary,markup)
 
 def rank8_classification_readme(summary):
     v=rank8_classification_values(summary)
@@ -635,7 +556,7 @@ exclusions, {v['cumulative_unitarily_realized']} unitary models and {v['cumulati
 rank-eight rings. The candidates are not asserted fusion categories or
 established exotic examples. The general questions `R6_4_155` and
 `R6_8_1660` also remain open; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/docs/RESEARCH_STATUS.md)
-for the precise proof scope and individual attempt records.
+for the precise proof scope and remaining categorical gaps.
 {rank8_classification_provenance(summary)}
 {rank8_classification_addendum(summary)}'''
 
@@ -783,26 +704,21 @@ def build_sources(ranks=range(3,13),classification=None):
         body+=DEFINITIONS+results_section(r,item)
         if r==6:
             body+=EH_CONTEXT
-            body+=r"""\paragraph{Current open-case theory.}
-Both rank-six cases remain open. The companion classification extends the
-stabilizer criterion to even cyclic Clifford characters; all 1,144 tested
-R155 blocks pass exactly. Its R1660 rank-eight Morita alternative is exactly
-R8\_3\_941: any connected separable algebra $1+X$ in its pseudo-unitary form forces that dual after the other alternatives are excluded. Neither the category nor the algebra is constructed. These statements
-supply neither a categorification nor a general exclusion. The
-\href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/frontier_20261027}{current proofs and portable certificates}
-retain the categorical hypotheses and distinguish exact replay from the
-incomplete numerical laptop campaign.
+            body+=r"""\paragraph{Current categorification theory.}
+Both rank-six cases remain unresolved. Every Morita dual of a pseudo-unitary
+categorification of R155 has the same based ring; this does not construct a
+category or assert uniqueness of its associator. For a pseudo-unitary
+R1660 categorification, the fermion centralizer is nonsplit and s-simple,
+and a hypothetical algebra $1+X$ has
+only two cyclic multiplication directions. Such an algebra would force the
+rank-eight dual R8\_3\_941, but neither the algebra nor the category is
+constructed. The
+\href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md}{unified proofs and exact checks}
+state the inherited categorical premises and precise remaining gaps.
 """
         if r==7:body+=RANK7_CLASSIFICATION_CONTEXT
         if r==8:
             body+=rank8_classification_context(classification)
-            body+=r"""\paragraph{Further theoretical restrictions.}
-All four rank-eight questions remain open. R928 has categorical Morita
-rigidity without a module-rank cutoff. For R1768, pairing parity and the complete module list rule out every $GH(C_6,2)$ Morita construction, regardless of associator or algebra. The realized twisted precursor is not a model of the source ring. For R1154 all six noninvertible trivalent rotations are identity; R928 and R941 have simple or s-simple centralizer restrictions. Five specified
-families of pointed extensions and connected etale condensations are
-excluded as models for R1154; those route obstructions do not exclude the
-source ring. See the \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/frontier_20261027}{current categorical proofs and exact certificates}.
-"""
         if r>=9:
             body+=r'''\section{Supplied high-rank source and independent checks}
 The complete optimized enumeration source and completed producer-run records
@@ -946,34 +862,28 @@ a generic determinant is nonzero.
                     else:fields += ['','']
                 body+=' & '.join(fields)+'\\\\\n'
             body+='\\bottomrule\\end{longtable}\n'
-        body+=r'\section{Correctness audit and companion classification}'+'\n'
-        body+=r'''
-The \href{https://github.com/sebastienpalcoux/fusion-ring-census/tree/main/verification/audit_20261025}{25 October 2026 audit}
-checked all 1,433,410 supplied rank-three through rank-eleven tensors by exact
-fusion axioms and exhaustive based-isomorphism tests, finding no duplicate
-classes. It did not rerun upstream enumeration. Census tensors and counting
-terms are unchanged. Separate \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/correctness_20261025}{proof and replay corrections}
-repair model identifications and computational defects.
+        body+=r'\section{Verification and companion classification}'+'\n'
+        body+=r"""
+Every released dataset is accompanied by exact tensor-axiom, uniqueness and
+checksum checks. The \href{https://github.com/sebastienpalcoux/fusion-ring-census/blob/main/verification/README.md}{verification index}
+records their scope separately from enumeration completeness. The producer's
+completed searches and supplied hash-matched source do not amount to an
+independent repetition of those full searches.
 
-The \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/frontier_20261027}{27 October continuation}
-excludes R9\_2\_1607, R9\_2\_1975 and R9\_2\_1976 over the complex numbers.
-Seven cases remain unresolved: two at rank six, four at rank eight and one
-at rank nine. No new model is claimed. Independent human verification and
-formalization remain pending.
-'''
+The \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md}{current companion classification}
+excludes R8\_3\_1768 over the complex numbers by pivotal conjugation parity,
+using the established sphericalization/Galois reduction and six exact
+separation certificates. @@OPEN_CASES@@ No new model is claimed. Census
+tensors and counting terms are unchanged. Independent human verification
+and formalization remain pending.
+""".replace('@@OPEN_CASES@@',current_open_summary())
         if r==12:
-            start=body.rfind(r'\section{Correctness audit and companion classification}')
-            body=body[:start]+r'''\section{Correctness audit and companion classification}
-The preceding \href{https://github.com/sebastienpalcoux/fusion-ring-census/tree/main/verification/audit_20261025}{25 October audit}
-validated the 1,433,410 previously released tensors without repeating
-upstream enumeration. The present rank-twelve release adds 632 tensors,
-each independently checked exactly with zero duplicate classes; all
-recorded producer code-file hashes match the supplied source archive.
-The separate companion classifies these new rings as 480 general
-exclusions and 152 models, of which 151 are known unitary. The additional
-model is complex/pseudo-unitary, with unitarity unproved. The 27 October continuation excludes three earlier rank-nine cases, leaving seven open cases at lower ranks. The census counts are unchanged. Independent human verification and formalization
-remain pending.
-'''
+            body+=r"""
+The rank-twelve multiplicity-one dataset contains 632 tensors, each checked
+exactly with zero duplicate classes. The companion records 480 general
+exclusions and 152 categorical models. Exactly 151 models are known unitary;
+R12\_1\_623 is complex/pseudo-unitary, with unitarity unproved.
+"""
         bibliography=BIB.replace(r'\end{thebibliography}',EH_BIB+r'\end{thebibliography}') if r==6 else BIB
         if r==12:
             bibliography=bibliography.replace(r'\small\setlength{\itemsep}{2pt}',

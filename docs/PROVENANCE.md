@@ -61,20 +61,11 @@ previous tensors and parameter records in their original order. The full
 search was not independently rerun. See [rank8](../verification/rank8/README.md)
 and [the optimization integration](../verification/optimization_20261021/README.md).
 
-### R8_3_3472 classification exclusion
+### Categorification is separate from enumeration
 
-The [updated research addendum](R3472_RESEARCH_ADDENDUM.md) records the general
-complex exclusion established on 22 October 2026. The
-[canonical proof evidence](https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/r3472_exclusion_20261022)
-combines exhaustive center-frame coverage with an exact integer indicator
-contradiction. The exact-multiplicity-three classification now has 3,507
-general exclusions, 16 unitary models and four open cases; cumulatively the
-rank-eight totals are 4,403, 93 and four. Six cases remain open across the
-classification project. Earlier Morita restrictions, candidate based rings,
-construction obstructions and feasible partial relaxations are preserved as
-research history. Census counts, tensor hashes and enumeration provenance
-remain unchanged; the generated overview pins the current classification
-publication separately.
+The current [companion classification snapshot](../verification/classification.json) records six unresolved cases. Rank eight at exact multiplicity three has 3,508 general exclusions, 16 unitary models and three unresolved cases; cumulatively through three the totals are 4,404, 93 and three. The exclusion of R8_3_1768 uses a new pivotal conjugation-pairing lemma, the existing general-complex existence reduction and six exact rational certificates. Its [unified proof record](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md) states those mathematical dependencies explicitly.
+
+These decisions do not change census tensors, count terms, data hashes or enumeration-completeness qualifications. Classification proofs and their exact arithmetic replays are separate evidence from the enumeration provenance recorded here.
 
 ## Mathematical sources
 
@@ -93,7 +84,7 @@ does not establish completeness of the source's partial-search cells.
 
 Rank-four and rank-five reductions come from the Dong–Palcoux census project
 and exact-certificate supplements. The [methods](../methods/completeness.md) include
-zero-coefficient and singular branches. The six
+zero-coefficient and singular branches. The ten
 [companions](../manuscripts/README.md) are computational research notes; no journal
 acceptance, DOI or arXiv identifier is asserted for them.
 

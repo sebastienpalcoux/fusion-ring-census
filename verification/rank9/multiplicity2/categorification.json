@@ -10,6 +10,6 @@
   "classification_repository": "https://github.com/sebastienpalcoux/grothendieck-ring-classification",
   "classification_ledger": "https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/5820e021f3887c1e5ae39d945b413c66f97c10ef/evidence/frontier_20261027/rank9_m2_ledger.json",
   "classification_revision": "5820e021f3887c1e5ae39d945b413c66f97c10ef",
-  "qualification": "The companion adds three tensor-bound general-complex exclusions after a fresh audit. Seven cases remain unresolved in total. Census tensors, counts and enumeration-completeness qualifications are unchanged. Independent human verification remains pending.",
+  "qualification": "The exact-M2 rank-nine partition is unchanged. Six cases remain unresolved in the full classification. Census tensors, counting terms and enumeration-completeness qualifications are unchanged. Independent human verification remains pending.",
   "classification_ledger_sha256": "12bb011413fd8a97e9425124ddaed8e7c6f31a7209feda0f8f7109dd49b362f0"
 }

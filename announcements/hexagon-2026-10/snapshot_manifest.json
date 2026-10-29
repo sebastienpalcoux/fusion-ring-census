@@ -1,16 +1,15 @@
 {
-  "schema": "hexagon-announcement-snapshot/v2",
+  "schema": "hexagon-announcement-snapshot/v3",
   "title": "Low-rank Grothendieck rings: an AI-assisted classification project, constructions, and open problems",
-  "prepared_date": "2026-10-26",
+  "prepared_date": "2026-10-29",
   "announcement_pages": 4,
-  "classification_commit": "9891a7df86783eb577a801caa10e0b0f3f84c9be",
-  "census_commit": "a35155aae3b190112d2679ad14d2097d13c4dda0",
-  "hexagon_identifier": "hexagon:2610.00300v2",
+  "classification_commit": "d920cc2531d8b03583c797886a3c2ab6170a281a",
+  "census_commit": "27d0c66fbcec1b399c0e39b4b9dcff71bbf7150f",
+  "commit_role": "immutable source baselines; current frontier revision supplies the new exclusion",
+  "current_results": "https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md",
+  "hexagon_identifier": "hexagon:2610.00300",
   "hexagon_url": "https://hexagonmath.org/2610.00300",
-  "public_version": 1,
-  "revision_submitted": true,
-  "revision_public": false,
-  "status": "Submitted for moderation",
+  "existing_hexagon_deposit_unchanged": true,
   "license": "CC-BY-4.0",
   "human_understanding": "some",
   "ai_provenance": "primarily AI-generated",
@@ -20,12 +19,36 @@
     "R8_3_928",
     "R8_3_941",
     "R8_3_1154",
-    "R8_3_1768",
-    "R9_2_137",
-    "R9_2_1607",
-    "R9_2_1975",
-    "R9_2_1976"
+    "R9_2_137"
   ],
+  "new_exclusions": [
+    "R8_3_1768"
+  ],
+  "new_models": [],
+  "census_totals": {
+    "rings": 1434042,
+    "excluded": 1433506,
+    "realized": 530,
+    "unresolved": 6
+  },
+  "rank8_exact_m3": {
+    "rings": 3527,
+    "excluded": 3508,
+    "realized": 16,
+    "unresolved": 3
+  },
+  "rank8_through_m3": {
+    "rings": 4500,
+    "excluded": 4404,
+    "realized": 93,
+    "unresolved": 3
+  },
+  "rank9_through_m2": {
+    "rings": 2225,
+    "excluded": 2148,
+    "realized": 76,
+    "unresolved": 1
+  },
   "rank12": {
     "rings": 632,
     "excluded": 480,
@@ -37,43 +60,34 @@
   "preview": {
     "compiled_successfully": true,
     "pages": 4,
-    "text_matches_reference_pdf": true,
-    "sha256": "5ea32cf9303d3fb8b853e812382ca63fd672e54c4923c8508e7c221afa749c3d"
+    "visual_review": "all four pages inspected",
+    "sha256": "2d9dc30fb853b0e30155c5fef972f81e828e713058797a15d3f31dfb0ab68e8d"
   },
   "files": {
     "main.tex": {
-      "bytes": 17084,
-      "sha256": "4bbc13e9a328e575c3992d0dcee3cbf4cba3f8aca4fb5d9b05ab22e95aace2c1"
+      "bytes": 17577,
+      "sha256": "cc15dd393d18298ce7d816133e6c70ca4029e139d0dd081cc5dc6b9451389707"
     },
     "Low_rank_Grothendieck_rings_announcement.pdf": {
-      "bytes": 356009,
-      "sha256": "93f32370a24b2c13318b27c53d290c823c599a0c10142e808cf3078c735a4711"
+      "bytes": 310825,
+      "sha256": "2d9dc30fb853b0e30155c5fef972f81e828e713058797a15d3f31dfb0ab68e8d"
     },
     "Hexagon_Source.zip": {
-      "bytes": 6625,
-      "sha256": "4b766ce43b60a5dee91fd26347574bf16964891b57dd562da126d14835b7adf3"
+      "bytes": 6840,
+      "sha256": "6a7593c839a9248c7eb283559377b8e1da7d684040f585f01be39b19b2808703"
     },
     "citation.bib": {
       "bytes": 362,
       "sha256": "73e58145b19a9b19588d58c011241022c2da90a2edf8e49be5442275f4345793"
     },
     "submission_metadata.txt": {
-      "bytes": 3304,
-      "sha256": "4692bddbbdc4eaae87359835fc435d41d952fe73f0ab2d88491d0d9f79d5542f"
+      "bytes": 3136,
+      "sha256": "72a8fe9c41281944de91292f01f32de4c6c392be8427fb84ab4c89c59c02d742"
     },
     "README.md": {
-      "bytes": 2499,
-      "sha256": "0083fe7a51e8d59e0a280e16597f17ad7a6e86fd3ac9573e22d9a336a098022e"
+      "bytes": 3354,
+      "sha256": "3b4bed6ff1d4b6026af269da8e5646b3cea8cc4dac2767def357642be21d2b36"
     }
   },
-  "record_identifier": "hexagon:2610.00300",
-  "revision_number": 2,
-  "revision_of": "hexagon:2610.00300v1",
-  "submitted_date": "2026-10-26",
-  "automated_screening": "completed",
-  "pdf_compilation": "success",
-  "moderation": "pending",
-  "contributor_declarations_approved": true,
-  "deposit_agreement_accepted": true,
-  "agreement_acceptance_date": "2026-10-26"
+  "checksum_scope": "The manifest and containing submission-package ZIP are excluded to avoid circular hashes."
 }

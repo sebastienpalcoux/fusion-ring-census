@@ -8,10 +8,9 @@
 
 > **AI-generated research · independent verification pending.** Automated checks establish only their stated scope. [Provenance and verification](docs/PROVENANCE.md).
 
-**26 October 2026 · rank twelve, multiplicity one.** The new dataset contains **632 fusion rings**. The companion classifies them as **480 general exclusions and 152 modeled rings**, with none unresolved. Of the models, **151 are unitary**; R12_1_623 has a complex/pseudo-unitary realization whose unitarity is unproved. [Source and exact checks](verification/rank12/README.md) · [Classification scope](verification/rank12/categorification.json) · [Public Atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/?rank=12&m=1).
+**Current companion classification.** R8_3_1768 is excluded over the complex numbers by pivotal conjugation parity, using the established sphericalization/Galois reduction and six exact separation certificates. **Six cases remain unresolved: two at rank six, three at rank eight and one at rank nine.** No new model is claimed. Census data and counts are unchanged. [Unified proofs and exact replay](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md) · [Current classification snapshot](verification/classification.json).
 
-**27 October 2026 · companion classification.** Three rank-nine rings are now excluded over the complex numbers: R9_2_1607, R9_2_1975 and R9_2_1976. **Seven cases remain unresolved**: two at rank six, four at rank eight and one at rank nine. The rank-nine exact-M2 partition is 2,046 exclusions, 36 models and one unresolved ring. The conditional R1660–R941 construction does not prove existence, and every GH(C6,2) Morita route for R1768 is ruled out. Census data and counts are unchanged. [Audited proofs and exact replay](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier_20261027/README.md).
-
+Rank twelve at multiplicity one contains 632 rings: 480 general exclusions and 152 modeled rings, with none unresolved. Exactly 151 models are known unitary; R12_1_623 is complex/pseudo-unitary with unitarity unproved. [Source and exact checks](verification/rank12/README.md).
 
 <a id="complete-datasets"></a>
 
@@ -39,7 +38,7 @@ The newly supplied ranks 9–12 passed fresh exact tensor and uniqueness checks.
 
 Each entry counts classes at **exactly** the stated multiplicity. A dash means not completely enumerated.
 
-[Full count table](results/table.md) · [CSV](results/counts.csv) · [Interactive table](docs/index.html) · [Definitions and historical details](docs/PROJECT_GUIDE.md#counts-by-rank-and-multiplicity)
+[Full count table](results/table.md) · [CSV](results/counts.csv) · [Interactive table](docs/index.html) · [Definitions and scope](docs/PROJECT_GUIDE.md#counts-by-rank-and-multiplicity)
 
 </details>
 
@@ -60,8 +59,7 @@ The local launcher has no clock limit. [Installation, supported bounds and verif
 | Mathematics | [Ten rank-specific companions](manuscripts/README.md) · [High-rank methods](methods/COMPACT_SYMMETRY.md) |
 | Evidence | [Verification records](verification/README.md) · [Source update](verification/engine_20261023/README.md) |
 | Categorification | [Current classification and open cases](https://github.com/sebastienpalcoux/grothendieck-ring-classification) |
-| Project details | [Historical research and definitions](docs/PROJECT_GUIDE.md) |
+| Project details | [Definitions and project guide](docs/PROJECT_GUIDE.md) |
 | Reuse | [Cite](CITATION.cff) · [Licensing](NOTICE.md) · [OEIS drafts](oeis/README.md) |
 
 Sébastien Palcoux · BIMSA · [Current project announcement · PDF](announcements/hexagon-2026-10/Low_rank_Grothendieck_rings_announcement.pdf) · [Hexagon](https://hexagonmath.org/2610.00300) · [How to cite](https://sebastienpalcoux.github.io/grothendieck-ring-classification/#cite)
-

@@ -1,32 +1,34 @@
-# Research announcement for Hexagon
+# Research overview and Hexagon record
 
 **Low-rank Grothendieck rings: an AI-assisted classification project, constructions, and open problems**
 
-The current four-page overview, revised on 26 October 2026, covers the classification through rank twelve, the constructions catalogue, and all ten open cases in the stated census ranges.
+The current four-page repository overview, dated 29 October 2026, presents the classification through rank twelve, the constructions catalogue, and the six remaining unresolved cases.
 
-**AI-generated research · independent human verification pending.** The announcement distinguishes categorical arguments, exact finite checks, and enumeration completeness. It makes no claim of novelty up to tensor equivalence or of exoticness.
+The census contains **1,434,042 rings: 1,433,506 general exclusions, 530 realizations, and 6 unresolved cases**. The new exclusion is **R8_3_1768**; no additional model is claimed. At rank eight the counts are 3,508 exclusions, 16 models and 3 unresolved rings at exact multiplicity three, and 4,404 exclusions, 93 models and 3 unresolved rings cumulatively through multiplicity three.
 
-- [Read the current announcement · PDF](Low_rank_Grothendieck_rings_announcement.pdf)
-- [LaTeX source](main.tex) · [Source ZIP for Hexagon](Hexagon_Source.zip)
+**AI-generated research · independent human verification pending.** The overview distinguishes categorical proofs, exact certificate checks, and enumeration completeness. The general-complex exclusion of R8_3_1768 uses the established sphericalization/Galois existence reduction and complete necessary center domains. The [unified frontier proofs](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md) identify these dependencies and the progress on all six open cases.
+
+- [Current overview · PDF](Low_rank_Grothendieck_rings_announcement.pdf)
+- [LaTeX source](main.tex) · [Source ZIP](Hexagon_Source.zip)
 - [Citation · BibTeX](citation.bib)
-- [Submission metadata](submission_metadata.txt) · [Snapshot and checksums](snapshot_manifest.json)
+- [Overview metadata](submission_metadata.txt) · [Snapshot and checksums](snapshot_manifest.json)
 
-## Hexagon record and revision status
+## Hexagon record and citation
 
-The persistent record is [hexagon:2610.00300](https://hexagonmath.org/2610.00300). The 26 October revision was submitted successfully as **hexagon:2610.00300v2**, a revision of the existing record. Automated screening has finished and the PDF compiled successfully. **Moderator review is pending; v2 is not yet public.** The public v1 remains preserved.
-
-The submitted revision retains the existing **CC BY 4.0** licence, **primarily AI-generated** disclosure, and contributor's existing **some parts** human-understanding declaration.
-
-## How to cite
+The persistent preprint record is [hexagon:2610.00300](https://hexagonmath.org/2610.00300). The repository overview incorporates subsequent project results; this repository update does not change the existing Hexagon deposit.
 
 Sébastien Palcoux, *Low-rank Grothendieck rings: an AI-assisted classification project, constructions, and open problems*, Hexagon, hexagon:2610.00300 (2026).
 
-For a particular theorem, construction, dataset or software run, also cite its primary source and the exact repository commit used. The live catalogues can change.
+For a particular theorem, construction, dataset or software run, also cite its primary source and exact repository commit. The live catalogues can change.
 
-## Rebuild and snapshot
+## Construction terminology
+
+“New” means that the specific construction has not, to our knowledge, been explicitly recorded in the literature. Its ingredients may be known; the project checks their hypotheses and the resulting fusion rules. This is not a claim of novelty up to tensor equivalence or of exoticness, and independent verification remains pending.
+
+## Rebuild and source bindings
 
 Run `latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex` with a standard TeX Live installation. The source has an inline bibliography and needs no external images or custom class.
 
-The announcement pins classification commit `9891a7df86783eb577a801caa10e0b0f3f84c9be` and census commit `a35155aae3b190112d2679ad14d2097d13c4dda0`. Its four pages are separate from the research-manuscript inventory.
+The immutable source baselines are classification commit `d920cc2531d8b03583c797886a3c2ab6170a281a` and census commit `27d0c66fbcec1b399c0e39b4b9dcff71bbf7150f`; the unified frontier revision supplies the new exclusion. The dated counts and exact input bindings are recorded in the current publication and frontier manifests. The four overview pages are separate from the research-manuscript inventory.
 
 [Classification repository](https://github.com/sebastienpalcoux/grothendieck-ring-classification) · [Fusion-ring census](https://github.com/sebastienpalcoux/fusion-ring-census) · [Public Atlas](https://sebastienpalcoux.github.io/grothendieck-ring-classification/)

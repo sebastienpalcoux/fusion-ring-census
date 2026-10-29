@@ -17,8 +17,8 @@
 \setlength{\emergencystretch}{1.5em}
 \newcommand{\FPdim}{\operatorname{FPdim}}
 \newcommand{\Vect}{\operatorname{Vec}}
-\newcommand{\classcommit}{9891a7df86783eb577a801caa10e0b0f3f84c9be}
-\newcommand{\censuscommit}{a35155aae3b190112d2679ad14d2097d13c4dda0}
+\newcommand{\classcommit}{d920cc2531d8b03583c797886a3c2ab6170a281a}
+\newcommand{\censuscommit}{27d0c66fbcec1b399c0e39b4b9dcff71bbf7150f}
 \newcommand{\classrepo}{https://github.com/sebastienpalcoux/grothendieck-ring-classification}
 \newcommand{\censusrepo}{https://github.com/sebastienpalcoux/fusion-ring-census}
 \newcommand{\atlas}{https://sebastienpalcoux.github.io/grothendieck-ring-classification}
@@ -27,8 +27,8 @@
 \title{\vspace{-12mm}\textbf{Low-rank Grothendieck rings:}\\[3pt]
 an AI-assisted classification project,\\ constructions, and open problems}
 \author{S\'ebastien Palcoux\thanks{Contributor and project coordinator. Beijing Institute of Mathematical Sciences and Applications (BIMSA), Beijing, China. The project's AI provenance and verification status are stated explicitly below.}}
-\date{26 October 2026}
-\hypersetup{pdftitle={Low-rank Grothendieck rings: an AI-assisted classification project, constructions, and open problems},pdfauthor={Sebastien Palcoux},pdfsubject={Revised research announcement; repository snapshot checked on 26 October 2026}}
+\date{29 October 2026}
+\hypersetup{pdftitle={Low-rank Grothendieck rings: an AI-assisted classification project, constructions, and open problems},pdfauthor={Sebastien Palcoux},pdfsubject={Current repository overview; mathematical status checked on 29 October 2026}}
 \begin{document}
 \maketitle
 \vspace{-5mm}
@@ -39,7 +39,7 @@ The project reports unrestricted Grothendieck-ring classifications in ranks
 two, three, and four, a complete multiplicity-free classification through
 rank twelve, and classifications or partial classifications at higher
 multiplicities. The released census contains $1{,}434{,}042$ rings in ranks
-three through twelve; ten categorification questions remain open within
+three through twelve; six categorification questions remain open within
 its stated bounds. The resources include research manuscripts, categorical
 models, exclusion arguments, verification code, and an interactive atlas.
 One categorical model per ring suffices for our classification problem;
@@ -84,14 +84,14 @@ Rank & Census bound & Census rings & Excluded & Realized & Unresolved\\
 5 & $M\leq20$ & $40{,}999$ & $40{,}982$ & 17 & 0\\
 6 & $M\leq9$ & $25{,}421$ & $25{,}362$ & 57 & 2\\
 7 & $M\leq5$ & $10{,}006$ & $9{,}976$ & 30 & 0\\
-8 & $M\leq3$ & $4{,}500$ & $4{,}403$ & 93 & 4\\
-9 & $M\leq2$ & $2{,}225$ & $2{,}145$ & 76 & 4\\
+8 & $M\leq3$ & $4{,}500$ & $4{,}404$ & 93 & 3\\
+9 & $M\leq2$ & $2{,}225$ & $2{,}148$ & 76 & 1\\
 10 & $M=1$ & 194 & 136 & 58 & 0\\
 11 & $M=1$ & 182 & 155 & 27 & 0\\
 12 & $M=1$ & 632 & 480 & 152 & 0\\
 \bottomrule
 \end{tabular}
-\caption{Reported project status at the pinned snapshot checked on 26 October 2026.
+\caption{Reported project status checked on 29 October 2026.
 Counts concern the displayed census ranges; they are based-ring counts,
 not numbers of tensor-equivalence classes. The project reports
 \textbf{unrestricted classification in ranks two, three, and four};
@@ -101,11 +101,11 @@ All project claims remain subject to independent human verification.}
 \end{table}
 
 The released census contains $1{,}434{,}042$ based-isomorphism classes in
-ranks three through twelve: $1{,}433{,}502$ recorded general exclusions,
-$530$ realizations, and ten unresolved cases. The project reports a complete
+ranks three through twelve: $1{,}433{,}506$ recorded general exclusions,
+$530$ realizations, and six unresolved cases. The project reports a complete
 Grothendieck-ring classification at multiplicity one through rank twelve.
 
-The new rank-twelve band contains $632$ rings: $480$ general exclusions
+The rank-twelve band contains $632$ rings: $480$ general exclusions
 and $152$ realizations. Of the realized rings, $151$ have known unitary
 models; \texttt{R12\_1\_623} has a pseudo-unitary realization whose
 unitarity is unproved. This is an open question about unitarity, while its
@@ -115,7 +115,7 @@ At higher multiplicities, classification is complete within the displayed
 ranges wherever the unresolved count is zero. The complete contiguous
 ranges at ranks six, eight, and nine end at $M=3,2,1$, respectively.
 There remain two open rings at rank six (one at each of $M=4,8$),
-four at rank eight ($M=3$), and four at rank nine ($M=2$).
+three at rank eight ($M=3$), and one at rank nine ($M=2$).
 
 Here ``realized'' means that a categorical model is recorded, ``excluded''
 means that a general obstruction is recorded, and ``complete'' means that
@@ -135,6 +135,18 @@ An exclusion must apply to every possible complex categorification;
 an obstruction restricted to pivotal, spherical, pseudo-unitary, unitary,
 or braided categories retains that restriction.
 
+For \texttt{R8\_3\_1768}, pivotal duality implies that
+$X\otimes V\otimes X^*$ inherits the symmetry sign of a selfduality on
+$V$. Selfdual constituents of opposite second-indicator sign must
+therefore occur evenly. Its fusion tensor violates this parity for the
+forced indicator values, excluding the ring. The general-complex
+conclusion uses the established sphericalization and Galois existence
+reduction; six exact separation certificates verify the required
+necessary center domains. The
+\href{\classrepo/blob/main/evidence/frontier/README.md}{unified frontier proofs}
+record these dependencies and the stronger restrictions on the six open
+cases. No additional model is claimed.
+
 For example, the
 \prooflink{manuscripts/rank4/papers/companion.pdf}{unrestricted rank-four manuscript}
 reports exactly fifteen Grothendieck rings, automatic sphericality of every
@@ -152,6 +164,7 @@ categorification, not only unitary models: the rank-six list includes
 a reported spherical realization whose ring admits no pseudo-unitary
 categorification.
 
+\Needspace{7\baselineskip}
 Within the reported classification through rank twelve, the
 \prooflink{docs/SIMPLE_MULTIPLICITY_ONE.md}{simple-ring audit} finds
 exactly sixteen nontrivial simple multiplicity-free Grothendieck rings:
@@ -175,13 +188,10 @@ scope. The \prooflink{docs/VERIFY.md}{verification guide} and
 \prooflink{evidence/rank12_m1_20261026/README.md}{rank-twelve proof archive}
 record the executed checks and their mathematical dependencies.
 
-The \prooflink{evidence/correctness_20261025/README.md}{correctness revision}
-repairs several model-identification arguments and computational verification
-procedures without changing the earlier classifications. Its records
-distinguish current proofs, superseded arguments, completed replays, and
-external computations not rerun. Automated checks, separate AI reviews,
-and source checksums do not replace independent human verification of
-categorical arguments or enumeration completeness.
+The same records identify external computations not rerun. Automated
+checks, separate AI reviews, and source checksums do not replace
+independent human verification of categorical arguments or enumeration
+completeness.
 
 \Needspace{14\baselineskip}
 \section{Comparison with AnyonWiki}
@@ -214,21 +224,24 @@ required hypotheses and fusion rules. These proposed realizations await
 independent verification; \emph{new} is used only in this limited sense,
 without claiming novelty up to tensor equivalence or exoticness.
 
-The \href{\atlas/unresolved.html}{unresolved-cases page} maintains the
-current list of open rings, with exact fusion tensors, invariants, proof
-references, and the status of general, pivotal, spherical, pseudo-unitary,
-unitary, and braided categorification.
+The six open rings are \texttt{R6\_4\_155}, \texttt{R6\_8\_1660},
+\texttt{R8\_3\_928}, \texttt{R8\_3\_941}, \texttt{R8\_3\_1154}, and
+\texttt{R9\_2\_137}. The
+\href{\atlas/unresolved.html}{unresolved-cases page} gives their exact
+tensors, invariants, proof references, and status under each categorical
+hypothesis.
 
 The \href{\atlas/\#rings}{model catalogue} and
-\href{\atlas/records.html}{case directory} now include rank twelve in the
+\href{\atlas/records.html}{case directory} include rank twelve in the
 same responsive interface, with filters for ring properties. The
 \href{\atlas/theory.html}{theory and definitions page} explains these
 properties and the categorical structures under consideration.
 Individual records distinguish obstructions from implications between
 structures, and statements about a category itself from statements about
 a Galois conjugate. The live catalogues may evolve; the counts in this
-announcement refer to the fixed snapshot below.
+announcement refer to the dated status below.
 
+\Needspace{16\baselineskip}
 \section{Resources, provenance, and independent review}
 The project has three complementary public entry points:
 \begin{center}\small
@@ -251,16 +264,16 @@ mathematical accounts, and the
 scope. The two repositories and the atlas are also listed in
 references~\cite{Census,Classification,Atlas}.
 
-\textbf{Fixed snapshot.}
-This revision describes classification commit
-\href{\classrepo/tree/\classcommit}{\texttt{9891a7df8678}} and census
-commit \href{\censusrepo/tree/\censuscommit}{\texttt{a35155aae3b1}},
-both checked on 26 October 2026. The
-\prooflink{data/current_publication_revision.json}{current publication manifest}
-and \prooflink{data/classification_summary_all_ranks.csv}{all-rank decision table}
-record the current mathematical scope, including rank twelve.
-Rank-specific source manifests retain the exact census inputs used for
-each argument; these bindings are not replaced by the overall snapshot.
+\textbf{Sources and status.}
+The counts are dated 29 October 2026. The immutable source baselines are
+classification commit
+\href{\classrepo/tree/\classcommit}{\texttt{d920cc2531d8}} and census
+commit \href{\censusrepo/tree/\censuscommit}{\texttt{27d0c66fbcec}};
+the unified frontier revision supplies the new exclusion.
+The \href{\classrepo/blob/main/data/current_publication_revision.json}{publication manifest}
+and \href{\classrepo/blob/main/data/classification_summary_all_ranks.csv}{all-rank decision table}
+record the current scope. Rank-specific manifests retain the exact
+census inputs used for each argument.
 
 \Needspace{6\baselineskip}
 \textbf{AI provenance.}

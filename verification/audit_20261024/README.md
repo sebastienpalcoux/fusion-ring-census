@@ -5,17 +5,12 @@ It does not change a census tensor, enumeration count or completeness receipt.
 
 - The signed rank-five commutativity lemma requires the dimension character
   to be nonzero at **every** basis element and equal on dual basis elements.
-- The rank-eight companion account uses the corrected classification ledger:
-  4,402 exclusions, 93 unitary models and five generally open rings.
-  R8_3_436 retains its unitary exclusion. The seven open cases at ranks at most
-  eight are distinguished from the higher-rank project frontier.
+- The rank-eight audit corrected the scope of an earlier near-group argument. The current classification uses a separate replacement proof for R8_3_436; see the [current classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md).
 - Rank-seven producer-source availability, the general generator's rank range
   and the nine rank-specific census PDFs are described consistently.
 
-The companion classification is pinned to commit
-`d22bdcf3f97b7d6991362a417e25172fda4c8a8a`; its audit correction and compressed
-ledger payload are linked in the regenerated rank-eight manuscript and project
-guide. Earlier classification snapshots retain their original scope.
+This audit record pins the companion classification at commit
+`d22bdcf3f97b7d6991362a417e25172fda4c8a8a`; its original source identities remain attached to the audit evidence. Current classification totals are recorded separately in [classification.json](../classification.json).
 
 Validation completed:
 

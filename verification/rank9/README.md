@@ -8,4 +8,6 @@ The complete producer run finished every duality stratum. Enumeration completene
 
 The earlier multiplicity-one source and verification records remain in [multiplicity1/](multiplicity1/). The current input may use different bases: all 142 old case IDs are retained through explicit exact basis transports, including fourteen nonidentity maps. The [crosswalk audit](multiplicity2/categorical_id_crosswalk.json) records this distinction.
 
-The companion classification records **2,043 general exclusions, 36 unitary models and four unresolved rings at exact multiplicity two**. Its corrected subring rule requires an explicit exclusion proof; absence from a positive model catalog is not an obstruction. These mathematical decisions do not change census counts or enumeration scope.
+The companion classification records **2,046 general exclusions, 36 unitary models and one unresolved ring at exact multiplicity two**. Its corrected subring rule requires an explicit exclusion proof; absence from a positive model catalog is not an obstruction. These mathematical decisions do not change census counts or enumeration scope.
+
+The [unified classification account](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md) records all six remaining open cases and the stronger necessary restrictions for R9_2_137.

@@ -216,20 +216,20 @@ python3 scripts/check_release.py --full
 For a shared-budget frontier search, use \path{scripts/extend_census.py}. For ranks five through eight it starts at the released bound plus one and restarts the unfinished bound without claiming checkpoint resumption. The local command above verifies all tensors and the old count prefix before packaging a result. The separate timed frontier wrapper bounds every phase. Rank three is instead capped at 1000.
 
 \end{minipage}\par
-\section{Correctness audit and companion classification}
+\section{Verification and companion classification}
 
-The \href{https://github.com/sebastienpalcoux/fusion-ring-census/tree/main/verification/audit_20261025}{25 October 2026 audit}
-checked all 1,433,410 supplied rank-three through rank-eleven tensors by exact
-fusion axioms and exhaustive based-isomorphism tests, finding no duplicate
-classes. It did not rerun upstream enumeration. Census tensors and counting
-terms are unchanged. Separate \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/correctness_20261025}{proof and replay corrections}
-repair model identifications and computational defects.
+Every released dataset is accompanied by exact tensor-axiom, uniqueness and
+checksum checks. The \href{https://github.com/sebastienpalcoux/fusion-ring-census/blob/main/verification/README.md}{verification index}
+records their scope separately from enumeration completeness. The producer's
+completed searches and supplied hash-matched source do not amount to an
+independent repetition of those full searches.
 
-The \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/tree/main/evidence/frontier_20261027}{27 October continuation}
-excludes R9\_2\_1607, R9\_2\_1975 and R9\_2\_1976 over the complex numbers.
-Seven cases remain unresolved: two at rank six, four at rank eight and one
-at rank nine. No new model is claimed. Independent human verification and
-formalization remain pending.
+The \href{https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md}{current companion classification}
+excludes R8\_3\_1768 over the complex numbers by pivotal conjugation parity,
+using the established sphericalization/Galois reduction and six exact
+separation certificates. Six cases remain unresolved: two at rank six, three at rank eight and one at rank nine. No new model is claimed. Census
+tensors and counting terms are unchanged. Independent human verification
+and formalization remain pending.
 
 \begin{thebibliography}{9}\small\setlength{\itemsep}{2pt}
 \bibitem{EGNO} P. Etingof, S. Gelaki, D. Nikshych and V. Ostrik,

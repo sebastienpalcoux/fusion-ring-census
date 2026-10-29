@@ -24,3 +24,7 @@ validity and uniqueness, but does not rerun the full exhaustive search. The
 manifest's `complete: true` retains that producer report; its explicit
 `completeness_basis` and `independent_enumeration_rerun: false` record the limit.
 The supplied verifier output is preserved separately in [producer_verification](producer_verification/).
+
+## Companion classification
+
+At exact multiplicity three, the current companion records 3,508 general exclusions, 16 unitary models and three unresolved rings. Through multiplicity three the totals are 4,404/93/3. R8_3_1768 is excluded by pivotal conjugation parity after the established general-complex existence reduction. This does not alter any census tensor or enumeration qualification above. [Snapshot](../classification.json) · [Unified proofs](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md).
