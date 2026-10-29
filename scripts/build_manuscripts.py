@@ -539,7 +539,7 @@ def rank8_research_addendum(summary,markup='markdown'):
     elif markup=='tex':proof=r'\href{'+url+'}{unified proofs and exact replay}'
     else:raise ValueError('Unsupported research markup')
     parts=[f'The general-complex exclusion of {case("R8_3_1768")} follows from a pivotal conjugation-pairing parity obstruction after the established sphericalization/Galois existence reduction. The complete two-sign domain is rejected by six exact rational separation certificates.']
-    parts.append('The three unresolved rank-eight rings are '+', '.join(case('R8_3_'+str(i))for i in (928,941,1154))+'. Their stronger fusion-matrix, Galois and center restrictions are necessary conditions, not categorical models.')
+    parts.append('The three unresolved rank-eight rings are '+', '.join(case('R8_3_'+str(i))for i in (928,941,1154))+'. Their current modular-data, algebra and center restrictions are necessary conditions, not categorical models.')
     parts.append('No new model is claimed. The '+proof+' state the categorical hypotheses, exact certificate scope and remaining gaps. Census tensors, counting terms and enumeration-completeness qualifications are unchanged.')
     return ('</p><p>'.join(parts)if markup=='html'else '\n\n'.join(parts))
 
@@ -863,6 +863,7 @@ a generic determinant is nonzero.
                 body+=' & '.join(fields)+'\\\\\n'
             body+='\\bottomrule\\end{longtable}\n'
         body+=r'\section{Verification and companion classification}'+'\n'
+        body += {6: 'The two rank-six cases remain unresolved. A specified order-32 near-group\nconstruction route for \\texttt{R6\\_4\\_155} now forces parent group\n$C_4\\times C_2^3$, without constructing that parent. For\n\\texttt{R6\\_8\\_1660}, a nonreal dimension-weighted third indicator\nobstructs real forms and braided representatives in its positive Morita\nclass. The centers associated with R1660 and its proposed rank-eight\nMorita partner R941 are prime, excluding smaller direct modular sources.\nThese are route restrictions, not new general exclusions or models.\n\n', 8: 'The three rank-eight cases remain unresolved. For \\texttt{R8\\_3\\_928},\nthree of four necessary center patterns are excluded; the surviving\nrank-twenty factor is exactly Anyon Atlas\n\\href{https://anyonatlas.org/data/B20-02148}{\\texttt{B20-02148}}.\nAll 400 matrix entries, 20 twists and 8000 fusion coefficients match\nafter normalization and relabeling. This datum and its proposed\ncondensation are not categorical constructions. A hypothetical smallest\nalgebra branch for \\texttt{R8\\_3\\_1154} forces a specific rank-seven\nMorita-dual ring. The algebra and the proposed R1660--R941 Morita link\nremain unconstructed.\n\n', 9: 'For the sole remaining rank-nine case \\texttt{R9\\_2\\_137}, full-column\nGalois complement and nine exact integral Verlinde bounds exclude the\npositive Tambara--Yamagami sign. The negative sign retains an exact\nrational necessary-condition witness, including integral distinguished\nfusion coefficients and a strict bosonic-row bound. It is not a\ncategorification. The number of unresolved rank-nine rings remains one.\n\n'}.get(r, "")
         body+=r"""
 Every released dataset is accompanied by exact tensor-axiom, uniqueness and
 checksum checks. The \href{https://github.com/sebastienpalcoux/fusion-ring-census/blob/main/verification/README.md}{verification index}
@@ -915,4 +916,5 @@ def main():
                 staged.replace(M/f'rank{r}.pdf')
             print(f'Built rank{r}.pdf',flush=True)
 if __name__=='__main__':main()
+
 

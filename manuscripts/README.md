@@ -28,3 +28,6 @@ The [verification index](../verification/README.md) separates exact output check
 Rank twelve adds 632 rings, with 480 general exclusions and 152 categorical models in the companion. Exactly 151 models are known unitary; R12_1_623 is complex/pseudo-unitary with unitarity unproved. [Source, exact checks and qualification](../verification/rank12/README.md).
 
 The [unified current classification](https://github.com/sebastienpalcoux/grothendieck-ring-classification/blob/main/evidence/frontier/README.md) excludes R8_3_1768 by pivotal conjugation parity and leaves **six unresolved cases**: two at rank six, three at rank eight and one at rank nine. Its exact certificates and inherited categorical hypotheses are explicit. No new model is claimed; census data and counting terms are unchanged.
+
+
+The rank-six, rank-eight and rank-nine companions include the current branch and construction restrictions. The rank-20 modular datum for R8_3_928 is identified exactly as [Anyon Atlas B20-02148](https://anyonatlas.org/data/B20-02148). R9_2_137 retains only the negative Tambara–Yamagami sign. Neither result establishes a new categorification; all six cases remain unresolved.
